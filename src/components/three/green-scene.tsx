@@ -11,7 +11,7 @@ import {
   GATE_X,
   LANE_EAST,
   LANE_WEST,
-  QUAY_X,
+  PORT,
   ROAD_START,
   WATER_Y,
   buildWorld,
@@ -33,18 +33,19 @@ export type GreenSceneProps = {
 };
 
 /** Haze colour shared by fog and the horizon of the sky dome. */
-const HAZE = "#1b3530";
-const ZENITH = "#06120f";
+const HAZE = "#2f4b44";
+const ZENITH = "#0a1a17";
 
 /** Camera framing per stage: focus offset from the zone centre and a distance factor. */
-const FRAMES: { dx: number; dz: number; k: number; yaw: number }[] = [
-  { dx: -1.2, dz: -2.6, k: 1.0, yaw: 0.2 },
-  { dx: 0.2, dz: -3.4, k: 1.0, yaw: 0.22 },
-  { dx: 0.4, dz: -3.2, k: 1.0, yaw: 0.2 },
-  { dx: 0.4, dz: -2.8, k: 0.98, yaw: 0.18 },
-  { dx: -0.6, dz: -2.6, k: 0.98, yaw: 0.2 },
-  { dx: 0.6, dz: -3.4, k: 1.04, yaw: 0.2 },
-  { dx: 4.2, dz: -5.4, k: 1.14, yaw: 0.14 },
+type Frame = { dx: number; dz: number; k: number; yaw: number; elev: number; look: number; fov: number };
+const FRAMES: Frame[] = [
+  { dx: -1.4, dz: -3.2, k: 1.0, yaw: 0.2, elev: 0.5, look: 0, fov: 0 },
+  { dx: 0, dz: -4.2, k: 1.0, yaw: 0.22, elev: 0, look: 0, fov: 0 },
+  { dx: 0.2, dz: -4.2, k: 1.0, yaw: 0.2, elev: 0, look: 0, fov: 0 },
+  { dx: 0.4, dz: -3.6, k: 0.98, yaw: 0.18, elev: 0, look: 0, fov: 0 },
+  { dx: -0.8, dz: -3.4, k: 0.98, yaw: 0.2, elev: 0, look: 0, fov: 0 },
+  { dx: 0.4, dz: -4.4, k: 1.04, yaw: 0.2, elev: 0, look: 0, fov: 0 },
+  { dx: 2.2, dz: -9, k: 1.12, yaw: 0.2, elev: -3.5, look: 2.8, fov: 4 },
 ];
 
 /** Shared per-frame state: where the camera is looking and how wide the view is. */
@@ -68,7 +69,15 @@ function frameAt(s: number) {
   const t = s - i;
   const a = FRAMES[i];
   const b = FRAMES[j];
-  return { dx: lerp(a.dx, b.dx, t), dz: lerp(a.dz, b.dz, t), k: lerp(a.k, b.k, t), yaw: lerp(a.yaw, b.yaw, t) };
+  return {
+    dx: lerp(a.dx, b.dx, t),
+    dz: lerp(a.dz, b.dz, t),
+    k: lerp(a.k, b.k, t),
+    yaw: lerp(a.yaw, b.yaw, t),
+    elev: lerp(a.elev, b.elev, t),
+    look: lerp(a.look, b.look, t),
+    fov: lerp(a.fov, b.fov, t),
+  };
 }
 
 // ── Camera ───────────────────────────────────────────────────────
@@ -106,7 +115,7 @@ function Rig({
 
     // Damped travel; snap on the first frame, for fixed stages and under reduced motion.
     const snap = !f.ready || stage !== undefined || reduced;
-    f.s = snap ? target : THREE.MathUtils.damp(f.s, target, 2.2, Math.min(dt, 0.1));
+    f.s = snap ? target : THREE.MathUtils.damp(f.s, target, 2.2, Math.min(dt, 0.25));
     f.ready = true;
 
     const p = pointer.current;
@@ -117,15 +126,15 @@ function Rig({
     const fr = frameAt(s);
     const aspect = state.size.width / Math.max(state.size.height, 1);
     const portrait = THREE.MathUtils.clamp((1.3 - aspect) / 0.8, 0, 1);
-    const fov = lerp(26, 34, portrait);
+    const fov = lerp(24, 32, portrait) + fr.fov;
     const tan = Math.tan(THREE.MathUtils.degToRad(fov / 2));
-    const wantHalf = lerp(11, 7.4, portrait) * fr.k;
-    const dist = Math.max(29 * fr.k, wantHalf / (tan * aspect));
+    const wantHalf = lerp(10.5, 7.4, portrait) * fr.k;
+    const dist = Math.max(31 * fr.k, wantHalf / (tan * aspect));
 
     // Between stages the camera lifts slightly and swings — a slow crane move.
     const between = Math.sin(Math.PI * (s - Math.floor(s)));
     const yaw = fr.yaw + between * 0.05 + p.x * 0.035;
-    const elev = THREE.MathUtils.degToRad(15.5 + between * 2.2 - p.y * 1.2 + portrait * 3);
+    const elev = THREE.MathUtils.degToRad(17 + fr.elev + between * 2 - p.y * 1.2 + portrait * 3);
 
     const fx = zoneX(s) + fr.dx - portrait * fr.dx * 0.6;
     f.x = fx;
@@ -137,7 +146,7 @@ function Rig({
       Math.sin(elev) * dist,
       fz + Math.cos(yaw) * Math.cos(elev) * dist,
     );
-    const lookY = lerp(3.4, 1.2, portrait);
+    const lookY = lerp(1.6, 0.8, portrait) + fr.look;
     _look.set(fx, lookY, fz);
     cam.lookAt(_look);
     if (Math.abs(cam.fov - fov) > 0.01) {
@@ -333,11 +342,11 @@ function DepartingShip({ models, reduced }: { models: Models; reduced: boolean }
     if (!m) return;
     if (!reduced) t.current = (t.current + Math.min(dt, 0.1) / 420) % 1;
     const u = t.current;
-    // From the harbour mouth out towards the eastern horizon.
-    const x = QUAY_X + 10 + u * 90;
-    const z = -20 - u * 70 + Math.sin(u * 3) * 4;
+    // Out of the basin, past the breakwater head, towards the north-eastern horizon.
+    const x = PORT.x1 + 8 + u * 110;
+    const z = PORT.quayZ - 11 - u * 75;
     m.position.set(x, WATER_Y, z);
-    m.rotation.y = Math.atan2(70, 90);
+    m.rotation.y = Math.atan2(75, 110);
   });
 
   return <mesh ref={mesh} geometry={models.ship2} material={mat} castShadow receiveShadow />;
@@ -372,11 +381,11 @@ const arcFragment = /* glsl */ `
 `;
 
 const ARCS: { from: [number, number, number]; to: [number, number, number]; lift: number; color: string }[] = [
-  { from: [QUAY_X + 2.1, 2.6, -9.5], to: [QUAY_X + 110, 0, -95], lift: 20, color: "#8dc63f" },
-  { from: [QUAY_X - 4.5, 2.2, -3.5], to: [QUAY_X + 40, 0, -200], lift: 26, color: "#5cc6c0" },
-  { from: [QUAY_X - 7.5, 1.4, -1.5], to: [QUAY_X - 90, 0, -170], lift: 24, color: "#e2cf98" },
-  { from: [QUAY_X + 2.1, 2.2, -15.5], to: [QUAY_X + 150, 0, -25], lift: 14, color: "#5cc6c0" },
-  { from: [QUAY_X - 1.8, 5.8, -7.2], to: [QUAY_X + 10, 0, -260], lift: 34, color: "#c3e28f" },
+  { from: [PORT.x0 + 12.5, 2.6, PORT.quayZ - 2.1], to: [PORT.x1 + 110, 0, -140], lift: 22, color: "#8dc63f" },
+  { from: [PORT.x0 + 5.5, 2.4, 0.5], to: [PORT.x0 + 20, 0, -260], lift: 30, color: "#5cc6c0" },
+  { from: [PORT.x0 + 3, 2.4, PORT.quayZ - 2.1], to: [PORT.x0 - 110, 0, -220], lift: 26, color: "#e2cf98" },
+  { from: [PORT.x1 - 2, 2.2, PORT.quayZ - 2.1], to: [PORT.x1 + 180, 0, -40], lift: 16, color: "#5cc6c0" },
+  { from: [PORT.x0 + 9.2, 7.2, PORT.quayZ + 2.2], to: [PORT.x1 + 40, 0, -300], lift: 36, color: "#c3e28f" },
 ];
 
 function Arc({ arc, index, focusRef, reduced }: { arc: (typeof ARCS)[number]; index: number; focusRef: RefObject<Focus>; reduced: boolean }) {
@@ -389,7 +398,6 @@ function Arc({ arc, index, focusRef, reduced }: { arc: (typeof ARCS)[number]; in
     const c2 = a.clone().addScaledVector(d, 0.62).add(new THREE.Vector3(0, arc.lift * 1.05, 0));
     return new THREE.TubeGeometry(new THREE.CubicBezierCurve3(a, c1, c2, b), 160, 0.035, 5, false);
   }, [arc]);
-  const node = useMemo(() => new THREE.Vector3(...arc.from), [arc]);
   const uniforms = useMemo(
     () => ({
       uTime: { value: reduced ? 3 : 0 },
@@ -412,8 +420,7 @@ function Arc({ arc, index, focusRef, reduced }: { arc: (typeof ARCS)[number]; in
   });
 
   return (
-    <>
-      <mesh geometry={geometry} frustumCulled={false}>
+    <mesh geometry={geometry} frustumCulled={false}>
         <shaderMaterial
           ref={material}
           vertexShader={arcVertex}
@@ -423,19 +430,15 @@ function Arc({ arc, index, focusRef, reduced }: { arc: (typeof ARCS)[number]; in
           depthWrite={false}
           blending={THREE.AdditiveBlending}
           fog={false}
-        />
-      </mesh>
-      <mesh position={node}>
-        <sphereGeometry args={[0.09, 12, 8]} />
-        <meshBasicMaterial color={arc.color} toneMapped={false} />
-      </mesh>
-    </>
+      />
+    </mesh>
   );
 }
 
 // ── Lighting ─────────────────────────────────────────────────────
 function Lighting({ focusRef, lite }: { focusRef: RefObject<Focus>; lite: boolean }) {
   const key = useRef<THREE.DirectionalLight>(null);
+  const fill = useRef<THREE.DirectionalLight>(null);
   useEffect(() => {
     const cam = key.current?.shadow.camera;
     if (!cam) return;
@@ -451,25 +454,32 @@ function Lighting({ focusRef, lite }: { focusRef: RefObject<Focus>; lite: boolea
     const l = key.current;
     if (!l) return;
     const x = focusRef.current.x;
-    l.position.set(x - 16, 24, 14);
+    l.position.set(x - 24, 17, 12);
     l.target.position.set(x, 0, -4);
     l.target.updateMatrixWorld();
+    const f = fill.current;
+    if (f) {
+      f.position.set(x + 30, 9, 6);
+      f.target.position.set(x, 0, -4);
+      f.target.updateMatrixWorld();
+    }
   });
   const size = lite ? 1024 : 2048;
   return (
     <>
-      <hemisphereLight args={["#e4efe9", "#0b1f16", 0.7]} />
+      <hemisphereLight args={["#dfe8e4", "#16241d", 0.32]} />
       <directionalLight
         ref={key}
-        color="#fff4e2"
-        intensity={2.3}
+        color="#fff0da"
+        intensity={3.7}
         castShadow
         shadow-mapSize={[size, size]}
         shadow-bias={-0.0004}
         shadow-normalBias={0.02}
-        shadow-radius={lite ? 2 : 3.5}
+        shadow-radius={lite ? 2.5 : 4}
       />
-      <directionalLight color="#9fd8d2" intensity={0.55} position={[60, 10, -40]} />
+      {/* Cool fill from the east: gives right-hand faces a teal cast and defines each volume. */}
+      <directionalLight ref={fill} color="#9fd6cf" intensity={0.75} />
     </>
   );
 }
@@ -477,8 +487,10 @@ function Lighting({ focusRef, lite }: { focusRef: RefObject<Focus>; lite: boolea
 /** Reports once the first frames are on screen, so the canvas can fade in over its poster. */
 function FirstFrame({ onReady }: { onReady: () => void }) {
   const frames = useRef(0);
-  useFrame(() => {
+  useFrame((state) => {
     frames.current += 1;
+    // In on-demand mode (reduced motion) ask for the second frame explicitly.
+    if (frames.current === 1) state.invalidate();
     if (frames.current === 2) onReady();
   });
   return null;
@@ -519,7 +531,7 @@ function Scene({
 
   return (
     <>
-      <fogExp2 attach="fog" args={[HAZE, 0.0098]} />
+      <fogExp2 attach="fog" args={[HAZE, 0.0078]} />
       <Rig progress={progress} stage={stage} reduced={reduced} focusRef={focusRef} />
       <Invalidator progress={progress} reduced={reduced} />
       <FirstFrame onReady={onReady} />
@@ -532,13 +544,15 @@ function Scene({
       {ARCS.map((a, i) => (
         <Arc key={i} arc={a} index={i} focusRef={focusRef} reduced={reduced} />
       ))}
-      <Environment resolution={128} frames={1} environmentIntensity={0.85}>
-        <color attach="background" args={["#0d1c18"]} />
-        <Lightformer form="rect" intensity={2.6} color="#fbf6ea" position={[0, 6, 1]} scale={[12, 3, 1]} rotation-x={Math.PI / 2} />
-        <Lightformer form="rect" intensity={1.4} color="#cfeee6" position={[-6, 2, 2]} scale={[1.2, 6, 1]} rotation-y={Math.PI / 2} />
-        <Lightformer form="rect" intensity={1.1} color="#e2cf98" position={[6, 1.5, -2]} scale={[0.8, 5, 1]} rotation-y={-Math.PI / 2} />
-        <Lightformer form="ring" intensity={0.9} color="#009999" position={[0, 1, -7]} scale={4} />
-        <Lightformer form="rect" intensity={0.5} color="#1f3a33" position={[0, -3, 0]} scale={[14, 14, 1]} rotation-x={-Math.PI / 2} />
+      <Environment resolution={128} frames={1} environmentIntensity={0.6}>
+        <color attach="background" args={["#14231f"]} />
+        {/* Overhead softbox, slightly behind: reads as a sheen on the tilted PV glass. */}
+        <Lightformer form="rect" intensity={2.4} color="#fbf6ea" position={[0, 7, -2]} scale={[16, 8, 1]} rotation-x={Math.PI / 2} />
+        {/* Low front strip: catches the vertical glazing that faces the camera. */}
+        <Lightformer form="rect" intensity={1.6} color="#eaf4ef" position={[0, 1.2, 8]} scale={[18, 1.6, 1]} rotation-y={Math.PI} />
+        <Lightformer form="rect" intensity={1.2} color="#cfeee6" position={[-7, 2, 1]} scale={[1.2, 6, 1]} rotation-y={Math.PI / 2} />
+        <Lightformer form="rect" intensity={1.0} color="#e2cf98" position={[7, 1.5, -2]} scale={[0.8, 5, 1]} rotation-y={-Math.PI / 2} />
+        <Lightformer form="ring" intensity={0.8} color="#009999" position={[0, 1, -8]} scale={5} />
       </Environment>
     </>
   );

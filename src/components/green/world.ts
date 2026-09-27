@@ -18,8 +18,8 @@ export const ROAD_Z = 4;
 export const LANE_EAST = 4.35;
 export const LANE_WEST = 3.65;
 export const RAIL_Z = 6.3;
-/** The land ends here; the sea opens to the east. */
-export const QUAY_X = zoneX(6) + 6;
+/** The port stands on a quay facing open water to the north (−z); the sea also opens to the east. */
+export const PORT = { x0: zoneX(6) - 8.5, x1: zoneX(6) + 10, quayZ: -10 } as const;
 /** The road ends at the port gate; vehicles enter and leave through its hall at GATE_X. */
 export const ROAD_END = zoneX(6) - 4.2;
 export const GATE_X = ROAD_END + 0.2;
@@ -28,15 +28,15 @@ export const WATER_Y = -0.32;
 
 // ── Palette (sRGB) ───────────────────────────────────────────────
 export const COLORS = {
-  ground: "#10291d",
-  fieldA: "#14301f",
-  fieldB: "#183826",
-  fieldC: "#0e2519",
-  fieldD: "#1c3b29",
+  ground: "#10261a",
+  fieldA: "#132c1d",
+  fieldB: "#173222",
+  fieldC: "#0e2317",
+  fieldD: "#1a3625",
   hedge: "#0a1c13",
-  pad: "#2a3133",
-  padDark: "#212729",
-  apron: "#343b3e",
+  pad: "#3a4245",
+  padDark: "#2c3336",
+  apron: "#454d50",
   asphalt: "#1b2023",
   marking: "#d9d3c2",
   ballast: "#2b2f31",
@@ -64,7 +64,7 @@ export const COLORS = {
   lime: "#8dc63f",
   amber: "#e2cf98",
   tyre: "#121517",
-  sea: "#0a2a2d",
+  sea: "#082322",
   ridgeNear: "#10251d",
   ridgeFar: "#142d27",
 } as const;
@@ -367,7 +367,7 @@ function packaging(b: Builder) {
   const pz = -6.6;
   building(b, px, pz, 7.2, 1.9, 4.6, { ribbons: 1 });
   b.block("box", px, 1.97, pz, 7.2, 0.14, 4.6, COLORS.graphite);
-  for (let i = 0; i < 4; i++) b.block("glass", px - 2.4 + i * 1.6, 2.11, pz - 0.4, 0.9, 0.16, 1.8, COLORS.glass);
+  for (let i = 0; i < 4; i++) b.block("glass", px - 2.4 + i * 1.6, 2.11, pz - 0.4, 0.9, 0.05, 1.8, COLORS.glassDark);
   b.block("box", px + 1.4, 0.07, pz + 2.31, 1.3, 1.0, 0.02, COLORS.graphite);
 
   // Conveyor frame (belt at y ≈ 0.62).
@@ -495,84 +495,87 @@ function logistics(b: Builder) {
   }
 }
 
-/** Ship-to-shore gantry crane on the quay, boom reaching over the water (+x). */
-function crane(b: Builder, z: number, trolley: number) {
-  const land = QUAY_X - 3.3;
-  const sea = QUAY_X - 0.5;
+/** Ship-to-shore gantry crane on the north quay; its boom reaches out over the water (−z). */
+function crane(b: Builder, x: number, trolley: number) {
+  const land = PORT.quayZ + 3.3;
+  const sea = PORT.quayZ + 0.5;
   const legH = 3.4;
   const c = COLORS.cream;
-  for (const x of [land, sea])
-    for (const dz of [-0.62, 0.62]) b.block("box", x, 0.07, z + dz, 0.16, legH, 0.16, c);
-  for (const dz of [-0.62, 0.62]) b.box("box", (land + sea) / 2, legH, z + dz, sea - land + 0.2, 0.22, 0.2, c);
-  for (const x of [land, sea]) b.box("box", x, legH, z, 0.2, 0.22, 1.44, c);
-  b.box("box", (land + sea) / 2, 0.8, z - 0.62, sea - land, 0.1, 0.1, c);
-  b.box("box", (land + sea) / 2, 0.8, z + 0.62, sea - land, 0.1, 0.1, c);
-  // Boom and backreach.
+  const mid = (land + sea) / 2;
+  for (const z of [land, sea])
+    for (const dx of [-0.62, 0.62]) b.block("box", x + dx, 0.07, z, 0.16, legH, 0.16, c);
+  for (const dx of [-0.62, 0.62]) b.box("box", x + dx, legH, mid, 0.2, 0.22, land - sea + 0.2, c);
+  for (const z of [land, sea]) b.box("box", x, legH, z, 1.44, 0.22, 0.2, c);
+  for (const dx of [-0.62, 0.62]) b.box("box", x + dx, 0.8, mid, 0.1, 0.1, land - sea, c);
+  // Boom over the water and backreach over the yard.
   const by = legH + 0.95;
-  const b0 = land - 3.4;
-  const b1 = QUAY_X + 7.2;
-  for (const dz of [-0.3, 0.3]) b.box("box", (b0 + b1) / 2, by, z + dz, b1 - b0, 0.24, 0.12, c);
-  for (let x = b0 + 0.6; x < b1; x += 1.4) b.box("box", x, by, z, 0.08, 0.2, 0.6, c);
+  const b0 = land + 3.2;
+  const b1 = PORT.quayZ - 7.4;
+  for (const dx of [-0.3, 0.3]) b.box("box", x + dx, by, (b0 + b1) / 2, 0.12, 0.24, b0 - b1, c);
+  for (let z = b1 + 0.6; z < b0; z += 1.4) b.box("box", x, by, z, 0.6, 0.2, 0.08, c);
   // A-frame and stays.
-  const apex: [number, number, number] = [(land + sea) / 2 - 0.3, legH + 3.1, z];
-  for (const dz of [-0.4, 0.4]) {
-    b.beam("box", [land + 0.2, legH + 0.1, z + dz], [apex[0], apex[1], z + dz * 0.5], 0.12, c);
-    b.beam("box", [sea - 0.2, legH + 0.1, z + dz], [apex[0], apex[1], z + dz * 0.5], 0.12, c);
-    b.beam("metal", [apex[0], apex[1], z + dz * 0.5], [b1 - 0.4, by + 0.1, z + dz * 0.75], 0.035, COLORS.rail);
-    b.beam("metal", [apex[0], apex[1], z + dz * 0.5], [b0 + 0.4, by + 0.1, z + dz * 0.75], 0.035, COLORS.rail);
+  const apex: [number, number, number] = [x, legH + 3.1, mid + 0.3];
+  for (const dx of [-0.4, 0.4]) {
+    b.beam("box", [x + dx, legH + 0.1, land - 0.2], [x + dx * 0.5, apex[1], apex[2]], 0.12, c);
+    b.beam("box", [x + dx, legH + 0.1, sea + 0.2], [x + dx * 0.5, apex[1], apex[2]], 0.12, c);
+    b.beam("metal", [x + dx * 0.5, apex[1], apex[2]], [x + dx * 0.75, by + 0.1, b1 + 0.4], 0.035, COLORS.rail);
+    b.beam("metal", [x + dx * 0.5, apex[1], apex[2]], [x + dx * 0.75, by + 0.1, b0 - 0.4], 0.035, COLORS.rail);
   }
-  // Machinery house, trolley, spreader with a container.
-  b.block("box", b0 + 1.4, by + 0.12, z, 1.6, 0.6, 1.1, COLORS.graphite);
-  b.box("box", b0 + 1.4, by + 0.45, z + 0.56, 1.3, 0.08, 0.01, COLORS.brass);
-  const tx = QUAY_X + trolley;
-  b.block("box", tx, by + 0.12, z, 0.7, 0.28, 0.9, COLORS.graphite);
-  const hookY = 2.3;
-  b.box("metal", tx - 0.2, (by + hookY) / 2, z, 0.02, by - hookY, 0.02, COLORS.rail);
-  b.box("metal", tx + 0.2, (by + hookY) / 2, z, 0.02, by - hookY, 0.02, COLORS.rail);
-  b.block("box", tx, hookY - 0.08, z, 1.05, 0.08, 0.46, COLORS.graphiteDark);
-  b.block("box", tx, hookY - 0.52, z, 1.0, 0.44, 0.44, b.pick([COLORS.teal, COLORS.cream, COLORS.graphiteLight]));
+  // Machinery house with a brass line, trolley, spreader carrying a container.
+  b.block("box", x, by + 0.12, b0 - 1.3, 1.1, 0.6, 1.6, COLORS.graphite);
+  b.box("box", x + 0.56, by + 0.45, b0 - 1.3, 0.01, 0.08, 1.3, COLORS.brass);
+  const tz = PORT.quayZ - trolley;
+  b.block("box", x, by + 0.12, tz, 0.9, 0.28, 0.7, COLORS.graphite);
+  const hookY = 2.4;
+  b.box("metal", x, (by + hookY) / 2, tz - 0.2, 0.02, by - hookY, 0.02, COLORS.rail);
+  b.box("metal", x, (by + hookY) / 2, tz + 0.2, 0.02, by - hookY, 0.02, COLORS.rail);
+  b.block("box", x, hookY - 0.08, tz, 0.46, 0.08, 1.05, COLORS.graphiteDark);
+  b.block("box", x, hookY - 0.52, tz, 0.44, 0.44, 1.0, b.pick([COLORS.teal, COLORS.cream, COLORS.graphiteLight]));
   // Warning lights.
-  b.box("light", b1 - 0.1, by + 0.18, z, 0.07, 0.07, 0.07, COLORS.amber);
-  b.box("light", apex[0], apex[1] + 0.1, z, 0.07, 0.07, 0.07, COLORS.amber);
+  b.box("light", x, by + 0.18, b1 + 0.1, 0.07, 0.07, 0.07, COLORS.amber);
+  b.box("light", apex[0], apex[1] + 0.1, apex[2], 0.07, 0.07, 0.07, COLORS.amber);
 }
 
-/** 6 — Global distribution: container terminal, STS cranes, moored ship, gate. */
+/** 6 — Global distribution: container terminal on a quay facing open water, STS cranes, moored ship, gate. */
 function port(b: Builder) {
-  const X = zoneX(6);
-  // Terminal apron up to the quay edge.
-  pad(b, X - 8.5, QUAY_X, -22, 3.2, COLORS.apron);
-  b.block("box", QUAY_X - 0.2, WATER_Y, -9.5, 0.4, -WATER_Y + 0.1, 25, COLORS.stone);
-  b.box("box", QUAY_X - 0.25, 0.11, -9.5, 0.12, 0.02, 25, COLORS.brass);
-  // Crane rails.
-  for (const x of [QUAY_X - 3.3, QUAY_X - 0.5]) b.box("metal", x, 0.08, -9.5, 0.05, 0.02, 25, COLORS.rail);
+  const { x0, x1, quayZ } = PORT;
+  // Terminal apron, quay walls and crane rails.
+  pad(b, x0, x1, quayZ, 3.2, COLORS.apron);
+  b.block("box", (x0 + x1) / 2, WATER_Y, quayZ + 0.2, x1 - x0 + 0.4, -WATER_Y + 0.1, 0.4, COLORS.stone);
+  b.box("metal", (x0 + x1) / 2, 0.11, quayZ + 0.25, x1 - x0, 0.02, 0.12, COLORS.brass);
+  b.block("box", x1 - 0.2, WATER_Y, (quayZ + 40) / 2, 0.4, -WATER_Y + 0.1, 40 - quayZ, COLORS.stone);
+  b.block("box", x0 - 0.2, WATER_Y, (quayZ - 120) / 2, 0.4, -WATER_Y + 0.08, 120 + quayZ, COLORS.stone);
+  for (const z of [quayZ + 3.3, quayZ + 0.5]) b.box("metal", (x0 + x1) / 2, 0.08, z, x1 - x0, 0.02, 0.05, COLORS.rail);
+  // Bollards along the quay edge.
+  for (let x = x0 + 1; x < x1; x += 2.2) b.cyl("cylMetal", x, 0.07, quayZ + 0.3, 0.06, 0.12, COLORS.graphite);
 
-  // Container stacks: rows run perpendicular to the quay.
+  // Container yard: rows parallel to the quay.
   const blocks = b.lite ? 3 : 4;
   for (let k = 0; k < blocks; k++) {
-    const bz = 0.6 - k * 3.4;
-    for (let row = 0; row < 3; row++)
-      for (let i = 0; i < 5; i++) {
-        const tiers = 1 + Math.floor(b.rand() * (k === 0 ? 3 : 4));
+    const bx = x0 + 1.4 + k * 4.2;
+    for (let row = 0; row < 5; row++)
+      for (let i = 0; i < 3; i++) {
+        const tiers = 1 + Math.floor(b.rand() * (row === 4 ? 2 : 4));
         for (let t = 0; t < tiers; t++)
-          b.block("box", X - 6.8 + i * 1.1, 0.07 + t * 0.45, bz - row * 0.48, 1.0, 0.44, 0.44, b.jitter(b.pick(CONTAINER_TONES), 0.03));
+          b.block("box", bx + i * 1.08, 0.07 + t * 0.45, 1.9 - row * 0.5, 1.0, 0.44, 0.44, b.jitter(b.pick(CONTAINER_TONES), 0.03));
       }
   }
-  // Rubber-tyred gantry over one block.
-  const gz = 0.6 - 3.4 - 0.48;
-  for (const x of [X - 7.6, X - 1.6])
-    for (const dz of [-1.0, 1.0]) b.block("box", x, 0.07, gz + dz, 0.12, 2.1, 0.12, COLORS.cream);
-  for (const dz of [-1.0, 1.0]) b.box("box", X - 4.6, 2.2, gz + dz, 6.2, 0.16, 0.14, COLORS.cream);
-  b.block("box", X - 4.0, 2.28, gz, 0.6, 0.22, 2.2, COLORS.graphite);
+  // Rubber-tyred gantry straddling one block.
+  const gx = x0 + 1.4 + 4.2 + 1.08;
+  for (const dx of [-2.0, 2.0])
+    for (const z of [2.5, -0.9]) b.block("box", gx + dx, 0.07, z, 0.12, 2.3, 0.12, COLORS.cream);
+  for (const dx of [-2.0, 2.0]) b.box("box", gx + dx, 2.4, 0.8, 0.14, 0.16, 3.6, COLORS.cream);
+  b.block("box", gx, 2.46, 0.4, 4.2, 0.22, 0.6, COLORS.graphite);
 
-  // Cranes.
-  crane(b, -13.5, 1.2);
-  crane(b, -7.2, 3.9);
-  crane(b, -0.9, 2.4);
+  // Cranes along the quay.
+  crane(b, x0 + 3.2, 3.6);
+  crane(b, x0 + 9.2, 1.8);
+  crane(b, x0 + 15.2, 5.2);
 
   // Port gate hall where the spine road ends: road traffic enters and leaves through it.
-  const gx = GATE_X + 1.25;
-  b.block("box", gx, 0, ROAD_Z, 2.5, 1.5, 2.6, COLORS.cream);
-  b.block("box", gx, 1.5, ROAD_Z, 2.6, 0.08, 2.7, COLORS.creamShade);
+  const hx = GATE_X + 1.25;
+  b.block("box", hx, 0, ROAD_Z, 2.5, 1.5, 2.6, COLORS.cream);
+  b.block("box", hx, 1.5, ROAD_Z, 2.6, 0.08, 2.7, COLORS.creamShade);
   for (const z of [LANE_EAST, LANE_WEST]) {
     b.box("box", GATE_X - 0.005, 0.5, z, 0.02, 1.0, 0.62, COLORS.graphiteDark);
     b.box("light", GATE_X - 0.02, 1.14, z, 0.02, 0.05, 0.14, COLORS.lime);
@@ -581,13 +584,14 @@ function port(b: Builder) {
   // Rail terminal buffer.
   b.block("box", ROAD_END - 1, 0.07, RAIL_Z, 0.3, 0.45, 0.8, COLORS.graphite);
 
-  // Moored ship alongside the quay (bow towards −z).
-  b.ships.push(new THREE.Matrix4().compose(_p.set(QUAY_X + 2.05, WATER_Y, -8.8), _q.setFromEuler(_e.set(0, Math.PI / 2, 0)), _s.set(1, 1, 1)));
+  // Ship moored alongside the quay, bow to the east.
+  b.ships.push(new THREE.Matrix4().compose(_p.set(x0 + 9.4, WATER_Y, quayZ - 2.1), _q.identity(), _s.set(1, 1, 1)));
 
-  // Breakwater with a small light tower.
-  b.block("box", QUAY_X + 9, WATER_Y, 7.5, 18, -WATER_Y + 0.12, 0.8, COLORS.stone);
-  b.cyl("cyl", QUAY_X + 17.4, 0.12, 7.5, 0.3, 1.2, COLORS.cream);
-  b.box("light", QUAY_X + 17.4, 1.42, 7.5, 0.16, 0.16, 0.16, COLORS.amber);
+  // Breakwater enclosing the basin, with a small light tower at its head.
+  const bwz = quayZ - 16;
+  b.block("box", x0 + 14, WATER_Y, bwz, 30, -WATER_Y + 0.06, 0.7, COLORS.graphiteLight);
+  b.cyl("cyl", x0 + 28.6, 0.12, bwz, 0.3, 1.2, COLORS.cream);
+  b.box("light", x0 + 28.6, 1.42, bwz, 0.16, 0.16, 0.16, COLORS.amber);
 }
 
 /** Road and rail threading through every zone, plus access roads. */
@@ -626,7 +630,7 @@ function landscape(b: Builder) {
     [-27.5, -36],
     [-36.5, -46],
   ];
-  const xEnd = QUAY_X - 9;
+  const xEnd = PORT.x0 - 2;
   for (const [za, zb] of bands) {
     let x = ROAD_START - 10;
     while (x < xEnd) {
@@ -642,9 +646,9 @@ function landscape(b: Builder) {
   }
   // Foreground fields between the rail and the camera.
   let x = ROAD_START - 10;
-  while (x < ROAD_END) {
+  while (x < PORT.x1 - 0.5) {
     const w = 6 + b.rand() * 8;
-    const x1 = Math.min(x + w, ROAD_END);
+    const x1 = Math.min(x + w, PORT.x1 - 0.5);
     b.block("box", (x + x1) / 2, 0, 11.5, x1 - x - 0.35, 0.02, 8, b.pick(tones));
     if (b.rand() < 0.5) b.block("box", x1, 0, 11.5, 0.2, 0.14, 8, COLORS.hedge);
     x = x1;
@@ -792,8 +796,8 @@ export function shipGeometry(seed = 7) {
 // ── Background ridges ────────────────────────────────────────────
 function ridgeGeometry(lite: boolean) {
   const layers = [
-    { z: -62, depth: 26, height: 5, color: COLORS.ridgeNear, freq: 0.045, seed: 1.3 },
-    { z: -105, depth: 40, height: 11, color: COLORS.ridgeFar, freq: 0.028, seed: 4.1 },
+    { z: -64, depth: 26, height: 3.2, color: COLORS.ridgeNear, freq: 0.045, seed: 1.3 },
+    { z: -110, depth: 40, height: 7, color: COLORS.ridgeFar, freq: 0.028, seed: 4.1 },
   ];
   const parts: THREE.BufferGeometry[] = [];
   for (const L of layers) {
@@ -810,7 +814,7 @@ function ridgeGeometry(lite: boolean) {
         Math.sin(x * L.freq * 2.3 + L.seed * 2.1) * 0.3 +
         Math.sin(x * L.freq * 5.1 + L.seed * 0.7) * 0.2;
       // The land falls away towards the sea.
-      const coast = THREE.MathUtils.smoothstep(QUAY_X + 20 - x, 0, 30);
+      const coast = THREE.MathUtils.smoothstep(PORT.x0 - x, -4, 22);
       const h = (0.55 + 0.45 * n) * L.height * Math.pow(across, 0.7) * coast;
       pos.setXYZ(i, x, h - 0.4, zLocal + L.z);
     }
@@ -835,7 +839,7 @@ export type WorldMaterials = {
 
 export function createMaterials(): WorldMaterials {
   return {
-    matte: new THREE.MeshStandardMaterial({ roughness: 0.82, metalness: 0, envMapIntensity: 0.85 }),
+    matte: new THREE.MeshStandardMaterial({ roughness: 0.8, metalness: 0, envMapIntensity: 1 }),
     glass: new THREE.MeshStandardMaterial({ roughness: 0.1, metalness: 0.55, envMapIntensity: 1.6 }),
     metal: new THREE.MeshStandardMaterial({ roughness: 0.34, metalness: 0.85, envMapIntensity: 1.3 }),
     light: new THREE.MeshBasicMaterial({ toneMapped: false }),
@@ -921,17 +925,23 @@ export function buildWorld(lite: boolean, mats: WorldMaterials, models: { truck:
 
   // Ground (land ends at the quay) and sea.
   const groundMat = new THREE.MeshStandardMaterial({ color: COLORS.ground, roughness: 1, metalness: 0, envMapIntensity: 0.5 });
-  const groundW = QUAY_X - (ROAD_START - 120);
+  // Hinterland west of the port, plus the port's own land up to the east quay.
+  const groundW = PORT.x0 - (ROAD_START - 120);
   const ground = new THREE.Mesh(new THREE.PlaneGeometry(groundW, 260), groundMat);
   ground.rotation.x = -Math.PI / 2;
-  ground.position.set(QUAY_X - groundW / 2, 0, -90);
+  ground.position.set(PORT.x0 - groundW / 2, 0, -90);
   ground.receiveShadow = true;
   add(ground);
+  const portLand = new THREE.Mesh(new THREE.PlaneGeometry(PORT.x1 - PORT.x0, 40 - PORT.quayZ), groundMat);
+  portLand.rotation.x = -Math.PI / 2;
+  portLand.position.set((PORT.x0 + PORT.x1) / 2, 0, (40 + PORT.quayZ) / 2);
+  portLand.receiveShadow = true;
+  add(portLand);
 
-  const seaMat = new THREE.MeshStandardMaterial({ color: COLORS.sea, roughness: 0.16, metalness: 0.35, envMapIntensity: 1.1 });
-  const sea = new THREE.Mesh(new THREE.PlaneGeometry(600, 600), seaMat);
+  const seaMat = new THREE.MeshStandardMaterial({ color: COLORS.sea, roughness: 0.3, metalness: 0.15, envMapIntensity: 0.55 });
+  const sea = new THREE.Mesh(new THREE.PlaneGeometry(700, 700), seaMat);
   sea.rotation.x = -Math.PI / 2;
-  sea.position.set(QUAY_X + 300, WATER_Y, -150);
+  sea.position.set(PORT.x0 + 340, WATER_Y, -250);
   sea.receiveShadow = true;
   add(sea);
 
@@ -948,6 +958,7 @@ export function buildWorld(lite: boolean, mats: WorldMaterials, models: { truck:
         if (o instanceof THREE.InstancedMesh) o.dispose();
       });
       ground.geometry.dispose();
+      portLand.geometry.dispose();
       sea.geometry.dispose();
       ridges.geometry.dispose();
       groundMat.dispose();

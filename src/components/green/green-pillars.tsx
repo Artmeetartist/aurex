@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "motion/react";
+import { motion, useScroll, type MotionValue } from "motion/react";
 import { useRef } from "react";
 import { MaskText, Reveal } from "@/components/motion/reveal";
 import { InteractiveCard } from "@/components/ui/interactive-card";
@@ -10,6 +10,7 @@ import type { Locale } from "@/i18n/config";
 import { href } from "@/lib/routes";
 import { PillarIcon } from "./icons";
 import { PILLAR_ORDER } from "./stages";
+import { useRange } from "./use-range";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
@@ -17,14 +18,12 @@ function Pillar({
   id,
   index,
   progress,
-  reduced,
   locale,
   content,
 }: {
   id: GreenPillarId;
   index: number;
   progress: MotionValue<number>;
-  reduced: boolean;
   locale: Locale;
   content: SiteContent;
 }) {
@@ -32,21 +31,21 @@ function Pillar({
   const explore = content.home.green.explore;
   // Cards arrive one after another as the connecting line reaches them.
   const start = index * 0.2;
-  const opacity = useTransform(progress, [start, start + 0.22], [0, 1]);
-  const y = useTransform(progress, [start, start + 0.3], [48, 0]);
-  const node = useTransform(progress, [start, start + 0.08], [0, 1]);
+  const opacity = useRange(progress, [start, start + 0.22], [0, 1]);
+  const y = useRange(progress, [start, start + 0.3], [48, 0]);
+  const node = useRange(progress, [start, start + 0.08], [0, 1]);
 
   return (
     <li className="relative grid grid-cols-[2.25rem_1fr] gap-x-4 lg:block">
       {/* Node on the connecting line */}
       <div aria-hidden className="relative flex h-10 items-center lg:mb-6 lg:h-5">
         <span className="relative z-10 grid h-[1.125rem] w-[1.125rem] place-items-center rounded-full border border-brass/50 bg-forest-950">
-          <motion.span style={{ scale: reduced ? 1 : node }} className="h-2 w-2 rounded-full bg-brass" />
+          <motion.span style={{ scale: node }} className="h-2 w-2 rounded-full bg-brass motion-reduce:!transform-none" />
         </span>
         <span className="t-eyebrow ml-3 hidden tabular-nums text-brass-soft lg:inline">{pad(index + 1)}</span>
       </div>
 
-      <motion.div style={reduced ? undefined : { opacity, y }} className="h-full">
+      <motion.div style={{ opacity, y }} className="h-full motion-reduce:!transform-none motion-reduce:!opacity-100">
         <InteractiveCard
           href={href(locale, "sustainability", id)}
           ariaLabel={`${pillar.name}. ${explore}`}
@@ -85,10 +84,9 @@ function Pillar({
 export function GreenPillars({ locale, content }: { locale: Locale; content: SiteContent }) {
   const copy = content.home.green;
   const heading = content.sustainability.pillars;
-  const reduced = !!useReducedMotion();
   const list = useRef<HTMLOListElement>(null);
   const { scrollYProgress } = useScroll({ target: list, offset: ["start 0.92", "end 0.72"] });
-  const draw = useTransform(scrollYProgress, [0, 0.85], [0, 1]);
+  const draw = useRange(scrollYProgress, [0, 0.85], [0, 1]);
 
   return (
     <div className="container-x relative pb-[clamp(5rem,10vw,9rem)] pt-[clamp(5.5rem,11vw,10rem)]">
@@ -113,7 +111,8 @@ export function GreenPillars({ locale, content }: { locale: Locale; content: Sit
             stroke="url(#green-pillar-line)"
             strokeWidth="1"
             vectorEffect="non-scaling-stroke"
-            style={{ pathLength: reduced ? 1 : draw }}
+            style={{ pathLength: draw }}
+            className="motion-reduce:[stroke-dasharray:none]"
           />
           <defs>
             <linearGradient id="green-pillar-line" x1="0" x2="100" y1="0" y2="0" gradientUnits="userSpaceOnUse">
@@ -125,12 +124,12 @@ export function GreenPillars({ locale, content }: { locale: Locale; content: Sit
         </svg>
         <svg aria-hidden className="pointer-events-none absolute left-[0.5625rem] top-0 h-full w-px overflow-visible lg:hidden" viewBox="0 0 1 100" preserveAspectRatio="none">
           <path d="M0.5 2V100" stroke="rgb(244 241 232 / 0.12)" strokeWidth="1" vectorEffect="non-scaling-stroke" />
-          <motion.path d="M0.5 2V100" stroke="#c8a24a" strokeWidth="1" vectorEffect="non-scaling-stroke" style={{ pathLength: reduced ? 1 : draw }} />
+          <motion.path d="M0.5 2V100" stroke="#c8a24a" strokeWidth="1" vectorEffect="non-scaling-stroke" style={{ pathLength: draw }} className="motion-reduce:[stroke-dasharray:none]" />
         </svg>
 
         <ol ref={list} className="relative grid gap-6 lg:grid-cols-4 lg:gap-5 xl:gap-6">
           {PILLAR_ORDER.map((id, i) => (
-            <Pillar key={id} id={id} index={i} progress={scrollYProgress} reduced={reduced} locale={locale} content={content} />
+            <Pillar key={id} id={id} index={i} progress={scrollYProgress} locale={locale} content={content} />
           ))}
         </ol>
       </div>

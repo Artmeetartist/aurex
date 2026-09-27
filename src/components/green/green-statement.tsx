@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "motion/react";
+import { motion, useScroll, useTransform, type MotionValue } from "motion/react";
 import { useRef } from "react";
 import { Reveal } from "@/components/motion/reveal";
 import { ButtonLink } from "@/components/ui/button";
@@ -8,11 +8,12 @@ import type { SiteContent } from "@/content/types";
 import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/cn";
 import { contactHref } from "@/lib/routes";
+import { useRange } from "./use-range";
 
 function Word({ children, progress, range, accent }: { children: string; progress: MotionValue<number>; range: [number, number]; accent: boolean }) {
-  const opacity = useTransform(progress, range, [0.18, 1]);
+  const opacity = useRange(progress, range, [0.18, 1]);
   return (
-    <motion.span style={{ opacity }} className={cn("inline", accent && "t-accent text-brass-soft")}>
+    <motion.span style={{ opacity }} className={cn("inline motion-reduce:!opacity-100", accent && "t-accent text-brass-soft")}>
       {children}
     </motion.span>
   );
@@ -21,7 +22,6 @@ function Word({ children, progress, range, accent }: { children: string; progres
 /** Heading whose words light up as it scrolls through the viewport; the last word takes the serif accent. */
 function LitHeading({ text, className }: { text: string; className?: string }) {
   const ref = useRef<HTMLHeadingElement>(null);
-  const reduced = !!useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.9", "end 0.5"] });
   const words = text.split(" ");
   return (
@@ -33,13 +33,9 @@ function LitHeading({ text, className }: { text: string; className?: string }) {
           const start = (i / words.length) * 0.9;
           return (
             <span key={i}>
-              {reduced ? (
-                <span className={cn(accent && "t-accent text-brass-soft")}>{w}</span>
-              ) : (
-                <Word progress={scrollYProgress} range={[start, start + 0.9 / words.length]} accent={accent}>
-                  {w}
-                </Word>
-              )}
+              <Word progress={scrollYProgress} range={[start, start + 0.9 / words.length]} accent={accent}>
+                {w}
+              </Word>
               {i < words.length - 1 ? " " : ""}
             </span>
           );
@@ -53,17 +49,16 @@ function LitHeading({ text, className }: { text: string; className?: string }) {
 export function GreenStatement({ locale, content }: { locale: Locale; content: SiteContent }) {
   const copy = content.home.green;
   const box = useRef<HTMLDivElement>(null);
-  const reduced = !!useReducedMotion();
   const { scrollYProgress } = useScroll({ target: box, offset: ["start end", "end start"] });
-  const drift = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
+  const drift = useTransform(scrollYProgress, (v: number) => `${-6 + 12 * v}%`);
 
   return (
     <div ref={box} className="relative overflow-hidden">
       {/* Port still with a slow parallax drift, heavily veiled. */}
       <motion.div
         aria-hidden
-        style={reduced ? undefined : { y: drift }}
-        className="absolute -inset-y-[8%] inset-x-0 bg-cover bg-[position:62%_45%] opacity-45"
+        style={{ y: drift }}
+        className="absolute -inset-y-[8%] inset-x-0 opacity-45 motion-reduce:!transform-none"
       >
         <div className="absolute inset-0 bg-[url(/media/green/stage-6-wide.webp)] bg-cover bg-[position:62%_45%]" />
       </motion.div>

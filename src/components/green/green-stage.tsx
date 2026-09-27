@@ -1,7 +1,7 @@
 "use client";
 
 import { useLenis } from "lenis/react";
-import { motion, useMotionValueEvent, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { motion, useMotionValueEvent, useReducedMotion, useScroll } from "motion/react";
 import { useRef, useState, type ReactNode } from "react";
 import { GreenScene, useViewportPresence } from "@/components/three/lazy";
 import { ButtonLink } from "@/components/ui/button";
@@ -11,6 +11,7 @@ import { cn } from "@/lib/cn";
 import { contactHref, href } from "@/lib/routes";
 import { accentMatcher } from "@/lib/text";
 import { STAGE_COUNT, STAGE_PILLAR, TRAVEL, progressForStage, stageAt } from "./stages";
+import { useRange } from "./use-range";
 
 /** Scroll position (0–1 of the pinned track) where the closing copy takes over. */
 const OUTRO = 0.865;
@@ -59,7 +60,7 @@ export function GreenStage({ locale, content }: { locale: Locale; content: SiteC
   const track = useRef<HTMLDivElement>(null);
   const { mounted, visible } = useViewportPresence(track, "60% 0px");
   const { scrollYProgress } = useScroll({ target: track, offset: ["start start", "end end"] });
-  const travel = useTransform(scrollYProgress, [TRAVEL.start, TRAVEL.end], [0, 1]);
+  const travel = useRange(scrollYProgress, [TRAVEL.start, TRAVEL.end], [0, 1]);
 
   const [stage, setStage] = useState(0);
   const [phase, setPhase] = useState<Phase>("intro");
@@ -70,9 +71,9 @@ export function GreenStage({ locale, content }: { locale: Locale; content: SiteC
   });
 
   // Headline docks (scales down into the corner) rather than disappearing.
-  const titleScale = useTransform(scrollYProgress, [DOCK[0], DOCK[1]], [1, 0.46]);
-  const subtitleOpacity = useTransform(scrollYProgress, [0.015, DOCK[1] - 0.03], [1, 0]);
-  const rail = useTransform(scrollYProgress, [TRAVEL.start, TRAVEL.end], [0, 1]);
+  const titleScale = useRange(scrollYProgress, DOCK, [1, 0.46]);
+  const subtitleOpacity = useRange(scrollYProgress, [0.015, DOCK[1] - 0.03], [1, 0]);
+  const rail = useRange(scrollYProgress, [TRAVEL.start, TRAVEL.end], [0, 1]);
 
   const lenis = useLenis();
   const goTo = (target: number) => {
@@ -105,7 +106,13 @@ export function GreenStage({ locale, content }: { locale: Locale; content: SiteC
         )}
 
         {/* Legibility scrims. */}
-        <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[46%] bg-gradient-to-b from-forest-950/90 via-forest-950/45 to-transparent" />
+        <div
+          aria-hidden
+          className={cn(
+            "pointer-events-none absolute inset-x-0 top-0 h-[46%] bg-gradient-to-b from-forest-950/90 via-forest-950/45 to-transparent transition-opacity duration-1000",
+            phase === "intro" ? "opacity-100" : "opacity-60",
+          )}
+        />
         <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-[52%] bg-gradient-to-t from-forest-950 via-forest-950/70 to-transparent" />
         <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 hidden w-[55%] bg-gradient-to-r from-forest-950/55 to-transparent md:block" />
         <div
@@ -134,11 +141,8 @@ export function GreenStage({ locale, content }: { locale: Locale; content: SiteC
             </p>
             <motion.h2
               id="green-title"
-              style={{ scale: reduced ? undefined : titleScale }}
-              className={cn(
-                "t-display-xl mt-5 max-w-[11ch] origin-top-left text-cream [text-wrap:balance] md:mt-6",
-                reduced && phase !== "intro" && "scale-[0.46]",
-              )}
+              style={{ scale: titleScale }}
+              className="t-display-xl mt-5 max-w-[11ch] origin-top-left text-cream [text-wrap:balance] md:mt-6"
             >
               {copy.title.split(" ").map((w, i) => (
                 <span key={i} className={cn(isAccent(w) && "t-accent text-gold")}>
