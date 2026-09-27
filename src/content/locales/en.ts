@@ -407,14 +407,76 @@ const en: SiteContent = {
       overview:
         "Food trade rewards reliability above all: consistent quality, verifiable origin and dependable logistics. AUREX approaches food as a long-term trade line, working towards partnerships with qualified producers and established distributors in markets of focus.",
       categories: [
-        { title: "Staple foods", text: "Grains, pulses, rice, sugar and edible oils, where specification and continuity matter most." },
-        { title: "Packaged & specialty foods", text: "Finished products for retail, wholesale and hospitality channels." },
-        { title: "Temperature-controlled goods", text: "Products whose quality depends on an unbroken cold chain from origin to destination." },
+        {
+          title: "Staple foods",
+          text: "Grains, rice and pulses, where specification and continuity matter most.",
+          items: ["Wheat & grains", "Rice", "Pulses & lentils"],
+        },
+        {
+          title: "Edible oils & fats",
+          text: "Vegetable oils in bulk and packed formats for industry, wholesale and retail.",
+          items: ["Sunflower oil", "Rapeseed oil", "Olive oil"],
+        },
+        {
+          title: "Sugar & sweeteners",
+          text: "Refined and raw sugars and sweeteners for manufacturers and distributors.",
+          items: ["Refined sugar", "Raw cane sugar", "Syrups"],
+        },
+        {
+          title: "Packaged & specialty foods",
+          text: "Finished products for retail, wholesale and hospitality channels.",
+          items: ["Private label", "Regional specialities", "Beverages"],
+        },
+        {
+          title: "Temperature-controlled goods",
+          text: "Products whose quality depends on an unbroken cold chain from origin to destination.",
+          items: ["Frozen foods", "Dairy", "Fresh produce"],
+        },
+        {
+          title: "Food ingredients",
+          text: "Inputs for food manufacturing, specified to the buyer's formulation.",
+          items: ["Flours & starches", "Dried fruit & nuts", "Spices & seasonings"],
+        },
+      ],
+      flow: [
+        { title: "Origin", text: "Producers and growing regions qualified for quality, safety and origin documentation." },
+        { title: "Specification", text: "Grade, packaging, labelling and shelf life agreed against the destination market." },
+        { title: "Movement", text: "Ambient or temperature-controlled transport, with inspection at defined points." },
+        { title: "Market", text: "Delivery into importers, wholesalers, retail and food-service channels." },
       ],
       approach: [
         { title: "Origin & quality", text: "Producers qualified against documented quality, safety and origin standards." },
         { title: "Compliance", text: "Food safety, labelling and import requirements addressed before goods move." },
+        { title: "Documentation", text: "Certificates of origin, analysis and conformity expected to travel with each consignment." },
         { title: "Continuity", text: "Supply planned for consistency rather than one-off transactions." },
+      ],
+      standards: [
+        {
+          title: "General Food Law",
+          ref: "Regulation (EC) No 178/2002",
+          text: "The EU framework for food safety and traceability, one step back and one step forward.",
+        },
+        {
+          title: "Food hygiene & HACCP",
+          ref: "Regulation (EC) No 852/2004",
+          text: "Hygiene obligations for food business operators, built on HACCP principles.",
+        },
+        {
+          title: "Food information to consumers",
+          ref: "Regulation (EU) No 1169/2011",
+          text: "Labelling, allergen and nutrition information for food placed on the EU market.",
+        },
+        {
+          title: "GFSI-recognised certification",
+          ref: "BRCGS · IFS · FSSC 22000",
+          text: "Certification schemes relevant when qualifying producers, packers and processors.",
+        },
+      ],
+      counterparts: [
+        { title: "Producers & processors", text: "Growers, mills, packers and processors with documented quality systems." },
+        { title: "Importers & wholesalers", text: "Established distributors serving the markets of focus." },
+        { title: "Retail & food service", text: "Retail groups, private-label owners and hospitality buyers." },
+        { title: "Food manufacturers", text: "Manufacturers sourcing ingredients to specification." },
       ],
       cta: { title: "Discuss food trade.", accent: ["food"], primary: "Submit a partnership inquiry" },
     },
@@ -427,14 +489,76 @@ const en: SiteContent = {
       overview:
         "Healthcare supply chains cannot tolerate uncertainty. AUREX's approach to medical trade is defined by regulatory diligence, qualified manufacturers and traceable movement, and by the requirement that partners hold the relevant authorisations in each market.",
       categories: [
-        { title: "Medical supplies & consumables", text: "Everyday clinical consumables where consistency and conformity are essential." },
-        { title: "Medical equipment", text: "Devices and equipment for clinical and institutional buyers." },
-        { title: "Protective equipment", text: "Personal protective equipment for healthcare and industry." },
+        {
+          title: "Medical consumables",
+          text: "Everyday clinical consumables where consistency and conformity are essential.",
+          items: ["Gloves & drapes", "Syringes & needles", "Wound care"],
+        },
+        {
+          title: "Devices & equipment",
+          text: "Medical devices and equipment for clinical and institutional buyers.",
+          items: ["Diagnostic devices", "Patient monitoring", "Mobility aids"],
+        },
+        {
+          title: "Protective equipment",
+          text: "Personal protective equipment for healthcare and industry.",
+          items: ["Masks & respirators", "Gowns & coveralls", "Eye & face protection"],
+        },
+        {
+          title: "Hospital furniture & supplies",
+          text: "Furnishings and supplies for wards, clinics and care facilities.",
+          items: ["Beds & stretchers", "Trolleys & carts", "Ward textiles"],
+        },
+        {
+          title: "Laboratory supplies",
+          text: "Consumables and equipment for clinical and research laboratories.",
+          items: ["Sample collection", "Labware", "Cold storage"],
+        },
+        {
+          title: "Hygiene & infection control",
+          text: "Products for cleaning, disinfection and infection prevention.",
+          items: ["Disinfectants", "Hand hygiene", "Sterilisation consumables"],
+        },
+      ],
+      flow: [
+        { title: "Manufacturer", text: "Manufacturers evaluated for quality management systems and technical documentation." },
+        { title: "Conformity", text: "CE marking, declarations of conformity and destination-market registrations verified." },
+        { title: "Movement", text: "Controlled storage and transport, with batch and lot identification preserved." },
+        { title: "Recipient", text: "Supply to authorised distributors, institutions and healthcare buyers." },
       ],
       approach: [
         { title: "Regulatory conformity", text: "Products assessed against the applicable EU and destination-market requirements." },
         { title: "Qualified manufacturers", text: "Manufacturers evaluated for quality systems and documentation." },
         { title: "Traceability", text: "Batch-level documentation from manufacturer to recipient." },
+        { title: "Authorised channels", text: "Supply only through partners holding the relevant authorisations in each market." },
+      ],
+      standards: [
+        {
+          title: "Medical Device Regulation",
+          ref: "Regulation (EU) 2017/745",
+          text: "Requirements for placing medical devices on the EU market, including traceability through UDI.",
+        },
+        {
+          title: "In Vitro Diagnostic Regulation",
+          ref: "Regulation (EU) 2017/746",
+          text: "The EU framework for in vitro diagnostic medical devices.",
+        },
+        {
+          title: "Quality management",
+          ref: "ISO 13485",
+          text: "The quality management standard expected of medical device manufacturers.",
+        },
+        {
+          title: "Personal protective equipment",
+          ref: "Regulation (EU) 2016/425",
+          text: "Design, manufacture and conformity requirements for PPE.",
+        },
+      ],
+      counterparts: [
+        { title: "Manufacturers", text: "Device and consumable manufacturers with certified quality systems." },
+        { title: "Authorised distributors", text: "Distributors licensed in their markets, with regulatory capability." },
+        { title: "Healthcare providers", text: "Hospitals, clinics and care providers, through their procurement channels." },
+        { title: "Procurement organisations", text: "Purchasing bodies and group buyers serving healthcare." },
       ],
       cta: { title: "Discuss medical supply.", accent: ["medical"], primary: "Submit a partnership inquiry" },
     },
@@ -447,14 +571,76 @@ const en: SiteContent = {
       overview:
         "In electronic components, provenance is everything. AUREX's approach centres on supplier qualification, authenticity controls and documented chains of custody, so that industrial buyers can source with confidence.",
       categories: [
-        { title: "Active & passive components", text: "Semiconductors, integrated circuits, resistors, capacitors and related parts." },
-        { title: "Electromechanical parts", text: "Connectors, relays, switches and assemblies for industrial applications." },
-        { title: "Industrial equipment parts", text: "Parts and sub-assemblies that support production and maintenance." },
+        {
+          title: "Semiconductors & ICs",
+          text: "Integrated circuits, microcontrollers, memory and discrete semiconductors.",
+          items: ["Microcontrollers", "Memory", "Discrete semiconductors"],
+        },
+        {
+          title: "Passive components",
+          text: "Resistors, capacitors, inductors and related parts in production volumes.",
+          items: ["Capacitors", "Resistors", "Inductors"],
+        },
+        {
+          title: "Electromechanical parts",
+          text: "Connectors, relays, switches and assemblies for industrial applications.",
+          items: ["Connectors", "Relays", "Switches"],
+        },
+        {
+          title: "Sensors & modules",
+          text: "Sensing, communication and interface modules for equipment makers.",
+          items: ["Sensors", "Wireless modules", "Displays"],
+        },
+        {
+          title: "Power components",
+          text: "Components for power conversion, protection and energy storage.",
+          items: ["Power supplies", "Power semiconductors", "Circuit protection"],
+        },
+        {
+          title: "Industrial equipment parts",
+          text: "Parts and sub-assemblies that support production and maintenance.",
+          items: ["Automation parts", "Spare parts", "Sub-assemblies"],
+        },
+      ],
+      flow: [
+        { title: "Source", text: "Franchised and qualified independent sources, prioritised by traceability to the manufacturer." },
+        { title: "Verify", text: "Documentation review and inspection in line with counterfeit-avoidance practice." },
+        { title: "Handle", text: "Moisture- and ESD-sensitive parts stored and packed to specification." },
+        { title: "Deliver", text: "Delivery to manufacturers and industrial buyers with chain-of-custody records." },
       ],
       approach: [
         { title: "Supplier qualification", text: "Suppliers assessed for authenticity, quality systems and continuity." },
         { title: "Authenticity", text: "Documentation and inspection that guard against counterfeit parts." },
+        { title: "Handling & packaging", text: "ESD protection, moisture-sensitivity control and original packaging preserved." },
         { title: "Export compliance", text: "Dual-use and export-control requirements checked before any commitment." },
+      ],
+      standards: [
+        {
+          title: "Counterfeit avoidance",
+          ref: "SAE AS6081 · AS5553",
+          text: "Industry standards for detecting and avoiding counterfeit electronic parts.",
+        },
+        {
+          title: "Hazardous substances",
+          ref: "Directive 2011/65/EU (RoHS)",
+          text: "Limits on hazardous substances in electrical and electronic equipment.",
+        },
+        {
+          title: "Chemicals in articles",
+          ref: "Regulation (EC) No 1907/2006 (REACH)",
+          text: "Obligations to communicate substances of very high concern in articles.",
+        },
+        {
+          title: "Dual-use export controls",
+          ref: "Regulation (EU) 2021/821",
+          text: "Controls on the export, brokering and transit of dual-use items.",
+        },
+      ],
+      counterparts: [
+        { title: "Component manufacturers", text: "Manufacturers and their franchised distribution." },
+        { title: "Contract manufacturers", text: "EMS providers and assemblers building to customer designs." },
+        { title: "Equipment makers", text: "OEMs in industrial, energy and automation sectors." },
+        { title: "Maintenance & operations", text: "Industrial buyers sourcing parts for maintenance, repair and operations." },
       ],
       cta: { title: "Discuss component sourcing.", accent: ["sourcing."], primary: "Submit a partnership inquiry" },
     },
@@ -467,15 +653,91 @@ const en: SiteContent = {
       overview:
         "Live-action role-play, historical re-enactment and theatre depend on goods that look authentic, last in use and are safe to wear. AUREX approaches this specialist market as it does any trade line: with qualified makers, clear specifications and dependable logistics.",
       categories: [
-        { title: "Costumes & garb", text: "Period and fantasy garments, textiles and accessories." },
-        { title: "Armour & protective wear", text: "Leather and metal armour, helmets and protective pieces for events and performance." },
-        { title: "Props & reproductions", text: "Event-safe props, historical reproductions and decorative pieces." },
+        {
+          title: "Mail armour",
+          text: "Steel mail, riveted or butted, from full shirts to individual pieces.",
+          items: ["Hauberks & shirts", "Coifs", "Mantles & aventails"],
+        },
+        {
+          title: "Plate & leather armour",
+          text: "Helmets, plate and hardened-leather armour for events and performance.",
+          items: ["Helmets", "Gauntlets & bracers", "Leather cuirasses"],
+        },
+        {
+          title: "Garb & costumes",
+          text: "Period and fantasy garments, textiles and accessories.",
+          items: ["Tunics & gambesons", "Cloaks", "Dresses & surcoats"],
+        },
+        {
+          title: "Props & reproductions",
+          text: "Event-safe props, historical reproductions and decorative pieces.",
+          items: ["Foam & latex props", "Replicas", "Decorative pieces"],
+        },
+        {
+          title: "Leatherwork & accessories",
+          text: "Belts, pouches, bags and finishing pieces that complete a character.",
+          items: ["Belts & pouches", "Bags & scabbards", "Buckles & fittings"],
+        },
+        {
+          title: "Camp & event equipment",
+          text: "Tents, furniture and tableware for encampments and period events.",
+          items: ["Period tents", "Camp furniture", "Tableware & lighting"],
+        },
+      ],
+      flow: [
+        { title: "Workshop", text: "Makers and manufacturers selected for craftsmanship, materials and capacity." },
+        { title: "Specification", text: "Sizing, materials, finishes and event-safety requirements agreed in advance." },
+        { title: "Movement", text: "Consolidated shipping of heavy and bulky goods, packed to protect finishes." },
+        { title: "Market", text: "Distribution to specialist retailers, event organisers and productions." },
       ],
       approach: [
         { title: "Skilled makers", text: "Workshops and manufacturers selected for craftsmanship and consistency." },
         { title: "Safety & materials", text: "Materials and finishes assessed for safe use at events and on stage." },
+        { title: "Specification & sizing", text: "Clear sizing, weight and material specifications for every range." },
         { title: "Specialist distribution", text: "Routes to market through retailers, organisers and productions." },
       ],
+      standards: [
+        {
+          title: "General product safety",
+          ref: "Regulation (EU) 2023/988 (GPSR)",
+          text: "Safety requirements for consumer products placed on the EU market.",
+        },
+        {
+          title: "Nickel release",
+          ref: "REACH Annex XVII, entry 27",
+          text: "Limits on nickel release from metal items in prolonged contact with the skin.",
+        },
+        {
+          title: "Textile labelling",
+          ref: "Regulation (EU) No 1007/2011",
+          text: "Fibre names and composition labelling for textile products.",
+        },
+        {
+          title: "Replicas & event rules",
+          ref: "National and event-level rules",
+          text: "Rules on replica weapons and props vary by country and by event, and are assessed market by market.",
+        },
+      ],
+      counterparts: [
+        { title: "Workshops & makers", text: "Armourers, smiths, leatherworkers and costume makers." },
+        { title: "Specialist retailers", text: "Physical and online retailers serving LARP and re-enactment." },
+        { title: "Event organisers", text: "Organisers of LARP events, festivals and historical re-enactments." },
+        { title: "Theatre & productions", text: "Stage, film and television productions sourcing costume and props." },
+      ],
+      showcase: {
+        eyebrow: "In focus",
+        title: "The craft of mail armour.",
+        accent: ["mail"],
+        text: "Mail is among the oldest forms of armour and still among the most demanding to make well. A single shirt can hold tens of thousands of rings, each one closed by hand. Ring size, wire gauge and closure, riveted or butted, decide its weight, strength and authenticity.",
+        setCaption: "Illustrative range: mail shirts, hauberk, coif and mantle, with leather and brass fittings.",
+        details: [
+          { key: "weave", title: "The weave", text: "The European four-in-one pattern: every ring linked through four others for strength and drape." },
+          { key: "buckles", title: "Straps & buckles", text: "Leather straps and metal buckles close the garment and let it be adjusted to the wearer." },
+          { key: "collar", title: "The collar", text: "A leather collar with brass fittings finishes the neckline and carries the weight evenly." },
+          { key: "coif", title: "The coif", text: "A mail hood protecting head and neck, worn under a helmet or on its own." },
+          { key: "mantle", title: "The mantle", text: "A shoulder cape of mail with a lined leather collar, layered over a shirt for coverage." },
+        ],
+      },
       cta: { title: "Discuss LARP & historical goods.", accent: ["historical"], primary: "Submit a partnership inquiry" },
     },
   },
@@ -485,8 +747,18 @@ const en: SiteContent = {
     overview: "Overview",
     categoriesEyebrow: "Focus categories",
     categoriesTitle: "What the trade line covers.",
+    examplesLabel: "Examples",
+    flowEyebrow: "From origin to market",
+    flowTitle: "How goods move.",
     approachEyebrow: "Approach",
     approachTitle: "How AUREX approaches it.",
+    standardsEyebrow: "Standards & frameworks",
+    standardsTitle: "The rules the trade answers to.",
+    standardsNote:
+      "Reference frameworks AUREX considers when qualifying partners and products. Requirements vary by product and destination market. This is not a statement of certification.",
+    counterpartsEyebrow: "Counterparts",
+    counterpartsTitle: "Who AUREX seeks to work with.",
+    counterpartsCta: "Propose a partnership",
     corridorsEyebrow: "Markets of focus",
     otherEyebrow: "Other trade lines",
     allTrade: "All trade lines",

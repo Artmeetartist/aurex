@@ -417,15 +417,51 @@ const pl: SiteContent = {
       categories: [
         {
           title: "Podstawowe artykuły spożywcze",
-          text: "Zboża, rośliny strączkowe, ryż, cukier i oleje jadalne, w przypadku których najważniejsze są specyfikacja i ciągłość dostaw.",
+          text: "Zboża, ryż i rośliny strączkowe, w przypadku których najważniejsze są specyfikacja i ciągłość dostaw.",
+          items: ["Pszenica i zboża", "Ryż", "Strączki i soczewica"],
+        },
+        {
+          title: "Oleje i tłuszcze jadalne",
+          text: "Oleje roślinne luzem i w opakowaniach – dla przemysłu oraz handlu hurtowego i detalicznego.",
+          items: ["Olej słonecznikowy", "Olej rzepakowy", "Oliwa z oliwek"],
+        },
+        {
+          title: "Cukier i substancje słodzące",
+          text: "Cukier rafinowany i surowy oraz substancje słodzące dla producentów i dystrybutorów.",
+          items: ["Cukier rafinowany", "Surowy cukier trzcinowy", "Syropy"],
         },
         {
           title: "Żywność paczkowana i delikatesowa",
           text: "Produkty gotowe dla handlu detalicznego i hurtowego oraz gastronomii i hotelarstwa.",
+          items: ["Marki własne", "Specjały regionalne", "Napoje"],
         },
         {
           title: "Towary w kontrolowanej temperaturze",
           text: "Produkty, których jakość zależy od nieprzerwanego łańcucha chłodniczego – od miejsca pochodzenia do miejsca przeznaczenia.",
+          items: ["Mrożonki", "Nabiał", "Świeże owoce i warzywa"],
+        },
+        {
+          title: "Składniki spożywcze",
+          text: "Surowce do produkcji żywności, specyfikowane zgodnie z recepturą nabywcy.",
+          items: ["Mąki i skrobie", "Bakalie", "Przyprawy"],
+        },
+      ],
+      flow: [
+        {
+          title: "Pochodzenie",
+          text: "Producenci i regiony upraw weryfikowani pod kątem jakości, bezpieczeństwa i dokumentacji pochodzenia.",
+        },
+        {
+          title: "Specyfikacja",
+          text: "Klasa jakości, opakowanie, znakowanie i okres przydatności uzgadniane z uwzględnieniem wymogów rynku docelowego.",
+        },
+        {
+          title: "Transport",
+          text: "Przewóz w temperaturze otoczenia lub w kontrolowanej temperaturze, z inspekcjami w ustalonych punktach.",
+        },
+        {
+          title: "Rynek",
+          text: "Dostawy do importerów i hurtowników oraz kanałów handlu detalicznego i gastronomii.",
         },
       ],
       approach: [
@@ -437,7 +473,45 @@ const pl: SiteContent = {
           title: "Zgodność z przepisami",
           text: "Wymogi w zakresie bezpieczeństwa żywności, znakowania i importu uwzględniane przed wysyłką towaru.",
         },
+        {
+          title: "Dokumentacja",
+          text: "Świadectwa pochodzenia oraz certyfikaty analiz i zgodności, które mają towarzyszyć każdej przesyłce.",
+        },
         { title: "Ciągłość", text: "Dostawy planowane z myślą o regularności, a nie o jednorazowych transakcjach." },
+      ],
+      standards: [
+        {
+          title: "Ogólne prawo żywnościowe",
+          ref: "Rozporządzenie (WE) nr 178/2002",
+          text: "Unijne ramy prawne bezpieczeństwa i identyfikowalności żywności – jeden krok wstecz i jeden krok naprzód.",
+        },
+        {
+          title: "Higiena żywności i HACCP",
+          ref: "Rozporządzenie (WE) nr 852/2004",
+          text: "Obowiązki w zakresie higieny ciążące na podmiotach prowadzących przedsiębiorstwa spożywcze, oparte na zasadach HACCP.",
+        },
+        {
+          title: "Informowanie konsumentów o żywności",
+          ref: "Rozporządzenie (UE) nr 1169/2011",
+          text: "Znakowanie oraz informacje o alergenach i wartości odżywczej żywności wprowadzanej do obrotu na rynku UE.",
+        },
+        {
+          title: "Certyfikacja uznawana przez GFSI",
+          ref: "BRCGS · IFS · FSSC 22000",
+          text: "Systemy certyfikacji istotne przy weryfikacji producentów, pakowni i zakładów przetwórczych.",
+        },
+      ],
+      counterparts: [
+        {
+          title: "Producenci i przetwórcy",
+          text: "Producenci rolni, młyny, pakownie i zakłady przetwórcze z udokumentowanymi systemami zarządzania jakością.",
+        },
+        { title: "Importerzy i hurtownicy", text: "Uznani dystrybutorzy obsługujący rynki priorytetowe." },
+        {
+          title: "Handel detaliczny i gastronomia",
+          text: "Sieci handlowe, właściciele marek własnych i nabywcy z sektora hotelarsko-gastronomicznego.",
+        },
+        { title: "Producenci żywności", text: "Zakłady zaopatrujące się w składniki zgodnie ze specyfikacją." },
       ],
       cta: { title: "Porozmawiajmy o handlu żywnością.", accent: ["żywnością."], primary: "Zapytanie o partnerstwo" },
     },
@@ -451,11 +525,53 @@ const pl: SiteContent = {
         "Łańcuchy dostaw w ochronie zdrowia nie tolerują niepewności. Podejście AUREX do handlu produktami medycznymi wyznaczają staranna weryfikacja regulacyjna, sprawdzeni producenci i identyfikowalny przepływ towarów, a także wymóg, by partnerzy posiadali odpowiednie zezwolenia na każdym rynku.",
       categories: [
         {
-          title: "Materiały medyczne i jednorazowego użytku",
+          title: "Materiały medyczne jednorazowego użytku",
           text: "Codziennie wykorzystywane materiały kliniczne, w przypadku których kluczowe są powtarzalność i zgodność z wymogami.",
+          items: ["Rękawice i serwety", "Strzykawki i igły", "Opatrunki"],
         },
-        { title: "Sprzęt medyczny", text: "Urządzenia i sprzęt dla placówek medycznych i nabywców instytucjonalnych." },
-        { title: "Sprzęt ochronny", text: "Środki ochrony indywidualnej dla sektora medycznego i przemysłu." },
+        {
+          title: "Urządzenia i sprzęt medyczny",
+          text: "Wyroby medyczne i sprzęt dla placówek ochrony zdrowia i nabywców instytucjonalnych.",
+          items: ["Urządzenia diagnostyczne", "Monitorowanie pacjentów", "Pomoce w poruszaniu się"],
+        },
+        {
+          title: "Sprzęt ochronny",
+          text: "Środki ochrony indywidualnej dla sektora medycznego i przemysłu.",
+          items: ["Maski i półmaski", "Fartuchy i kombinezony", "Ochrona oczu i twarzy"],
+        },
+        {
+          title: "Meble i wyposażenie szpitalne",
+          text: "Umeblowanie i zaopatrzenie oddziałów szpitalnych, przychodni i placówek opiekuńczych.",
+          items: ["Łóżka i nosze", "Wózki medyczne", "Tekstylia szpitalne"],
+        },
+        {
+          title: "Zaopatrzenie laboratoryjne",
+          text: "Materiały eksploatacyjne i sprzęt dla laboratoriów diagnostycznych i badawczych.",
+          items: ["Pobieranie próbek", "Naczynia laboratoryjne", "Przechowywanie chłodnicze"],
+        },
+        {
+          title: "Higiena i kontrola zakażeń",
+          text: "Produkty do czyszczenia, dezynfekcji i zapobiegania zakażeniom.",
+          items: ["Środki dezynfekcyjne", "Higiena rąk", "Materiały do sterylizacji"],
+        },
+      ],
+      flow: [
+        {
+          title: "Producent",
+          text: "Producenci oceniani pod kątem systemów zarządzania jakością i dokumentacji technicznej.",
+        },
+        {
+          title: "Zgodność",
+          text: "Weryfikacja oznakowania CE, deklaracji zgodności i rejestracji na rynku docelowym.",
+        },
+        {
+          title: "Transport",
+          text: "Kontrolowane warunki magazynowania i przewozu, z zachowaniem identyfikacji partii i serii.",
+        },
+        {
+          title: "Odbiorca",
+          text: "Dostawy do uprawnionych dystrybutorów, instytucji i nabywców z sektora ochrony zdrowia.",
+        },
       ],
       approach: [
         {
@@ -467,6 +583,50 @@ const pl: SiteContent = {
           text: "Producenci oceniani pod kątem systemów zarządzania jakością i dokumentacji.",
         },
         { title: "Identyfikowalność", text: "Dokumentacja na poziomie partii, od producenta do odbiorcy." },
+        {
+          title: "Uprawnione kanały",
+          text: "Dostawy wyłącznie za pośrednictwem partnerów posiadających odpowiednie zezwolenia na każdym rynku.",
+        },
+      ],
+      standards: [
+        {
+          title: "Rozporządzenie w sprawie wyrobów medycznych",
+          ref: "Rozporządzenie (UE) 2017/745",
+          text: "Wymogi dotyczące wprowadzania wyrobów medycznych do obrotu w UE, w tym identyfikowalność za pomocą systemu UDI.",
+        },
+        {
+          title: "Rozporządzenie w sprawie wyrobów do diagnostyki in vitro",
+          ref: "Rozporządzenie (UE) 2017/746",
+          text: "Unijne ramy prawne dla wyrobów medycznych do diagnostyki in vitro.",
+        },
+        {
+          title: "Zarządzanie jakością",
+          ref: "ISO 13485",
+          text: "Norma systemu zarządzania jakością, której spełnienia oczekuje się od producentów wyrobów medycznych.",
+        },
+        {
+          title: "Środki ochrony indywidualnej",
+          ref: "Rozporządzenie (UE) 2016/425",
+          text: "Wymogi w zakresie projektowania, wytwarzania i zgodności ŚOI.",
+        },
+      ],
+      counterparts: [
+        {
+          title: "Producenci",
+          text: "Wytwórcy wyrobów medycznych i materiałów jednorazowego użytku, posiadający certyfikowane systemy zarządzania jakością.",
+        },
+        {
+          title: "Uprawnieni dystrybutorzy",
+          text: "Dystrybutorzy posiadający zezwolenia na swoich rynkach oraz kompetencje regulacyjne.",
+        },
+        {
+          title: "Placówki ochrony zdrowia",
+          text: "Szpitale, przychodnie i placówki opiekuńcze – za pośrednictwem ich kanałów zakupowych.",
+        },
+        {
+          title: "Organizacje zakupowe",
+          text: "Podmioty zamawiające i grupy zakupowe obsługujące sektor ochrony zdrowia.",
+        },
       ],
       cta: { title: "Porozmawiajmy o dostawach medycznych.", accent: ["medycznych."], primary: "Zapytanie o partnerstwo" },
     },
@@ -480,16 +640,52 @@ const pl: SiteContent = {
         "W komponentach elektronicznych pochodzenie jest wszystkim. Podejście AUREX koncentruje się na kwalifikacji dostawców, kontroli autentyczności i udokumentowanej historii obrotu, tak aby odbiorcy przemysłowi mogli zaopatrywać się z pełnym zaufaniem.",
       categories: [
         {
-          title: "Komponenty aktywne i pasywne",
-          text: "Półprzewodniki, układy scalone, rezystory, kondensatory i pokrewne elementy.",
+          title: "Półprzewodniki i układy scalone",
+          text: "Układy scalone, mikrokontrolery, pamięci i półprzewodniki dyskretne.",
+          items: ["Mikrokontrolery", "Pamięci", "Półprzewodniki dyskretne"],
+        },
+        {
+          title: "Komponenty pasywne",
+          text: "Rezystory, kondensatory, cewki indukcyjne i pokrewne elementy w wolumenach produkcyjnych.",
+          items: ["Kondensatory", "Rezystory", "Cewki indukcyjne"],
         },
         {
           title: "Podzespoły elektromechaniczne",
           text: "Złącza, przekaźniki, przełączniki i zespoły do zastosowań przemysłowych.",
+          items: ["Złącza", "Przekaźniki", "Przełączniki"],
+        },
+        {
+          title: "Czujniki i moduły",
+          text: "Moduły czujnikowe, komunikacyjne i interfejsowe dla producentów urządzeń.",
+          items: ["Czujniki", "Moduły bezprzewodowe", "Wyświetlacze"],
+        },
+        {
+          title: "Komponenty zasilania",
+          text: "Elementy do przetwarzania energii, zabezpieczeń i magazynowania energii.",
+          items: ["Zasilacze", "Półprzewodniki mocy", "Zabezpieczenia obwodów"],
         },
         {
           title: "Części do urządzeń przemysłowych",
           text: "Części i podzespoły wspierające produkcję i utrzymanie ruchu.",
+          items: ["Części automatyki", "Części zamienne", "Podzespoły"],
+        },
+      ],
+      flow: [
+        {
+          title: "Pozyskanie",
+          text: "Autoryzowane i sprawdzone niezależne źródła dostaw, z pierwszeństwem dla tych, które zapewniają identyfikowalność do producenta.",
+        },
+        {
+          title: "Weryfikacja",
+          text: "Przegląd dokumentacji i inspekcja zgodne z praktykami przeciwdziałania podrobionym komponentom.",
+        },
+        {
+          title: "Przechowywanie",
+          text: "Części wrażliwe na wilgoć i wyładowania elektrostatyczne (ESD) przechowywane i pakowane zgodnie ze specyfikacją.",
+        },
+        {
+          title: "Dostawa",
+          text: "Dostawy do producentów i odbiorców przemysłowych wraz z dokumentacją historii obrotu.",
         },
       ],
       approach: [
@@ -499,8 +695,46 @@ const pl: SiteContent = {
         },
         { title: "Autentyczność", text: "Dokumentacja i inspekcje chroniące przed podrobionymi częściami." },
         {
+          title: "Obsługa i opakowania",
+          text: "Ochrona przed ESD, kontrola wrażliwości na wilgoć i zachowanie oryginalnych opakowań.",
+        },
+        {
           title: "Zgodność eksportowa",
           text: "Wymogi dotyczące towarów podwójnego zastosowania i kontroli eksportu weryfikowane przed podjęciem jakichkolwiek zobowiązań.",
+        },
+      ],
+      standards: [
+        {
+          title: "Unikanie podrobionych części",
+          ref: "SAE AS6081 · AS5553",
+          text: "Normy branżowe w zakresie wykrywania i unikania podrobionych części elektronicznych.",
+        },
+        {
+          title: "Substancje niebezpieczne",
+          ref: "Dyrektywa 2011/65/UE (RoHS)",
+          text: "Ograniczenia stosowania substancji niebezpiecznych w sprzęcie elektrycznym i elektronicznym.",
+        },
+        {
+          title: "Substancje chemiczne w wyrobach",
+          ref: "Rozporządzenie (WE) nr 1907/2006 (REACH)",
+          text: "Obowiązek przekazywania informacji o substancjach wzbudzających szczególnie duże obawy, obecnych w wyrobach.",
+        },
+        {
+          title: "Kontrola eksportu towarów podwójnego zastosowania",
+          ref: "Rozporządzenie (UE) 2021/821",
+          text: "Kontrola wywozu, pośrednictwa i tranzytu produktów podwójnego zastosowania.",
+        },
+      ],
+      counterparts: [
+        { title: "Producenci komponentów", text: "Producenci i ich autoryzowani dystrybutorzy." },
+        {
+          title: "Producenci kontraktowi",
+          text: "Dostawcy usług EMS i firmy montażowe realizujące produkcję według projektów klientów.",
+        },
+        { title: "Producenci urządzeń", text: "Producenci OEM z sektorów przemysłu, energetyki i automatyki." },
+        {
+          title: "Utrzymanie ruchu i eksploatacja",
+          text: "Odbiorcy przemysłowi zaopatrujący się w części na potrzeby utrzymania ruchu, napraw i eksploatacji.",
         },
       ],
       cta: {
@@ -518,14 +752,53 @@ const pl: SiteContent = {
       overview:
         "LARP, rekonstrukcje historyczne i teatr wymagają wyrobów, które wyglądają autentycznie, są trwałe w użytkowaniu i bezpieczne w noszeniu. AUREX podchodzi do tego specjalistycznego rynku tak jak do każdego obszaru handlowego: ze sprawdzonymi wytwórcami, jasnymi specyfikacjami i niezawodną logistyką.",
       categories: [
-        { title: "Kostiumy i stroje", text: "Stroje z epoki i fantasy, tkaniny oraz dodatki." },
         {
-          title: "Zbroje i odzież ochronna",
-          text: "Zbroje skórzane i metalowe, hełmy oraz elementy ochronne na wydarzenia i występy.",
+          title: "Zbroje kolcze",
+          text: "Stalowa plecionka kolcza, nitowana lub łączona na styk – od pełnych kolczug po pojedyncze elementy.",
+          items: ["Hauberki i kolczugi", "Czepce kolcze", "Pelerynki i barmice"],
+        },
+        {
+          title: "Zbroje płytowe i skórzane",
+          text: "Hełmy oraz zbroje płytowe i z utwardzanej skóry na wydarzenia i występy.",
+          items: ["Hełmy", "Rękawice i karwasze", "Kirysy skórzane"],
+        },
+        {
+          title: "Kostiumy i stroje",
+          text: "Stroje z epoki i fantasy, tkaniny oraz dodatki.",
+          items: ["Tuniki i przeszywanice", "Płaszcze", "Suknie i wapenroki"],
         },
         {
           title: "Rekwizyty i repliki",
           text: "Rekwizyty bezpieczne w użyciu podczas wydarzeń, repliki historyczne i elementy dekoracyjne.",
+          items: ["Rekwizyty piankowo-lateksowe", "Repliki", "Elementy dekoracyjne"],
+        },
+        {
+          title: "Wyroby skórzane i akcesoria",
+          text: "Pasy, sakiewki, torby i elementy wykończeniowe, które dopełniają wizerunek postaci.",
+          items: ["Pasy i sakiewki", "Torby i pochwy", "Klamry i okucia"],
+        },
+        {
+          title: "Wyposażenie obozów i wydarzeń",
+          text: "Namioty, meble i zastawa na potrzeby obozowisk i wydarzeń historycznych.",
+          items: ["Namioty z epoki", "Meble obozowe", "Zastawa i oświetlenie"],
+        },
+      ],
+      flow: [
+        {
+          title: "Pracownia",
+          text: "Wytwórcy i producenci wybierani ze względu na kunszt wykonania, materiały i moce produkcyjne.",
+        },
+        {
+          title: "Specyfikacja",
+          text: "Rozmiarówka, materiały, wykończenia i wymogi bezpieczeństwa podczas wydarzeń uzgadniane z wyprzedzeniem.",
+        },
+        {
+          title: "Transport",
+          text: "Skonsolidowana wysyłka ciężkich i wielkogabarytowych towarów, pakowanych tak, by chronić wykończenia.",
+        },
+        {
+          title: "Rynek",
+          text: "Dystrybucja do specjalistycznych sprzedawców, organizatorów wydarzeń i produkcji scenicznych.",
         },
       ],
       approach: [
@@ -538,10 +811,86 @@ const pl: SiteContent = {
           text: "Materiały i wykończenia oceniane pod kątem bezpiecznego użytkowania podczas wydarzeń i na scenie.",
         },
         {
+          title: "Specyfikacja i rozmiarówka",
+          text: "Jasne specyfikacje rozmiarów, wagi i materiałów dla każdej linii produktów.",
+        },
+        {
           title: "Dystrybucja specjalistyczna",
           text: "Kanały dotarcia do rynku za pośrednictwem sprzedawców, organizatorów wydarzeń i produkcji scenicznych.",
         },
       ],
+      standards: [
+        {
+          title: "Ogólne bezpieczeństwo produktów",
+          ref: "Rozporządzenie (UE) 2023/988 (GPSR)",
+          text: "Wymogi bezpieczeństwa dla produktów konsumenckich wprowadzanych do obrotu na rynku UE.",
+        },
+        {
+          title: "Uwalnianie niklu",
+          ref: "REACH, załącznik XVII, pozycja 27",
+          text: "Limity uwalniania niklu z wyrobów metalowych pozostających w długotrwałym kontakcie ze skórą.",
+        },
+        {
+          title: "Etykietowanie tekstyliów",
+          ref: "Rozporządzenie (UE) nr 1007/2011",
+          text: "Nazwy włókien tekstylnych oraz etykietowanie składu włóknistego wyrobów włókienniczych.",
+        },
+        {
+          title: "Repliki i zasady wydarzeń",
+          ref: "Przepisy krajowe i regulaminy wydarzeń",
+          text: "Przepisy dotyczące replik broni i rekwizytów różnią się w zależności od kraju i wydarzenia, dlatego są analizowane odrębnie dla każdego rynku.",
+        },
+      ],
+      counterparts: [
+        { title: "Pracownie i wytwórcy", text: "Płatnerze, kowale, kaletnicy i twórcy kostiumów." },
+        {
+          title: "Specjalistyczni sprzedawcy",
+          text: "Sklepy stacjonarne i internetowe obsługujące środowiska LARP i rekonstrukcji historycznej.",
+        },
+        {
+          title: "Organizatorzy wydarzeń",
+          text: "Organizatorzy gier LARP, festiwali i rekonstrukcji historycznych.",
+        },
+        {
+          title: "Teatr i produkcje",
+          text: "Produkcje teatralne, filmowe i telewizyjne zaopatrujące się w kostiumy i rekwizyty.",
+        },
+      ],
+      showcase: {
+        eyebrow: "W centrum uwagi",
+        title: "Sztuka wyrobu kolczug.",
+        accent: ["kolczug."],
+        text: "Kolczuga to jedna z najstarszych form zbroi i wciąż jedna z najtrudniejszych do dobrego wykonania. Pojedyncza kolczuga może składać się z dziesiątek tysięcy kółek, z których każde zamykane jest ręcznie. O jej wadze, wytrzymałości i autentyczności decydują rozmiar kółek, grubość drutu oraz sposób ich zamknięcia – nitowanie lub łączenie na styk.",
+        setCaption:
+          "Przykładowy asortyment: kolczugi, hauberk, czepiec i pelerynka kolcza ze skórzanymi elementami i mosiężnymi okuciami.",
+        details: [
+          {
+            key: "weave",
+            title: "Splot",
+            text: "Europejski splot 4 w 1: każde kółko połączone z czterema innymi, co zapewnia wytrzymałość i swobodne układanie się plecionki.",
+          },
+          {
+            key: "buckles",
+            title: "Paski i klamry",
+            text: "Skórzane paski i metalowe klamry służą do zapinania i pozwalają dopasować element do sylwetki użytkownika.",
+          },
+          {
+            key: "collar",
+            title: "Kołnierz",
+            text: "Skórzany kołnierz z mosiężnymi okuciami wykańcza podkrój szyi i równomiernie rozkłada ciężar.",
+          },
+          {
+            key: "coif",
+            title: "Czepiec",
+            text: "Kolczy kaptur chroniący głowę i szyję, noszony pod hełmem lub samodzielnie.",
+          },
+          {
+            key: "mantle",
+            title: "Pelerynka",
+            text: "Kolcza peleryna na ramiona z podszytym skórzanym kołnierzem, noszona na kolczudze dla pełniejszej osłony.",
+          },
+        ],
+      },
       cta: {
         title: "Porozmawiajmy o LARP i artykułach historycznych.",
         accent: ["historycznych."],
@@ -555,8 +904,18 @@ const pl: SiteContent = {
     overview: "Przegląd",
     categoriesEyebrow: "Kategorie priorytetowe",
     categoriesTitle: "Co obejmuje ten obszar handlowy.",
+    examplesLabel: "Przykłady",
+    flowEyebrow: "Od źródła do rynku",
+    flowTitle: "Jak przemieszczają się towary.",
     approachEyebrow: "Podejście",
     approachTitle: "Jak AUREX podchodzi do tego obszaru.",
+    standardsEyebrow: "Normy i ramy prawne",
+    standardsTitle: "Przepisy, którym podlega ten handel.",
+    standardsNote:
+      "Ramy odniesienia, które AUREX uwzględnia przy weryfikacji partnerów i produktów. Wymogi różnią się w zależności od produktu i rynku docelowego. Nie stanowi to oświadczenia o posiadaniu certyfikacji.",
+    counterpartsEyebrow: "Kontrahenci",
+    counterpartsTitle: "Z kim AUREX dąży do współpracy.",
+    counterpartsCta: "Propozycja partnerstwa",
     corridorsEyebrow: "Rynki priorytetowe",
     otherEyebrow: "Pozostałe obszary handlowe",
     allTrade: "Wszystkie obszary handlowe",

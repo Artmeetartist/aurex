@@ -137,8 +137,24 @@ export type SiteContent = {
       accent: string[];
       intro: string;
       overview: string;
-      categories: TitledText[];
+      /** Six focus categories, each with example items. */
+      categories: (TitledText & { items: string[] })[];
+      /** Trade-specific journey from origin to market (four steps). */
+      flow: TitledText[];
       approach: TitledText[];
+      /** Reference frameworks considered — not certifications held. */
+      standards: { title: string; ref: string; text: string }[];
+      /** Counterpart profiles AUREX seeks to work with. */
+      counterparts: TitledText[];
+      /** Optional product showcase (LARP & Historical Goods). */
+      showcase?: {
+        eyebrow: string;
+        title: string;
+        accent: string[];
+        text: string;
+        setCaption: string;
+        details: { key: "weave" | "buckles" | "collar" | "coif" | "mantle"; title: string; text: string }[];
+      };
       cta: { title: string; accent: string[]; primary: string };
     }
   >;
@@ -148,8 +164,17 @@ export type SiteContent = {
     overview: string;
     categoriesEyebrow: string;
     categoriesTitle: string;
+    examplesLabel: string;
+    flowEyebrow: string;
+    flowTitle: string;
     approachEyebrow: string;
     approachTitle: string;
+    standardsEyebrow: string;
+    standardsTitle: string;
+    standardsNote: string;
+    counterpartsEyebrow: string;
+    counterpartsTitle: string;
+    counterpartsCta: string;
     corridorsEyebrow: string;
     otherEyebrow: string;
     allTrade: string;

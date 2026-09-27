@@ -407,14 +407,76 @@ const nl: SiteContent = {
       overview:
         "In de voedingshandel wordt betrouwbaarheid boven alles beloond: constante kwaliteit, verifieerbare herkomst en solide logistiek. AUREX benadert voeding als een handelsdomein voor de lange termijn en werkt toe naar partnerschappen met gekwalificeerde producenten en gevestigde distributeurs in de focusmarkten.",
       categories: [
-        { title: "Basisvoedingsmiddelen", text: "Granen, peulvruchten, rijst, suiker en spijsoliën, waarbij specificatie en continuïteit het zwaarst wegen." },
-        { title: "Verpakte voeding & specialiteiten", text: "Afgewerkte producten voor retail-, groothandels- en horecakanalen." },
-        { title: "Temperatuurgecontroleerde goederen", text: "Producten waarvan de kwaliteit afhangt van een ononderbroken koudeketen, van herkomst tot bestemming." },
+        {
+          title: "Basisvoedingsmiddelen",
+          text: "Granen, rijst en peulvruchten, waarbij specificatie en continuïteit het zwaarst wegen.",
+          items: ["Tarwe & granen", "Rijst", "Peulvruchten & linzen"],
+        },
+        {
+          title: "Spijsoliën & -vetten",
+          text: "Plantaardige oliën in bulk en in verpakte vorm, voor industrie, groothandel en retail.",
+          items: ["Zonnebloemolie", "Koolzaadolie", "Olijfolie"],
+        },
+        {
+          title: "Suiker & zoetstoffen",
+          text: "Geraffineerde en ruwe suikers en zoetstoffen voor fabrikanten en distributeurs.",
+          items: ["Geraffineerde suiker", "Ruwe rietsuiker", "Siropen"],
+        },
+        {
+          title: "Verpakte voeding & specialiteiten",
+          text: "Afgewerkte producten voor retail-, groothandels- en horecakanalen.",
+          items: ["Huismerken", "Regionale specialiteiten", "Dranken"],
+        },
+        {
+          title: "Temperatuurgecontroleerde goederen",
+          text: "Producten waarvan de kwaliteit afhangt van een ononderbroken koudeketen, van herkomst tot bestemming.",
+          items: ["Diepvriesproducten", "Zuivel", "Verse groente & fruit"],
+        },
+        {
+          title: "Voedingsingrediënten",
+          text: "Grondstoffen voor de voedingsmiddelenindustrie, gespecificeerd volgens de receptuur van de afnemer.",
+          items: ["Meel & zetmeel", "Gedroogd fruit & noten", "Specerijen & kruiden"],
+        },
+      ],
+      flow: [
+        { title: "Herkomst", text: "Producenten en teeltgebieden gekwalificeerd op documentatie van kwaliteit, veiligheid en herkomst." },
+        { title: "Specificatie", text: "Kwaliteitsklasse, verpakking, etikettering en houdbaarheid afgestemd op de markt van bestemming." },
+        { title: "Vervoer", text: "Transport bij omgevingstemperatuur of onder temperatuurbeheersing, met inspectie op vastgestelde punten." },
+        { title: "Markt", text: "Levering aan importeurs, groothandels en retail- en foodservicekanalen." },
       ],
       approach: [
         { title: "Herkomst & kwaliteit", text: "Producenten getoetst aan gedocumenteerde kwaliteits-, veiligheids- en herkomstnormen." },
         { title: "Compliance", text: "Voedselveiligheid, etikettering en importvereisten geregeld voordat de goederen in beweging komen." },
+        { title: "Documentatie", text: "Certificaten van oorsprong, analyse en conformiteit die naar verwachting met elke zending meegaan." },
         { title: "Continuïteit", text: "Aanvoer gepland op consistentie in plaats van op eenmalige transacties." },
+      ],
+      standards: [
+        {
+          title: "Algemene levensmiddelenwetgeving",
+          ref: "Verordening (EG) nr. 178/2002",
+          text: "Het EU-kader voor voedselveiligheid en traceerbaarheid: één stap terug en één stap vooruit in de keten.",
+        },
+        {
+          title: "Levensmiddelenhygiëne & HACCP",
+          ref: "Verordening (EG) nr. 852/2004",
+          text: "Hygiëneverplichtingen voor exploitanten van levensmiddelenbedrijven, gebaseerd op de HACCP-beginselen.",
+        },
+        {
+          title: "Voedselinformatie aan consumenten",
+          ref: "Verordening (EU) nr. 1169/2011",
+          text: "Etikettering en informatie over allergenen en voedingswaarde voor levensmiddelen die op de EU-markt worden gebracht.",
+        },
+        {
+          title: "Door GFSI erkende certificering",
+          ref: "BRCGS · IFS · FSSC 22000",
+          text: "Certificeringsschema's die relevant zijn bij het kwalificeren van producenten, verpakkers en verwerkers.",
+        },
+      ],
+      counterparts: [
+        { title: "Producenten & verwerkers", text: "Telers, maalderijen, verpakkers en verwerkers met gedocumenteerde kwaliteitssystemen." },
+        { title: "Importeurs & groothandels", text: "Gevestigde distributeurs die de focusmarkten bedienen." },
+        { title: "Retail & foodservice", text: "Retailgroepen, eigenaren van huismerken en afnemers in de horeca." },
+        { title: "Voedingsmiddelenfabrikanten", text: "Fabrikanten die ingrediënten naar specificatie inkopen." },
       ],
       cta: { title: "Bespreek de handel in voeding.", accent: ["voeding."], primary: "Dien een partnerschapsaanvraag in" },
     },
@@ -427,14 +489,76 @@ const nl: SiteContent = {
       overview:
         "Toeleveringsketens in de zorg kunnen zich geen onzekerheid veroorloven. De aanpak van AUREX in de medische handel wordt bepaald door zorgvuldige toetsing aan de regelgeving, gekwalificeerde fabrikanten en traceerbare goederenstromen, en door de eis dat partners in elke markt over de benodigde vergunningen beschikken.",
       categories: [
-        { title: "Medische benodigdheden & verbruiksartikelen", text: "Dagelijkse klinische verbruiksartikelen waarbij consistentie en conformiteit essentieel zijn." },
-        { title: "Medische apparatuur", text: "Hulpmiddelen en apparatuur voor klinische en institutionele afnemers." },
-        { title: "Beschermingsmiddelen", text: "Persoonlijke beschermingsmiddelen voor de zorg en de industrie." },
+        {
+          title: "Medische verbruiksartikelen",
+          text: "Dagelijkse klinische verbruiksartikelen waarbij consistentie en conformiteit essentieel zijn.",
+          items: ["Handschoenen & afdekdoeken", "Spuiten & naalden", "Wondverzorging"],
+        },
+        {
+          title: "Hulpmiddelen & apparatuur",
+          text: "Medische hulpmiddelen en apparatuur voor klinische en institutionele afnemers.",
+          items: ["Diagnostische hulpmiddelen", "Patiëntbewaking", "Mobiliteitshulpmiddelen"],
+        },
+        {
+          title: "Beschermingsmiddelen",
+          text: "Persoonlijke beschermingsmiddelen voor de zorg en de industrie.",
+          items: ["Maskers & adembescherming", "Schorten & overalls", "Oog- & gezichtsbescherming"],
+        },
+        {
+          title: "Ziekenhuismeubilair & -benodigdheden",
+          text: "Inrichting en benodigdheden voor verpleegafdelingen, klinieken en zorginstellingen.",
+          items: ["Bedden & brancards", "Trolleys & wagens", "Ziekenhuistextiel"],
+        },
+        {
+          title: "Laboratoriumbenodigdheden",
+          text: "Verbruiksartikelen en apparatuur voor klinische en onderzoekslaboratoria.",
+          items: ["Monsterafname", "Laboratoriumartikelen", "Koelopslag"],
+        },
+        {
+          title: "Hygiëne & infectiebeheersing",
+          text: "Producten voor reiniging, desinfectie en infectiepreventie.",
+          items: ["Desinfectiemiddelen", "Handhygiëne", "Sterilisatiebenodigdheden"],
+        },
+      ],
+      flow: [
+        { title: "Fabrikant", text: "Fabrikanten beoordeeld op kwaliteitsmanagementsystemen en technische documentatie." },
+        { title: "Conformiteit", text: "CE-markering, conformiteitsverklaringen en registraties in de markt van bestemming geverifieerd." },
+        { title: "Vervoer", text: "Gecontroleerde opslag en gecontroleerd transport, met behoud van batch- en lotidentificatie." },
+        { title: "Ontvanger", text: "Levering aan erkende distributeurs, instellingen en inkopers in de zorg." },
       ],
       approach: [
         { title: "Conformiteit met regelgeving", text: "Producten beoordeeld aan de hand van de geldende eisen van de EU en van de markt van bestemming." },
         { title: "Gekwalificeerde fabrikanten", text: "Fabrikanten beoordeeld op kwaliteitssystemen en documentatie." },
         { title: "Traceerbaarheid", text: "Documentatie op batchniveau, van fabrikant tot ontvanger." },
+        { title: "Erkende kanalen", text: "Levering uitsluitend via partners die in elke markt over de benodigde vergunningen beschikken." },
+      ],
+      standards: [
+        {
+          title: "Verordening medische hulpmiddelen",
+          ref: "Verordening (EU) 2017/745",
+          text: "Eisen voor het in de handel brengen van medische hulpmiddelen op de EU-markt, inclusief traceerbaarheid via UDI.",
+        },
+        {
+          title: "Verordening in-vitrodiagnostica",
+          ref: "Verordening (EU) 2017/746",
+          text: "Het EU-kader voor medische hulpmiddelen voor in-vitrodiagnostiek.",
+        },
+        {
+          title: "Kwaliteitsmanagement",
+          ref: "ISO 13485",
+          text: "De norm voor kwaliteitsmanagement die van fabrikanten van medische hulpmiddelen wordt verwacht.",
+        },
+        {
+          title: "Persoonlijke beschermingsmiddelen",
+          ref: "Verordening (EU) 2016/425",
+          text: "Eisen voor ontwerp, fabricage en conformiteit van PBM.",
+        },
+      ],
+      counterparts: [
+        { title: "Fabrikanten", text: "Fabrikanten van hulpmiddelen en verbruiksartikelen met gecertificeerde kwaliteitssystemen." },
+        { title: "Erkende distributeurs", text: "Distributeurs met een vergunning in hun markten en met regulatoire deskundigheid." },
+        { title: "Zorgaanbieders", text: "Ziekenhuizen, klinieken en zorginstellingen, via hun inkoopkanalen." },
+        { title: "Inkooporganisaties", text: "Inkoopinstanties en inkoopcombinaties in de zorg." },
       ],
       cta: { title: "Bespreek medische bevoorrading.", accent: ["medische"], primary: "Dien een partnerschapsaanvraag in" },
     },
@@ -447,14 +571,76 @@ const nl: SiteContent = {
       overview:
         "Bij elektronische componenten is herkomst alles. De aanpak van AUREX draait om leverancierskwalificatie, echtheidscontroles en gedocumenteerde overdrachtsketens, zodat industriële afnemers met vertrouwen kunnen inkopen.",
       categories: [
-        { title: "Actieve & passieve componenten", text: "Halfgeleiders, geïntegreerde schakelingen, weerstanden, condensatoren en aanverwante onderdelen." },
-        { title: "Elektromechanische onderdelen", text: "Connectoren, relais, schakelaars en assemblages voor industriële toepassingen." },
-        { title: "Onderdelen voor industriële apparatuur", text: "Onderdelen en subassemblages ter ondersteuning van productie en onderhoud." },
+        {
+          title: "Halfgeleiders & IC's",
+          text: "Geïntegreerde schakelingen, microcontrollers, geheugen en discrete halfgeleiders.",
+          items: ["Microcontrollers", "Geheugen", "Discrete halfgeleiders"],
+        },
+        {
+          title: "Passieve componenten",
+          text: "Weerstanden, condensatoren, spoelen en aanverwante onderdelen in productievolumes.",
+          items: ["Condensatoren", "Weerstanden", "Spoelen"],
+        },
+        {
+          title: "Elektromechanische onderdelen",
+          text: "Connectoren, relais, schakelaars en assemblages voor industriële toepassingen.",
+          items: ["Connectoren", "Relais", "Schakelaars"],
+        },
+        {
+          title: "Sensoren & modules",
+          text: "Sensor-, communicatie- en interfacemodules voor fabrikanten van apparatuur.",
+          items: ["Sensoren", "Draadloze modules", "Displays"],
+        },
+        {
+          title: "Vermogenscomponenten",
+          text: "Componenten voor vermogensomzetting, beveiliging en energieopslag.",
+          items: ["Voedingen", "Vermogenshalfgeleiders", "Circuitbeveiliging"],
+        },
+        {
+          title: "Onderdelen voor industriële apparatuur",
+          text: "Onderdelen en subassemblages ter ondersteuning van productie en onderhoud.",
+          items: ["Automatiseringsonderdelen", "Reserveonderdelen", "Subassemblages"],
+        },
+      ],
+      flow: [
+        { title: "Inkoop", text: "Geautoriseerde en gekwalificeerde onafhankelijke bronnen, met voorrang voor traceerbaarheid tot aan de fabrikant." },
+        { title: "Verificatie", text: "Documentatiecontrole en inspectie in lijn met gangbare praktijken ter voorkoming van namaak." },
+        { title: "Behandeling", text: "Vocht- en ESD-gevoelige onderdelen opgeslagen en verpakt volgens specificatie." },
+        { title: "Levering", text: "Levering aan fabrikanten en industriële afnemers, met vastlegging van de overdrachtsketen." },
       ],
       approach: [
         { title: "Leverancierskwalificatie", text: "Leveranciers beoordeeld op authenticiteit, kwaliteitssystemen en continuïteit." },
         { title: "Authenticiteit", text: "Documentatie en inspectie die beschermen tegen namaakonderdelen." },
+        { title: "Behandeling & verpakking", text: "ESD-bescherming, beheersing van vochtgevoeligheid en behoud van de originele verpakking." },
         { title: "Exportcompliance", text: "Vereisten voor dual-use en exportcontrole, getoetst vóór elke verbintenis." },
+      ],
+      standards: [
+        {
+          title: "Voorkoming van namaak",
+          ref: "SAE AS6081 · AS5553",
+          text: "Industrienormen voor het opsporen en voorkomen van nagemaakte elektronische onderdelen.",
+        },
+        {
+          title: "Gevaarlijke stoffen",
+          ref: "Richtlijn 2011/65/EU (RoHS)",
+          text: "Beperkingen van gevaarlijke stoffen in elektrische en elektronische apparatuur.",
+        },
+        {
+          title: "Chemische stoffen in voorwerpen",
+          ref: "Verordening (EG) nr. 1907/2006 (REACH)",
+          text: "Verplichtingen om informatie te verstrekken over zeer zorgwekkende stoffen in voorwerpen.",
+        },
+        {
+          title: "Exportcontrole voor dual-use",
+          ref: "Verordening (EU) 2021/821",
+          text: "Controle op de uitvoer, tussenhandel en doorvoer van producten voor tweeërlei gebruik.",
+        },
+      ],
+      counterparts: [
+        { title: "Componentfabrikanten", text: "Fabrikanten en hun geautoriseerde distributiekanalen." },
+        { title: "Contractfabrikanten", text: "EMS-dienstverleners en assemblagebedrijven die produceren volgens klantontwerpen." },
+        { title: "Apparatenbouwers", text: "OEM's in de industriële, energie- en automatiseringssector." },
+        { title: "Onderhoud & bedrijfsvoering", text: "Industriële afnemers die onderdelen inkopen voor onderhoud, reparatie en bedrijfsvoering." },
       ],
       cta: { title: "Bespreek de inkoop van componenten.", accent: ["inkoop"], primary: "Dien een partnerschapsaanvraag in" },
     },
@@ -467,15 +653,91 @@ const nl: SiteContent = {
       overview:
         "Live-action roleplay, historische re-enactment en theater vragen om goederen die authentiek ogen, intensief gebruik doorstaan en veilig te dragen zijn. AUREX benadert deze nichemarkt zoals elk ander handelsdomein: met gekwalificeerde makers, heldere specificaties en betrouwbare logistiek.",
       categories: [
-        { title: "Kostuums & kleding", text: "Historische en fantasykleding, textiel en accessoires." },
-        { title: "Harnassen & beschermende uitrusting", text: "Leren en metalen harnassen, helmen en beschermende onderdelen voor evenementen en voorstellingen." },
-        { title: "Rekwisieten & reproducties", text: "Veilige rekwisieten voor evenementen, historische reproducties en decoratieve stukken." },
+        {
+          title: "Maliënpantser",
+          text: "Stalen maliënwerk, geklonken of dichtgebogen, van complete hemden tot afzonderlijke stukken.",
+          items: ["Maliënkolders & -hemden", "Maliënkappen", "Schoudermantels & kamails"],
+        },
+        {
+          title: "Plaat- & leren harnassen",
+          text: "Helmen, plaatharnassen en harnassen van gehard leer voor evenementen en voorstellingen.",
+          items: ["Helmen", "Pantserhandschoenen & armbeschermers", "Leren kurassen"],
+        },
+        {
+          title: "Kleding & kostuums",
+          text: "Historische en fantasykleding, textiel en accessoires.",
+          items: ["Tunieken & gambesons", "Mantels", "Jurken & wapenrokken"],
+        },
+        {
+          title: "Rekwisieten & reproducties",
+          text: "Veilige rekwisieten voor evenementen, historische reproducties en decoratieve stukken.",
+          items: ["Foam- & latexrekwisieten", "Replica's", "Decoratieve stukken"],
+        },
+        {
+          title: "Lederwerk & accessoires",
+          text: "Riemen, buidels, tassen en afwerkingsstukken die een personage compleet maken.",
+          items: ["Riemen & buidels", "Tassen & scheden", "Gespen & beslag"],
+        },
+        {
+          title: "Kamp- & evenementuitrusting",
+          text: "Tenten, meubilair en tafelgerei voor kampementen en historische evenementen.",
+          items: ["Historische tenten", "Kampmeubilair", "Tafelgerei & verlichting"],
+        },
+      ],
+      flow: [
+        { title: "Atelier", text: "Makers en fabrikanten geselecteerd op vakmanschap, materialen en capaciteit." },
+        { title: "Specificatie", text: "Maatvoering, materialen, afwerkingen en veiligheidseisen voor evenementen vooraf overeengekomen." },
+        { title: "Vervoer", text: "Geconsolideerde verzending van zware en volumineuze goederen, verpakt ter bescherming van de afwerking." },
+        { title: "Markt", text: "Distributie naar speciaalzaken, evenementenorganisatoren en producties." },
       ],
       approach: [
         { title: "Vakkundige makers", text: "Ateliers en fabrikanten geselecteerd op vakmanschap en consistentie." },
         { title: "Veiligheid & materialen", text: "Materialen en afwerkingen beoordeeld op veilig gebruik tijdens evenementen en op het podium." },
+        { title: "Specificatie & maatvoering", text: "Heldere specificaties van maatvoering, gewicht en materiaal voor elk assortiment." },
         { title: "Gespecialiseerde distributie", text: "Routes naar de markt via speciaalzaken, organisatoren en producties." },
       ],
+      standards: [
+        {
+          title: "Algemene productveiligheid",
+          ref: "Verordening (EU) 2023/988 (GPSR)",
+          text: "Veiligheidseisen voor consumentenproducten die op de EU-markt worden gebracht.",
+        },
+        {
+          title: "Nikkelafgifte",
+          ref: "REACH, bijlage XVII, vermelding 27",
+          text: "Grenswaarden voor nikkelafgifte uit metalen voorwerpen die langdurig in contact komen met de huid.",
+        },
+        {
+          title: "Textieletikettering",
+          ref: "Verordening (EU) nr. 1007/2011",
+          text: "Benamingen van textielvezels en etikettering van de vezelsamenstelling van textielproducten.",
+        },
+        {
+          title: "Replica's & evenementregels",
+          ref: "Nationale en evenementspecifieke regels",
+          text: "Regels voor replicawapens en rekwisieten verschillen per land en per evenement, en worden per markt beoordeeld.",
+        },
+      ],
+      counterparts: [
+        { title: "Ateliers & makers", text: "Harnasmakers, smeden, leerbewerkers en kostuummakers." },
+        { title: "Speciaalzaken", text: "Fysieke en online winkels voor LARP en re-enactment." },
+        { title: "Evenementenorganisatoren", text: "Organisatoren van LARP-evenementen, festivals en historische re-enactments." },
+        { title: "Theater & producties", text: "Theater-, film- en televisieproducties die kostuums en rekwisieten inkopen." },
+      ],
+      showcase: {
+        eyebrow: "Uitgelicht",
+        title: "Het ambacht van het maliënpantser.",
+        accent: ["maliënpantser."],
+        text: "Maliënpantser behoort tot de oudste vormen van bepantsering en is nog altijd een van de veeleisendste om goed te vervaardigen. Eén maliënhemd kan tienduizenden ringen tellen, die elk met de hand worden gesloten. Ringmaat, draaddikte en sluiting, geklonken of dichtgebogen, bepalen het gewicht, de sterkte en de authenticiteit.",
+        setCaption: "Illustratief assortiment: maliënhemden, maliënkolder, maliënkap en schoudermantel, met beslag van leer en messing.",
+        details: [
+          { key: "weave", title: "Het vlechtwerk", text: "Het Europese vier-in-één-patroon: elke ring is verbonden met vier andere, voor sterkte en een soepele val." },
+          { key: "buckles", title: "Riemen & gespen", text: "Leren riemen en metalen gespen sluiten het kledingstuk en maken het verstelbaar voor de drager." },
+          { key: "collar", title: "De kraag", text: "Een leren kraag met messing beslag werkt de halslijn af en verdeelt het gewicht gelijkmatig." },
+          { key: "coif", title: "De maliënkap", text: "Een kap van maliën ter bescherming van hoofd en hals, onder een helm of los gedragen." },
+          { key: "mantle", title: "De schoudermantel", text: "Een schoudercape van maliën met een gevoerde leren kraag, over een hemd gedragen voor extra bedekking." },
+        ],
+      },
       cta: { title: "Bespreek LARP & historische goederen.", accent: ["historische"], primary: "Dien een partnerschapsaanvraag in" },
     },
   },
@@ -485,8 +747,18 @@ const nl: SiteContent = {
     overview: "Overzicht",
     categoriesEyebrow: "Focuscategorieën",
     categoriesTitle: "Wat dit handelsdomein omvat.",
+    examplesLabel: "Voorbeelden",
+    flowEyebrow: "Van herkomst tot markt",
+    flowTitle: "Hoe goederen hun weg vinden.",
     approachEyebrow: "Aanpak",
     approachTitle: "Hoe AUREX dit benadert.",
+    standardsEyebrow: "Normen & kaders",
+    standardsTitle: "De regels waaraan de handel moet voldoen.",
+    standardsNote:
+      "Referentiekaders waarmee AUREX rekening houdt bij het kwalificeren van partners en producten. De eisen verschillen per product en per markt van bestemming. Dit vormt geen verklaring van certificering.",
+    counterpartsEyebrow: "Tegenpartijen",
+    counterpartsTitle: "Met wie AUREX samenwerking zoekt.",
+    counterpartsCta: "Stel een partnerschap voor",
     corridorsEyebrow: "Focusmarkten",
     otherEyebrow: "Andere handelsdomeinen",
     allTrade: "Alle handelsdomeinen",

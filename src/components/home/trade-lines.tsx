@@ -1,9 +1,10 @@
+import { MailFeature } from "@/components/trade/larp/mail-feature";
 import { TradeLineGrid } from "@/components/trade/trade-line-grid";
 import { TextLink } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import type { SiteContent } from "@/content/types";
 import type { Locale } from "@/i18n/config";
-import { href } from "@/lib/routes";
+import { href, tradeHref } from "@/lib/routes";
 
 /** 03 — Trade lines of strategic focus, each linking to its own page. */
 export function TradeLines({ locale, content }: { locale: Locale; content: SiteContent }) {
@@ -29,6 +30,7 @@ export function TradeLines({ locale, content }: { locale: Locale; content: SiteC
           </div>
         </div>
         <TradeLineGrid locale={locale} content={content} className="mt-16 md:mt-20" />
+        <MailFeature trade={content.trades.larp} href={`${tradeHref(locale, "larp")}#in-focus`} className="mt-4 lg:mt-5" />
       </div>
     </section>
   );

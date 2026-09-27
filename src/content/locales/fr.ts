@@ -435,15 +435,51 @@ const fr: SiteContent = {
       categories: [
         {
           title: "Denrées de base",
-          text: "Céréales, légumineuses, riz, sucre et huiles alimentaires, pour lesquels spécifications et continuité sont essentielles.",
+          text: "Céréales, riz et légumineuses, pour lesquels spécifications et continuité sont essentielles.",
+          items: ["Blé & céréales", "Riz", "Légumineuses & lentilles"],
+        },
+        {
+          title: "Huiles & matières grasses alimentaires",
+          text: "Des huiles végétales en vrac et conditionnées pour l’industrie, le commerce de gros et la distribution de détail.",
+          items: ["Huile de tournesol", "Huile de colza", "Huile d’olive"],
+        },
+        {
+          title: "Sucres & édulcorants",
+          text: "Sucres raffinés et bruts, et édulcorants, destinés aux fabricants et aux distributeurs.",
+          items: ["Sucre raffiné", "Sucre de canne brut", "Sirops"],
         },
         {
           title: "Produits conditionnés & spécialités",
           text: "Des produits finis destinés aux circuits de détail, de gros et de l’hôtellerie-restauration.",
+          items: ["Marques de distributeur", "Spécialités régionales", "Boissons"],
         },
         {
           title: "Produits sous température dirigée",
           text: "Des produits dont la qualité dépend d’une chaîne du froid ininterrompue, de l’origine à la destination.",
+          items: ["Produits surgelés", "Produits laitiers", "Produits frais"],
+        },
+        {
+          title: "Ingrédients alimentaires",
+          text: "Des intrants pour l’industrie agroalimentaire, spécifiés selon la formulation de l’acheteur.",
+          items: ["Farines & amidons", "Fruits secs & à coque", "Épices & assaisonnements"],
+        },
+      ],
+      flow: [
+        {
+          title: "Origine",
+          text: "Des producteurs et des régions de culture qualifiés au regard de la qualité, de la sécurité et de la documentation d’origine.",
+        },
+        {
+          title: "Spécification",
+          text: "Qualité, conditionnement, étiquetage et durée de conservation définis en fonction du marché de destination.",
+        },
+        {
+          title: "Acheminement",
+          text: "Un transport à température ambiante ou dirigée, avec des inspections à des étapes définies.",
+        },
+        {
+          title: "Marché",
+          text: "Livraison aux importateurs, aux grossistes et aux circuits de la distribution et de la restauration hors foyer.",
         },
       ],
       approach: [
@@ -456,8 +492,52 @@ const fr: SiteContent = {
           text: "Sécurité alimentaire, étiquetage et exigences à l’importation traités avant tout mouvement de marchandises.",
         },
         {
+          title: "Documentation",
+          text: "Des certificats d’origine, d’analyse et de conformité appelés à accompagner chaque expédition.",
+        },
+        {
           title: "Continuité",
           text: "Un approvisionnement planifié dans la régularité plutôt qu’au gré de transactions ponctuelles.",
+        },
+      ],
+      standards: [
+        {
+          title: "Législation alimentaire générale",
+          ref: "Règlement (CE) n° 178/2002",
+          text: "Le cadre de l’UE en matière de sécurité et de traçabilité des denrées alimentaires, une étape en amont et une étape en aval.",
+        },
+        {
+          title: "Hygiène alimentaire & HACCP",
+          ref: "Règlement (CE) n° 852/2004",
+          text: "Les obligations d’hygiène des exploitants du secteur alimentaire, fondées sur les principes HACCP.",
+        },
+        {
+          title: "Information des consommateurs sur les denrées alimentaires",
+          ref: "Règlement (UE) n° 1169/2011",
+          text: "Étiquetage, allergènes et informations nutritionnelles des denrées alimentaires mises sur le marché de l’UE.",
+        },
+        {
+          title: "Certification reconnue par la GFSI",
+          ref: "BRCGS · IFS · FSSC 22000",
+          text: "Des référentiels de certification pertinents pour la qualification des producteurs, des conditionneurs et des transformateurs.",
+        },
+      ],
+      counterparts: [
+        {
+          title: "Producteurs & transformateurs",
+          text: "Exploitations agricoles, meuneries, conditionneurs et transformateurs dotés de systèmes qualité documentés.",
+        },
+        {
+          title: "Importateurs & grossistes",
+          text: "Des distributeurs établis au service des marchés prioritaires.",
+        },
+        {
+          title: "Distribution & restauration",
+          text: "Groupes de distribution, détenteurs de marques de distributeur et acheteurs de l’hôtellerie-restauration.",
+        },
+        {
+          title: "Industriels de l’agroalimentaire",
+          text: "Des fabricants qui s’approvisionnent en ingrédients selon leurs spécifications.",
         },
       ],
       cta: {
@@ -476,16 +556,52 @@ const fr: SiteContent = {
         "Les chaînes d’approvisionnement de santé ne tolèrent aucune incertitude. L’approche d’AUREX en matière de négoce médical repose sur la diligence réglementaire, des fabricants qualifiés et des flux traçables, ainsi que sur l’exigence que ses partenaires détiennent les autorisations requises sur chaque marché.",
       categories: [
         {
-          title: "Fournitures & consommables médicaux",
+          title: "Consommables médicaux",
           text: "Des consommables cliniques courants, pour lesquels régularité et conformité sont essentielles.",
+          items: ["Gants & champs opératoires", "Seringues & aiguilles", "Soin des plaies"],
         },
         {
-          title: "Équipements médicaux",
-          text: "Dispositifs et équipements destinés aux structures de soins et aux acheteurs institutionnels.",
+          title: "Dispositifs & équipements",
+          text: "Dispositifs médicaux et équipements destinés aux structures de soins et aux acheteurs institutionnels.",
+          items: ["Dispositifs de diagnostic", "Surveillance des patients", "Aides à la mobilité"],
         },
         {
           title: "Équipements de protection",
           text: "Équipements de protection individuelle pour la santé et l’industrie.",
+          items: ["Masques & protections respiratoires", "Blouses & combinaisons", "Protection des yeux & du visage"],
+        },
+        {
+          title: "Mobilier & fournitures hospitaliers",
+          text: "Aménagements et fournitures pour les services hospitaliers, les cliniques et les établissements de soins.",
+          items: ["Lits & brancards", "Chariots & dessertes", "Textiles hospitaliers"],
+        },
+        {
+          title: "Fournitures de laboratoire",
+          text: "Consommables et équipements pour les laboratoires cliniques et de recherche.",
+          items: ["Prélèvement d’échantillons", "Matériel de laboratoire", "Conservation au froid"],
+        },
+        {
+          title: "Hygiène & prévention des infections",
+          text: "Des produits de nettoyage, de désinfection et de prévention des infections.",
+          items: ["Désinfectants", "Hygiène des mains", "Consommables de stérilisation"],
+        },
+      ],
+      flow: [
+        {
+          title: "Fabricant",
+          text: "Des fabricants évalués sur leurs systèmes de management de la qualité et leur documentation technique.",
+        },
+        {
+          title: "Conformité",
+          text: "Vérification du marquage CE, des déclarations de conformité et des enregistrements sur le marché de destination.",
+        },
+        {
+          title: "Acheminement",
+          text: "Un stockage et un transport maîtrisés, préservant l’identification des lots.",
+        },
+        {
+          title: "Destinataire",
+          text: "Approvisionnement des distributeurs autorisés, des institutions et des acheteurs du secteur de la santé.",
         },
       ],
       approach: [
@@ -500,6 +616,50 @@ const fr: SiteContent = {
         {
           title: "Traçabilité",
           text: "Une documentation au niveau du lot, du fabricant jusqu’au destinataire.",
+        },
+        {
+          title: "Circuits autorisés",
+          text: "Un approvisionnement exclusivement assuré par des partenaires détenant les autorisations requises sur chaque marché.",
+        },
+      ],
+      standards: [
+        {
+          title: "Règlement relatif aux dispositifs médicaux",
+          ref: "Règlement (UE) 2017/745",
+          text: "Les exigences de mise sur le marché de l’UE des dispositifs médicaux, y compris la traçabilité par l’IUD.",
+        },
+        {
+          title: "Règlement relatif aux dispositifs de diagnostic in vitro",
+          ref: "Règlement (UE) 2017/746",
+          text: "Le cadre de l’UE applicable aux dispositifs médicaux de diagnostic in vitro.",
+        },
+        {
+          title: "Management de la qualité",
+          ref: "ISO 13485",
+          text: "La norme de management de la qualité attendue des fabricants de dispositifs médicaux.",
+        },
+        {
+          title: "Équipements de protection individuelle",
+          ref: "Règlement (UE) 2016/425",
+          text: "Les exigences de conception, de fabrication et de conformité applicables aux EPI.",
+        },
+      ],
+      counterparts: [
+        {
+          title: "Fabricants",
+          text: "Des fabricants de dispositifs et de consommables dotés de systèmes qualité certifiés.",
+        },
+        {
+          title: "Distributeurs autorisés",
+          text: "Des distributeurs agréés sur leurs marchés, dotés de compétences réglementaires.",
+        },
+        {
+          title: "Établissements de santé",
+          text: "Hôpitaux, cliniques et prestataires de soins, par l’intermédiaire de leurs circuits d’achat.",
+        },
+        {
+          title: "Organismes d’achat",
+          text: "Centrales et groupements d’achat au service du secteur de la santé.",
         },
       ],
       cta: {
@@ -518,16 +678,52 @@ const fr: SiteContent = {
         "En matière de composants électroniques, tout repose sur la provenance. L’approche d’AUREX est centrée sur la qualification des fournisseurs, les contrôles d’authenticité et une chaîne de traçabilité documentée, afin que les acheteurs industriels puissent s’approvisionner en toute confiance.",
       categories: [
         {
-          title: "Composants actifs & passifs",
-          text: "Semi-conducteurs, circuits intégrés, résistances, condensateurs et pièces associées.",
+          title: "Semi-conducteurs & circuits intégrés",
+          text: "Circuits intégrés, microcontrôleurs, mémoires et semi-conducteurs discrets.",
+          items: ["Microcontrôleurs", "Mémoires", "Semi-conducteurs discrets"],
+        },
+        {
+          title: "Composants passifs",
+          text: "Résistances, condensateurs, inductances et pièces associées, en volumes de production.",
+          items: ["Condensateurs", "Résistances", "Inductances"],
         },
         {
           title: "Pièces électromécaniques",
           text: "Connecteurs, relais, commutateurs et assemblages destinés aux applications industrielles.",
+          items: ["Connecteurs", "Relais", "Commutateurs"],
+        },
+        {
+          title: "Capteurs & modules",
+          text: "Modules de détection, de communication et d’interface pour les fabricants d’équipements.",
+          items: ["Capteurs", "Modules sans fil", "Écrans"],
+        },
+        {
+          title: "Composants de puissance",
+          text: "Des composants pour la conversion de puissance, la protection et le stockage d’énergie.",
+          items: ["Alimentations", "Semi-conducteurs de puissance", "Protection des circuits"],
         },
         {
           title: "Pièces d’équipements industriels",
           text: "Pièces et sous-ensembles au service de la production et de la maintenance.",
+          items: ["Pièces d’automatisme", "Pièces de rechange", "Sous-ensembles"],
+        },
+      ],
+      flow: [
+        {
+          title: "Approvisionnement",
+          text: "Des distributeurs franchisés et des sources indépendantes qualifiées, privilégiés selon leur traçabilité jusqu’au fabricant.",
+        },
+        {
+          title: "Vérification",
+          text: "Examen documentaire et inspection conformes aux pratiques de prévention de la contrefaçon.",
+        },
+        {
+          title: "Manutention",
+          text: "Des pièces sensibles à l’humidité et aux décharges électrostatiques stockées et conditionnées selon les spécifications.",
+        },
+        {
+          title: "Livraison",
+          text: "Livraison aux fabricants et aux acheteurs industriels, avec les enregistrements de la chaîne de traçabilité.",
         },
       ],
       approach: [
@@ -540,8 +736,52 @@ const fr: SiteContent = {
           text: "Une documentation et des inspections qui protègent contre les pièces contrefaites.",
         },
         {
+          title: "Manutention & conditionnement",
+          text: "Protection ESD, maîtrise de la sensibilité à l’humidité et conservation de l’emballage d’origine.",
+        },
+        {
           title: "Conformité à l’export",
           text: "Vérification des exigences relatives aux biens à double usage et au contrôle des exportations avant tout engagement.",
+        },
+      ],
+      standards: [
+        {
+          title: "Prévention de la contrefaçon",
+          ref: "SAE AS6081 · AS5553",
+          text: "Des normes sectorielles pour détecter et prévenir les pièces électroniques contrefaites.",
+        },
+        {
+          title: "Substances dangereuses",
+          ref: "Directive 2011/65/UE (RoHS)",
+          text: "La limitation des substances dangereuses dans les équipements électriques et électroniques.",
+        },
+        {
+          title: "Substances chimiques dans les articles",
+          ref: "Règlement (CE) n° 1907/2006 (REACH)",
+          text: "Les obligations de communication sur les substances extrêmement préoccupantes présentes dans les articles.",
+        },
+        {
+          title: "Contrôle des exportations de biens à double usage",
+          ref: "Règlement (UE) 2021/821",
+          text: "Le contrôle des exportations, du courtage et du transit des biens à double usage.",
+        },
+      ],
+      counterparts: [
+        {
+          title: "Fabricants de composants",
+          text: "Les fabricants et leurs réseaux de distribution franchisés.",
+        },
+        {
+          title: "Sous-traitants électroniques",
+          text: "Prestataires EMS et assembleurs produisant selon les conceptions de leurs clients.",
+        },
+        {
+          title: "Fabricants d’équipements",
+          text: "Des équipementiers (OEM) des secteurs de l’industrie, de l’énergie et de l’automatisation.",
+        },
+        {
+          title: "Maintenance & exploitation",
+          text: "Des acheteurs industriels qui s’approvisionnent en pièces pour la maintenance, la réparation et l’exploitation.",
         },
       ],
       cta: {
@@ -560,16 +800,52 @@ const fr: SiteContent = {
         "Le jeu de rôle grandeur nature, la reconstitution historique et le théâtre reposent sur des pièces d’apparence authentique, durables à l’usage et sûres à porter. AUREX aborde ce marché spécialisé comme toute autre filière de négoce : avec des artisans qualifiés, des spécifications claires et une logistique fiable.",
       categories: [
         {
-          title: "Costumes & tenues",
-          text: "Vêtements d’époque et d’inspiration fantasy, textiles et accessoires.",
+          title: "Armures de mailles",
+          text: "Des mailles d’acier, rivetées ou aboutées, des chemises complètes aux pièces individuelles.",
+          items: ["Hauberts & chemises", "Coiffes", "Pèlerines & camails"],
         },
         {
-          title: "Armures & protections",
-          text: "Armures en cuir et en métal, casques et pièces de protection pour les événements et le spectacle.",
+          title: "Armures de plates & de cuir",
+          text: "Casques, armures de plates et de cuir durci pour les événements et le spectacle.",
+          items: ["Casques", "Gantelets & brassards", "Cuirasses en cuir"],
+        },
+        {
+          title: "Tenues & costumes",
+          text: "Vêtements d’époque et d’inspiration fantasy, textiles et accessoires.",
+          items: ["Tuniques & gambisons", "Capes", "Robes & surcots"],
         },
         {
           title: "Accessoires & reproductions",
           text: "Accessoires sûrs pour un usage événementiel, reproductions historiques et pièces décoratives.",
+          items: ["Accessoires en mousse & latex", "Répliques", "Pièces décoratives"],
+        },
+        {
+          title: "Maroquinerie & accessoires",
+          text: "Ceintures, bourses, sacs et pièces de finition qui complètent un personnage.",
+          items: ["Ceintures & bourses", "Sacs & fourreaux", "Boucles & garnitures"],
+        },
+        {
+          title: "Matériel de camp & d’événement",
+          text: "Tentes, mobilier et vaisselle pour les campements et les événements d’époque.",
+          items: ["Tentes d’époque", "Mobilier de camp", "Vaisselle & éclairage"],
+        },
+      ],
+      flow: [
+        {
+          title: "Atelier",
+          text: "Des artisans et des fabricants sélectionnés pour leur savoir-faire, leurs matériaux et leur capacité.",
+        },
+        {
+          title: "Spécification",
+          text: "Tailles, matériaux, finitions et exigences de sécurité événementielle convenus en amont.",
+        },
+        {
+          title: "Acheminement",
+          text: "Une expédition groupée des marchandises lourdes et volumineuses, emballées pour protéger les finitions.",
+        },
+        {
+          title: "Marché",
+          text: "Distribution auprès des détaillants spécialisés, des organisateurs d’événements et des productions.",
         },
       ],
       approach: [
@@ -582,10 +858,88 @@ const fr: SiteContent = {
           text: "Des matériaux et des finitions évalués pour un usage sûr lors d’événements et sur scène.",
         },
         {
+          title: "Spécifications & tailles",
+          text: "Des spécifications claires de tailles, de poids et de matériaux pour chaque gamme.",
+        },
+        {
           title: "Distribution spécialisée",
           text: "Des canaux d’accès au marché via les détaillants, les organisateurs et les productions.",
         },
       ],
+      standards: [
+        {
+          title: "Sécurité générale des produits",
+          ref: "Règlement (UE) 2023/988 (GPSR)",
+          text: "Les exigences de sécurité applicables aux produits de consommation mis sur le marché de l’UE.",
+        },
+        {
+          title: "Libération de nickel",
+          ref: "REACH, annexe XVII, entrée 27",
+          text: "Les limites de libération de nickel des objets métalliques en contact prolongé avec la peau.",
+        },
+        {
+          title: "Étiquetage des textiles",
+          ref: "Règlement (UE) n° 1007/2011",
+          text: "Dénominations des fibres et étiquetage de la composition des produits textiles.",
+        },
+        {
+          title: "Répliques & règles événementielles",
+          ref: "Règles nationales et propres à chaque événement",
+          text: "Les règles relatives aux répliques d’armes et aux accessoires varient selon les pays et les événements, et sont évaluées marché par marché.",
+        },
+      ],
+      counterparts: [
+        {
+          title: "Ateliers & artisans",
+          text: "Armuriers, forgerons, maroquiniers et costumiers.",
+        },
+        {
+          title: "Détaillants spécialisés",
+          text: "Des boutiques physiques et en ligne dédiées au GN et à la reconstitution historique.",
+        },
+        {
+          title: "Organisateurs d’événements",
+          text: "Organisateurs d’événements de GN, de festivals et de reconstitutions historiques.",
+        },
+        {
+          title: "Théâtre & productions",
+          text: "Des productions de théâtre, de cinéma et de télévision qui s’approvisionnent en costumes et en accessoires.",
+        },
+      ],
+      showcase: {
+        eyebrow: "Gros plan",
+        title: "L’art de la cotte de mailles.",
+        accent: ["mailles."],
+        text: "La maille compte parmi les plus anciennes formes d’armure, et reste l’une des plus exigeantes à bien réaliser. Une seule chemise peut réunir des dizaines de milliers d’anneaux, chacun fermé à la main. La taille des anneaux, le calibre du fil et le mode de fermeture, riveté ou abouté, déterminent son poids, sa solidité et son authenticité.",
+        setCaption: "Gamme présentée à titre indicatif : chemises de mailles, haubert, coiffe et pèlerine, avec garnitures en cuir et en laiton.",
+        details: [
+          {
+            key: "weave",
+            title: "Le maillage",
+            text: "Le motif européen quatre-en-un : chaque anneau passe dans quatre autres, pour la solidité et le tombé.",
+          },
+          {
+            key: "buckles",
+            title: "Sangles & boucles",
+            text: "Des sangles en cuir et des boucles métalliques ferment le vêtement et permettent de l’ajuster à celui qui le porte.",
+          },
+          {
+            key: "collar",
+            title: "Le col",
+            text: "Un col en cuir à garnitures de laiton termine l’encolure et répartit le poids de manière uniforme.",
+          },
+          {
+            key: "coif",
+            title: "La coiffe",
+            text: "Une capuche de mailles qui protège la tête et le cou, portée sous un casque ou seule.",
+          },
+          {
+            key: "mantle",
+            title: "La pèlerine",
+            text: "Une cape de mailles couvrant les épaules, à col de cuir doublé, portée par-dessus une chemise pour une meilleure couverture.",
+          },
+        ],
+      },
       cta: {
         title: "Échanger sur le LARP & les objets historiques.",
         accent: ["historiques."],
@@ -599,8 +953,18 @@ const fr: SiteContent = {
     overview: "Vue d’ensemble",
     categoriesEyebrow: "Catégories prioritaires",
     categoriesTitle: "Le périmètre de la filière.",
+    examplesLabel: "Exemples",
+    flowEyebrow: "De l’origine au marché",
+    flowTitle: "Le parcours des marchandises.",
     approachEyebrow: "Approche",
     approachTitle: "Comment AUREX l’aborde.",
+    standardsEyebrow: "Normes & cadres de référence",
+    standardsTitle: "Les règles qui encadrent le négoce.",
+    standardsNote:
+      "Cadres de référence pris en compte par AUREX pour qualifier ses partenaires et ses produits. Les exigences varient selon le produit et le marché de destination. Il ne s’agit pas d’une déclaration de certification.",
+    counterpartsEyebrow: "Contreparties",
+    counterpartsTitle: "Avec qui AUREX cherche à travailler.",
+    counterpartsCta: "Proposer un partenariat",
     corridorsEyebrow: "Marchés prioritaires",
     otherEyebrow: "Autres filières",
     allTrade: "Toutes les filières",

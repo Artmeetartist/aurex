@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Photo } from "@/components/media/photo";
 import { RevealGroup, RevealItem } from "@/components/motion/reveal";
@@ -9,6 +10,7 @@ import type { SiteContent } from "@/content/types";
 import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/cn";
 import { href, tradeHref, tradeIds, type TradeSlugId } from "@/lib/routes";
+import { mailSet } from "./larp/mail-assets";
 import { GreenLoop, tradeIcons } from "./trade-icons";
 
 const cardArt: Record<TradeSlugId, { photo: PhotoData; tint: string }> = {
@@ -59,10 +61,30 @@ export function TradeLineGrid({
               className={cn("flex h-full flex-col", light ? "elevate-light" : "elevate")}
             >
               <div className="relative h-48 overflow-hidden md:h-56">
-                <div className="absolute inset-0 transition-transform duration-[1.4s] ease-[var(--ease-out-expo)] group-hover/card:scale-[1.06]">
-                  <Photo photo={cardArt[id].photo} sizes="(min-width: 1024px) 40vw, (min-width: 768px) 50vw, 100vw" />
-                </div>
-                <div aria-hidden className="absolute inset-0 mix-blend-soft-light" style={{ backgroundColor: cardArt[id].tint, opacity: 0.5 }} />
+                {id === "larp" ? (
+                  <>
+                    <div
+                      aria-hidden
+                      className="absolute inset-0 bg-[radial-gradient(70%_90%_at_50%_0%,rgb(226_207_152/0.28),transparent_70%),linear-gradient(180deg,#163535,#020c0c)]"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 top-3 transition-transform duration-[1.4s] ease-[var(--ease-out-expo)] group-hover/card:-translate-y-1 group-hover/card:scale-[1.06]">
+                      <Image
+                        src={mailSet.src}
+                        alt=""
+                        fill
+                        sizes="(min-width: 1024px) 34vw, (min-width: 768px) 50vw, 100vw"
+                        className="object-cover object-[50%_14%] drop-shadow-[0_16px_24px_rgb(0_0_0/0.5)]"
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="absolute inset-0 transition-transform duration-[1.4s] ease-[var(--ease-out-expo)] group-hover/card:scale-[1.06]">
+                      <Photo photo={cardArt[id].photo} sizes="(min-width: 1024px) 40vw, (min-width: 768px) 50vw, 100vw" />
+                    </div>
+                    <div aria-hidden className="absolute inset-0 mix-blend-soft-light" style={{ backgroundColor: cardArt[id].tint, opacity: 0.5 }} />
+                  </>
+                )}
                 <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent" />
                 <div className="absolute inset-x-5 bottom-4 flex items-end justify-between gap-4 md:inset-x-7">
                   <span className="glass inline-flex h-12 w-12 items-center justify-center rounded-full text-gold">

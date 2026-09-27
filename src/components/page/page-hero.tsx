@@ -15,13 +15,15 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 /**
  * Inner-page opener: a framed cinematic image that tilts back in perspective
  * as the page scrolls, with breadcrumb, masked H1 and intro. Pass `image`
- * (local still, no extension) or `photo` (registry photo with fallback), and an
+ * (local still, no extension), `photo` (registry photo with fallback) or a
+ * custom `backdrop`, and an
  * optional `tint` colour that gives a page its own atmosphere.
  */
 export function PageHero({
   hero,
   image,
   photo,
+  backdrop,
   tint,
   breadcrumb,
   children,
@@ -29,12 +31,14 @@ export function PageHero({
   hero: PageHeroContent;
   image?: string;
   photo?: PhotoData;
+  /** Custom visual layer (e.g. a procedural texture) in place of an image. */
+  backdrop?: React.ReactNode;
   tint?: string;
   breadcrumb: { home: string; homeHref: string; current: string; parent?: { label: string; href: string } };
   children?: React.ReactNode;
 }) {
   const ref = useRef<HTMLElement>(null);
-  const hasImage = Boolean(image || photo);
+  const hasImage = Boolean(image || photo || backdrop);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "16%"]);
   const imageScale = useTransform(scrollYProgress, [0, 1], [1.06, 1.16]);
@@ -56,7 +60,9 @@ export function PageHero({
           className="elevate absolute inset-2 origin-top overflow-hidden bg-ink-850 will-change-transform md:inset-3"
         >
           <motion.div style={{ y: imageY, scale: imageScale }} className="absolute inset-0">
-            {photo ? (
+            {backdrop ? (
+              backdrop
+            ) : photo ? (
               <Photo photo={photo} eager />
             ) : (
               <Image src={`${image}.webp`} alt="" fill loading="eager" fetchPriority="high" sizes="100vw" className="object-cover" />
