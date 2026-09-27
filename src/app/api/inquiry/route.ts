@@ -1,6 +1,6 @@
 import { deliverInquiry } from "@/lib/inquiry/deliver";
 import { clientIp, createRateLimiter } from "@/lib/inquiry/rate-limit";
-import { inquirySchema, spamReason, toFieldErrors } from "@/lib/inquiry/schema";
+import { inquirySchema, spamReason, toFieldErrors, toRecord } from "@/lib/inquiry/schema";
 
 /**
  * POST /api/inquiry — receives website inquiries.
@@ -61,7 +61,7 @@ export async function POST(request: Request) {
   const parsed = inquirySchema.safeParse(body);
   if (!parsed.success) return json({ error: "validation", fields: toFieldErrors(parsed.error) }, 400);
 
-  const result = await deliverInquiry(parsed.data);
+  const result = await deliverInquiry(toRecord(parsed.data));
   switch (result.status) {
     case "delivered":
     case "logged":

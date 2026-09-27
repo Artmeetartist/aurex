@@ -13,7 +13,7 @@ export function HomeContact({ locale, content }: { locale: Locale; content: Site
   const { direct } = content.contact;
 
   return (
-    <section id="contact" className="surface-ink section-y relative scroll-mt-[var(--header-h)] overflow-hidden">
+    <section id="contact" className="surface-ink section-y relative scroll-mt-[var(--header-h)] overflow-clip">
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <Image
           src="/media/stills/still-connected.webp"
@@ -55,7 +55,7 @@ export function HomeContact({ locale, content }: { locale: Locale; content: Site
         </div>
 
         <div className="lg:col-span-7 lg:col-start-6 xl:col-span-6 xl:col-start-7">
-          <div className="glass rounded-[1.75rem] p-5 empty:hidden sm:p-8 md:p-10">
+          <div className="rounded-[1.75rem] empty:hidden sm:glass sm:p-8 md:p-10">
             <Suspense fallback={null}>
               <InquiryForm locale={locale} inquiry={content.inquiry} surface="dark" />
             </Suspense>

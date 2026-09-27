@@ -79,9 +79,16 @@ export type InquiryField = keyof z.input<typeof inquiryFieldsSchema>;
 export type InquiryFields = z.output<typeof inquiryFieldsSchema>;
 export type InquiryPayload = z.input<typeof inquirySchema>;
 export type Inquiry = z.output<typeof inquirySchema>;
+/** A validated inquiry without its anti-spam fields: what is delivered and stored. */
+export type InquiryRecord = Omit<Inquiry, "website" | "startedAt" | "submittedAt">;
 export type FieldErrors = Partial<Record<InquiryField, InquiryIssue>>;
 
 export const inquiryFieldOrder = Object.keys(inquiryFieldsSchema.shape) as InquiryField[];
+
+/** Drops the anti-spam fields so they are never delivered or stored. */
+export function toRecord({ type, name, organisation, role, email, country, message, consent, locale }: Inquiry): InquiryRecord {
+  return { type, name, organisation, role, email, country, message, consent, locale };
+}
 
 /** First issue per field, keyed by field name. */
 export function toFieldErrors(error: z.ZodError): FieldErrors {

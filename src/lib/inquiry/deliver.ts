@@ -3,7 +3,7 @@ import { createHmac, randomUUID } from "node:crypto";
 import { getContent } from "@/content/repository";
 import { defaultLocale } from "@/i18n/config";
 import { renderInquiryEmail } from "./email";
-import type { Inquiry } from "./schema";
+import type { InquiryRecord } from "./schema";
 
 /**
  * Inquiry delivery.
@@ -24,7 +24,7 @@ export type DeliveryResult =
   | { status: "unconfigured" }
   | { status: "failed" };
 
-type Envelope = { id: string; receivedAt: Date; inquiry: Inquiry };
+type Envelope = { id: string; receivedAt: Date; inquiry: InquiryRecord };
 type Adapter = { name: string; send: (envelope: Envelope) => Promise<void> };
 
 const TIMEOUT_MS = 10_000;
@@ -107,7 +107,7 @@ function webhookAdapter(): Adapter | null {
   };
 }
 
-export async function deliverInquiry(inquiry: Inquiry): Promise<DeliveryResult> {
+export async function deliverInquiry(inquiry: InquiryRecord): Promise<DeliveryResult> {
   const envelope: Envelope = { id: randomUUID(), receivedAt: new Date(), inquiry };
   const adapters = [resendAdapter(), webhookAdapter()].filter((a): a is Adapter => a !== null);
 

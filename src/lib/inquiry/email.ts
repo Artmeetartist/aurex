@@ -1,7 +1,7 @@
 import "server-only";
 import type { SiteContent } from "@/content/types";
 import { localeMeta } from "@/i18n/config";
-import type { Inquiry } from "./schema";
+import type { InquiryRecord } from "./schema";
 
 /** Escapes text for safe interpolation into HTML (element content and attributes). */
 export function escapeHtml(value: string) {
@@ -20,7 +20,7 @@ function oneLine(value: string) {
 
 type Row = { label: string; value: string; href?: string };
 
-function rows(inquiry: Inquiry, content: SiteContent): Row[] {
+function rows(inquiry: InquiryRecord, content: SiteContent): Row[] {
   const { fields, types } = content.inquiry;
   const list: Row[] = [
     { label: fields.type, value: types[inquiry.type].label },
@@ -44,7 +44,7 @@ function stamp(date: Date) {
  * Internal notification email. Labels come from the site content (the team's
  * working language) so no copy is hard-coded; every user value is escaped.
  */
-export function renderInquiryEmail(inquiry: Inquiry, content: SiteContent, meta: { id: string; receivedAt: Date }) {
+export function renderInquiryEmail(inquiry: InquiryRecord, content: SiteContent, meta: { id: string; receivedAt: Date }) {
   const { siteName } = content.meta;
   const typeLabel = content.inquiry.types[inquiry.type].label;
   const subject = oneLine(`${siteName} · ${content.inquiry.title} · ${typeLabel} — ${inquiry.organisation}`).slice(0, 200);

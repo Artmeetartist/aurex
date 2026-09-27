@@ -51,6 +51,9 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 const isInquiryType = (value: string | null): value is InquiryType =>
   !!value && (inquiryTypes as readonly string[]).includes(value);
 
+/** Event-time clock (kept outside components so it is never mistaken for render work). */
+const now = () => Date.now();
+
 function emptyValues(type: InquiryType | ""): Values {
   return { type, name: "", organisation: "", role: "", email: "", country: "", message: "", consent: false };
 }
@@ -83,7 +86,7 @@ export function InquiryForm({ locale, inquiry, defaultType, surface = "dark", cl
   const pendingFocus = useRef<InquiryField | null>(null);
 
   useEffect(() => {
-    startedAt.current = Date.now();
+    startedAt.current = now();
   }, []);
 
   // The success panel and the form mount after AnimatePresence finishes the
@@ -172,7 +175,7 @@ export function InquiryForm({ locale, inquiry, defaultType, surface = "dark", cl
           locale,
           website,
           startedAt: startedAt.current,
-          submittedAt: Date.now(),
+          submittedAt: now(),
         }),
       });
 
@@ -204,7 +207,7 @@ export function InquiryForm({ locale, inquiry, defaultType, surface = "dark", cl
     setErrors({});
     setStatus("idle");
     setAnnouncement("");
-    startedAt.current = Date.now();
+    startedAt.current = now();
     pendingFocus.current = "message";
   }
 

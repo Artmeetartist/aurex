@@ -28,8 +28,14 @@ export function TypeOptions({
 }) {
   const errorId = `${idPrefix}-type-error`;
   return (
-    <fieldset aria-describedby={error ? errorId : undefined}>
-      <legend className={cn("mb-3.5 text-[0.875rem] font-medium tracking-[-0.005em]", tone.label)}>{legend}</legend>
+    <fieldset
+      role="radiogroup"
+      aria-labelledby={`${idPrefix}-type-legend`}
+      aria-describedby={error ? errorId : undefined}
+      aria-invalid={error ? true : undefined}
+      aria-required
+    >
+      <legend id={`${idPrefix}-type-legend`} className={cn("mb-3.5 text-[0.875rem] font-medium tracking-[-0.005em]", tone.label)}>{legend}</legend>
       <div className="grid gap-3 sm:grid-cols-2">
         {inquiryTypes.map((type, i) => {
           const checked = value === type;
@@ -54,7 +60,6 @@ export function TypeOptions({
                 onChange={() => onChange(type)}
                 aria-labelledby={`${id}-label`}
                 aria-describedby={error ? `${id}-desc ${errorId}` : `${id}-desc`}
-                aria-invalid={error ? true : undefined}
                 className="sr-only"
               />
               <span
