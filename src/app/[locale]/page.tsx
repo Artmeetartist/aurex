@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Capital } from "@/components/home/capital";
 import { GlobalReach } from "@/components/home/global-reach";
 import { Hero } from "@/components/home/hero";
+import { HomeContact } from "@/components/home/home-contact";
+import { LeadershipTeaser } from "@/components/home/leadership-teaser";
+import { Partnerships } from "@/components/home/partnerships";
+import { Sectors } from "@/components/home/sectors";
 import { ValueInMotion } from "@/components/home/value-in-motion";
 import { WhoWeAre } from "@/components/home/who-we-are";
+import { WhyAurex } from "@/components/home/why-aurex";
 import { getContent } from "@/content/repository";
 import { isLocale } from "@/i18n/config";
 import { pageMetadata } from "@/lib/seo";
@@ -33,6 +39,12 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         footnote={reach.footnote}
         link={{ label: reach.link, route: "presence" }}
       />
+      <Sectors locale={locale} content={content} />
+      <Capital locale={locale} content={content} />
+      <WhyAurex content={content} />
+      <Partnerships locale={locale} content={content} />
+      <LeadershipTeaser locale={locale} content={content} />
+      <HomeContact locale={locale} content={content} />
     </>
   );
 }
