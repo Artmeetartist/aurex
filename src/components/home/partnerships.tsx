@@ -22,7 +22,7 @@ export function Partnerships({ locale, content }: { locale: Locale; content: Sit
       <div className="container-x relative">
         <div className="flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-end">
           <SectionHeading
-            index="07"
+            index="08"
             eyebrow={copy.eyebrow}
             title={copy.title}
             accent={copy.accent}

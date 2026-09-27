@@ -106,6 +106,10 @@ export type SiteContent = {
       secondaryCta: string;
       /** Seven stages of the sustainable-commerce ecosystem, in scroll order. */
       stages: string[];
+      /** Accessible name for the list of stages. */
+      stagesLabel: string;
+      tourPause: string;
+      tourPlay: string;
       pillarsEyebrow: string;
       explore: string;
       flowLabel: string;

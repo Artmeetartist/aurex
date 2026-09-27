@@ -83,7 +83,7 @@ export function EcosystemGallery({ content }: { content: SiteContent }) {
               aria-label={heading.title}
               tabIndex={0}
               style={{ scrollPaddingInline: CONTAINER_EDGE }}
-              className="mt-12 snap-x snap-mandatory overflow-x-auto overscroll-x-contain pb-4 [scrollbar-width:none] focus-visible:outline-offset-[-2px] md:mt-16 lg:motion-safe:my-auto lg:motion-safe:snap-none lg:motion-safe:overflow-visible lg:motion-safe:pb-0 [&::-webkit-scrollbar]:hidden"
+              className="mt-12 snap-x snap-mandatory overflow-x-auto overscroll-x-contain pb-4 [scrollbar-width:none] focus-visible:outline-offset-[-2px] md:mt-16 lg:motion-safe:my-auto lg:motion-safe:snap-none lg:motion-safe:pt-6 lg:motion-safe:overflow-visible lg:motion-safe:pb-0 [&::-webkit-scrollbar]:hidden"
             >
               <motion.ol
                 style={rowStyle}
@@ -94,7 +94,7 @@ export function EcosystemGallery({ content }: { content: SiteContent }) {
                   const pillar = content.greenPillars[STAGE_PILLAR[i]].name;
                   return (
                     <li key={name} className="snap-start">
-                      <figure className="group/stage w-[min(78vw,24rem)] md:w-[26rem] lg:w-[min(36vw,34rem,calc((100svh_-_29rem)*1.6))]">
+                      <figure className="group/stage w-[min(78vw,24rem)] md:w-[26rem] lg:w-[min(36vw,34rem,calc((100svh_-_31rem)*1.6))]">
                         <div className="relative">
                           <div className="elevate relative aspect-[16/10] overflow-hidden rounded-[1.25rem] bg-forest-900">
                             <motion.div style={{ x: imageX }} className="absolute -inset-x-[6%] inset-y-0 motion-reduce:!transform-none">

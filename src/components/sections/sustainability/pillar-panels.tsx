@@ -52,7 +52,7 @@ function Panel({ id, index, content }: { id: GreenPillarId; index: number; conte
     <li
       ref={ref}
       id={id}
-      className="relative grid scroll-mt-[var(--header-h)] lg:min-h-[min(84svh,46rem)] lg:grid-cols-2"
+      className="relative grid lg:min-h-[min(84svh,46rem)] lg:grid-cols-2"
     >
       {/* Image half */}
       <div className={cn("relative aspect-[16/11] overflow-hidden bg-forest-900 sm:aspect-[16/9] lg:aspect-auto", flip && "lg:order-2")}>
@@ -61,7 +61,7 @@ function Panel({ id, index, content }: { id: GreenPillarId; index: number; conte
             src={stageStill(still.stage)}
             alt=""
             fill
-            sizes="(min-width: 1024px) 90vw, 100vw"
+            sizes="(min-width: 1024px) 80vw, 100vw"
             className="object-cover"
             style={{ objectPosition: still.focus }}
           />
@@ -105,8 +105,8 @@ function Panel({ id, index, content }: { id: GreenPillarId; index: number; conte
             <span className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl border border-cream/15 bg-cream/[0.04] text-cream">
               <PillarIcon id={id} size={46} />
             </span>
-            <span className="t-eyebrow tabular-nums text-cream/80">
-              {pad(index + 1)} <span className="text-cream/45">/ {pad(PILLAR_ORDER.length)}</span>
+            <span aria-hidden className="t-eyebrow tabular-nums text-cream/85">
+              {pad(index + 1)} <span className="text-cream/60">/ {pad(PILLAR_ORDER.length)}</span>
             </span>
           </Reveal>
 
@@ -153,7 +153,7 @@ export function PillarPanels({ content }: { content: SiteContent }) {
   const draw = useRange(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section id="pillars" tabIndex={-1} className="relative scroll-mt-[var(--header-h)] bg-graphite-950 text-cream outline-none">
+    <section id="pillars" tabIndex={-1} className="relative bg-graphite-950 text-cream outline-none">
       <div className="container-x pb-14 pt-[clamp(5.5rem,11vw,10rem)] md:pb-20">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">

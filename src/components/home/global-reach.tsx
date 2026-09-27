@@ -34,6 +34,8 @@ export function GlobalReach({ locale, content, heading, footnote, index, link, a
 
   return (
     <section ref={section} className="surface-ink-deep section-y relative overflow-hidden">
+      {/* Fades the surface's top glow in from the ink of the section above, so no edge shows. */}
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-ink-950 to-transparent" />
       <div
         aria-hidden
         className="pointer-events-none absolute right-[-20%] top-1/2 h-[70rem] w-[70rem] -translate-y-1/2 rounded-full opacity-60 [background:radial-gradient(closest-side,rgb(0_153_153/0.22),transparent_70%)]"

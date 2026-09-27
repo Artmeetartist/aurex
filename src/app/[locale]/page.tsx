@@ -37,7 +37,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <GlobalReach
         locale={locale}
         content={content}
-        index="03"
+        index="05"
         heading={{ eyebrow: reach.eyebrow, title: reach.title, accent: reach.accent, intro: reach.intro }}
         footnote={reach.footnote}
         link={{ label: reach.link, route: "presence" }}

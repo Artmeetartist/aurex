@@ -30,7 +30,7 @@ export function HomeContact({ locale, content }: { locale: Locale; content: Site
         <div className="lg:col-span-5">
           <div className="lg:sticky lg:top-32">
             <SectionHeading
-              index="09"
+              index="10"
               eyebrow={copy.eyebrow}
               title={copy.title}
               accent={copy.accent}

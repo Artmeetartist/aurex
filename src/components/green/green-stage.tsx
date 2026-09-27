@@ -133,6 +133,7 @@ export function GreenStage({ locale, content }: { locale: Locale; content: SiteC
           {/* Headline */}
           <div className="relative">
             <p className="t-eyebrow flex items-center gap-3 text-brass-soft">
+              <span className="text-brass">04</span>
               <span aria-hidden className="h-px w-8 bg-brass/70" />
               <span>{copy.eyebrow}</span>
               <span
@@ -217,13 +218,13 @@ export function GreenStage({ locale, content }: { locale: Locale; content: SiteC
           </div>
 
           {/* Stage ticker (desktop) */}
-          <ol className="sr-only lg:hidden">
+          <ol aria-label={copy.stagesLabel} className="sr-only lg:hidden">
             {stages.map((name) => (
               <li key={name}>{name}</li>
             ))}
           </ol>
           <div className="relative mt-8 hidden lg:block">
-            <ol className="flex items-center justify-between gap-2">
+            <ol aria-label={copy.stagesLabel} className="flex items-center justify-between gap-2">
               {stages.map((name, i) => {
                 const current = i === stage && phase !== "intro";
                 return (

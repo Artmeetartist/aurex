@@ -70,7 +70,6 @@ export function GreenHero({ locale, content }: { locale: Locale; content: SiteCo
   const { sustainability, common, nav } = content;
   const hero = sustainability.hero;
   const green = content.home.green;
-  const controls = content.home.hero;
   const stages = green.stages.slice(0, STAGE_COUNT);
 
   const reduced = !!useReducedMotion();
@@ -110,9 +109,16 @@ export function GreenHero({ locale, content }: { locale: Locale; content: SiteCo
     }
   };
 
-  useAnimationFrame((_, delta) => {
-    if (reduced || !playing || !visible || !mounted) return;
-    clock.current += Math.min(delta, 100) / 1000;
+  // Wall-clock based (motion caps its own frame delta), so slow devices keep the same pace.
+  const lastTime = useRef<number | null>(null);
+  useAnimationFrame((time) => {
+    if (reduced || !playing || !visible || !mounted) {
+      lastTime.current = null;
+      return;
+    }
+    const delta = lastTime.current === null ? 0 : Math.min(Math.max(time - lastTime.current, 0), 250);
+    lastTime.current = time;
+    clock.current += delta / 1000;
     apply(clock.current);
   });
 
@@ -166,7 +172,7 @@ export function GreenHero({ locale, content }: { locale: Locale; content: SiteCo
         {/* Legibility scrims */}
         <div aria-hidden className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-forest-950/75 to-transparent" />
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-forest-950 via-forest-950/70 to-transparent" />
-        <div aria-hidden className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-forest-950/80 via-forest-950/25 to-transparent lg:w-[70%]" />
+        <div aria-hidden className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-forest-950/55 via-forest-950/20 to-transparent md:from-forest-950/80 lg:w-[70%]" />
         <motion.div aria-hidden style={{ opacity: darken }} className="absolute inset-0 bg-forest-950" />
       </motion.div>
 
@@ -227,89 +233,88 @@ export function GreenHero({ locale, content }: { locale: Locale; content: SiteCo
           </div>
 
           {/* Tour panel: current stage, progress through the seven stages, pause. */}
-          {showTour && (
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: EASE, delay: 0.9 }}
-              className="lg:col-span-4 lg:col-start-9 xl:col-span-4 xl:col-start-9"
-            >
-              <div className="rounded-[1.25rem] border border-cream/12 bg-forest-950/50 p-4 backdrop-blur-md md:p-5">
-                <div className="flex items-center gap-4">
-                  <button
-                    type="button"
-                    onClick={() => setPlaying((p) => !p)}
-                    aria-label={playing ? controls.pause : controls.play}
-                    className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-cream/20 text-cream/85 transition-colors duration-300 hover:border-brass/70 hover:text-cream"
-                  >
-                    <PlayIcon playing={playing} />
-                  </button>
-                  <div aria-hidden className="relative h-11 min-w-0 flex-1">
-                    {stages.map((name, i) => (
-                      <div
-                        key={name}
-                        className={cn(
-                          "absolute inset-0 flex flex-col justify-center transition-[opacity,transform] duration-700 ease-[var(--ease-out-expo)]",
-                          i === stage ? "translate-y-0 opacity-100" : i < stage ? "-translate-y-2 opacity-0" : "translate-y-2 opacity-0",
-                        )}
-                      >
-                        <span className="t-eyebrow tabular-nums text-brass-soft">
-                          {pad(i + 1)} / {pad(STAGE_COUNT)}
-                        </span>
-                        <span className="mt-1.5 truncate text-[1.0625rem] leading-tight tracking-[-0.01em] text-cream">{name}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Progress rail with a stop per stage; the stops seek the tour on wider screens. */}
-                <div className="relative mt-3">
-                  <div aria-hidden className="absolute inset-x-[1.375rem] top-1/2 h-px -translate-y-1/2 bg-cream/15">
-                    <motion.div
-                      style={{ scaleX: progress }}
-                      className="h-px origin-left bg-gradient-to-r from-brass via-gold to-teal"
-                    />
-                  </div>
-                  <ol className="relative hidden justify-between md:flex">
-                    {stages.map((name, i) => (
-                      <li key={name} className="flex">
-                        <button
-                          type="button"
-                          onClick={() => seek(i)}
-                          aria-label={name}
-                          aria-current={i === stage ? "step" : undefined}
-                          className="group/stop inline-flex h-11 w-11 items-center justify-center rounded-full"
-                        >
-                          <span
-                            className={cn(
-                              "h-1.5 w-1.5 rounded-full transition-all duration-500",
-                              i === stage
-                                ? "scale-150 bg-gold shadow-[0_0_10px_rgb(141_198_63/0.8)]"
-                                : i < stage
-                                  ? "bg-brass group-hover/stop:bg-brass-soft"
-                                  : "bg-cream/35 group-hover/stop:bg-cream",
-                            )}
-                          />
-                        </button>
-                      </li>
-                    ))}
-                  </ol>
-                  <div aria-hidden className="relative flex justify-between md:hidden">
-                    {stages.map((name, i) => (
-                      <span key={name} className="flex h-8 w-11 items-center justify-center">
-                        <span
-                          className={cn(
-                            "h-1.5 w-1.5 rounded-full transition-colors duration-500",
-                            i === stage ? "bg-gold" : i < stage ? "bg-brass" : "bg-cream/35",
-                          )}
-                        />
+          {/* Hidden with CSS under reduced motion (no tour), so server and client markup match. */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: EASE, delay: 0.9 }}
+            className="motion-reduce:hidden md:max-w-[26rem] lg:col-span-4 lg:col-start-9 lg:max-w-none"
+          >
+            <div className="rounded-[1.25rem] border border-cream/12 bg-forest-950/50 p-4 backdrop-blur-md md:p-5">
+              <div className="flex items-center gap-4">
+                <button
+                  type="button"
+                  onClick={() => setPlaying((p) => !p)}
+                  aria-label={playing ? green.tourPause : green.tourPlay}
+                  className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-cream/20 text-cream/85 transition-colors duration-300 hover:border-brass/70 hover:text-cream"
+                >
+                  <PlayIcon playing={playing} />
+                </button>
+                <div aria-hidden className="relative h-11 min-w-0 flex-1">
+                  {stages.map((name, i) => (
+                    <div
+                      key={name}
+                      className={cn(
+                        "absolute inset-0 flex flex-col justify-center transition-[opacity,transform] duration-700 ease-[var(--ease-out-expo)]",
+                        i === stage ? "translate-y-0 opacity-100" : i < stage ? "-translate-y-2 opacity-0" : "translate-y-2 opacity-0",
+                      )}
+                    >
+                      <span className="t-eyebrow tabular-nums text-brass-soft">
+                        {pad(i + 1)} / {pad(STAGE_COUNT)}
                       </span>
-                    ))}
-                  </div>
+                      <span className="mt-1.5 truncate text-[1.0625rem] leading-tight tracking-[-0.01em] text-cream">{name}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
-            </motion.div>
-          )}
+
+              {/* Progress rail with a stop per stage; the stops seek the tour on wider screens. */}
+              <div className="relative mt-3">
+                <div aria-hidden className="absolute inset-x-[1.375rem] top-1/2 h-px -translate-y-1/2 bg-cream/15">
+                  <motion.div
+                    style={{ scaleX: progress }}
+                    className="h-px origin-left bg-gradient-to-r from-brass via-gold to-teal"
+                  />
+                </div>
+                <ol aria-label={green.stagesLabel} className="relative hidden justify-between md:flex">
+                  {stages.map((name, i) => (
+                    <li key={name} className="flex">
+                      <button
+                        type="button"
+                        onClick={() => seek(i)}
+                        aria-label={name}
+                        aria-current={i === stage ? "step" : undefined}
+                        className="group/stop inline-flex h-11 w-11 items-center justify-center rounded-full"
+                      >
+                        <span
+                          className={cn(
+                            "h-1.5 w-1.5 rounded-full transition-all duration-500",
+                            i === stage
+                              ? "scale-150 bg-gold shadow-[0_0_10px_rgb(141_198_63/0.8)]"
+                              : i < stage
+                                ? "bg-brass group-hover/stop:bg-brass-soft"
+                                : "bg-cream/35 group-hover/stop:bg-cream",
+                          )}
+                        />
+                      </button>
+                    </li>
+                  ))}
+                </ol>
+                <div aria-hidden className="relative flex justify-between md:hidden">
+                  {stages.map((name, i) => (
+                    <span key={name} className="flex h-8 w-11 items-center justify-center">
+                      <span
+                        className={cn(
+                          "h-1.5 w-1.5 rounded-full transition-colors duration-500",
+                          i === stage ? "bg-gold" : i < stage ? "bg-brass" : "bg-cream/35",
+                        )}
+                      />
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </motion.div>
     </section>

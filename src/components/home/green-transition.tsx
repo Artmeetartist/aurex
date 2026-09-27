@@ -24,6 +24,8 @@ export function GreenTransition({ locale, content }: { locale: Locale; content: 
         <GreenFlow content={content} />
       </div>
       <GreenStatement locale={locale} content={content} />
+      {/* Hand the forest palette over to the ink of the next section without a seam. */}
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-ink-950" />
     </section>
   );
 }

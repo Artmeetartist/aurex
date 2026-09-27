@@ -74,7 +74,7 @@ export function MailShowcase({ showcase, id }: { showcase: Showcase; id?: string
                       aria-controls="mail-detail"
                       aria-label={d.title}
                       style={{ left: `${pos.x}%`, top: `${pos.y}%` }}
-                      className="group/spot absolute flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+                      className="group/spot absolute flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
                     >
                       <span
                         aria-hidden

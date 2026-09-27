@@ -13,7 +13,7 @@ export function WhyAurex({ content }: { content: SiteContent }) {
         <div className="lg:col-span-5">
           <div className="lg:sticky lg:top-32">
             <SectionHeading
-              index="06"
+              index="07"
               eyebrow={copy.eyebrow}
               title={copy.title}
               accent={copy.accent}
