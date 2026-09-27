@@ -254,7 +254,7 @@ const pl: SiteContent = {
       title: "Wzrost budowany w partnerstwie.",
       accent: ["partnerstwie."],
       intro:
-        "AUREX współpracuje z producentami, dystrybutorami, przedsiębiorstwami, instytucjami i współinwestorami, których standardy i horyzont odpowiadają naszym.",
+        "AUREX dąży do współpracy z producentami, dystrybutorami, przedsiębiorstwami, instytucjami i współinwestorami o standardach i horyzoncie zbieżnych z własnymi.",
       cta: "Więcej o partnerstwach",
     },
     leadership: {
@@ -262,7 +262,7 @@ const pl: SiteContent = {
       title: "Odpowiedzialny nadzór, wpisany w strukturę.",
       accent: ["nadzór,"],
       intro:
-        "Grupa AUREX jest kierowana z długoterminowym mandatem: jasny podział odpowiedzialności, udokumentowane decyzje i kultura ładu korporacyjnego budowana przed osiągnięciem skali, a nie po nim.",
+        "Model kierowania AUREX zakłada długoterminowy mandat: jasny podział odpowiedzialności, udokumentowane decyzje i kulturę ładu korporacyjnego ugruntowaną przed osiągnięciem skali, a nie po nim.",
       principles: [
         "Jasne mandaty i odpowiedzialność",
         "Udokumentowane, weryfikowalne decyzje",
@@ -276,7 +276,7 @@ const pl: SiteContent = {
       title: "Rozpocznijmy rozmowę.",
       accent: ["rozmowę."],
       intro:
-        "Niezależnie od tego, czy reprezentują Państwo instytucję, przedsiębiorstwo, producenta czy inwestora, prosimy o przedstawienie celu kontaktu. Odpowiemy, wskazując właściwy kolejny krok.",
+        "Niezależnie od tego, czy reprezentują Państwo instytucję, przedsiębiorstwo, producenta czy inwestora, zapraszamy do przedstawienia celu kontaktu i rozpoczęcia rozmowy z AUREX.",
       direct: "Wolą Państwo e-mail?",
     },
   },
@@ -286,7 +286,7 @@ const pl: SiteContent = {
       name: "Handel międzynarodowy i EXIM",
       short: "Handel i EXIM",
       summary:
-        "Transgraniczne pozyskiwanie towarów, import i eksport, prowadzone według europejskich standardów dokumentacji, zgodności z przepisami i weryfikacji kontrahentów.",
+        "Transgraniczne pozyskiwanie towarów, import i eksport, zaprojektowane w oparciu o europejskie standardy dokumentacji, zgodności z przepisami i weryfikacji kontrahentów.",
       scope: [
         "Pozyskiwanie dostawców i zakupy",
         "Import i eksport (EXIM)",
@@ -305,14 +305,14 @@ const pl: SiteContent = {
       name: "Dystrybucja",
       short: "Dystrybucja",
       summary:
-        "Kanały dotarcia do rynku rozwijane wspólnie z partnerami dystrybucyjnymi, łączące podaż z popytem na rynkach priorytetowych.",
+        "Kanały dotarcia do rynku, zaprojektowane tak, by łączyć podaż z popytem na rynkach priorytetowych.",
       scope: ["Partnerstwa dystrybucyjne", "Wejście na rynek", "Rozwój kanałów sprzedaży"],
     },
     holdings: {
       name: "Holding, inwestycje i kapitał",
       short: "Holding i kapitał",
       summary:
-        "Warstwa właścicielska grupy: długoterminowe udziały i cierpliwy kapitał, które spajają handel, logistykę i dystrybucję w jedną platformę.",
+        "Warstwa właścicielska grupy: długoterminowe udziały i cierpliwy kapitał, pomyślane tak, by spajać handel, logistykę i dystrybucję w jedną platformę.",
       scope: ["Długoterminowe udziały", "Inwestycje strategiczne", "Współinwestycje", "Ład korporacyjny i nadzór właścicielski"],
     },
   },
@@ -407,176 +407,256 @@ const pl: SiteContent = {
 
   trades: {
     food: {
-      name: "Food",
-      title: "Food, traded with traceability.",
-      accent: ["traceability."],
+      name: "Żywność",
+      title: "Handel żywnością z zachowaniem identyfikowalności.",
+      accent: ["identyfikowalności."],
       intro:
-        "AUREX is built to connect producing regions with consuming markets, with the documentation, quality control and continuity that institutional buyers require.",
+        "Grupa AUREX została stworzona, by łączyć regiony produkcji z rynkami konsumpcji – z dokumentacją, kontrolą jakości i ciągłością dostaw, jakich wymagają nabywcy instytucjonalni.",
       overview:
-        "Food trade rewards reliability above all: consistent quality, verifiable origin and dependable logistics. AUREX approaches food as a long-term trade line, working towards partnerships with qualified producers and established distributors in markets of focus.",
+        "W handlu żywnością liczy się przede wszystkim niezawodność: stała jakość, weryfikowalne pochodzenie i pewna logistyka. AUREX traktuje żywność jako długoterminowy obszar handlowy i dąży do partnerstw ze sprawdzonymi producentami oraz uznanymi dystrybutorami na rynkach priorytetowych.",
       categories: [
-        { title: "Staple foods", text: "Grains, pulses, rice, sugar and edible oils, where specification and continuity matter most." },
-        { title: "Packaged & specialty foods", text: "Finished products for retail, wholesale and hospitality channels." },
-        { title: "Temperature-controlled goods", text: "Products whose quality depends on an unbroken cold chain from origin to destination." },
+        {
+          title: "Podstawowe artykuły spożywcze",
+          text: "Zboża, rośliny strączkowe, ryż, cukier i oleje jadalne, w przypadku których najważniejsze są specyfikacja i ciągłość dostaw.",
+        },
+        {
+          title: "Żywność paczkowana i delikatesowa",
+          text: "Produkty gotowe dla handlu detalicznego i hurtowego oraz gastronomii i hotelarstwa.",
+        },
+        {
+          title: "Towary w kontrolowanej temperaturze",
+          text: "Produkty, których jakość zależy od nieprzerwanego łańcucha chłodniczego – od miejsca pochodzenia do miejsca przeznaczenia.",
+        },
       ],
       approach: [
-        { title: "Origin & quality", text: "Producers qualified against documented quality, safety and origin standards." },
-        { title: "Compliance", text: "Food safety, labelling and import requirements addressed before goods move." },
-        { title: "Continuity", text: "Supply planned for consistency rather than one-off transactions." },
+        {
+          title: "Pochodzenie i jakość",
+          text: "Producenci weryfikowani pod kątem udokumentowanych standardów jakości, bezpieczeństwa i pochodzenia.",
+        },
+        {
+          title: "Zgodność z przepisami",
+          text: "Wymogi w zakresie bezpieczeństwa żywności, znakowania i importu uwzględniane przed wysyłką towaru.",
+        },
+        { title: "Ciągłość", text: "Dostawy planowane z myślą o regularności, a nie o jednorazowych transakcjach." },
       ],
-      cta: { title: "Discuss food trade.", accent: ["food"], primary: "Submit a partnership inquiry" },
+      cta: { title: "Porozmawiajmy o handlu żywnością.", accent: ["żywnością."], primary: "Zapytanie o partnerstwo" },
     },
     medical: {
-      name: "Medical",
-      title: "Medical supply, where compliance comes first.",
-      accent: ["compliance"],
+      name: "Medycyna",
+      title: "Dostawy medyczne, w których zgodność ma pierwszeństwo.",
+      accent: ["zgodność"],
       intro:
-        "Medical products and equipment demand documented quality, regulatory conformity and full traceability. AUREX approaches the sector with the diligence it requires.",
+        "Produkty i sprzęt medyczny wymagają udokumentowanej jakości, zgodności z wymogami regulacyjnymi i pełnej identyfikowalności. AUREX podchodzi do tego sektora z należytą starannością, jakiej on wymaga.",
       overview:
-        "Healthcare supply chains cannot tolerate uncertainty. AUREX's approach to medical trade is defined by regulatory diligence, qualified manufacturers and traceable movement, and by the requirement that partners hold the relevant authorisations in each market.",
+        "Łańcuchy dostaw w ochronie zdrowia nie tolerują niepewności. Podejście AUREX do handlu produktami medycznymi wyznaczają staranna weryfikacja regulacyjna, sprawdzeni producenci i identyfikowalny przepływ towarów, a także wymóg, by partnerzy posiadali odpowiednie zezwolenia na każdym rynku.",
       categories: [
-        { title: "Medical supplies & consumables", text: "Everyday clinical consumables where consistency and conformity are essential." },
-        { title: "Medical equipment", text: "Devices and equipment for clinical and institutional buyers." },
-        { title: "Protective equipment", text: "Personal protective equipment for healthcare and industry." },
+        {
+          title: "Materiały medyczne i jednorazowego użytku",
+          text: "Codziennie wykorzystywane materiały kliniczne, w przypadku których kluczowe są powtarzalność i zgodność z wymogami.",
+        },
+        { title: "Sprzęt medyczny", text: "Urządzenia i sprzęt dla placówek medycznych i nabywców instytucjonalnych." },
+        { title: "Sprzęt ochronny", text: "Środki ochrony indywidualnej dla sektora medycznego i przemysłu." },
       ],
       approach: [
-        { title: "Regulatory conformity", text: "Products assessed against the applicable EU and destination-market requirements." },
-        { title: "Qualified manufacturers", text: "Manufacturers evaluated for quality systems and documentation." },
-        { title: "Traceability", text: "Batch-level documentation from manufacturer to recipient." },
+        {
+          title: "Zgodność regulacyjna",
+          text: "Produkty oceniane pod kątem obowiązujących wymogów UE i rynku docelowego.",
+        },
+        {
+          title: "Sprawdzeni producenci",
+          text: "Producenci oceniani pod kątem systemów zarządzania jakością i dokumentacji.",
+        },
+        { title: "Identyfikowalność", text: "Dokumentacja na poziomie partii, od producenta do odbiorcy." },
       ],
-      cta: { title: "Discuss medical supply.", accent: ["medical"], primary: "Submit a partnership inquiry" },
+      cta: { title: "Porozmawiajmy o dostawach medycznych.", accent: ["medycznych."], primary: "Zapytanie o partnerstwo" },
     },
     electronics: {
-      name: "Electronic Components",
-      title: "Components for industrial demand.",
-      accent: ["industrial"],
+      name: "Komponenty elektroniczne",
+      title: "Komponenty na potrzeby przemysłu.",
+      accent: ["przemysłu."],
       intro:
-        "AUREX is built to connect qualified suppliers of electronic components and parts with manufacturers and industrial buyers, with the authenticity and documentation the sector requires.",
+        "Grupa AUREX powstała, by łączyć sprawdzonych dostawców komponentów i części elektronicznych z producentami i odbiorcami przemysłowymi – z weryfikacją autentyczności i dokumentacją, jakich wymaga ten sektor.",
       overview:
-        "In electronic components, provenance is everything. AUREX's approach centres on supplier qualification, authenticity controls and documented chains of custody, so that industrial buyers can source with confidence.",
+        "W komponentach elektronicznych pochodzenie jest wszystkim. Podejście AUREX koncentruje się na kwalifikacji dostawców, kontroli autentyczności i udokumentowanej historii obrotu, tak aby odbiorcy przemysłowi mogli zaopatrywać się z pełnym zaufaniem.",
       categories: [
-        { title: "Active & passive components", text: "Semiconductors, integrated circuits, resistors, capacitors and related parts." },
-        { title: "Electromechanical parts", text: "Connectors, relays, switches and assemblies for industrial applications." },
-        { title: "Industrial equipment parts", text: "Parts and sub-assemblies that support production and maintenance." },
+        {
+          title: "Komponenty aktywne i pasywne",
+          text: "Półprzewodniki, układy scalone, rezystory, kondensatory i pokrewne elementy.",
+        },
+        {
+          title: "Podzespoły elektromechaniczne",
+          text: "Złącza, przekaźniki, przełączniki i zespoły do zastosowań przemysłowych.",
+        },
+        {
+          title: "Części do urządzeń przemysłowych",
+          text: "Części i podzespoły wspierające produkcję i utrzymanie ruchu.",
+        },
       ],
       approach: [
-        { title: "Supplier qualification", text: "Suppliers assessed for authenticity, quality systems and continuity." },
-        { title: "Authenticity", text: "Documentation and inspection that guard against counterfeit parts." },
-        { title: "Export compliance", text: "Dual-use and export-control requirements checked before any commitment." },
+        {
+          title: "Kwalifikacja dostawców",
+          text: "Dostawcy oceniani pod kątem autentyczności, systemów zarządzania jakością i ciągłości dostaw.",
+        },
+        { title: "Autentyczność", text: "Dokumentacja i inspekcje chroniące przed podrobionymi częściami." },
+        {
+          title: "Zgodność eksportowa",
+          text: "Wymogi dotyczące towarów podwójnego zastosowania i kontroli eksportu weryfikowane przed podjęciem jakichkolwiek zobowiązań.",
+        },
       ],
-      cta: { title: "Discuss component sourcing.", accent: ["sourcing."], primary: "Submit a partnership inquiry" },
+      cta: {
+        title: "Porozmawiajmy o zaopatrzeniu w komponenty.",
+        accent: ["zaopatrzeniu"],
+        primary: "Zapytanie o partnerstwo",
+      },
     },
     larp: {
-      name: "LARP & Historical Goods",
-      title: "Crafted goods for living history.",
-      accent: ["living"],
+      name: "LARP i artykuły historyczne",
+      title: "Wyroby rzemieślnicze dla żywej historii.",
+      accent: ["żywej"],
       intro:
-        "Costumes, armour, props and historical reproductions for live-action role-play, re-enactment and theatre, connecting skilled makers with specialist retailers, organisers and productions.",
+        "Kostiumy, zbroje, rekwizyty i repliki historyczne dla gier fabularnych na żywo (LARP), rekonstrukcji historycznych i teatru: obszar łączący wykwalifikowanych wytwórców ze specjalistycznymi sprzedawcami, organizatorami wydarzeń i produkcjami scenicznymi.",
       overview:
-        "Live-action role-play, historical re-enactment and theatre depend on goods that look authentic, last in use and are safe to wear. AUREX approaches this specialist market as it does any trade line: with qualified makers, clear specifications and dependable logistics.",
+        "LARP, rekonstrukcje historyczne i teatr wymagają wyrobów, które wyglądają autentycznie, są trwałe w użytkowaniu i bezpieczne w noszeniu. AUREX podchodzi do tego specjalistycznego rynku tak jak do każdego obszaru handlowego: ze sprawdzonymi wytwórcami, jasnymi specyfikacjami i niezawodną logistyką.",
       categories: [
-        { title: "Costumes & garb", text: "Period and fantasy garments, textiles and accessories." },
-        { title: "Armour & protective wear", text: "Leather and metal armour, helmets and protective pieces for events and performance." },
-        { title: "Props & reproductions", text: "Event-safe props, historical reproductions and decorative pieces." },
+        { title: "Kostiumy i stroje", text: "Stroje z epoki i fantasy, tkaniny oraz dodatki." },
+        {
+          title: "Zbroje i odzież ochronna",
+          text: "Zbroje skórzane i metalowe, hełmy oraz elementy ochronne na wydarzenia i występy.",
+        },
+        {
+          title: "Rekwizyty i repliki",
+          text: "Rekwizyty bezpieczne w użyciu podczas wydarzeń, repliki historyczne i elementy dekoracyjne.",
+        },
       ],
       approach: [
-        { title: "Skilled makers", text: "Workshops and manufacturers selected for craftsmanship and consistency." },
-        { title: "Safety & materials", text: "Materials and finishes assessed for safe use at events and on stage." },
-        { title: "Specialist distribution", text: "Routes to market through retailers, organisers and productions." },
+        {
+          title: "Wykwalifikowani wytwórcy",
+          text: "Pracownie i producenci wybierani ze względu na kunszt wykonania i powtarzalność jakości.",
+        },
+        {
+          title: "Bezpieczeństwo i materiały",
+          text: "Materiały i wykończenia oceniane pod kątem bezpiecznego użytkowania podczas wydarzeń i na scenie.",
+        },
+        {
+          title: "Dystrybucja specjalistyczna",
+          text: "Kanały dotarcia do rynku za pośrednictwem sprzedawców, organizatorów wydarzeń i produkcji scenicznych.",
+        },
       ],
-      cta: { title: "Discuss LARP & historical goods.", accent: ["historical"], primary: "Submit a partnership inquiry" },
+      cta: {
+        title: "Porozmawiajmy o LARP i artykułach historycznych.",
+        accent: ["historycznych."],
+        primary: "Zapytanie o partnerstwo",
+      },
     },
   },
 
   tradePage: {
-    eyebrow: "Trade line",
-    overview: "Overview",
-    categoriesEyebrow: "Focus categories",
-    categoriesTitle: "What the trade line covers.",
-    approachEyebrow: "Approach",
-    approachTitle: "How AUREX approaches it.",
-    corridorsEyebrow: "Markets of focus",
-    otherEyebrow: "Other trade lines",
-    allTrade: "All trade lines",
+    eyebrow: "Obszar handlowy",
+    overview: "Przegląd",
+    categoriesEyebrow: "Kategorie priorytetowe",
+    categoriesTitle: "Co obejmuje ten obszar handlowy.",
+    approachEyebrow: "Podejście",
+    approachTitle: "Jak AUREX podchodzi do tego obszaru.",
+    corridorsEyebrow: "Rynki priorytetowe",
+    otherEyebrow: "Pozostałe obszary handlowe",
+    allTrade: "Wszystkie obszary handlowe",
   },
 
   greenPillars: {
     materials: {
-      name: "Green Materials",
-      summary: "Recycled, circular and bio-based materials moving into new markets.",
+      name: "Zielone materiały",
+      summary: "Materiały z recyklingu, z obiegu zamkniętego i biopochodne, wchodzące na nowe rynki.",
       detail:
-        "Recycled metals, polymers and fibres, circular inputs and bio-based alternatives are becoming mainstream industrial materials. AUREX looks for opportunities to move them between producers and the manufacturers that need them.",
-      focus: ["Recycled materials", "Circular inputs", "Bio-based alternatives"],
+        "Metale, polimery i włókna z recyklingu, surowce z obiegu zamkniętego oraz biopochodne zamienniki stają się powszechnymi materiałami przemysłowymi. AUREX szuka możliwości, by kierować je od wytwórców do producentów, którzy ich potrzebują.",
+      focus: ["Materiały z recyklingu", "Surowce z obiegu zamkniętego", "Zamienniki biopochodne"],
     },
     energy: {
-      name: "Clean Energy",
-      summary: "Solar, energy storage, EV infrastructure and energy-efficiency technologies.",
+      name: "Czysta energia",
+      summary:
+        "Energia słoneczna, magazynowanie energii, infrastruktura dla elektromobilności i technologie poprawiające efektywność energetyczną.",
       detail:
-        "The energy transition is, at its core, a trade in equipment and components. AUREX's interest spans solar and storage hardware, EV-charging infrastructure and technologies that improve energy efficiency.",
-      focus: ["Solar & storage", "EV infrastructure", "Energy efficiency"],
+        "Transformacja energetyczna to w swej istocie handel urządzeniami i komponentami. Zainteresowanie AUREX obejmuje urządzenia do wytwarzania i magazynowania energii słonecznej, infrastrukturę ładowania pojazdów elektrycznych oraz technologie poprawiające efektywność energetyczną.",
+      focus: ["Energia słoneczna i magazynowanie", "Infrastruktura dla elektromobilności", "Efektywność energetyczna"],
     },
     commerce: {
-      name: "Sustainable Commerce",
-      summary: "Sustainable agriculture, packaging, specialty products and resource-efficient solutions.",
+      name: "Zrównoważony handel",
+      summary:
+        "Zrównoważone rolnictwo i opakowania, produkty specjalistyczne oraz rozwiązania oszczędzające zasoby.",
       detail:
-        "Sustainability is increasingly a feature of everyday products, from agricultural goods and packaging to specialty products designed to use fewer resources.",
-      focus: ["Sustainable agriculture", "Sustainable packaging", "Resource-efficient products"],
+        "Zrównoważony charakter coraz częściej wyróżnia produkty codziennego użytku: od produktów rolnych i opakowań po produkty specjalistyczne zaprojektowane tak, by zużywać mniej zasobów.",
+      focus: ["Zrównoważone rolnictwo", "Zrównoważone opakowania", "Produkty oszczędzające zasoby"],
     },
     logistics: {
-      name: "Green Logistics",
-      summary: "More efficient transportation, optimised supply chains and lower-impact distribution.",
+      name: "Zielona logistyka",
+      summary:
+        "Bardziej efektywny transport, zoptymalizowane łańcuchy dostaw i dystrybucja o mniejszym wpływie na środowisko.",
       detail:
-        "How goods move matters as much as what they are. AUREX brings its logistics perspective to more efficient transport, better-planned supply chains and lower-impact distribution.",
-      focus: ["Efficient transport", "Optimised supply chains", "Lower-impact distribution"],
+        "Sposób przemieszczania towarów ma równie duże znaczenie jak same towary. AUREX wnosi swoją perspektywę logistyczną do bardziej efektywnego transportu, lepiej zaplanowanych łańcuchów dostaw i dystrybucji o mniejszym wpływie na środowisko.",
+      focus: ["Efektywny transport", "Zoptymalizowane łańcuchy dostaw", "Dystrybucja o mniejszym wpływie na środowisko"],
     },
   },
 
   sustainability: {
     hero: {
       eyebrow: "AUREX Green",
-      title: "The Green Transition",
-      accent: ["Green"],
-      intro: "Trading the products and technologies shaping a more resource-efficient world.",
+      title: "Zielona transformacja",
+      accent: ["Zielona"],
+      intro: "Handel produktami i technologiami, które kształtują świat oszczędniej gospodarujący zasobami.",
     },
     intro: {
       eyebrow: "AUREX Green",
-      title: "Sustainability as part of real-world commerce.",
-      accent: ["real-world"],
+      title: "Zrównoważony rozwój jako część realnego handlu.",
+      accent: ["realnego"],
     },
     ecosystem: {
-      eyebrow: "The ecosystem",
-      title: "From source to global distribution.",
-      accent: ["global"],
+      eyebrow: "Ekosystem",
+      title: "Od źródła po globalną dystrybucję.",
+      accent: ["globalną"],
     },
     pillars: {
-      eyebrow: "Business pillars",
-      title: "Four pillars of AUREX Green.",
-      accent: ["pillars"],
+      eyebrow: "Filary działalności",
+      title: "Cztery filary AUREX Green.",
+      accent: ["filary"],
     },
     flow: {
-      eyebrow: "The AUREX model",
-      title: "Source. Trade. Distribute. Invest.",
-      accent: ["Invest."],
-      intro: "AUREX Green follows the same model as the rest of the group: a trading and holding house, not a consultancy.",
+      eyebrow: "Model AUREX",
+      title: "Pozyskanie. Handel. Dystrybucja. Inwestycje.",
+      accent: ["Inwestycje."],
+      intro: "AUREX Green opiera się na tym samym modelu co cała grupa: handlowym i holdingowym, a nie doradczym.",
       steps: [
-        { title: "Source", text: "Identify credible producers of sustainable products and technologies." },
-        { title: "Trade", text: "Structure cross-border transactions with documentation and diligence." },
-        { title: "Distribute", text: "Develop routes to market with logistics and distribution partners." },
-        { title: "Invest", text: "Commit long-term capital where durable value emerges." },
+        { title: "Pozyskanie", text: "Identyfikowanie wiarygodnych producentów zrównoważonych produktów i technologii." },
+        {
+          title: "Handel",
+          text: "Strukturyzowanie transakcji transgranicznych w oparciu o dokumentację i należytą staranność.",
+        },
+        {
+          title: "Dystrybucja",
+          text: "Rozwijanie kanałów dotarcia do rynku wspólnie z partnerami logistycznymi i dystrybucyjnymi.",
+        },
+        { title: "Inwestycje", text: "Angażowanie długoterminowego kapitału tam, gdzie powstaje trwała wartość." },
       ],
     },
     principles: {
-      eyebrow: "Our approach",
-      title: "Credibility before claims.",
-      accent: ["Credibility"],
+      eyebrow: "Nasze podejście",
+      title: "Najpierw wiarygodność, potem deklaracje.",
+      accent: ["wiarygodność,"],
       items: [
-        { title: "Verifiable product claims", text: "Environmental attributes supported by documentation, not marketing." },
-        { title: "Traceable supply chains", text: "Origin and movement documented from source to destination." },
-        { title: "Commercial durability", text: "Opportunities that stand on their economics, not on subsidies alone." },
-        { title: "Long-term partnership", text: "Relationships structured to grow as markets mature." },
+        {
+          title: "Weryfikowalne deklaracje produktowe",
+          text: "Cechy środowiskowe potwierdzone dokumentacją, a nie marketingiem.",
+        },
+        {
+          title: "Identyfikowalne łańcuchy dostaw",
+          text: "Pochodzenie i przepływ towarów udokumentowane od źródła do miejsca przeznaczenia.",
+        },
+        { title: "Trwałość ekonomiczna", text: "Możliwości, które bronią się ekonomicznie, a nie wyłącznie dzięki dotacjom." },
+        {
+          title: "Długoterminowe partnerstwo",
+          text: "Relacje budowane tak, by rozwijały się wraz z dojrzewaniem rynków.",
+        },
       ],
     },
-    note: "AUREX Green is a strategic area of trading and investment development. The categories described are areas of focus and do not each represent an established AUREX business.",
+    note: "AUREX Green to strategiczny obszar rozwoju działalności handlowej i inwestycyjnej. Opisane kategorie to obszary priorytetowe i nie każda z nich stanowi ugruntowaną działalność AUREX.",
   },
 
   about: {
@@ -588,14 +668,14 @@ const pl: SiteContent = {
         "AUREX łączy handel międzynarodowy, działalność holdingową i inwestycje w ramach jednej filozofii: wartość tworzy się, starannie przenosząc ją ponad granicami i utrzymując w długiej perspektywie.",
     },
     statement:
-      "Nazwa AUREX nawiązuje do aurum, czyli złota, najstarszej miary wartości, oraz do wymiany (ang. exchange): przepływu tej wartości między rynkami i ponad granicami.",
+      "Nazwa AUREX przywołuje łacińskie aurum, czyli złoto, trwałą miarę wartości, oraz wymianę (ang. exchange): przepływ tej wartości między rynkami i ponad granicami.",
     story: {
       eyebrow: "Nasza historia",
       title: "Wartość przenoszona w przyszłość.",
       accent: ["przyszłość."],
       paragraphs: [
-        "AUREX pomyślano jako grupę międzynarodową, a nie przedsiębiorstwo działające na jednym rynku: strukturę zdolną do handlu, posiadania udziałów i inwestowania w korytarzach łączących Europę z Bliskim Wschodem, Indiami i Afryką.",
-        "Perspektywa grupy jest europejska: w sposobie zarządzania, dokumentowania decyzji i traktowania partnerów. Jej horyzont jest globalny, a miarą sukcesu jest długoterminowa wartość, nie krótkoterminowy wolumen.",
+        "AUREX to z założenia grupa międzynarodowa, a nie przedsiębiorstwo działające na jednym rynku: struktura zaprojektowana z myślą o handlu, posiadaniu udziałów i inwestowaniu w korytarzach łączących Europę z Bliskim Wschodem, Indiami i Afryką.",
+        "Perspektywa AUREX jest europejska: w tym, jak grupa ma być zarządzana, jak ma dokumentować swoje decyzje i traktować partnerów. Jej horyzont jest globalny, a miarą sukcesu jest długoterminowa wartość, nie krótkoterminowy wolumen.",
         "W efekcie powstała grupa stworzona z myślą o partnerach instytucjonalnych i korporacyjnych: zdyscyplinowana w działaniu, rozważna w rozwoju i zbudowana na dekady, nie na transakcje.",
       ],
     },
@@ -612,7 +692,7 @@ const pl: SiteContent = {
         { title: "Partnerstwo ponad transakcję", text: "Relacje budujemy tak, by trwały dłużej niż pojedyncza transakcja." },
         {
           title: "Długoterminowa wartość ponad krótkoterminowy zysk",
-          text: "Wartość pomnażamy w kolejnych cyklach i ponad granicami.",
+          text: "Cel: pomnażać wartość w kolejnych cyklach i ponad granicami.",
         },
       ],
     },
@@ -628,7 +708,7 @@ const pl: SiteContent = {
       eyebrow: "Ład korporacyjny",
       title: "Najpierw struktura, potem skala.",
       accent: ["skala."],
-      intro: "Zasady, według których AUREX angażuje kapitał, prowadzi handel i współpracuje z partnerami.",
+      intro: "Zasady, na których zbudowano AUREX w zakresie angażowania kapitału, prowadzenia handlu i współpracy z partnerami.",
       items: [
         {
           title: "Jasne mandaty",
@@ -647,7 +727,7 @@ const pl: SiteContent = {
     },
     cta: {
       eyebrow: "Dalej",
-      title: "Jak grupa tworzy wartość.",
+      title: "Jak grupa jest zbudowana, by tworzyć wartość.",
       accent: ["wartość."],
       primary: "Nasza działalność",
       secondary: "Rozpocznijmy rozmowę",
@@ -656,48 +736,57 @@ const pl: SiteContent = {
 
   tradeHub: {
     hero: {
-      eyebrow: "Trade",
-      title: "International trade, structured to European standards.",
-      accent: ["structured"],
+      eyebrow: "Handel",
+      title: "Handel międzynarodowy zorganizowany według europejskich standardów.",
+      accent: ["zorganizowany"],
       intro:
-        "AUREX is built to source, move and distribute goods across borders, connecting qualified producers with demand in markets of focus under European standards of documentation, compliance and counterparty diligence.",
+        "Grupa AUREX została zbudowana, by pozyskiwać, transportować i dystrybuować towary ponad granicami oraz łączyć sprawdzonych producentów z popytem na rynkach priorytetowych – według europejskich standardów dokumentacji, zgodności z przepisami i weryfikacji kontrahentów.",
     },
     core: {
-      eyebrow: "How AUREX trades",
-      title: "From sourcing to distribution.",
-      accent: ["distribution."],
+      eyebrow: "Jak AUREX prowadzi handel",
+      title: "Od pozyskania towarów po dystrybucję.",
+      accent: ["dystrybucję."],
     },
-    scopeLabel: "Scope",
+    scopeLabel: "Zakres",
     lines: {
-      eyebrow: "Trade lines",
-      title: "Trade lines of strategic focus.",
-      accent: ["strategic"],
-      intro: "Each trade line is a strategic focus, developed deliberately and with qualified partners.",
-      note: "Trade lines are areas of strategic focus under development. Specific activities will be presented as they are formalised.",
+      eyebrow: "Obszary handlowe",
+      title: "Obszary handlowe o strategicznym znaczeniu.",
+      accent: ["strategicznym"],
+      intro: "Każdy obszar handlowy to kierunek strategiczny, rozwijany z rozwagą i wspólnie ze sprawdzonymi partnerami.",
+      note: "Obszary handlowe to kierunki strategiczne w fazie rozwoju. Konkretne działania będą prezentowane w miarę ich formalizowania.",
     },
     connection: {
-      eyebrow: "The AUREX model",
-      title: "Source. Trade. Distribute. Invest.",
-      accent: ["Invest."],
+      eyebrow: "Model AUREX",
+      title: "Pozyskanie. Handel. Dystrybucja. Inwestycje.",
+      accent: ["Inwestycje."],
       steps: [
-        { title: "Source", text: "Qualified producers and suppliers, assessed against European standards." },
-        { title: "Trade", text: "Cross-border transactions structured with documentation, compliance and counterparty diligence." },
-        { title: "Distribute", text: "Routes to market developed with logistics and distribution partners." },
-        { title: "Invest", text: "Long-term capital and ownership where trade reveals durable value." },
+        {
+          title: "Pozyskanie",
+          text: "Producenci i dostawcy oceniani według europejskich standardów przed podjęciem jakiegokolwiek zobowiązania.",
+        },
+        {
+          title: "Handel",
+          text: "Transakcje transgraniczne strukturyzowane w oparciu o dokumentację, zgodność z przepisami i weryfikację kontrahentów.",
+        },
+        {
+          title: "Dystrybucja",
+          text: "Kanały dotarcia do rynku, pomyślane tak, by budować je wspólnie z długoterminowymi partnerami logistycznymi i dystrybucyjnymi.",
+        },
+        { title: "Inwestycje", text: "Długoterminowy kapitał i własność tam, gdzie handel ujawnia trwałą wartość." },
       ],
     },
     green: {
       eyebrow: "AUREX Green",
-      title: "Sustainable products and technologies.",
-      accent: ["Sustainable"],
-      text: "Recycled and bio-based materials, clean-energy equipment, sustainable packaging and green logistics: the trade side of the green transition.",
-      link: "Explore AUREX Green",
+      title: "Zrównoważone produkty i technologie.",
+      accent: ["Zrównoważone"],
+      text: "Materiały z recyklingu i biopochodne, urządzenia dla czystej energetyki, zrównoważone opakowania i zielona logistyka: handlowy wymiar zielonej transformacji.",
+      link: "Więcej o AUREX Green",
     },
     cta: {
-      eyebrow: "Trade inquiries",
-      title: "Propose a trade partnership.",
-      accent: ["partnership."],
-      primary: "Submit a partnership inquiry",
+      eyebrow: "Zapytania handlowe",
+      title: "Propozycja partnerstwa handlowego.",
+      accent: ["partnerstwa"],
+      primary: "Zapytanie o partnerstwo",
     },
   },
 
@@ -707,12 +796,12 @@ const pl: SiteContent = {
       title: "Cierpliwy kapitał, kierowany z przekonaniem.",
       accent: ["przekonaniem."],
       intro:
-        "AUREX inwestuje cierpliwie i z przekonaniem, bez presji terminów typowej dla funduszy, współpracując z partnerami i kadrą zarządzającą, by budować, a nie jedynie alokować kapitał.",
+        "Założeniem AUREX jest inwestowanie z cierpliwością i przekonaniem, bez presji terminów typowej dla funduszy, oraz współpraca z partnerami i kadrą zarządzającą, by budować, a nie jedynie alokować kapitał.",
     },
     approach: {
       eyebrow: "Podejście inwestycyjne",
-      title: "Jak inwestujemy.",
-      accent: ["inwestujemy."],
+      title: "Nasze podejście do inwestowania.",
+      accent: ["inwestowania."],
       items: [
         { title: "Horyzont", text: "Domyślnie długoterminowy. Inwestycję utrzymujemy tak długo, jak tworzy wartość." },
         {
@@ -721,7 +810,7 @@ const pl: SiteContent = {
         },
         {
           title: "Partnerstwo",
-          text: "Współpraca z kadrą zarządzającą i współinwestorami, do której wnosimy strukturę i ład korporacyjny.",
+          text: "Pomyślane jako współpraca z kadrą zarządzającą i współinwestorami, w której AUREX wnosi strukturę i ład korporacyjny.",
         },
         { title: "Dyscyplina", text: "Wnikliwe badanie due diligence, jasne tezy inwestycyjne i udokumentowany proces decyzyjny." },
       ],
@@ -740,7 +829,7 @@ const pl: SiteContent = {
     },
     sectors: {
       eyebrow: "Sektory zainteresowania",
-      title: "Dokąd trafia kapitał.",
+      title: "Dokąd będzie kierowany kapitał.",
       accent: ["kapitał."],
       intro: "Zainteresowanie inwestycyjne koncentruje się na sześciu sektorach o strategicznym znaczeniu.",
     },
@@ -779,8 +868,8 @@ const pl: SiteContent = {
     },
     corridors: {
       eyebrow: "Korytarze strategiczne",
-      title: "Gdzie przepływa wartość.",
-      accent: ["przepływa"],
+      title: "Gdzie wartość może przepływać.",
+      accent: ["przepływać."],
       items: [
         {
           title: "Europa — Zatoka Perska",
@@ -818,7 +907,7 @@ const pl: SiteContent = {
       items: [
         {
           title: "Powiernictwo",
-          text: "Liderzy działają jako powiernicy kapitału i reputacji, a nie wyłącznie jako zarządzający bieżącą działalnością.",
+          text: "Od liderów oczekuje się działania w roli powierników kapitału i reputacji, a nie wyłącznie zarządzających bieżącą działalnością.",
         },
         {
           title: "Rozliczalność",
@@ -850,7 +939,7 @@ const pl: SiteContent = {
       title: "Wzrost budowany w partnerstwie.",
       accent: ["partnerstwie."],
       intro:
-        "AUREX rozwija się wspólnie z partnerami o standardach i horyzoncie zbieżnych z własnymi: producentami, dystrybutorami, przedsiębiorstwami, instytucjami i współinwestorami.",
+        "AUREX dąży do rozwoju wspólnie z partnerami o standardach i horyzoncie zbieżnych z własnymi: producentami, dystrybutorami, przedsiębiorstwami, instytucjami i współinwestorami.",
     },
     models: {
       eyebrow: "Modele partnerstwa",
@@ -870,7 +959,10 @@ const pl: SiteContent = {
           title: "Perspektywa transgraniczna",
           text: "Spojrzenie zbudowane wokół korytarzy łączących Europę, region Zatoki Perskiej, Indie i Afrykę.",
         },
-        { title: "Zintegrowane kompetencje", text: "Handel, logistyka, dystrybucja i kapitał w ramach jednej grupy." },
+        {
+          title: "Zintegrowane kompetencje",
+          text: "Handel, logistyka, dystrybucja i kapitał, zaprojektowane tak, by współdziałać w ramach jednej grupy.",
+        },
         { title: "Długoterminowe zaangażowanie", text: "Partnerstwa budowane tak, by trwały dłużej niż pojedyncza transakcja." },
       ],
     },
@@ -920,7 +1012,7 @@ const pl: SiteContent = {
       title: "Rozpocznijmy rozmowę.",
       accent: ["rozmowę."],
       intro:
-        "Prosimy wybrać rodzaj zapytania i przedstawić jego cel. Każde zapytanie jest analizowane, a w odpowiedzi wskazujemy właściwy kolejny krok.",
+        "Prosimy wybrać rodzaj zapytania i przedstawić jego cel, aby rozpocząć rozmowę z AUREX.",
     },
     routes: {
       eyebrow: "Rodzaje zapytań",
@@ -1008,8 +1100,8 @@ const pl: SiteContent = {
     submit: "Wyślij zapytanie",
     submitting: "Wysyłanie…",
     success: {
-      title: "Dziękujemy.",
-      text: "Zapytanie zostało przyjęte. Odpowiemy, wskazując właściwy kolejny krok.",
+      title: "Dziękujemy za kontakt z AUREX.",
+      text: "Otrzymaliśmy zapytanie i skontaktujemy się z Państwem.",
       again: "Wyślij kolejne zapytanie",
     },
     error: "Podczas wysyłania zapytania wystąpił błąd. Prosimy spróbować ponownie.",
@@ -1031,7 +1123,7 @@ const pl: SiteContent = {
 
   footer: {
     statement:
-      "Międzynarodowa grupa handlowa, holdingowa i inwestycyjna o europejskich korzeniach, łącząca rynki, partnerów i kapitał ponad granicami.",
+      "Międzynarodowa grupa handlowa, holdingowa i inwestycyjna o europejskich korzeniach, stworzona, by łączyć rynki, partnerów i kapitał ponad granicami.",
     groups: { group: "Grupa", businesses: "Działalność", contact: "Zapytania" },
     rights: "Wszelkie prawa zastrzeżone.",
     languages: "Języki",

@@ -90,7 +90,7 @@ export function TradeMenu({ data, active }: { data: TradeMenuData; active: boole
           open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0",
         )}
       >
-        <div className="glass grid grid-cols-12 gap-2 rounded-[1.75rem] bg-ink/85 p-2.5 shadow-[0_40px_80px_-30px_rgb(0_0_0/0.6)]">
+        <div className="grid grid-cols-12 gap-2 rounded-[1.75rem] border border-white/12 bg-ink-950/95 p-2.5 shadow-[0_40px_80px_-30px_rgb(0_0_0/0.6)] backdrop-blur-xl backdrop-saturate-150">
           <ul className="col-span-8 grid grid-cols-2 gap-1.5">
             {data.items.map((item) => {
               const Icon = tradeIcons[item.id];

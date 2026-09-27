@@ -53,7 +53,7 @@ src/
   app/
     [locale]/                 Localized routes. layout.tsx is the root layout (html/body, header, footer, JSON-LD)
       page.tsx                Home
-      about/ businesses/ portfolio/ global-presence/ leadership/ partnerships/ contact/ privacy/
+      about/ trade/ …         One folder per route in src/lib/routes.ts (trade lines at trade/[slug])
       not-found.tsx           Branded, localized 404
       [...rest]/page.tsx      Sends unknown paths to the localized 404
       opengraph-image.tsx     Localized 1200×630 social image
@@ -149,7 +149,7 @@ Scroll-linked `useTransform` input ranges must stay within `[0, 1]` and be non-d
 ## SEO and platform
 
 - Per-page localized title and description, canonical URL and `hreflang` alternates (including `x-default`) via `pageMetadata` in `src/lib/seo.ts`.
-- `sitemap.xml` covers every route in every locale, with language alternates. `robots.txt` allows everything except `/api/`.
+- `sitemap.xml` covers every route in `src/lib/routes.ts` plus the trade line pages, in every locale, with language alternates. `robots.txt` allows everything except `/api/`.
 - A localized Open Graph image for each locale (`[locale]/opengraph-image.tsx`). It uses the ImageResponse default font, so it renders without network access.
 - JSON-LD `Organization` + `WebSite` (`components/seo/json-ld.tsx`) with confirmed fields only: no address, phone, founders, founding date or social profiles.
 - Icons: `app/icon.svg` (vector favicon), `app/apple-icon.tsx` (180×180 PNG) and `manifest.webmanifest`.

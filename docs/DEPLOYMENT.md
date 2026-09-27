@@ -44,7 +44,7 @@ Configure at least one delivery channel (email or webhook) in production. Withou
 4. Check in production:
    - The page source of `/en` shows `<link rel="canonical" href="https://<primary>/en">` and `hreflang` alternates for `en`, `pl`, `nl`, `fr` and `x-default`.
    - `/robots.txt` ends with `Sitemap: https://<primary>/sitemap.xml`.
-   - `/sitemap.xml` lists 9 routes × 4 locales with alternates.
+   - `/sitemap.xml` lists every route and trade line page in all four locales, with alternates.
 5. Submit the sitemap in Google Search Console and Bing Webmaster Tools.
 
 The proxy (`src/proxy.ts`) redirects `/` and any unprefixed path to the visitor's locale: the language-switcher cookie wins, then `Accept-Language`, then English.

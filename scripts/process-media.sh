@@ -17,6 +17,11 @@
 #   stills/still-*.webp|jpg  six stills used by pages (sea, air, coast, land,
 #                        portland, connected)
 #
+# Settings are calibrated against the committed files: from the same clean
+# master, ffmpeg 7.0 reproduces the H.264 renditions, posters, frame sequences
+# and stills byte for byte (the WebM differs only in container UIDs). Other
+# ffmpeg builds may differ in bytes, not visibly.
+#
 # Public media is served with an immutable, one-year Cache-Control in
 # production (next.config.ts). If an output changes, publish it under a new
 # file name and update the reference, or returning visitors keep the old file.
@@ -58,8 +63,8 @@ ff -i "$WORK/loop_master.mp4" -an \
   -movflags +faststart "$OUT/hero/hero-1280.mp4"
 
 step "Hero video: hero-854.mp4"
-ff -i "$WORK/loop_master.mp4" -an -vf "scale=854:-2" \
-  -c:v libx264 -profile:v high -crf 27 -preset veryslow -tune film -pix_fmt yuv420p \
+ff -i "$WORK/loop_master.mp4" -an -vf "scale=854:-2:flags=lanczos" \
+  -c:v libx264 -profile:v high -crf 27 -preset veryslow -pix_fmt yuv420p \
   -movflags +faststart "$OUT/hero/hero-854.mp4"
 
 step "Hero video: hero-1280.webm"

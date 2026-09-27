@@ -19,10 +19,9 @@ export function getContent(locale: Locale) {
 }
 ```
 
-- `SiteContent` (`src/content/types.ts`) is the contract. Its top-level keys already follow CMS lines: `meta`, `nav`, `common` and `footer` are settings; `home`, `about`, `businesses` and the other page keys are page globals; `divisions`, `sectors`, `markets` and `partnerModels` are collections keyed by id.
+- `SiteContent` (`src/content/types.ts`) is the contract. Its top-level keys already follow CMS lines: `meta`, `nav`, `common`, `inquiry`, `notFound` and `footer` are settings; `home` and the page keys (`about`, `tradeHub`, `tradePage`, `sustainability`, `portfolio`, `presence`, `leadership`, `partnerships`, `contact`, `privacy`) are page globals; `divisions`, `sectors`, `markets`, `partnerModels`, `trades` and `greenPillars` are collections keyed by id.
 - Pages call `loadPage(params)` (`src/lib/page.ts`) → `getContent(locale)`. No component imports a locale module directly.
-- **Facts are the second seam.** `src/content/facts.ts` holds the locale-independent structure: ids and order of divisions, sectors, markets and partner models; globe coordinates; corridors; `company`; `leaders`; `holdings`; `offices`. These files import it directly today:
-  `app/[locale]/{about,businesses,contact}/page.tsx`, `components/home/{global-reach,home-contact,partnerships,sectors}.tsx`, `components/sections/businesses/sector-grid.tsx`, `components/sections/leadership/leader-profiles.tsx`, `components/sections/partnerships/model-cards.tsx`, `components/sections/portfolio/{holdings-register,sector-columns}.tsx`, `components/sections/presence/office-register.tsx`, `components/seo/json-ld.tsx`.
+- **Facts are the second seam.** `src/content/facts.ts` holds the locale-independent structure: ids and order of divisions, sectors, markets and partner models; globe coordinates; corridors; `company`; `leaders`; `holdings`; `offices`. Several pages and sections import it directly; list them with `grep -rl "@/content/facts" src`.
   When facts move to the CMS, add `getFacts(): Promise<Facts>` to `ContentSource` (with `Facts` typed from the current exports), load it in `loadPage`, and pass it down in place of the direct imports.
 
 ## 2. Recommended target: Payload CMS 3
@@ -52,8 +51,8 @@ Mark every copy field `localized: true`. Ids, slugs, coordinates, ordering, stat
 | Global | Holds (`SiteContent` path) | Notes |
 | --- | --- | --- |
 | **Settings** | `meta` (siteName, tagline, signature, description, per-route `pages` SEO), `nav`, `common`, `footer`, `notFound`, `inquiry` (form copy and validation messages) | Organise in tabs: *Brand & SEO*, *Navigation*, *Interface*, *Inquiry form*. Add a *Company* tab for the confirmed company facts (`legalName`, `registeredOffice`, `registration`, `publicEmail`), each wrapped in the `confirmation` group from §3. Keep the prototype's SEO defaults, including `titleSuffix` " — AUREX". |
-| **Home** | `home` (hero, who, motion chapters, reach, sectors, capital, why, partnerships, leadership, contact) | Groups mirror the section keys. `accent` arrays become localized `text` fields with `hasMany: true`. `motion.chapters[].division` is a relationship to **Divisions**. |
-| **About**, **Businesses**, **Portfolio**, **Presence**, **Leadership**, **Partnerships**, **Contact**, **Privacy** | One global per inner page, same shape as `SiteContent[page]` | Page globals keep the 1:1 mapping trivial. If AUREX later wants free-form pages, move these to a block-based `Pages` collection. |
+| **Home** | `home` (hero, who, motion chapters, trade, green, reach, capital, why, partnerships, leadership, contact) | Groups mirror the section keys. `accent` arrays become localized `text` fields with `hasMany: true`. `motion.chapters[].division` is a relationship to **Divisions**. |
+| **About**, **TradeHub**, **TradePage**, **Sustainability**, **Portfolio**, **Presence**, **Leadership**, **Partnerships**, **Contact**, **Privacy** | One global per page-level key, same shape as `SiteContent[key]` (`tradePage` holds the shared labels of the trade line template) | Page globals keep the 1:1 mapping trivial. If AUREX later wants free-form pages, move these to a block-based `Pages` collection. |
 
 ### Collections
 
@@ -65,6 +64,8 @@ Every collection has `order` (number, used for sorting), and every fact-bearing 
 | **Sectors** | `key` (select: food, property, medical, electronics, sustainability, larp), `status` (select: `strategic` default, `active`), `name`, `summary`, `focus[]` (localized), `image` (optional upload) | `facts.sectors` + `content.sectors` |
 | **Markets** | `key` (select: eu, pl, ae, in, af), `status` (select: `focus` default, `presence`), `lat`, `lng`, `name`, `role`, `detail` (localized), `corridors` (relationship → Markets, hasMany) | `facts.markets`, `facts.corridors`, `content.markets` |
 | **PartnerModels** | `key` (select: suppliers, distributors, corporate, capital), `name`, `summary`, `examples[]` (localized) | `facts.partnerModels` + `content.partnerModels` |
+| **Trades** (trade lines) | `key` (select: food, medical, electronics, larp), `slug` (unique, non-localized, matching `tradeSlugs` in `src/lib/routes.ts`), `name`, `title`, `accent[]`, `intro`, `overview`, `categories[]` and `approach[]` (title + text), `cta` group (localized) | `content.trades`, rendered at `/[locale]/trade/[slug]` |
+| **GreenPillars** | `key` (select: materials, energy, commerce, logistics), `name`, `summary`, `detail`, `focus[]` (localized) | `content.greenPillars` |
 | **Leaders** | `name`, `role` (localized), `bio` (localized), `portrait` (upload with required `alt`), `consentOnFile` (checkbox) | `facts.leaders` |
 | **Holdings** | `name`, `sector` (relationship → Sectors), `summary` (localized), `since` (text, optional), `url` (optional) | `facts.holdings` |
 | **Offices** | `label` (localized), `city`, `country`, `address` (optional) | `facts.offices` |
@@ -72,7 +73,7 @@ Every collection has `order` (number, used for sorting), and every fact-bearing 
 
 Notes:
 
-- **Keys, not free ids.** Select-typed `key` fields keep the CMS in step with the `DivisionId`, `SectorId`, `MarketId` and `PartnerModelId` unions. Adding a sector remains a code change (a type, an icon, a layout slot), which is intended.
+- **Keys, not free ids.** Select-typed `key` fields keep the CMS in step with the id unions in `types.ts` (`DivisionId`, `SectorId`, `MarketId`, `PartnerModelId`, `TradeId`, `GreenPillarId`). Adding a sector remains a code change (a type, an icon, a layout slot), which is intended.
 - **Inquiries** are write-only from the site. `create` is allowed only through the Local API from the server (or a server token), and `read` is limited to the `admin` and `inquiries` roles. Add a third adapter in `src/lib/inquiry/deliver.ts` that creates the document, next to the email and webhook adapters, so a CMS outage never loses an inquiry that email or the webhook delivered.
 - **Roles:** `admin` (can confirm facts, manage users), `editor` (copy and drafts), `inquiries` (reads and triages inquiries). These match the prototype.
 - **Media:** WebP conversion, a focal point and an OG size (1200×630) on upload. `alt` is required and localized. Video and frame sequences stay in `public/media` (built by `scripts/process-media.sh`).
@@ -124,16 +125,22 @@ export const payloadSource: ContentSource = {
     const list = (collection: string) =>
       payload.find({ collection, locale, where: confirmed, sort: "order", limit: 100, depth: 1, draft: false });
 
-    const [settings, home, about, businesses, portfolio, presence, leadership, partnerships, contact, privacy, divisions, sectors, markets, partnerModels] =
-      await Promise.all([
-        global("settings"), global("home"), global("about"), global("businesses"), global("portfolio"),
-        global("presence"), global("leadership"), global("partnerships"), global("contact"), global("privacy"),
-        list("divisions"), list("sectors"), list("markets"), list("partner-models"),
-      ]);
+    const pages = ["home", "about", "trade-hub", "trade-page", "sustainability", "portfolio", "presence", "leadership", "partnerships", "contact", "privacy"];
+    const collections = ["divisions", "sectors", "markets", "partner-models", "trades", "green-pillars"];
+
+    const [settings, pageDocs, collectionDocs] = await Promise.all([
+      global("settings"),
+      Promise.all(pages.map(global)),
+      Promise.all(collections.map(list)),
+    ]);
 
     // toSiteContent must throw on any missing field, so an incomplete locale fails the build
     // (or the revalidation) instead of rendering undefined.
-    return toSiteContent({ settings, home, about, businesses, portfolio, presence, leadership, partnerships, contact, privacy, divisions, sectors, markets, partnerModels });
+    return toSiteContent(
+      settings,
+      Object.fromEntries(pages.map((slug, i) => [slug, pageDocs[i]])),
+      Object.fromEntries(collections.map((slug, i) => [slug, collectionDocs[i].docs])),
+    );
   },
 };
 ```
