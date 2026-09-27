@@ -4,6 +4,7 @@ import { PageHero } from "@/components/page/page-hero";
 import { HoldingsRegister } from "@/components/sections/portfolio/holdings-register";
 import { SectorColumns } from "@/components/sections/portfolio/sector-columns";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { holdings } from "@/content/facts";
 import { loadPage, metadataFor } from "@/lib/page";
 import { contactHref, href } from "@/lib/routes";
 
@@ -39,10 +40,10 @@ export default async function PortfolioPage({ params }: PageProps<"/[locale]/por
               <RevealItem
                 as="li"
                 key={item.title}
-                className="group relative flex flex-col bg-ink p-8 transition-colors duration-500 hover:bg-ink-850 md:min-h-[20rem] md:p-10 lg:min-h-[24rem]"
+                className="group relative flex flex-col bg-ink p-8 transition-colors duration-500 hover:bg-ink-850 md:p-10 md:pb-14"
               >
                 <span className="t-eyebrow tabular-nums text-gold">{String(i + 1).padStart(2, "0")}</span>
-                <div className="mt-14 md:mt-auto md:pt-16">
+                <div className="mt-14 md:mt-24">
                   <h3 className="text-[1.875rem] font-light leading-tight tracking-[-0.028em] text-ivory md:text-[2.125rem]">
                     {item.title}
                   </h3>
@@ -112,10 +113,12 @@ export default async function PortfolioPage({ params }: PageProps<"/[locale]/por
         </div>
       </section>
 
-      {/* Holdings register */}
-      <section className="surface-ivory section-y">
-        <HoldingsRegister index="04" content={content} />
-      </section>
+      {/* Holdings register — rendered only once holdings are formalised */}
+      {holdings.length > 0 && (
+        <section className="surface-ivory section-y">
+          <HoldingsRegister index="04" content={content} />
+        </section>
+      )}
 
       <CtaBand
         eyebrow={portfolio.cta.eyebrow}

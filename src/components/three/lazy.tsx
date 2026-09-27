@@ -6,6 +6,7 @@ import { useEffect, useState, type RefObject } from "react";
 /** WebGL scenes are client-only and code-split out of the initial bundle. */
 export const GlobeScene = dynamic(() => import("./globe-scene"), { ssr: false });
 export const EmblemScene = dynamic(() => import("./emblem-scene"), { ssr: false });
+export const GreenScene = dynamic(() => import("./green-scene"), { ssr: false });
 
 /**
  * `mounted` flips once the element nears the viewport (and stays true);

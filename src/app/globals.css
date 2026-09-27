@@ -28,6 +28,20 @@
   /* Logo arrow gold */
   --color-sun: #f5b323;
 
+  /* AUREX Green sub-palette: deep forest, graphite, soft ivory, restrained metallic gold */
+  --color-forest-950: #06150f;
+  --color-forest-900: #0b2118;
+  --color-forest-800: #11301f;
+  --color-forest-700: #1a4430;
+  --color-forest-600: #265a41;
+  --color-graphite-950: #0f1213;
+  --color-graphite-900: #16191b;
+  --color-graphite-800: #20252a;
+  --color-graphite-700: #2d3339;
+  --color-cream: #f4f1e8;
+  --color-brass: #c8a24a;
+  --color-brass-soft: #e2cf98;
+
   /* Light surfaces */
   --color-ivory: #f7faf9;
   --color-ivory-200: #edf3f2;
@@ -245,4 +259,66 @@ html.lenis body {
 @keyframes aurex-shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
+}
+
+/* ── Footer wordmark: holographic foil (GITEX palette) ───────── */
+.aurex-foil {
+  --sx: 50%;
+  --sy: 40%;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-image:
+    /* pointer sheen */
+    radial-gradient(circle at var(--sx) var(--sy), rgb(255 255 255 / 0.55), rgb(255 255 255 / 0) 22%),
+    /* diagonal foil streaks */
+    repeating-linear-gradient(
+      115deg,
+      rgb(255 255 255 / 0) 0%,
+      rgb(255 255 255 / 0) 5%,
+      rgb(255 255 255 / 0.38) 6.5%,
+      rgb(255 255 255 / 0) 8.5%,
+      rgb(255 255 255 / 0) 13%,
+      rgb(255 255 255 / 0.16) 14%,
+      rgb(255 255 255 / 0) 16%
+    ),
+    /* grain */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    /* GITEX spectrum: aqua → signal red → orange → amber */
+    linear-gradient(
+      100deg,
+      #00d8f5 0%,
+      #009dc9 11%,
+      #00e1f8 19%,
+      #008fbd 24%,
+      #f01509 30%,
+      #fb1d05 40%,
+      #ff2a18 47%,
+      #ff7a00 57%,
+      #ffa403 68%,
+      #ffb300 80%,
+      #fecf00 92%,
+      #ffe27a 100%
+    );
+  background-size: 100% 100%, 260% 100%, 200px 200px, 100% 100%;
+  background-position: 0 0, 0% 0, 0 0, 0 0;
+  background-blend-mode: soft-light, overlay, soft-light, normal;
+  filter: drop-shadow(0 28px 50px rgb(0 0 0 / 0.45)) drop-shadow(0 2px 0 rgb(255 255 255 / 0.08));
+  animation: aurex-foil-shift 14s linear infinite;
+}
+
+@keyframes aurex-foil-shift {
+  from { background-position: 0 0, 0% 0, 0 0, 0 0; }
+  to { background-position: 0 0, 260% 0, 0 0, 0 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurex-foil { animation: none; }
+}
+
+/* Focus ring stays visible on light surfaces (lime is 1.9:1 on ivory) */
+.surface-ivory :focus-visible,
+.bg-ivory :focus-visible,
+.bg-cream :focus-visible {
+  outline-color: var(--color-gold-ink);
 }

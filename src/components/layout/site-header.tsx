@@ -11,6 +11,7 @@ import { localeMeta, locales, type Locale } from "@/i18n/config";
 import { cn } from "@/lib/cn";
 import { contactHref, href, navRoutes, type RouteKey } from "@/lib/routes";
 import { LanguageSwitcher, rememberLocale, useLocalizedPath } from "./language-switcher";
+import { TradeMenu, type TradeMenuData } from "./trade-menu";
 
 type HeaderLabels = {
   labels: Record<RouteKey, string>;
@@ -19,6 +20,7 @@ type HeaderLabels = {
   close: string;
   language: string;
   primaryLabel: string;
+  trade: TradeMenuData;
 };
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -101,20 +103,24 @@ export function SiteHeader({ locale, nav }: { locale: Locale; nav: HeaderLabels 
 
           <nav aria-label={nav.primaryLabel} className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
             <ul className="glass flex h-11 items-center gap-0.5 rounded-full px-1.5">
-              {navRoutes.map((route) => (
-                <li key={route}>
-                  <Link
-                    href={href(locale, route)}
-                    aria-current={isActive(route) ? "page" : undefined}
-                    className={cn(
-                      "inline-flex h-8 items-center rounded-full px-3.5 text-[0.8125rem] transition-colors duration-300 xl:px-4",
-                      isActive(route) ? "bg-white/12 text-ivory" : "text-ivory/70 hover:text-ivory",
-                    )}
-                  >
-                    {nav.labels[route]}
-                  </Link>
-                </li>
-              ))}
+              {navRoutes.map((route) =>
+                route === "trade" ? (
+                  <TradeMenu key={route} data={nav.trade} active={isActive(route)} />
+                ) : (
+                  <li key={route}>
+                    <Link
+                      href={href(locale, route)}
+                      aria-current={isActive(route) ? "page" : undefined}
+                      className={cn(
+                        "inline-flex h-8 items-center rounded-full px-3.5 text-[0.8125rem] transition-colors duration-300 xl:px-4",
+                        isActive(route) ? "bg-white/12 text-ivory" : "text-ivory/70 hover:text-ivory",
+                      )}
+                    >
+                      {nav.labels[route]}
+                    </Link>
+                  </li>
+                ),
+              )}
             </ul>
           </nav>
 
@@ -170,6 +176,22 @@ export function SiteHeader({ locale, nav }: { locale: Locale; nav: HeaderLabels 
                       {nav.labels[route]}
                       <span className="t-eyebrow text-gold">{String(i + 1).padStart(2, "0")}</span>
                     </Link>
+                    {route === "trade" && (
+                      <ul className="-mt-1 mb-4 grid grid-cols-1 gap-1 pl-1 sm:grid-cols-2">
+                        {nav.trade.items.map((item) => (
+                          <li key={item.id}>
+                            <Link
+                              href={item.href}
+                              onClick={() => setOpen(false)}
+                              className="flex min-h-11 items-center gap-3 text-[1rem] text-ivory/70 hover:text-ivory"
+                            >
+                              <span aria-hidden className="h-px w-4 bg-gold" />
+                              {item.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </motion.li>
                 ))}
               </ul>

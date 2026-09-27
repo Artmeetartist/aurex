@@ -9,6 +9,8 @@ import type { SiteContent } from "@/content/types";
  */
 export function OfficeRegister({ content, index }: { content: SiteContent; index?: string }) {
   const copy = content.presence.offices;
+  // Published only once offices are confirmed — no placeholder state on a public page.
+  if (offices.length === 0) return null;
 
   return (
     <section aria-labelledby="offices-title" className="border-t border-ink/10 bg-ivory-200 py-20 text-ink md:py-28">

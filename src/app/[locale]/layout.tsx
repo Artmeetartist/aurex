@@ -5,8 +5,10 @@ import { ScrollProgress } from "@/components/layout/scroll-progress";
 import { SiteHeader } from "@/components/layout/site-header";
 import { MotionProvider } from "@/components/providers/motion-provider";
 import { SmoothScroll } from "@/components/providers/smooth-scroll";
+import { JsonLd } from "@/components/seo/json-ld";
 import { getContent } from "@/content/repository";
 import { isLocale, localeMeta, locales } from "@/i18n/config";
+import { href, tradeHref, tradeIds } from "@/lib/routes";
 import { siteUrl } from "@/lib/seo";
 import { mono, sans, serif } from "../fonts";
 import "../globals.css";
@@ -64,6 +66,22 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
                 close: content.nav.close,
                 language: content.nav.language,
                 primaryLabel: content.nav.primaryLabel,
+                trade: {
+                  label: content.nav.labels.trade,
+                  hubHref: href(locale, "trade"),
+                  allLabel: content.tradePage.allTrade,
+                  items: tradeIds.map((id) => ({
+                    id,
+                    name: content.trades[id].name,
+                    title: content.trades[id].title,
+                    href: tradeHref(locale, id),
+                  })),
+                  green: {
+                    eyebrow: content.home.green.eyebrow,
+                    title: content.home.trade.greenLabel,
+                    href: href(locale, "sustainability"),
+                  },
+                },
               }}
             />
             <main id="main" tabIndex={-1} className="outline-none">
@@ -72,6 +90,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
             <SiteFooter locale={locale} content={content} />
           </SmoothScroll>
         </MotionProvider>
+        <JsonLd locale={locale} meta={content.meta} />
       </body>
     </html>
   );

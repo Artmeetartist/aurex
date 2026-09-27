@@ -25,7 +25,7 @@ export function LeadershipTeaser({ locale, content }: { locale: Locale; content:
           />
           <Reveal delay={0.15} className="lg:col-span-4 lg:col-start-9">
             {copy.intro && <p className="t-lead text-stone">{copy.intro}</p>}
-            <TextLink href={href(locale, "leadership")} tone="dark" className="mt-6 min-h-11">
+            <TextLink href={href(locale, "about", "leadership")} tone="dark" className="mt-6 min-h-11">
               {copy.link}
             </TextLink>
           </Reveal>

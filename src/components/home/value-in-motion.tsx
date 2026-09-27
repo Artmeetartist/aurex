@@ -235,7 +235,7 @@ export function ValueInMotion({ locale, content }: { locale: Locale; content: Si
                   </li>
                 ))}
               </ol>
-              <TextLink href={href(locale, "businesses")} className="md:mt-10">
+              <TextLink href={href(locale, "trade")} className="md:mt-10">
                 {copy.link}
               </TextLink>
             </div>

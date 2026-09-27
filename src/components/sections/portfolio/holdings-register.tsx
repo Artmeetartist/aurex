@@ -14,6 +14,8 @@ import { cn } from "@/lib/cn";
 export function HoldingsRegister({ content, index }: { content: SiteContent; index?: string }) {
   const copy = content.portfolio.holdings;
   const empty = holdings.length === 0;
+  // Published only once holdings are formalised and cleared — no placeholder state.
+  if (empty) return null;
 
   return (
     <div className={cn("container-x", empty && "grid gap-12 lg:grid-cols-12 lg:items-end")}>

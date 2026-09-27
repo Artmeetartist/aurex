@@ -6,7 +6,7 @@ import { Hero } from "@/components/home/hero";
 import { HomeContact } from "@/components/home/home-contact";
 import { LeadershipTeaser } from "@/components/home/leadership-teaser";
 import { Partnerships } from "@/components/home/partnerships";
-import { Sectors } from "@/components/home/sectors";
+import { TradeLines } from "@/components/home/trade-lines";
 import { ValueInMotion } from "@/components/home/value-in-motion";
 import { WhoWeAre } from "@/components/home/who-we-are";
 import { WhyAurex } from "@/components/home/why-aurex";
@@ -31,6 +31,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <Hero locale={locale} content={content} />
       <WhoWeAre locale={locale} content={content} />
       <ValueInMotion locale={locale} content={content} />
+      <TradeLines locale={locale} content={content} />
       <GlobalReach
         locale={locale}
         content={content}
@@ -39,7 +40,6 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         footnote={reach.footnote}
         link={{ label: reach.link, route: "presence" }}
       />
-      <Sectors locale={locale} content={content} />
       <Capital locale={locale} content={content} />
       <WhyAurex content={content} />
       <Partnerships locale={locale} content={content} />

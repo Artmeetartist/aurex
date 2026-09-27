@@ -2,9 +2,11 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { ScrollText } from "@/components/motion/scroll-text";
 import { CtaBand } from "@/components/page/cta-band";
 import { PageHero } from "@/components/page/page-hero";
+import { ApproachColumns } from "@/components/sections/leadership/approach-columns";
+import { LeaderProfiles } from "@/components/sections/leadership/leader-profiles";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { divisions } from "@/content/facts";
+import { divisions, leaders } from "@/content/facts";
 import { loadPage, metadataFor } from "@/lib/page";
 import { contactHref, href } from "@/lib/routes";
 
@@ -12,7 +14,7 @@ export const generateMetadata = metadataFor("about");
 
 export default async function AboutPage({ params }: PageProps<"/[locale]/about">) {
   const { locale, content } = await loadPage(params);
-  const { about, nav, common } = content;
+  const { about, leadership, nav, common } = content;
 
   return (
     <>
@@ -133,11 +135,31 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
         </div>
       </section>
 
+      {/* Leadership — approach, and profiles once confirmed */}
+      <section id="leadership" className="surface-ivory section-y scroll-mt-20">
+        <div className="container-x">
+          <SectionHeading
+            index="05"
+            eyebrow={leadership.approach.eyebrow}
+            title={leadership.approach.title}
+            accent={leadership.approach.accent}
+            intro={leadership.approach.intro}
+            tone="dark"
+          />
+          <ApproachColumns items={leadership.approach.items} className="mt-16 md:mt-24" />
+        </div>
+      </section>
+      {leaders.length > 0 && (
+        <section className="surface-ink section-y">
+          <LeaderProfiles index="06" content={content} />
+        </section>
+      )}
+
       <CtaBand
         eyebrow={about.cta.eyebrow}
         title={about.cta.title}
         accent={about.cta.accent}
-        primary={{ label: about.cta.primary, href: href(locale, "businesses") }}
+        primary={{ label: about.cta.primary, href: href(locale, "trade") }}
         secondary={{ label: about.cta.secondary, href: contactHref(locale) }}
       />
     </>

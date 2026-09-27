@@ -69,7 +69,6 @@ export function Capital({ locale, content }: { locale: Locale; content: SiteCont
 
           <Reveal delay={0.1} className="mt-10 flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
             <ButtonLink href={contactHref(locale, "investment")}>{copy.cta}</ButtonLink>
-            <p className="max-w-[16rem] text-[0.8125rem] leading-relaxed text-mist sm:text-right">{copy.note}</p>
           </Reveal>
         </div>
       </div>

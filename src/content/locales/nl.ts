@@ -6,36 +6,37 @@ const nl: SiteContent = {
     tagline: "Waarde in beweging",
     signature: "Europese standaarden. Wereldwijd bereik.",
     description:
-      "AUREX is een internationale handels-, holding- en investeringsgroep met Europese wortels die markten, partners en kapitaal blijvend over grenzen heen verbindt.",
+      "AUREX is een internationale handels-, holding- en investeringsgroep met Europese wortels, opgezet om markten, partners en kapitaal over grenzen heen en voor de lange termijn met elkaar te verbinden.",
     pages: {
       home: {
         title: "Waarde in beweging",
         description:
-          "Internationale handels-, holding- en investeringsgroep met Europese wortels, die markten, partners en kapitaal over grenzen heen verbindt voor de lange termijn.",
+          "Internationale handels-, holding- en investeringsgroep met Europese wortels, opgezet om markten, partners en kapitaal over grenzen heen en voor de lange termijn met elkaar te verbinden.",
       },
       about: {
         title: "Over AUREX",
         description:
           "Een groep met Europese wortels en een mondiale horizon: internationale handel, deelnemingen en investeringen vanuit één langetermijnfilosofie.",
       },
-      businesses: {
-        title: "Onze activiteiten",
+      trade: {
+        title: "Handel",
         description:
-          "Internationale handel en EXIM, logistiek, distributie, en deelnemingen, investeringen en kapitaal: vier disciplines, ontworpen om elkaar te versterken.",
+          "Internationale handel, gestructureerd volgens Europese standaarden: voeding, medische producten, elektronische componenten en LARP & historische goederen, van inkoop tot distributie.",
+      },
+      sustainability: {
+        title: "AUREX Green",
+        description:
+          "De groene transitie: de strategische focus van AUREX op duurzame materialen, schone technologieën, grondstofefficiënte producten en toeleveringsketens met een lagere milieu-impact.",
       },
       portfolio: {
         title: "Portfolio & investeringen",
         description:
-          "Hoe AUREX investeert: geduldig kapitaal, strategische afstemming en governance voorop, gericht op zes sectoren van strategisch belang.",
+          "Hoe AUREX is opgezet om te investeren: geduldig kapitaal, strategische afstemming en governance voorop, in zes sectoren van strategisch belang.",
       },
       presence: {
         title: "Wereldwijde aanwezigheid",
         description:
           "Europa als kern, met strategische corridors naar de Golfregio, India en Afrika. AUREX is gebouwd rond corridors, niet rond afzonderlijke markten.",
-      },
-      leadership: {
-        title: "Leiderschap & governance",
-        description: "Hoe AUREX wordt geleid en bestuurd: rentmeesterschap, verantwoording en een mandaat voor de lange termijn.",
       },
       partnerships: {
         title: "Partnerschappen",
@@ -57,10 +58,10 @@ const nl: SiteContent = {
     labels: {
       home: "Home",
       about: "Over ons",
-      businesses: "Activiteiten",
+      trade: "Handel",
+      sustainability: "Duurzaamheid",
       portfolio: "Portfolio",
       presence: "Wereldwijd",
-      leadership: "Leiderschap",
       partnerships: "Partnerschappen",
       contact: "Contact",
       privacy: "Privacy",
@@ -90,7 +91,7 @@ const nl: SiteContent = {
       title: "Waarde in beweging.",
       accent: ["beweging."],
       intro:
-        "AUREX is een groep met Europese wortels die markten, partners en kapitaal over grenzen heen verbindt, volgens institutionele standaarden en gebouwd voor de lange termijn.",
+        "AUREX is een groep met Europese wortels, opgezet om markten, partners en kapitaal over grenzen heen te verbinden, volgens institutionele standaarden en voor de lange termijn.",
       primaryCta: "Ontdek de groep",
       secondaryCta: "Samenwerken met AUREX",
       panelTitle: "Directe aanvragen",
@@ -103,7 +104,7 @@ const nl: SiteContent = {
     who: {
       eyebrow: "Wie wij zijn",
       statement:
-        "AUREX is een internationale handels-, holding- en investeringsgroep. Europees van oorsprong en in standaarden, mondiaal in perspectief, verbinden wij producenten, markten en kapitaal, en meten wij waarde in decennia, niet in transacties.",
+        "AUREX is een internationale handels-, holding- en investeringsgroep. Europees van oorsprong en in standaarden, mondiaal in perspectief, is de groep opgezet om producenten, markten en kapitaal te verbinden, en om waarde te meten in decennia, niet in transacties.",
       pillars: [
         {
           title: "Handel",
@@ -115,7 +116,7 @@ const nl: SiteContent = {
         },
         {
           title: "Investeringen",
-          text: "Geduldig kapitaal, gericht op sectoren waar handel, infrastructuur en groei samenkomen.",
+          text: "Geduldig kapitaal, bestemd voor sectoren waar handel, infrastructuur en groei samenkomen.",
         },
       ],
       link: "Over de groep",
@@ -129,7 +130,7 @@ const nl: SiteContent = {
           mode: "Zee",
           division: "trade",
           title: "Internationale handel & EXIM",
-          text: "Inkoop, import en export over grenzen heen: gestructureerd, gedocumenteerd en uitgevoerd volgens Europese standaarden.",
+          text: "Inkoop, import en export over grenzen heen, erop ingericht om volgens Europese standaarden te worden gestructureerd, gedocumenteerd en uitgevoerd.",
         },
         {
           mode: "Lucht",
@@ -141,16 +142,54 @@ const nl: SiteContent = {
           mode: "Land",
           division: "distribution",
           title: "Distributie",
-          text: "Routes naar de markt, ontwikkeld met distributiepartners, die aanbod en vraag in de focusmarkten met elkaar verbinden.",
+          text: "Routes naar de markt, ontworpen om aanbod en vraag in de focusmarkten met elkaar te verbinden.",
         },
         {
           mode: "Verbonden",
           division: "holdings",
           title: "Deelnemingen, investeringen & kapitaal",
-          text: "Eigendom op lange termijn en geduldig kapitaal, die het platform samenbinden en waarde laten aangroeien over cycli en grenzen heen.",
+          text: "Eigendom op lange termijn en geduldig kapitaal, bedoeld om het platform samen te binden en waarde te laten aangroeien over cycli en grenzen heen.",
         },
       ],
       link: "Ontdek onze activiteiten",
+    },
+    trade: {
+      eyebrow: "Handel",
+      title: "Handelsdomeinen met strategische focus.",
+      accent: ["strategische"],
+      intro:
+        "Gespecialiseerde handelsdomeinen, elk weloverwogen benaderd, met gekwalificeerde partners en op eigen merites.",
+      link: "Ontdek de handelsdomeinen",
+      greenLabel: "Duurzame producten en technologieën",
+    },
+    green: {
+      eyebrow: "AUREX Green",
+      title: "De groene transitie",
+      subtitle: "Handel in de producten en technologieën die vorm geven aan een wereld die efficiënter omgaat met grondstoffen.",
+      body: [
+        "AUREX breidt haar handels- en investeringsactiviteiten uit naar duurzame materialen, schone technologieën, grondstofefficiënte producten en toeleveringsketens met een lagere milieu-impact.",
+        "Van gerecyclede materialen en duurzame verpakkingen tot infrastructuur voor schone energie en groene logistiek: wij verbinden opkomende kansen met internationale markten.",
+      ],
+      primaryCta: "Ontdek AUREX Green",
+      secondaryCta: "Werk met ons samen",
+      stages: [
+        "Zonne-energie",
+        "Schone technologie",
+        "Gerecyclede materialen",
+        "Duurzame verpakkingen",
+        "Elektrische mobiliteit",
+        "Groene logistiek",
+        "Wereldwijde distributie",
+      ],
+      pillarsEyebrow: "Bedrijfspijlers",
+      explore: "Ontdek",
+      flowLabel: "Het AUREX-model",
+      flow: ["Inkopen", "Handelen", "Distribueren", "Investeren"],
+      statement: "Bouwen aan handel voor een veranderende wereld.",
+      statementText:
+        "AUREX Green staat voor onze focus op duurzame producten, technologieën en kansen die hun weg kunnen vinden op wereldwijde markten.",
+      statementCta: "Bespreek een partnerschap",
+      note: "AUREX Green is een strategisch gebied waarin handels- en investeringsactiviteiten worden ontwikkeld.",
     },
     reach: {
       eyebrow: "Wereldwijd bereik",
@@ -160,30 +199,22 @@ const nl: SiteContent = {
         "AUREX wordt gevormd door Europese standaarden en is gericht op de corridors die Europa verbinden met het Midden-Oosten, India en Afrika.",
       footnote: "Focusmarkten geven de strategische oriëntatie aan. Zij duiden niet op kantoren of dochterondernemingen.",
       link: "Bekijk onze wereldwijde aanwezigheid",
-      legend: { focus: "Focusmarkt", corridor: "Strategische corridor" },
-    },
-    sectors: {
-      eyebrow: "Sectoren",
-      title: "Zes sectoren van strategisch belang.",
-      accent: ["strategisch"],
-      intro:
-        "Gebieden waarin AUREX relevantie op lange termijn ziet voor handel en kapitaal. Elke sector zal weloverwogen worden benaderd, met partners en op eigen merites.",
-      link: "Onze investeringsaanpak",
+      legend: { focus: "Focusmarkt", corridor: "Illustratieve corridor" },
     },
     capital: {
       eyebrow: "Investeringen & deelnemingen",
       title: "Geduldig kapitaal, doelbewust aangehouden.",
       accent: ["doelbewust"],
       intro:
-        "AUREX investeert met geduld en overtuiging, niet gebonden aan de looptijd van een fonds. Kapitaal wordt ingezet waar het het platform versterkt, en aangehouden zolang het waarde creëert.",
+        "AUREX is opgezet om met geduld en overtuiging te investeren, niet gebonden aan de looptijd van een fonds. Kapitaal is bedoeld om te worden ingezet waar het platform er sterker van wordt, en om aangehouden te blijven zolang het waarde creëert.",
       principles: [
         {
           title: "Lange horizon",
-          text: "Wij investeren om op te bouwen, niet slechts om te alloceren, en beoordelen resultaten over cycli in plaats van kwartalen.",
+          text: "Wij streven ernaar op te bouwen, niet slechts te alloceren, en resultaten te beoordelen over cycli in plaats van kwartalen.",
         },
         {
           title: "Strategische afstemming",
-          text: "Investeringen die handel, distributie en markttoegang binnen de groep versterken.",
+          text: "Een voorkeur voor investeringen die handel, distributie en markttoegang binnen de groep versterken.",
         },
         {
           title: "Governance voorop",
@@ -201,7 +232,7 @@ const nl: SiteContent = {
       pillars: [
         {
           title: "Europese standaarden",
-          text: "Europese normen voor compliance, documentatie en gedrag, consequent toegepast waar AUREX ook actief is.",
+          text: "Europese normen voor compliance, documentatie en gedrag: AUREX is erop ingericht deze toe te passen, waar zij ook actief is.",
         },
         {
           title: "Governance & transparantie",
@@ -222,7 +253,7 @@ const nl: SiteContent = {
       title: "Groei, opgebouwd door partnerschap.",
       accent: ["partnerschap."],
       intro:
-        "AUREX werkt samen met producenten, distributeurs, bedrijven, instellingen en co-investeerders wier standaarden en horizon aansluiten bij de onze.",
+        "AUREX zoekt samenwerking met producenten, distributeurs, bedrijven, instellingen en co-investeerders wier standaarden en horizon aansluiten bij de hare.",
       cta: "Ontdek partnerschappen",
     },
     leadership: {
@@ -230,7 +261,7 @@ const nl: SiteContent = {
       title: "Verantwoord rentmeesterschap, als uitgangspunt.",
       accent: ["rentmeesterschap,"],
       intro:
-        "AUREX wordt geleid met een mandaat voor de lange termijn: heldere verantwoordelijkheden, gedocumenteerde besluiten en een governancecultuur die vóór de schaalvergroting is opgebouwd, niet erna.",
+        "AUREX is erop ingericht te worden geleid met een mandaat voor de lange termijn: heldere verantwoordelijkheden, gedocumenteerde besluiten en een governancecultuur die vóór de schaalvergroting wordt verankerd, niet erna.",
       principles: [
         "Heldere mandaten en verantwoording",
         "Gedocumenteerde, toetsbare besluiten",
@@ -244,7 +275,7 @@ const nl: SiteContent = {
       title: "Begin een gesprek.",
       accent: ["gesprek."],
       intro:
-        "Of u nu een instelling, een onderneming, een producent of een investeerder vertegenwoordigt: deel uw mandaat en wij reageren met een passende vervolgstap.",
+        "Of u nu een instelling, een onderneming, een producent of een investeerder vertegenwoordigt: deel uw mandaat om een gesprek met AUREX te beginnen.",
       direct: "Liever per e-mail?",
     },
   },
@@ -254,7 +285,7 @@ const nl: SiteContent = {
       name: "Internationale handel & EXIM",
       short: "Handel & EXIM",
       summary:
-        "Grensoverschrijdende inkoop, import en export, gestructureerd volgens Europese standaarden voor documentatie, compliance en due diligence op tegenpartijen.",
+        "Grensoverschrijdende inkoop, import en export, ingericht rond Europese standaarden voor documentatie, compliance en due diligence op tegenpartijen.",
       scope: ["Sourcing & inkoop", "Import & export (EXIM)", "Tegenpartij- & compliancetoetsing", "Handelsstructurering"],
     },
     logistics: {
@@ -268,14 +299,14 @@ const nl: SiteContent = {
       name: "Distributie",
       short: "Distributie",
       summary:
-        "Routes naar de markt, ontwikkeld met distributiepartners, die aanbod en vraag in de focusmarkten met elkaar verbinden.",
+        "Routes naar de markt, ontworpen om aanbod en vraag in de focusmarkten met elkaar te verbinden.",
       scope: ["Distributiepartnerschappen", "Markttoetreding", "Kanaalontwikkeling"],
     },
     holdings: {
       name: "Deelnemingen, investeringen & kapitaal",
       short: "Deelnemingen & kapitaal",
       summary:
-        "De eigendomslaag van de groep: deelnemingen op lange termijn en geduldig kapitaal die handel, logistiek en distributie tot één platform verbinden.",
+        "De eigendomslaag van de groep: deelnemingen op lange termijn en geduldig kapitaal, bedoeld om handel, logistiek en distributie tot één platform te verbinden.",
       scope: ["Deelnemingen op lange termijn", "Strategische investeringen", "Co-investeringen", "Governance & rentmeesterschap"],
     },
   },
@@ -366,6 +397,180 @@ const nl: SiteContent = {
     },
   },
 
+  trades: {
+    food: {
+      name: "Voeding",
+      title: "Voeding, traceerbaar verhandeld.",
+      accent: ["traceerbaar"],
+      intro:
+        "AUREX is erop ingericht producerende regio's te verbinden met consumerende markten, met de documentatie, kwaliteitscontrole en continuïteit die institutionele afnemers vereisen.",
+      overview:
+        "In de voedingshandel wordt betrouwbaarheid boven alles beloond: constante kwaliteit, verifieerbare herkomst en solide logistiek. AUREX benadert voeding als een handelsdomein voor de lange termijn en werkt toe naar partnerschappen met gekwalificeerde producenten en gevestigde distributeurs in de focusmarkten.",
+      categories: [
+        { title: "Basisvoedingsmiddelen", text: "Granen, peulvruchten, rijst, suiker en spijsoliën, waarbij specificatie en continuïteit het zwaarst wegen." },
+        { title: "Verpakte voeding & specialiteiten", text: "Afgewerkte producten voor retail-, groothandels- en horecakanalen." },
+        { title: "Temperatuurgecontroleerde goederen", text: "Producten waarvan de kwaliteit afhangt van een ononderbroken koudeketen, van herkomst tot bestemming." },
+      ],
+      approach: [
+        { title: "Herkomst & kwaliteit", text: "Producenten getoetst aan gedocumenteerde kwaliteits-, veiligheids- en herkomstnormen." },
+        { title: "Compliance", text: "Voedselveiligheid, etikettering en importvereisten geregeld voordat de goederen in beweging komen." },
+        { title: "Continuïteit", text: "Aanvoer gepland op consistentie in plaats van op eenmalige transacties." },
+      ],
+      cta: { title: "Bespreek de handel in voeding.", accent: ["voeding."], primary: "Dien een partnerschapsaanvraag in" },
+    },
+    medical: {
+      name: "Medisch",
+      title: "Medische bevoorrading, met compliance voorop.",
+      accent: ["compliance"],
+      intro:
+        "Medische producten en apparatuur vereisen gedocumenteerde kwaliteit, conformiteit met de regelgeving en volledige traceerbaarheid. AUREX benadert de sector met de zorgvuldigheid die daarbij hoort.",
+      overview:
+        "Toeleveringsketens in de zorg kunnen zich geen onzekerheid veroorloven. De aanpak van AUREX in de medische handel wordt bepaald door zorgvuldige toetsing aan de regelgeving, gekwalificeerde fabrikanten en traceerbare goederenstromen, en door de eis dat partners in elke markt over de benodigde vergunningen beschikken.",
+      categories: [
+        { title: "Medische benodigdheden & verbruiksartikelen", text: "Dagelijkse klinische verbruiksartikelen waarbij consistentie en conformiteit essentieel zijn." },
+        { title: "Medische apparatuur", text: "Hulpmiddelen en apparatuur voor klinische en institutionele afnemers." },
+        { title: "Beschermingsmiddelen", text: "Persoonlijke beschermingsmiddelen voor de zorg en de industrie." },
+      ],
+      approach: [
+        { title: "Conformiteit met regelgeving", text: "Producten beoordeeld aan de hand van de geldende eisen van de EU en van de markt van bestemming." },
+        { title: "Gekwalificeerde fabrikanten", text: "Fabrikanten beoordeeld op kwaliteitssystemen en documentatie." },
+        { title: "Traceerbaarheid", text: "Documentatie op batchniveau, van fabrikant tot ontvanger." },
+      ],
+      cta: { title: "Bespreek medische bevoorrading.", accent: ["medische"], primary: "Dien een partnerschapsaanvraag in" },
+    },
+    electronics: {
+      name: "Elektronische componenten",
+      title: "Componenten voor industriële vraag.",
+      accent: ["industriële"],
+      intro:
+        "AUREX is erop ingericht gekwalificeerde leveranciers van elektronische componenten en onderdelen te verbinden met fabrikanten en industriële afnemers, met de authenticiteit en documentatie die de sector vereist.",
+      overview:
+        "Bij elektronische componenten is herkomst alles. De aanpak van AUREX draait om leverancierskwalificatie, echtheidscontroles en gedocumenteerde overdrachtsketens, zodat industriële afnemers met vertrouwen kunnen inkopen.",
+      categories: [
+        { title: "Actieve & passieve componenten", text: "Halfgeleiders, geïntegreerde schakelingen, weerstanden, condensatoren en aanverwante onderdelen." },
+        { title: "Elektromechanische onderdelen", text: "Connectoren, relais, schakelaars en assemblages voor industriële toepassingen." },
+        { title: "Onderdelen voor industriële apparatuur", text: "Onderdelen en subassemblages ter ondersteuning van productie en onderhoud." },
+      ],
+      approach: [
+        { title: "Leverancierskwalificatie", text: "Leveranciers beoordeeld op authenticiteit, kwaliteitssystemen en continuïteit." },
+        { title: "Authenticiteit", text: "Documentatie en inspectie die beschermen tegen namaakonderdelen." },
+        { title: "Exportcompliance", text: "Vereisten voor dual-use en exportcontrole, getoetst vóór elke verbintenis." },
+      ],
+      cta: { title: "Bespreek de inkoop van componenten.", accent: ["inkoop"], primary: "Dien een partnerschapsaanvraag in" },
+    },
+    larp: {
+      name: "LARP & historische goederen",
+      title: "Ambachtelijke goederen voor levende geschiedenis.",
+      accent: ["levende"],
+      intro:
+        "Kostuums, harnassen, rekwisieten en historische reproducties voor live-action roleplay, re-enactment en theater, waarbij vakkundige makers worden verbonden met speciaalzaken, organisatoren en producties.",
+      overview:
+        "Live-action roleplay, historische re-enactment en theater vragen om goederen die authentiek ogen, intensief gebruik doorstaan en veilig te dragen zijn. AUREX benadert deze nichemarkt zoals elk ander handelsdomein: met gekwalificeerde makers, heldere specificaties en betrouwbare logistiek.",
+      categories: [
+        { title: "Kostuums & kleding", text: "Historische en fantasykleding, textiel en accessoires." },
+        { title: "Harnassen & beschermende uitrusting", text: "Leren en metalen harnassen, helmen en beschermende onderdelen voor evenementen en voorstellingen." },
+        { title: "Rekwisieten & reproducties", text: "Veilige rekwisieten voor evenementen, historische reproducties en decoratieve stukken." },
+      ],
+      approach: [
+        { title: "Vakkundige makers", text: "Ateliers en fabrikanten geselecteerd op vakmanschap en consistentie." },
+        { title: "Veiligheid & materialen", text: "Materialen en afwerkingen beoordeeld op veilig gebruik tijdens evenementen en op het podium." },
+        { title: "Gespecialiseerde distributie", text: "Routes naar de markt via speciaalzaken, organisatoren en producties." },
+      ],
+      cta: { title: "Bespreek LARP & historische goederen.", accent: ["historische"], primary: "Dien een partnerschapsaanvraag in" },
+    },
+  },
+
+  tradePage: {
+    eyebrow: "Handelsdomein",
+    overview: "Overzicht",
+    categoriesEyebrow: "Focuscategorieën",
+    categoriesTitle: "Wat dit handelsdomein omvat.",
+    approachEyebrow: "Aanpak",
+    approachTitle: "Hoe AUREX dit benadert.",
+    corridorsEyebrow: "Focusmarkten",
+    otherEyebrow: "Andere handelsdomeinen",
+    allTrade: "Alle handelsdomeinen",
+  },
+
+  greenPillars: {
+    materials: {
+      name: "Groene materialen",
+      summary: "Gerecyclede, circulaire en biobased materialen die hun weg vinden naar nieuwe markten.",
+      detail:
+        "Gerecyclede metalen, polymeren en vezels, circulaire grondstoffen en biobased alternatieven worden gangbare industriële materialen. AUREX zoekt naar kansen om ze van producenten bij de fabrikanten te brengen die ze nodig hebben.",
+      focus: ["Gerecyclede materialen", "Circulaire grondstoffen", "Biobased alternatieven"],
+    },
+    energy: {
+      name: "Schone energie",
+      summary: "Zonne-energie, energieopslag, infrastructuur voor elektrisch vervoer en technologieën voor energie-efficiëntie.",
+      detail:
+        "De energietransitie is in de kern een handel in apparatuur en componenten. De belangstelling van AUREX strekt zich uit over hardware voor zonne-energie en opslag, laadinfrastructuur voor elektrische voertuigen en technologieën die de energie-efficiëntie verbeteren.",
+      focus: ["Zonne-energie & opslag", "EV-infrastructuur", "Energie-efficiëntie"],
+    },
+    commerce: {
+      name: "Duurzame handel",
+      summary: "Duurzame landbouw en verpakkingen, specialistische producten en grondstofefficiënte oplossingen.",
+      detail:
+        "Duurzaamheid wordt steeds vaker een kenmerk van alledaagse producten, van landbouwgoederen en verpakkingen tot specialistische producten die zijn ontworpen om minder grondstoffen te verbruiken.",
+      focus: ["Duurzame landbouw", "Duurzame verpakkingen", "Grondstofefficiënte producten"],
+    },
+    logistics: {
+      name: "Groene logistiek",
+      summary: "Efficiënter transport, geoptimaliseerde toeleveringsketens en distributie met een lagere milieu-impact.",
+      detail:
+        "Hoe goederen worden vervoerd, is even belangrijk als wat ze zijn. AUREX brengt haar logistieke perspectief in bij efficiënter transport, beter geplande toeleveringsketens en distributie met een lagere milieu-impact.",
+      focus: ["Efficiënt transport", "Geoptimaliseerde toeleveringsketens", "Distributie met lagere milieu-impact"],
+    },
+  },
+
+  sustainability: {
+    hero: {
+      eyebrow: "AUREX Green",
+      title: "De groene transitie",
+      accent: ["groene"],
+      intro: "Handel in de producten en technologieën die vorm geven aan een wereld die efficiënter omgaat met grondstoffen.",
+    },
+    intro: {
+      eyebrow: "AUREX Green",
+      title: "Duurzaamheid als onderdeel van de handelspraktijk.",
+      accent: ["handelspraktijk."],
+    },
+    ecosystem: {
+      eyebrow: "Het ecosysteem",
+      title: "Van de bron tot wereldwijde distributie.",
+      accent: ["wereldwijde"],
+    },
+    pillars: {
+      eyebrow: "Bedrijfspijlers",
+      title: "Vier pijlers van AUREX Green.",
+      accent: ["pijlers"],
+    },
+    flow: {
+      eyebrow: "Het AUREX-model",
+      title: "Inkopen. Handelen. Distribueren. Investeren.",
+      accent: ["Investeren."],
+      intro: "AUREX Green volgt hetzelfde model als de rest van de groep: een handelshuis en holding, geen adviesbureau.",
+      steps: [
+        { title: "Inkopen", text: "Geloofwaardige producenten van duurzame producten en technologieën identificeren." },
+        { title: "Handelen", text: "Grensoverschrijdende transacties structureren, met documentatie en due diligence." },
+        { title: "Distribueren", text: "Routes naar de markt ontwikkelen met logistieke en distributiepartners." },
+        { title: "Investeren", text: "Kapitaal voor de lange termijn inzetten waar blijvende waarde ontstaat." },
+      ],
+    },
+    principles: {
+      eyebrow: "Onze aanpak",
+      title: "Geloofwaardigheid vóór claims.",
+      accent: ["Geloofwaardigheid"],
+      items: [
+        { title: "Verifieerbare productclaims", text: "Milieukenmerken onderbouwd met documentatie, niet met marketing." },
+        { title: "Traceerbare toeleveringsketens", text: "Herkomst en goederenstroom gedocumenteerd van bron tot bestemming." },
+        { title: "Commerciële levensvatbaarheid", text: "Kansen die op eigen economische kracht overeind blijven, niet alleen dankzij subsidies." },
+        { title: "Partnerschap op lange termijn", text: "Relaties die zo zijn gestructureerd dat zij meegroeien naarmate markten volwassen worden." },
+      ],
+    },
+    note: "AUREX Green is een strategisch gebied waarin handels- en investeringsactiviteiten worden ontwikkeld. De beschreven categorieën zijn aandachtsgebieden en vormen niet elk een gevestigde bedrijfsactiviteit van AUREX.",
+  },
+
   about: {
     hero: {
       eyebrow: "Over AUREX",
@@ -375,14 +580,14 @@ const nl: SiteContent = {
         "AUREX brengt internationale handel, deelnemingen en investeringen samen vanuit één filosofie: waarde ontstaat door haar zorgvuldig over grenzen heen te bewegen, en door haar voor de lange termijn aan te houden.",
     },
     statement:
-      "De naam AUREX is ontleend aan aurum, goud, de oudste maatstaf van waarde, en aan exchange, uitwisseling: de beweging van die waarde over markten en grenzen heen.",
+      "De naam AUREX doet denken aan aurum, het Latijnse woord voor goud, een blijvende maatstaf van waarde, en aan exchange, uitwisseling: de beweging van die waarde over markten en grenzen heen.",
     story: {
       eyebrow: "Ons verhaal",
       title: "Waarde, doorgegeven.",
       accent: ["doorgegeven."],
       paragraphs: [
-        "AUREX is opgezet als internationale groep en niet als onderneming voor één markt: een structuur die in staat is te handelen, deelnemingen aan te houden en te investeren langs de corridors die Europa verbinden met het Midden-Oosten, India en Afrika.",
-        "Haar blik is Europees: in hoe zij zichzelf bestuurt, haar besluiten documenteert en haar partners behandelt. Haar horizon is mondiaal, en haar maatstaf voor succes is waarde op lange termijn in plaats van volume op korte termijn.",
+        "AUREX is opgezet als internationale groep en niet als onderneming voor één markt: een structuur die is ontworpen om te handelen, deelnemingen aan te houden en te investeren langs de corridors die Europa verbinden met het Midden-Oosten, India en Afrika.",
+        "Haar blik is Europees: in de manier waarop zij is ingericht om zichzelf te besturen, haar besluiten te documenteren en haar partners te behandelen. Haar horizon is mondiaal, en haar maatstaf voor succes is waarde op lange termijn in plaats van volume op korte termijn.",
         "Het resultaat is een groep die is ingericht voor institutionele en zakelijke tegenpartijen: gedisciplineerd in de uitvoering, weloverwogen in de groei en gebouwd voor decennia, niet voor transacties.",
       ],
     },
@@ -397,7 +602,7 @@ const nl: SiteContent = {
           text: "Elke verbintenis draagt de naam van de groep. Tegenpartijen en verbintenissen worden dienovereenkomstig gekozen.",
         },
         { title: "Partnerschap boven transactie", text: "Relaties worden opgebouwd om langer mee te gaan dan één enkele deal." },
-        { title: "Langetermijnwaarde boven kortetermijnwinst", text: "Waarde wordt opgebouwd over cycli en grenzen heen." },
+        { title: "Langetermijnwaarde boven kortetermijnwinst", text: "Het doel: waarde laten aangroeien over cycli en grenzen heen." },
       ],
     },
     structure: {
@@ -412,7 +617,7 @@ const nl: SiteContent = {
       eyebrow: "Governance",
       title: "Structuur vóór schaal.",
       accent: ["schaal."],
-      intro: "De principes die bepalen hoe AUREX kapitaal inzet, handel drijft en met partners samenwerkt.",
+      intro: "De principes waarop AUREX is gebouwd voor het inzetten van kapitaal, het drijven van handel en het samenwerken met partners.",
       items: [
         { title: "Heldere mandaten", text: "Duidelijk omschreven verantwoordelijkheden en beslissingsbevoegdheden in elk bedrijfsonderdeel." },
         { title: "Gedocumenteerde besluiten", text: "Besluiten die worden vastgelegd en die toetsbaar en herleidbaar zijn." },
@@ -425,50 +630,57 @@ const nl: SiteContent = {
     },
     cta: {
       eyebrow: "Volgende stap",
-      title: "Ontdek hoe de groep waarde creëert.",
+      title: "Ontdek hoe de groep is opgezet om waarde te creëren.",
       accent: ["waarde"],
       primary: "Onze activiteiten",
       secondary: "Start een gesprek",
     },
   },
 
-  businesses: {
+  tradeHub: {
     hero: {
-      eyebrow: "Onze activiteiten",
-      title: "Vier disciplines. Eén platform.",
-      accent: ["platform."],
+      eyebrow: "Handel",
+      title: "Internationale handel, gestructureerd volgens Europese standaarden.",
+      accent: ["gestructureerd"],
       intro:
-        "Handel, logistiek, distributie en kapitaal, ingericht om elkaar te versterken, zodat waarde verder reikt en langer standhoudt.",
+        "AUREX is erop ingericht goederen over grenzen heen in te kopen, te vervoeren en te distribueren, en gekwalificeerde producenten te verbinden met de vraag in de focusmarkten, volgens Europese standaarden voor documentatie, compliance en due diligence op tegenpartijen.",
     },
     core: {
-      eyebrow: "Kernactiviteiten",
-      title: "Hoe AUREX waarde creëert en in beweging brengt.",
-      accent: ["beweging"],
+      eyebrow: "Hoe AUREX handel drijft",
+      title: "Van inkoop tot distributie.",
+      accent: ["distributie."],
     },
     scopeLabel: "Werkterrein",
-    verticals: {
-      eyebrow: "Sectoren van strategisch belang",
-      title: "Waarop het platform zich vervolgens richt.",
-      accent: ["vervolgens"],
-      intro: "Deze sectoren bepalen waar AUREX haar capaciteiten in handel, logistiek en kapitaal wil inzetten.",
-      note: "Sectoren van strategisch belang zijn in ontwikkeling en worden geëvalueerd. Specifieke activiteiten worden gepresenteerd zodra zij zijn geformaliseerd.",
+    lines: {
+      eyebrow: "Handelsdomeinen",
+      title: "Handelsdomeinen met strategische focus.",
+      accent: ["strategische"],
+      intro: "Elk handelsdomein is een strategisch speerpunt, dat weloverwogen en met gekwalificeerde partners wordt ontwikkeld.",
+      note: "Handelsdomeinen zijn strategische aandachtsgebieden in ontwikkeling. Specifieke activiteiten worden gepresenteerd zodra zij zijn geformaliseerd.",
     },
     connection: {
-      eyebrow: "Hoe het samenhangt",
-      title: "Van inkoop tot rentmeesterschap.",
-      accent: ["rentmeesterschap."],
+      eyebrow: "Het AUREX-model",
+      title: "Inkopen. Handelen. Distribueren. Investeren.",
+      accent: ["Investeren."],
       steps: [
-        { title: "Inkopen", text: "Gekwalificeerde producenten en leveranciers, getoetst aan Europese standaarden." },
-        { title: "Vervoeren", text: "Logistiek, gecoördineerd over zee, lucht en land." },
-        { title: "Distribueren", text: "Routes naar de markt via gevestigde partners." },
-        { title: "Aanhouden", text: "Eigendom en kapitaal op lange termijn, die de gecreëerde waarde laten aangroeien." },
+        { title: "Inkopen", text: "Producenten en leveranciers, vóór elke verbintenis getoetst aan Europese standaarden." },
+        { title: "Handelen", text: "Grensoverschrijdende transacties, gestructureerd met documentatie, compliance en due diligence op tegenpartijen." },
+        { title: "Distribueren", text: "Routes naar de markt, bedoeld om te worden opgebouwd met logistieke en distributiepartners voor de lange termijn." },
+        { title: "Investeren", text: "Kapitaal en eigendom op lange termijn, waar handel blijvende waarde aan het licht brengt." },
       ],
     },
+    green: {
+      eyebrow: "AUREX Green",
+      title: "Duurzame producten en technologieën.",
+      accent: ["Duurzame"],
+      text: "Gerecyclede en biobased materialen, apparatuur voor schone energie, duurzame verpakkingen en groene logistiek: de handelskant van de groene transitie.",
+      link: "Ontdek AUREX Green",
+    },
     cta: {
-      eyebrow: "Partnerschappen",
-      title: "Samen bouwen met AUREX.",
-      accent: ["AUREX."],
-      primary: "Start een gesprek",
+      eyebrow: "Handelsaanvragen",
+      title: "Stel een handelspartnerschap voor.",
+      accent: ["handelspartnerschap"],
+      primary: "Dien een partnerschapsaanvraag in",
     },
   },
 
@@ -478,11 +690,11 @@ const nl: SiteContent = {
       title: "Geduldig kapitaal, met overtuiging ingezet.",
       accent: ["overtuiging"],
       intro:
-        "AUREX investeert met geduld en overtuiging, niet gebonden aan de looptijd van een fonds, en werkt samen met partners en management om op te bouwen in plaats van slechts te alloceren.",
+        "AUREX is opgezet om met geduld en overtuiging te investeren, niet gebonden aan de looptijd van een fonds, en om samen met partners en management op te bouwen in plaats van slechts te alloceren.",
     },
     approach: {
       eyebrow: "Investeringsaanpak",
-      title: "Hoe wij investeren.",
+      title: "Onze benadering van investeren.",
       accent: ["investeren."],
       items: [
         { title: "Horizon", text: "Standaard gericht op de lange termijn. Een investering wordt aangehouden zolang zij waarde creëert." },
@@ -490,7 +702,7 @@ const nl: SiteContent = {
           title: "Afstemming",
           text: "Een voorkeur voor kansen die handel, distributie of markttoegang binnen de groep versterken.",
         },
-        { title: "Partnerschap", text: "Samenwerking met management en co-investeerders, met inbreng van structuur en governance." },
+        { title: "Partnerschap", text: "Erop gericht samen te werken met management en co-investeerders en daarbij structuur en governance in te brengen." },
         { title: "Discipline", text: "Grondige due diligence, heldere investeringsthesen en gedocumenteerde besluitvorming." },
       ],
     },
@@ -508,7 +720,7 @@ const nl: SiteContent = {
     },
     sectors: {
       eyebrow: "Interessesectoren",
-      title: "Waar kapitaal wordt ingezet.",
+      title: "Waar kapitaal zal worden ingezet.",
       accent: ["kapitaal"],
       intro: "De investeringsbelangstelling is geconcentreerd op zes sectoren van strategische relevantie.",
     },
@@ -546,8 +758,8 @@ const nl: SiteContent = {
     },
     corridors: {
       eyebrow: "Strategische corridors",
-      title: "Waar waarde beweegt.",
-      accent: ["beweegt."],
+      title: "Waar waarde kan bewegen.",
+      accent: ["bewegen."],
       items: [
         {
           title: "Europa — Golfregio",
@@ -575,13 +787,6 @@ const nl: SiteContent = {
   },
 
   leadership: {
-    hero: {
-      eyebrow: "Leiderschap",
-      title: "Geleid met een mandaat voor de lange termijn.",
-      accent: ["lange"],
-      intro:
-        "Leiderschap bij AUREX staat in het teken van rentmeesterschap: over kapitaal, over partnerschappen en over de reputatie van de groep in elke markt waarin zij actief is.",
-    },
     approach: {
       eyebrow: "Leiderschapsaanpak",
       title: "Hoe AUREX wordt geleid.",
@@ -589,7 +794,7 @@ const nl: SiteContent = {
       items: [
         {
           title: "Rentmeesterschap",
-          text: "Leidinggevenden treden op als hoeders van kapitaal en reputatie, niet alleen als beheerders van activiteiten.",
+          text: "Van leidinggevenden wordt verwacht dat zij optreden als hoeders van kapitaal en reputatie, niet alleen als beheerders van activiteiten.",
         },
         { title: "Verantwoording", text: "Duidelijk eigenaarschap van besluiten, met verantwoordelijkheden die vastgelegd en zichtbaar zijn." },
         { title: "Langetermijnoriëntatie", text: "Besluiten afgewogen tegen de waarde die zij over cycli creëren, niet over kwartalen." },
@@ -600,21 +805,6 @@ const nl: SiteContent = {
       title: "De mensen achter AUREX.",
       accent: ["mensen"],
       empty: "Profielen van het leiderschapsteam worden hier gepubliceerd.",
-    },
-    governance: {
-      eyebrow: "Governancekader",
-      title: "Bestuurd voor de lange termijn.",
-      accent: ["lange"],
-      intro: "De principes die bepalen hoe AUREX kapitaal inzet en handel drijft.",
-      items: [
-        { title: "Beslissingsbevoegdheden", text: "Vastgelegde goedkeuringsdrempels en beslissingsbevoegdheden voor verplichtingen in kapitaal en handel." },
-        {
-          title: "Risico & compliance",
-          text: "Due diligence op tegenpartijen, handelscompliance en risicobeoordeling als voorwaarde voor elke verbintenis.",
-        },
-        { title: "Gedrag", text: "Heldere gedragsnormen en het melden van mogelijke belangenconflicten." },
-        { title: "Rapportage", text: "Transparante, regelmatige rapportage aan partners en co-investeerders." },
-      ],
     },
     cta: {
       eyebrow: "Zakelijke aanvragen",
@@ -630,7 +820,7 @@ const nl: SiteContent = {
       title: "Groei, opgebouwd door partnerschap.",
       accent: ["partnerschap."],
       intro:
-        "AUREX groeit samen met partners wier standaarden en horizon aansluiten bij de hare: producenten, distributeurs, bedrijven, instellingen en co-investeerders.",
+        "AUREX streeft ernaar samen te groeien met partners wier standaarden en horizon aansluiten bij de hare: producenten, distributeurs, bedrijven, instellingen en co-investeerders.",
     },
     models: {
       eyebrow: "Partnermodellen",
@@ -647,7 +837,7 @@ const nl: SiteContent = {
           title: "Grensoverschrijdend perspectief",
           text: "Een visie opgebouwd rond de corridors die Europa, de Golfregio, India en Afrika verbinden.",
         },
-        { title: "Geïntegreerde disciplines", text: "Handel, logistiek, distributie en kapitaal binnen één groep." },
+        { title: "Geïntegreerde disciplines", text: "Handel, logistiek, distributie en kapitaal, ontworpen om binnen één groep samen te werken." },
         { title: "Betrokkenheid op lange termijn", text: "Partnerschappen die zo zijn gestructureerd dat zij langer meegaan dan één transactie." },
       ],
     },
@@ -688,7 +878,7 @@ const nl: SiteContent = {
       title: "Begin een gesprek.",
       accent: ["gesprek."],
       intro:
-        "Selecteer de aard van uw aanvraag en deel uw mandaat. Elke aanvraag wordt beoordeeld en beantwoord met een passende vervolgstap.",
+        "Selecteer de aard van uw aanvraag en deel uw mandaat om een gesprek met AUREX te beginnen.",
     },
     routes: {
       eyebrow: "Soorten aanvragen",
@@ -775,8 +965,8 @@ const nl: SiteContent = {
     submit: "Aanvraag versturen",
     submitting: "Versturen…",
     success: {
-      title: "Hartelijk dank.",
-      text: "Uw aanvraag is ontvangen. Wij reageren met een passende vervolgstap.",
+      title: "Hartelijk dank voor uw bericht aan AUREX.",
+      text: "Wij hebben uw aanvraag ontvangen en nemen contact met u op.",
       again: "Nog een aanvraag versturen",
     },
     error: "Er is iets misgegaan bij het versturen van uw aanvraag. Probeer het opnieuw.",
@@ -798,7 +988,7 @@ const nl: SiteContent = {
 
   footer: {
     statement:
-      "Een internationale handels-, holding- en investeringsgroep met Europese wortels, die markten, partners en kapitaal over grenzen heen verbindt.",
+      "Een internationale handels-, holding- en investeringsgroep met Europese wortels, opgezet om markten, partners en kapitaal over grenzen heen te verbinden.",
     groups: { group: "Groep", businesses: "Activiteiten", contact: "Aanvragen" },
     rights: "Alle rechten voorbehouden.",
     languages: "Talen",

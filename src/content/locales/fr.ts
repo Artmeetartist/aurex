@@ -6,37 +6,37 @@ const fr: SiteContent = {
     tagline: "La valeur en mouvement",
     signature: "Standards européens. Portée mondiale.",
     description:
-      "AUREX, groupe international de négoce, de participations et d’investissement aux racines européennes, relie durablement marchés, partenaires et capitaux.",
+      "AUREX est un groupe international de négoce, de participations et d’investissement aux racines européennes, conçu pour relier marchés, partenaires et capitaux par-delà les frontières, dans la durée.",
     pages: {
       home: {
         title: "La valeur en mouvement",
         description:
-          "Groupe international de négoce, de participations et d’investissement aux racines européennes, reliant durablement marchés, partenaires et capitaux.",
+          "Groupe international de négoce, de participations et d’investissement aux racines européennes, conçu pour relier marchés, partenaires et capitaux par-delà les frontières, dans la durée.",
       },
       about: {
         title: "À propos d’AUREX",
         description:
           "Un groupe aux racines européennes et à l’horizon mondial : négoce international, participations et investissement, sous une même philosophie de long terme.",
       },
-      businesses: {
-        title: "Nos activités",
+      trade: {
+        title: "Négoce",
         description:
-          "Commerce international et EXIM, logistique, distribution, ainsi que participations, investissement et capital : quatre métiers qui se renforcent mutuellement.",
+          "Un négoce international structuré selon les standards européens : alimentaire, médical, composants électroniques, LARP & objets historiques, de l’approvisionnement à la distribution.",
+      },
+      sustainability: {
+        title: "AUREX Green",
+        description:
+          "La transition verte : l’axe stratégique d’AUREX consacré aux matériaux durables, aux technologies propres, aux produits économes en ressources et aux chaînes d’approvisionnement à moindre impact.",
       },
       portfolio: {
         title: "Portefeuille & investissements",
         description:
-          "Comment AUREX investit : capital patient, alignement stratégique et gouvernance avant tout, au service de six secteurs d’intérêt stratégique.",
+          "Comment AUREX entend investir : capital patient, alignement stratégique et gouvernance avant tout, dans six secteurs d’intérêt stratégique.",
       },
       presence: {
         title: "Présence mondiale",
         description:
           "L’Europe au cœur, avec des corridors stratégiques vers le Golfe, l’Inde et l’Afrique. AUREX s’organise autour de corridors, non de marchés isolés.",
-      },
-      leadership: {
-        title: "Direction & gouvernance",
-        description:
-          "Comment AUREX est dirigé et gouverné : gestion responsable, obligation de rendre compte et mandat de long terme.",
       },
       partnerships: {
         title: "Partenariats",
@@ -45,7 +45,7 @@ const fr: SiteContent = {
       },
       contact: {
         title: "Contact",
-        description: "Demandes de partenariat, d’investissement, institutionnelles et générales adressées à AUREX.",
+        description: "Demandes de partenariat, d’investissement, d’entreprise et d’ordre général adressées à AUREX.",
       },
       privacy: {
         title: "Politique de confidentialité",
@@ -58,10 +58,10 @@ const fr: SiteContent = {
     labels: {
       home: "Accueil",
       about: "À propos",
-      businesses: "Activités",
+      trade: "Négoce",
+      sustainability: "Durabilité",
       portfolio: "Portefeuille",
       presence: "Présence mondiale",
-      leadership: "Direction",
       partnerships: "Partenariats",
       contact: "Contact",
       privacy: "Confidentialité",
@@ -92,7 +92,7 @@ const fr: SiteContent = {
       title: "La valeur en mouvement.",
       accent: ["mouvement."],
       intro:
-        "AUREX est un groupe aux racines européennes qui relie marchés, partenaires et capitaux par-delà les frontières, fidèle à des standards institutionnels et bâti pour le long terme.",
+        "AUREX est un groupe aux racines européennes conçu pour relier marchés, partenaires et capitaux par-delà les frontières, selon des standards institutionnels et dans une perspective de long terme.",
       primaryCta: "Découvrir le groupe",
       secondaryCta: "S’associer à AUREX",
       panelTitle: "Demandes directes",
@@ -105,7 +105,7 @@ const fr: SiteContent = {
     who: {
       eyebrow: "Qui nous sommes",
       statement:
-        "AUREX est un groupe international de négoce, de participations et d’investissement. Européens par nos origines comme par nos standards, tournés vers le monde, nous relions producteurs, marchés et capitaux, et mesurons la valeur en décennies, non en transactions.",
+        "AUREX est un groupe international de négoce, de participations et d’investissement. Européen par ses origines comme par ses standards, tourné vers le monde, il est conçu pour relier producteurs, marchés et capitaux, et pour mesurer la valeur en décennies, non en transactions.",
       pillars: [
         {
           title: "Négoce",
@@ -117,7 +117,7 @@ const fr: SiteContent = {
         },
         {
           title: "Investissement",
-          text: "Un capital patient orienté vers les secteurs où se rencontrent commerce, infrastructures et croissance.",
+          text: "Un capital patient, destiné aux secteurs où se rencontrent commerce, infrastructures et croissance.",
         },
       ],
       link: "À propos du groupe",
@@ -131,7 +131,7 @@ const fr: SiteContent = {
           mode: "Mer",
           division: "trade",
           title: "Commerce international & EXIM",
-          text: "Approvisionnement, import et export à l’international : structurés, documentés et exécutés selon les standards européens.",
+          text: "Approvisionnement, import et export à l’international, conçus pour être structurés, documentés et exécutés selon les standards européens.",
         },
         {
           mode: "Air",
@@ -143,16 +143,54 @@ const fr: SiteContent = {
           mode: "Terre",
           division: "distribution",
           title: "Distribution",
-          text: "Des canaux d’accès au marché développés avec des partenaires de distribution, reliant l’offre à la demande sur les marchés prioritaires.",
+          text: "Des canaux d’accès au marché, conçus pour relier l’offre à la demande sur les marchés prioritaires.",
         },
         {
           mode: "Connecté",
           division: "holdings",
           title: "Participations, investissement & capital",
-          text: "Une détention de long terme et un capital patient qui assurent la cohésion de la plateforme et font fructifier la valeur d’un cycle à l’autre, d’une frontière à l’autre.",
+          text: "Une détention de long terme et un capital patient, conçus pour assurer la cohésion de la plateforme et faire fructifier la valeur d’un cycle à l’autre, d’une frontière à l’autre.",
         },
       ],
       link: "Découvrir nos activités",
+    },
+    trade: {
+      eyebrow: "Négoce",
+      title: "Des filières de négoce à vocation stratégique.",
+      accent: ["stratégique."],
+      intro:
+        "Des filières de négoce spécialisées, chacune abordée avec discernement, aux côtés de partenaires qualifiés et selon ses propres mérites.",
+      link: "Découvrir nos filières",
+      greenLabel: "Produits et technologies durables",
+    },
+    green: {
+      eyebrow: "AUREX Green",
+      title: "La transition verte",
+      subtitle: "Le négoce des produits et technologies qui façonnent un monde plus économe en ressources.",
+      body: [
+        "AUREX étend ses activités de négoce et d’investissement aux matériaux durables, aux technologies propres, aux produits économes en ressources et aux chaînes d’approvisionnement à moindre impact.",
+        "Des matériaux recyclés et des emballages durables aux infrastructures d’énergie propre et à la logistique verte, nous relions les opportunités émergentes aux marchés internationaux.",
+      ],
+      primaryCta: "Découvrir AUREX Green",
+      secondaryCta: "Devenir partenaire",
+      stages: [
+        "Énergie solaire",
+        "Technologies propres",
+        "Matériaux recyclés",
+        "Emballages durables",
+        "Mobilité électrique",
+        "Logistique verte",
+        "Distribution mondiale",
+      ],
+      pillarsEyebrow: "Piliers d’activité",
+      explore: "Découvrir",
+      flowLabel: "Le modèle AUREX",
+      flow: ["Approvisionnement", "Négoce", "Distribution", "Investissement"],
+      statement: "Bâtir le commerce d’un monde en mutation.",
+      statementText:
+        "AUREX Green traduit notre orientation vers les produits, technologies et opportunités durables susceptibles de circuler sur les marchés mondiaux.",
+      statementCta: "Échanger sur un partenariat",
+      note: "AUREX Green constitue un axe stratégique de développement du négoce et de l’investissement.",
     },
     reach: {
       eyebrow: "Portée mondiale",
@@ -163,30 +201,22 @@ const fr: SiteContent = {
       footnote:
         "Les marchés prioritaires indiquent une orientation stratégique. Ils ne désignent ni bureaux ni filiales.",
       link: "Voir notre présence mondiale",
-      legend: { focus: "Marché prioritaire", corridor: "Corridor stratégique" },
-    },
-    sectors: {
-      eyebrow: "Secteurs",
-      title: "Six secteurs d’intérêt stratégique.",
-      accent: ["stratégique."],
-      intro:
-        "Des domaines où AUREX voit une pertinence durable pour le commerce et le capital. Chacun sera abordé avec discernement, aux côtés de partenaires et selon ses propres mérites.",
-      link: "Notre approche de l’investissement",
+      legend: { focus: "Marché prioritaire", corridor: "Corridor indicatif" },
     },
     capital: {
       eyebrow: "Investissements & participations",
       title: "Un capital patient, détenu à dessein.",
       accent: ["dessein."],
       intro:
-        "AUREX investit avec patience et conviction, hors de tout calendrier de fonds. Le capital est orienté là où il renforce la plateforme, et conservé aussi longtemps qu’il crée de la valeur.",
+        "AUREX est conçu pour investir avec patience et conviction, hors de tout calendrier de fonds. Le capital a vocation à être orienté là où il renforce la plateforme, et à être conservé aussi longtemps qu’il crée de la valeur.",
       principles: [
         {
           title: "Horizon long",
-          text: "Nous investissons pour construire, pas seulement pour allouer, et mesurons les résultats sur des cycles plutôt que sur des trimestres.",
+          text: "Nous visons à construire, pas seulement à allouer, et à mesurer les résultats sur des cycles plutôt que sur des trimestres.",
         },
         {
           title: "Alignement stratégique",
-          text: "Des investissements qui renforcent le commerce, la distribution et l’accès aux marchés à l’échelle du groupe.",
+          text: "Une préférence pour les investissements qui renforcent le commerce, la distribution et l’accès aux marchés à l’échelle du groupe.",
         },
         {
           title: "La gouvernance d’abord",
@@ -205,7 +235,7 @@ const fr: SiteContent = {
       pillars: [
         {
           title: "Standards européens",
-          text: "Des normes européennes de conformité, de documentation et de conduite, appliquées avec constance partout où AUREX intervient.",
+          text: "Des normes européennes de conformité, de documentation et de conduite, qu’AUREX est conçu pour appliquer partout où il intervient.",
         },
         {
           title: "Gouvernance & transparence",
@@ -226,7 +256,7 @@ const fr: SiteContent = {
       title: "Une croissance bâtie sur le partenariat.",
       accent: ["partenariat."],
       intro:
-        "AUREX travaille avec des producteurs, distributeurs, entreprises, institutions et co-investisseurs dont les standards et l’horizon rejoignent les nôtres.",
+        "AUREX cherche à travailler avec des producteurs, distributeurs, entreprises, institutions et co-investisseurs dont les standards et l’horizon rejoignent les siens.",
       cta: "Découvrir nos partenariats",
     },
     leadership: {
@@ -234,7 +264,7 @@ const fr: SiteContent = {
       title: "Une gestion responsable, par construction.",
       accent: ["responsable,"],
       intro:
-        "AUREX est dirigé selon un mandat de long terme : responsabilités claires, décisions documentées et une culture de gouvernance établie avant le changement d’échelle, non après.",
+        "AUREX est conçu pour être dirigé selon un mandat de long terme : responsabilités claires, décisions documentées et une culture de gouvernance établie avant le changement d’échelle, non après.",
       principles: [
         "Mandats clairs et responsabilités assumées",
         "Décisions documentées et vérifiables",
@@ -248,7 +278,7 @@ const fr: SiteContent = {
       title: "Engager le dialogue.",
       accent: ["dialogue."],
       intro:
-        "Que vous représentiez une institution, une entreprise, un producteur ou un investisseur, faites-nous part de votre mandat : nous vous proposerons la suite appropriée.",
+        "Que vous représentiez une institution, une entreprise, un producteur ou un investisseur, présentez votre mandat pour engager le dialogue avec AUREX.",
       direct: "Vous préférez l’e-mail ?",
     },
   },
@@ -258,7 +288,7 @@ const fr: SiteContent = {
       name: "Commerce international & EXIM",
       short: "Commerce & EXIM",
       summary:
-        "Approvisionnement, import et export à l’international, structurés selon les standards européens de documentation, de conformité et de vérification des contreparties.",
+        "Approvisionnement, import et export à l’international, conçus autour des standards européens de documentation, de conformité et de vérification des contreparties.",
       scope: [
         "Approvisionnement & achats",
         "Import & export (EXIM)",
@@ -282,14 +312,14 @@ const fr: SiteContent = {
       name: "Distribution",
       short: "Distribution",
       summary:
-        "Des canaux d’accès au marché développés avec des partenaires de distribution, reliant l’offre à la demande sur les marchés prioritaires.",
+        "Des canaux d’accès au marché, conçus pour relier l’offre à la demande sur les marchés prioritaires.",
       scope: ["Partenariats de distribution", "Entrée sur le marché", "Développement des canaux"],
     },
     holdings: {
       name: "Participations, investissement & capital",
       short: "Participations & capital",
       summary:
-        "Le socle actionnarial du groupe : des participations de long terme et un capital patient qui fédèrent commerce, logistique et distribution en une plateforme unique.",
+        "Le socle actionnarial du groupe : des participations de long terme et un capital patient, conçus pour fédérer commerce, logistique et distribution en une plateforme unique.",
       scope: [
         "Participations de long terme",
         "Investissement stratégique",
@@ -393,6 +423,296 @@ const fr: SiteContent = {
     },
   },
 
+  trades: {
+    food: {
+      name: "Alimentaire",
+      title: "L’alimentaire, négocié en toute traçabilité.",
+      accent: ["traçabilité."],
+      intro:
+        "AUREX est conçu pour relier les régions productrices aux marchés de consommation, avec la documentation, le contrôle qualité et la continuité qu’exigent les acheteurs institutionnels.",
+      overview:
+        "Dans le négoce alimentaire, la fiabilité prime sur tout : qualité constante, origine vérifiable et logistique sûre. AUREX aborde l’alimentaire comme une filière de long terme et s’attache à nouer des partenariats avec des producteurs qualifiés et des distributeurs établis sur les marchés prioritaires.",
+      categories: [
+        {
+          title: "Denrées de base",
+          text: "Céréales, légumineuses, riz, sucre et huiles alimentaires, pour lesquels spécifications et continuité sont essentielles.",
+        },
+        {
+          title: "Produits conditionnés & spécialités",
+          text: "Des produits finis destinés aux circuits de détail, de gros et de l’hôtellerie-restauration.",
+        },
+        {
+          title: "Produits sous température dirigée",
+          text: "Des produits dont la qualité dépend d’une chaîne du froid ininterrompue, de l’origine à la destination.",
+        },
+      ],
+      approach: [
+        {
+          title: "Origine & qualité",
+          text: "Des producteurs qualifiés au regard de normes documentées de qualité, de sécurité et d’origine.",
+        },
+        {
+          title: "Conformité",
+          text: "Sécurité alimentaire, étiquetage et exigences à l’importation traités avant tout mouvement de marchandises.",
+        },
+        {
+          title: "Continuité",
+          text: "Un approvisionnement planifié dans la régularité plutôt qu’au gré de transactions ponctuelles.",
+        },
+      ],
+      cta: {
+        title: "Échanger sur le négoce alimentaire.",
+        accent: ["alimentaire."],
+        primary: "Soumettre une demande de partenariat",
+      },
+    },
+    medical: {
+      name: "Médical",
+      title: "L’approvisionnement médical, la conformité avant tout.",
+      accent: ["conformité"],
+      intro:
+        "Les produits et équipements médicaux exigent une qualité documentée, une conformité réglementaire et une traçabilité complète. AUREX aborde ce secteur avec toute la rigueur qu’il requiert.",
+      overview:
+        "Les chaînes d’approvisionnement de santé ne tolèrent aucune incertitude. L’approche d’AUREX en matière de négoce médical repose sur la diligence réglementaire, des fabricants qualifiés et des flux traçables, ainsi que sur l’exigence que ses partenaires détiennent les autorisations requises sur chaque marché.",
+      categories: [
+        {
+          title: "Fournitures & consommables médicaux",
+          text: "Des consommables cliniques courants, pour lesquels régularité et conformité sont essentielles.",
+        },
+        {
+          title: "Équipements médicaux",
+          text: "Dispositifs et équipements destinés aux structures de soins et aux acheteurs institutionnels.",
+        },
+        {
+          title: "Équipements de protection",
+          text: "Équipements de protection individuelle pour la santé et l’industrie.",
+        },
+      ],
+      approach: [
+        {
+          title: "Conformité réglementaire",
+          text: "Des produits évalués au regard des exigences applicables de l’UE et des marchés de destination.",
+        },
+        {
+          title: "Fabricants qualifiés",
+          text: "Des fabricants évalués sur leurs systèmes qualité et leur documentation.",
+        },
+        {
+          title: "Traçabilité",
+          text: "Une documentation au niveau du lot, du fabricant jusqu’au destinataire.",
+        },
+      ],
+      cta: {
+        title: "Échanger sur l’approvisionnement médical.",
+        accent: ["médical."],
+        primary: "Soumettre une demande de partenariat",
+      },
+    },
+    electronics: {
+      name: "Composants électroniques",
+      title: "Des composants au service de la demande industrielle.",
+      accent: ["industrielle."],
+      intro:
+        "AUREX est conçu pour relier des fournisseurs qualifiés de composants et de pièces électroniques aux fabricants et aux acheteurs industriels, avec les garanties d’authenticité et la documentation qu’exige le secteur.",
+      overview:
+        "En matière de composants électroniques, tout repose sur la provenance. L’approche d’AUREX est centrée sur la qualification des fournisseurs, les contrôles d’authenticité et une chaîne de traçabilité documentée, afin que les acheteurs industriels puissent s’approvisionner en toute confiance.",
+      categories: [
+        {
+          title: "Composants actifs & passifs",
+          text: "Semi-conducteurs, circuits intégrés, résistances, condensateurs et pièces associées.",
+        },
+        {
+          title: "Pièces électromécaniques",
+          text: "Connecteurs, relais, commutateurs et assemblages destinés aux applications industrielles.",
+        },
+        {
+          title: "Pièces d’équipements industriels",
+          text: "Pièces et sous-ensembles au service de la production et de la maintenance.",
+        },
+      ],
+      approach: [
+        {
+          title: "Qualification des fournisseurs",
+          text: "Des fournisseurs évalués en matière d’authenticité, de systèmes qualité et de continuité.",
+        },
+        {
+          title: "Authenticité",
+          text: "Une documentation et des inspections qui protègent contre les pièces contrefaites.",
+        },
+        {
+          title: "Conformité à l’export",
+          text: "Vérification des exigences relatives aux biens à double usage et au contrôle des exportations avant tout engagement.",
+        },
+      ],
+      cta: {
+        title: "Échanger sur l’approvisionnement en composants.",
+        accent: ["l’approvisionnement"],
+        primary: "Soumettre une demande de partenariat",
+      },
+    },
+    larp: {
+      name: "LARP & objets historiques",
+      title: "Des pièces artisanales pour l’histoire vivante.",
+      accent: ["vivante."],
+      intro:
+        "Costumes, armures, accessoires et reproductions historiques pour le jeu de rôle grandeur nature (GN), la reconstitution historique et le théâtre, en reliant des artisans expérimentés aux détaillants spécialisés, aux organisateurs et aux productions.",
+      overview:
+        "Le jeu de rôle grandeur nature, la reconstitution historique et le théâtre reposent sur des pièces d’apparence authentique, durables à l’usage et sûres à porter. AUREX aborde ce marché spécialisé comme toute autre filière de négoce : avec des artisans qualifiés, des spécifications claires et une logistique fiable.",
+      categories: [
+        {
+          title: "Costumes & tenues",
+          text: "Vêtements d’époque et d’inspiration fantasy, textiles et accessoires.",
+        },
+        {
+          title: "Armures & protections",
+          text: "Armures en cuir et en métal, casques et pièces de protection pour les événements et le spectacle.",
+        },
+        {
+          title: "Accessoires & reproductions",
+          text: "Accessoires sûrs pour un usage événementiel, reproductions historiques et pièces décoratives.",
+        },
+      ],
+      approach: [
+        {
+          title: "Artisans expérimentés",
+          text: "Des ateliers et des fabricants sélectionnés pour leur savoir-faire et leur constance.",
+        },
+        {
+          title: "Sécurité & matériaux",
+          text: "Des matériaux et des finitions évalués pour un usage sûr lors d’événements et sur scène.",
+        },
+        {
+          title: "Distribution spécialisée",
+          text: "Des canaux d’accès au marché via les détaillants, les organisateurs et les productions.",
+        },
+      ],
+      cta: {
+        title: "Échanger sur le LARP & les objets historiques.",
+        accent: ["historiques."],
+        primary: "Soumettre une demande de partenariat",
+      },
+    },
+  },
+
+  tradePage: {
+    eyebrow: "Filière de négoce",
+    overview: "Vue d’ensemble",
+    categoriesEyebrow: "Catégories prioritaires",
+    categoriesTitle: "Le périmètre de la filière.",
+    approachEyebrow: "Approche",
+    approachTitle: "Comment AUREX l’aborde.",
+    corridorsEyebrow: "Marchés prioritaires",
+    otherEyebrow: "Autres filières",
+    allTrade: "Toutes les filières",
+  },
+
+  greenPillars: {
+    materials: {
+      name: "Matériaux verts",
+      summary: "Des matériaux recyclés, circulaires et biosourcés qui gagnent de nouveaux marchés.",
+      detail:
+        "Métaux, polymères et fibres recyclés, intrants circulaires et alternatives biosourcées deviennent des matériaux industriels à part entière. AUREX recherche des opportunités de les faire circuler entre les producteurs et les industriels qui en ont besoin.",
+      focus: ["Matériaux recyclés", "Intrants circulaires", "Alternatives biosourcées"],
+    },
+    energy: {
+      name: "Énergie propre",
+      summary:
+        "Solaire, stockage d’énergie, infrastructures pour véhicules électriques et technologies d’efficacité énergétique.",
+      detail:
+        "La transition énergétique est, par essence, un commerce d’équipements et de composants. L’intérêt d’AUREX porte sur les équipements solaires et de stockage, les infrastructures de recharge pour véhicules électriques et les technologies qui améliorent l’efficacité énergétique.",
+      focus: ["Solaire & stockage", "Infrastructures pour VE", "Efficacité énergétique"],
+    },
+    commerce: {
+      name: "Commerce durable",
+      summary:
+        "Agriculture et emballages durables, produits de spécialité et solutions économes en ressources.",
+      detail:
+        "La durabilité caractérise de plus en plus les produits du quotidien, des produits agricoles et des emballages aux produits de spécialité conçus pour consommer moins de ressources.",
+      focus: ["Agriculture durable", "Emballages durables", "Produits économes en ressources"],
+    },
+    logistics: {
+      name: "Logistique verte",
+      summary:
+        "Des transports plus efficients, des chaînes d’approvisionnement optimisées et une distribution à moindre impact.",
+      detail:
+        "La manière dont les marchandises circulent compte autant que leur nature. AUREX apporte son regard de logisticien à des transports plus efficients, à des chaînes d’approvisionnement mieux planifiées et à une distribution à moindre impact.",
+      focus: ["Transport efficient", "Chaînes d’approvisionnement optimisées", "Distribution à moindre impact"],
+    },
+  },
+
+  sustainability: {
+    hero: {
+      eyebrow: "AUREX Green",
+      title: "La transition verte",
+      accent: ["verte"],
+      intro: "Le négoce des produits et technologies qui façonnent un monde plus économe en ressources.",
+    },
+    intro: {
+      eyebrow: "AUREX Green",
+      title: "La durabilité, partie intégrante du commerce concret.",
+      accent: ["concret."],
+    },
+    ecosystem: {
+      eyebrow: "L’écosystème",
+      title: "De la source à la distribution mondiale.",
+      accent: ["mondiale."],
+    },
+    pillars: {
+      eyebrow: "Piliers d’activité",
+      title: "Les quatre piliers d’AUREX Green.",
+      accent: ["piliers"],
+    },
+    flow: {
+      eyebrow: "Le modèle AUREX",
+      title: "Approvisionnement. Négoce. Distribution. Investissement.",
+      accent: ["Investissement."],
+      intro:
+        "AUREX Green suit le même modèle que le reste du groupe : une maison de négoce et de participations, non un cabinet de conseil.",
+      steps: [
+        {
+          title: "Approvisionnement",
+          text: "Identifier des producteurs crédibles de produits et de technologies durables.",
+        },
+        {
+          title: "Négoce",
+          text: "Structurer des transactions transfrontalières, documentation et diligences à l’appui.",
+        },
+        {
+          title: "Distribution",
+          text: "Développer des canaux d’accès au marché avec des partenaires logistiques et de distribution.",
+        },
+        {
+          title: "Investissement",
+          text: "Engager des capitaux de long terme là où émerge une valeur durable.",
+        },
+      ],
+    },
+    principles: {
+      eyebrow: "Notre approche",
+      title: "La crédibilité avant les allégations.",
+      accent: ["crédibilité"],
+      items: [
+        {
+          title: "Allégations produit vérifiables",
+          text: "Des attributs environnementaux étayés par une documentation, non par le marketing.",
+        },
+        {
+          title: "Chaînes d’approvisionnement traçables",
+          text: "Une origine et des flux documentés, de la source à la destination.",
+        },
+        {
+          title: "Solidité commerciale",
+          text: "Des opportunités qui reposent sur leur propre équilibre économique, et pas uniquement sur des subventions.",
+        },
+        {
+          title: "Partenariat de long terme",
+          text: "Des relations structurées pour se développer à mesure que les marchés mûrissent.",
+        },
+      ],
+    },
+    note: "AUREX Green constitue un axe stratégique de développement du négoce et de l’investissement. Les catégories présentées sont des domaines d’intérêt et ne représentent pas chacune une activité établie d’AUREX.",
+  },
+
   about: {
     hero: {
       eyebrow: "À propos d’AUREX",
@@ -402,14 +722,14 @@ const fr: SiteContent = {
         "AUREX réunit négoce international, participations et investissement autour d’une même philosophie : la valeur se crée en la faisant circuler avec soin par-delà les frontières, et en la détenant sur le long terme.",
     },
     statement:
-      "Le nom AUREX s’inspire d’aurum, l’or, la plus ancienne mesure de la valeur, et de l’échange : la circulation de cette valeur entre les marchés et par-delà les frontières.",
+      "Le nom AUREX évoque aurum, le mot latin désignant l’or, mesure durable de la valeur, et l’échange : la circulation de cette valeur entre les marchés et par-delà les frontières.",
     story: {
       eyebrow: "Notre histoire",
       title: "La valeur, portée plus loin.",
       accent: ["loin."],
       paragraphs: [
-        "AUREX a été conçu comme un groupe international plutôt que comme une entreprise tournée vers un seul marché : une structure capable de commercer, de détenir et d’investir le long des corridors qui relient l’Europe au Moyen-Orient, à l’Inde et à l’Afrique.",
-        "Son regard est européen, dans sa manière de se gouverner, de documenter ses décisions et de traiter ses partenaires. Son horizon est mondial, et il mesure sa réussite à la valeur de long terme plutôt qu’au volume de court terme.",
+        "AUREX est conçu comme un groupe international plutôt que comme une entreprise tournée vers un seul marché : une structure pensée pour commercer, détenir et investir le long des corridors qui relient l’Europe au Moyen-Orient, à l’Inde et à l’Afrique.",
+        "Son regard est européen : dans la manière dont il est conçu pour se gouverner, documenter ses décisions et traiter ses partenaires. Son horizon est mondial, et il mesure sa réussite à la valeur de long terme plutôt qu’au volume de court terme.",
         "Il en résulte un groupe pensé pour des interlocuteurs institutionnels et des entreprises : rigoureux dans l’exécution, réfléchi dans sa croissance et bâti pour les décennies, pas pour les transactions.",
       ],
     },
@@ -432,7 +752,7 @@ const fr: SiteContent = {
         },
         {
           title: "La valeur à long terme plutôt que le gain à court terme",
-          text: "La valeur fructifie d’un cycle à l’autre, d’une frontière à l’autre.",
+          text: "L’objectif : faire fructifier la valeur d’un cycle à l’autre, d’une frontière à l’autre.",
         },
       ],
     },
@@ -449,7 +769,7 @@ const fr: SiteContent = {
       title: "La structure avant la croissance.",
       accent: ["croissance."],
       intro:
-        "Les principes qui encadrent la manière dont AUREX engage ses capitaux, mène ses activités de négoce et travaille avec ses partenaires.",
+        "Les principes sur lesquels AUREX est bâti pour engager des capitaux, conduire des opérations de négoce et travailler avec des partenaires.",
       items: [
         { title: "Mandats clairs", text: "Des responsabilités et des pouvoirs de décision définis dans chaque pôle d’activité." },
         { title: "Décisions documentées", text: "Des décisions consignées, vérifiables et traçables." },
@@ -465,51 +785,70 @@ const fr: SiteContent = {
     },
     cta: {
       eyebrow: "Ensuite",
-      title: "Découvrir comment le groupe crée de la valeur.",
+      title: "Découvrir comment le groupe est conçu pour créer de la valeur.",
       accent: ["valeur."],
       primary: "Nos activités",
       secondary: "Engager le dialogue",
     },
   },
 
-  businesses: {
+  tradeHub: {
     hero: {
-      eyebrow: "Nos activités",
-      title: "Quatre métiers. Une plateforme.",
-      accent: ["plateforme."],
+      eyebrow: "Négoce",
+      title: "Un négoce international, structuré selon les standards européens.",
+      accent: ["structuré"],
       intro:
-        "Commerce, logistique, distribution et capital, conçus pour se renforcer mutuellement afin que la valeur circule plus loin et dure plus longtemps.",
+        "AUREX est conçu pour approvisionner, acheminer et distribuer des marchandises par-delà les frontières, en reliant des producteurs qualifiés à la demande des marchés prioritaires, selon les standards européens de documentation, de conformité et de vérification des contreparties.",
     },
     core: {
-      eyebrow: "Cœurs de métier",
-      title: "Comment AUREX crée et fait circuler la valeur.",
-      accent: ["circuler"],
+      eyebrow: "Le négoce selon AUREX",
+      title: "De l’approvisionnement à la distribution.",
+      accent: ["distribution."],
     },
     scopeLabel: "Périmètre",
-    verticals: {
-      eyebrow: "Secteurs d’intérêt stratégique",
-      title: "Les prochaines orientations de la plateforme.",
-      accent: ["prochaines"],
+    lines: {
+      eyebrow: "Filières de négoce",
+      title: "Des filières de négoce à vocation stratégique.",
+      accent: ["stratégique."],
       intro:
-        "Ces secteurs définissent les domaines où AUREX entend déployer ses savoir-faire en matière de négoce, de logistique et de capital.",
-      note: "Les secteurs d’intérêt stratégique sont en cours de développement et d’évaluation. Les activités concrètes seront présentées à mesure de leur formalisation.",
+        "Chaque filière de négoce constitue un axe stratégique, développé avec discernement et aux côtés de partenaires qualifiés.",
+      note: "Les filières de négoce sont des axes stratégiques en cours de développement. Les activités concrètes seront présentées à mesure de leur formalisation.",
     },
     connection: {
-      eyebrow: "Comment tout s’articule",
-      title: "De l’approvisionnement à la détention.",
-      accent: ["détention."],
+      eyebrow: "Le modèle AUREX",
+      title: "Approvisionnement. Négoce. Distribution. Investissement.",
+      accent: ["Investissement."],
       steps: [
-        { title: "Approvisionner", text: "Des producteurs et fournisseurs qualifiés, évalués au regard des standards européens." },
-        { title: "Acheminer", text: "Une logistique coordonnée par mer, air et terre." },
-        { title: "Distribuer", text: "Des canaux d’accès au marché via des partenaires établis." },
-        { title: "Détenir", text: "Une détention de long terme et un capital qui font fructifier la valeur créée." },
+        {
+          title: "Approvisionnement",
+          text: "Des producteurs et des fournisseurs qualifiés au regard des standards européens, avant tout engagement.",
+        },
+        {
+          title: "Négoce",
+          text: "Des transactions transfrontalières structurées autour de la documentation, de la conformité et de la vérification des contreparties.",
+        },
+        {
+          title: "Distribution",
+          text: "Des canaux d’accès au marché, pensés pour être bâtis aux côtés de partenaires logistiques et de distribution de long terme.",
+        },
+        {
+          title: "Investissement",
+          text: "Un capital et une détention de long terme, là où le négoce révèle une valeur durable.",
+        },
       ],
     },
+    green: {
+      eyebrow: "AUREX Green",
+      title: "Produits et technologies durables.",
+      accent: ["durables."],
+      text: "Matériaux recyclés et biosourcés, équipements d’énergie propre, emballages durables et logistique verte : le volet négoce de la transition verte.",
+      link: "Découvrir AUREX Green",
+    },
     cta: {
-      eyebrow: "Partenariats",
-      title: "Construire avec AUREX.",
-      accent: ["AUREX."],
-      primary: "Engager le dialogue",
+      eyebrow: "Demandes liées au négoce",
+      title: "Proposer un partenariat de négoce.",
+      accent: ["partenariat"],
+      primary: "Soumettre une demande de partenariat",
     },
   },
 
@@ -519,12 +858,12 @@ const fr: SiteContent = {
       title: "Un capital patient, déployé avec conviction.",
       accent: ["conviction."],
       intro:
-        "AUREX investit avec patience et conviction, hors de tout calendrier de fonds, aux côtés de ses partenaires et des équipes dirigeantes, pour construire plutôt que simplement allouer.",
+        "AUREX est conçu pour investir avec patience et conviction, hors de tout calendrier de fonds, et pour travailler aux côtés de ses partenaires et des équipes dirigeantes afin de construire plutôt que simplement allouer.",
     },
     approach: {
       eyebrow: "Approche d’investissement",
-      title: "Comment nous investissons.",
-      accent: ["investissons."],
+      title: "Notre approche de l’investissement.",
+      accent: ["l’investissement."],
       items: [
         {
           title: "Horizon",
@@ -536,7 +875,7 @@ const fr: SiteContent = {
         },
         {
           title: "Partenariat",
-          text: "Aux côtés des équipes dirigeantes et des co-investisseurs, en apportant structure et gouvernance.",
+          text: "Une approche pensée pour travailler aux côtés des équipes dirigeantes et des co-investisseurs, en apportant structure et gouvernance.",
         },
         {
           title: "Discipline",
@@ -558,8 +897,8 @@ const fr: SiteContent = {
     },
     sectors: {
       eyebrow: "Secteurs d’intérêt",
-      title: "Où s’oriente le capital.",
-      accent: ["capital."],
+      title: "Là où le capital sera orienté.",
+      accent: ["capital"],
       intro: "L’intérêt d’investissement se concentre sur six secteurs d’importance stratégique.",
     },
     holdings: {
@@ -597,8 +936,8 @@ const fr: SiteContent = {
     },
     corridors: {
       eyebrow: "Corridors stratégiques",
-      title: "Là où la valeur circule.",
-      accent: ["circule."],
+      title: "Là où la valeur peut circuler.",
+      accent: ["circuler."],
       items: [
         {
           title: "Europe — Golfe",
@@ -629,13 +968,6 @@ const fr: SiteContent = {
   },
 
   leadership: {
-    hero: {
-      eyebrow: "Direction",
-      title: "Dirigé selon un mandat de long terme.",
-      accent: ["long"],
-      intro:
-        "Chez AUREX, la direction se définit par une gestion responsable : celle du capital, des partenariats et de la réputation du groupe sur chacun des marchés où il intervient.",
-    },
     approach: {
       eyebrow: "Approche de direction",
       title: "Comment AUREX est dirigé.",
@@ -643,7 +975,7 @@ const fr: SiteContent = {
       items: [
         {
           title: "Gestion responsable",
-          text: "Les dirigeants agissent en garants du capital et de la réputation, et pas seulement en gestionnaires de l’activité.",
+          text: "Les dirigeants sont appelés à agir en garants du capital et de la réputation, et pas seulement en gestionnaires de l’activité.",
         },
         {
           title: "Responsabilité",
@@ -661,32 +993,11 @@ const fr: SiteContent = {
       accent: ["personnes"],
       empty: "Les profils des dirigeants seront publiés ici.",
     },
-    governance: {
-      eyebrow: "Cadre de gouvernance",
-      title: "Gouverné pour le long terme.",
-      accent: ["long"],
-      intro: "Les principes qui encadrent la manière dont AUREX engage ses capitaux et mène ses activités de négoce.",
-      items: [
-        {
-          title: "Pouvoirs de décision",
-          text: "Des seuils d’approbation et des pouvoirs de décision définis pour les engagements en capital comme en négoce.",
-        },
-        {
-          title: "Risques & conformité",
-          text: "La vérification des contreparties, la conformité commerciale et l’analyse des risques comme préalables à tout engagement.",
-        },
-        {
-          title: "Déontologie",
-          text: "Des règles de conduite claires et la déclaration des conflits d’intérêts potentiels.",
-        },
-        { title: "Reporting", text: "Un reporting transparent et régulier envers les partenaires et les co-investisseurs." },
-      ],
-    },
     cta: {
-      eyebrow: "Demandes institutionnelles",
+      eyebrow: "Demandes d’entreprise",
       title: "Échanger avec AUREX.",
       accent: ["AUREX."],
-      primary: "Soumettre une demande institutionnelle",
+      primary: "Soumettre une demande d’entreprise",
     },
   },
 
@@ -696,7 +1007,7 @@ const fr: SiteContent = {
       title: "Une croissance bâtie sur le partenariat.",
       accent: ["partenariat."],
       intro:
-        "AUREX grandit aux côtés de partenaires dont les standards et l’horizon rejoignent les siens : producteurs, distributeurs, entreprises, institutions et co-investisseurs.",
+        "AUREX cherche à se développer aux côtés de partenaires dont les standards et l’horizon rejoignent les siens : producteurs, distributeurs, entreprises, institutions et co-investisseurs.",
     },
     models: {
       eyebrow: "Modèles de partenariat",
@@ -713,7 +1024,10 @@ const fr: SiteContent = {
           title: "Perspective transfrontalière",
           text: "Une vision construite autour des corridors reliant l’Europe, le Golfe, l’Inde et l’Afrique.",
         },
-        { title: "Métiers intégrés", text: "Commerce, logistique, distribution et capital au sein d’un même groupe." },
+        {
+          title: "Métiers intégrés",
+          text: "Commerce, logistique, distribution et capital, conçus pour s’articuler au sein d’un même groupe.",
+        },
         { title: "Engagement de long terme", text: "Des partenariats structurés pour durer au-delà d’une seule transaction." },
       ],
     },
@@ -760,7 +1074,7 @@ const fr: SiteContent = {
       title: "Engager le dialogue.",
       accent: ["dialogue."],
       intro:
-        "Précisez la nature de votre demande et faites-nous part de votre mandat. Chaque demande est étudiée et reçoit une réponse proposant la suite appropriée.",
+        "Précisez la nature de votre demande et présentez votre mandat pour engager le dialogue avec AUREX.",
     },
     routes: {
       eyebrow: "Types de demande",
@@ -829,7 +1143,7 @@ const fr: SiteContent = {
     types: {
       partnership: { label: "Partenariat", description: "Approvisionnement, distribution ou collaboration stratégique" },
       investment: { label: "Investissement", description: "Opportunités, co-investissement et capital" },
-      corporate: { label: "Institutionnel", description: "Questions institutionnelles et d’entreprise" },
+      corporate: { label: "Entreprise", description: "Questions d’entreprise et institutionnelles" },
       general: { label: "Général", description: "Toute autre demande" },
     },
     fields: {
@@ -849,8 +1163,8 @@ const fr: SiteContent = {
     submit: "Envoyer la demande",
     submitting: "Envoi en cours…",
     success: {
-      title: "Merci.",
-      text: "Votre demande a bien été reçue. Nous reviendrons vers vous avec la suite appropriée.",
+      title: "Merci d’avoir contacté AUREX.",
+      text: "Nous avons bien reçu votre demande et reviendrons vers vous.",
       again: "Envoyer une autre demande",
     },
     error: "Une erreur est survenue lors de l’envoi de votre demande. Veuillez réessayer.",
@@ -872,7 +1186,7 @@ const fr: SiteContent = {
 
   footer: {
     statement:
-      "Un groupe international de négoce, de participations et d’investissement aux racines européennes, qui relie marchés, partenaires et capitaux par-delà les frontières.",
+      "Un groupe international de négoce, de participations et d’investissement aux racines européennes, conçu pour relier marchés, partenaires et capitaux par-delà les frontières.",
     groups: { group: "Groupe", businesses: "Activités", contact: "Demandes" },
     rights: "Tous droits réservés.",
     languages: "Langues",

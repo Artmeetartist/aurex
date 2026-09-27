@@ -22,7 +22,7 @@ export function PageHero({
 }: {
   hero: PageHeroContent;
   image?: string;
-  breadcrumb: { home: string; homeHref: string; current: string };
+  breadcrumb: { home: string; homeHref: string; current: string; parent?: { label: string; href: string } };
   children?: React.ReactNode;
 }) {
   const ref = useRef<HTMLElement>(null);
@@ -40,7 +40,7 @@ export function PageHero({
       {image && (
         <div className="absolute inset-2 overflow-hidden rounded-[1.25rem] md:inset-3 md:rounded-[1.75rem]">
           <motion.div style={{ y: imageY, scale: imageScale }} className="absolute inset-0">
-            <Image src={`${image}.webp`} alt="" fill priority sizes="100vw" className="object-cover" />
+            <Image src={`${image}.webp`} alt="" fill loading="eager" fetchPriority="high" sizes="100vw" className="object-cover" />
           </motion.div>
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/25" />
           <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/30 to-transparent" />
@@ -60,13 +60,23 @@ export function PageHero({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: EASE, delay: 0.1 }}
         >
-          <ol className="t-eyebrow flex items-center gap-3 text-mist">
+          <ol className="t-eyebrow flex flex-wrap items-center gap-x-3 text-mist">
             <li>
-              <Link href={breadcrumb.homeHref} className="hover:text-ivory">
+              <Link href={breadcrumb.homeHref} className="inline-flex min-h-11 items-center hover:text-ivory">
                 {breadcrumb.home}
               </Link>
             </li>
             <li aria-hidden className="h-px w-6 bg-gold/60" />
+            {breadcrumb.parent && (
+              <>
+                <li>
+                  <Link href={breadcrumb.parent.href} className="inline-flex min-h-11 items-center hover:text-ivory">
+                    {breadcrumb.parent.label}
+                  </Link>
+                </li>
+                <li aria-hidden className="h-px w-6 bg-gold/60" />
+              </>
+            )}
             <li aria-current="page" className="text-gold">
               {breadcrumb.current}
             </li>

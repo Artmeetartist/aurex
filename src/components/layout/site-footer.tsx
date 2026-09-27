@@ -1,23 +1,30 @@
 import Link from "next/link";
 import { Logo } from "@/components/brand/logo";
 import { BackToTop } from "@/components/layout/back-to-top";
+import { FooterWordmark } from "@/components/layout/footer-wordmark";
 import { ButtonLink } from "@/components/ui/button";
 import type { SiteContent } from "@/content/types";
 import { localeMeta, locales, type Locale } from "@/i18n/config";
-import { contactHref, href, type RouteKey } from "@/lib/routes";
+import { contactHref, href, tradeHref, tradeIds, type RouteKey } from "@/lib/routes";
 
 export function SiteFooter({ locale, content }: { locale: Locale; content: SiteContent }) {
-  const { footer, nav, meta, inquiry } = content;
+  const { footer, nav, meta, inquiry, trades, home } = content;
   const year = new Date().getFullYear();
 
   const columns: { title: string; links: { label: string; href: string }[] }[] = [
     {
       title: footer.groups.group,
-      links: (["about", "leadership", "presence"] as RouteKey[]).map((r) => ({ label: nav.labels[r], href: href(locale, r) })),
+      links: (["about", "portfolio", "presence", "partnerships"] as RouteKey[]).map((r) => ({
+        label: nav.labels[r],
+        href: href(locale, r),
+      })),
     },
     {
-      title: footer.groups.businesses,
-      links: (["businesses", "portfolio", "partnerships"] as RouteKey[]).map((r) => ({ label: nav.labels[r], href: href(locale, r) })),
+      title: nav.labels.trade,
+      links: [
+        ...tradeIds.map((id) => ({ label: trades[id].name, href: tradeHref(locale, id) })),
+        { label: home.green.eyebrow, href: href(locale, "sustainability") },
+      ],
     },
     {
       title: footer.groups.contact,
@@ -57,12 +64,7 @@ export function SiteFooter({ locale, content }: { locale: Locale; content: SiteC
           </div>
         </div>
 
-        <p
-          aria-hidden
-          className="text-gold-gradient pointer-events-none mt-24 select-none text-center text-[23vw] font-light leading-[0.78] tracking-[-0.06em] opacity-90 md:mt-32"
-        >
-          AUREX
-        </p>
+        <FooterWordmark />
 
         <div className="mt-12 flex flex-col gap-6 border-t border-white/[0.08] pt-8 text-[0.8125rem] text-mist md:flex-row md:items-center md:justify-between">
           <p>

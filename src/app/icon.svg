@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>AUREX</title>
+  <rect width="64" height="64" rx="14" fill="#013333"/>
+  <path d="M12.8 50.3 L29 16.7 L45.2 50.3" fill="none" stroke="#F7FAF9" stroke-width="4.6" stroke-linejoin="miter" stroke-linecap="square"/>
+  <path d="M16 38 H52" fill="none" stroke="#8DC63F" stroke-width="4"/>
+</svg>

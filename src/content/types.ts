@@ -14,6 +14,8 @@ export type DivisionId = "trade" | "logistics" | "distribution" | "holdings";
 export type SectorId = "food" | "property" | "medical" | "electronics" | "sustainability" | "larp";
 export type MarketId = "eu" | "pl" | "ae" | "in" | "af";
 export type PartnerModelId = "suppliers" | "distributors" | "corporate" | "capital";
+export type TradeId = "food" | "medical" | "electronics" | "larp";
+export type GreenPillarId = "materials" | "energy" | "commerce" | "logistics";
 
 export type PageMeta = { title: string; description: string };
 
@@ -94,8 +96,27 @@ export type SiteContent = {
       chapters: { mode: string; division: DivisionId; title: string; text: string }[];
       link: string;
     };
+    trade: Heading & { link: string; greenLabel: string };
+    green: {
+      eyebrow: string;
+      title: string;
+      subtitle: string;
+      body: string[];
+      primaryCta: string;
+      secondaryCta: string;
+      /** Seven stages of the sustainable-commerce ecosystem, in scroll order. */
+      stages: string[];
+      pillarsEyebrow: string;
+      explore: string;
+      flowLabel: string;
+      /** Source → Trade → Distribute → Invest */
+      flow: string[];
+      statement: string;
+      statementText: string;
+      statementCta: string;
+      note: string;
+    };
     reach: Heading & { footnote: string; link: string; legend: { focus: string; corridor: string } };
-    sectors: Heading & { link: string };
     capital: Heading & { principles: TitledText[]; note: string; cta: string };
     why: Heading & { pillars: TitledText[] };
     partnerships: Heading & { cta: string };
@@ -108,6 +129,44 @@ export type SiteContent = {
   markets: Record<MarketId, { name: string; role: string; detail: string }>;
   partnerModels: Record<PartnerModelId, { name: string; summary: string; examples: string[] }>;
 
+  trades: Record<
+    TradeId,
+    {
+      name: string;
+      title: string;
+      accent: string[];
+      intro: string;
+      overview: string;
+      categories: TitledText[];
+      approach: TitledText[];
+      cta: { title: string; accent: string[]; primary: string };
+    }
+  >;
+
+  tradePage: {
+    eyebrow: string;
+    overview: string;
+    categoriesEyebrow: string;
+    categoriesTitle: string;
+    approachEyebrow: string;
+    approachTitle: string;
+    corridorsEyebrow: string;
+    otherEyebrow: string;
+    allTrade: string;
+  };
+
+  greenPillars: Record<GreenPillarId, { name: string; summary: string; detail: string; focus: string[] }>;
+
+  sustainability: {
+    hero: PageHero;
+    intro: Heading;
+    ecosystem: Heading;
+    pillars: Heading;
+    flow: Heading & { steps: TitledText[] };
+    principles: Heading & { items: TitledText[] };
+    note: string;
+  };
+
   about: {
     hero: PageHero;
     statement: string;
@@ -118,12 +177,13 @@ export type SiteContent = {
     cta: Heading & { primary: string; secondary: string };
   };
 
-  businesses: {
+  tradeHub: {
     hero: PageHero;
     core: Heading;
     scopeLabel: string;
-    verticals: Heading & { note: string };
+    lines: Heading & { note: string };
     connection: Heading & { steps: TitledText[] };
+    green: Heading & { text: string; link: string };
     cta: Heading & { primary: string };
   };
 
@@ -144,11 +204,10 @@ export type SiteContent = {
     cta: Heading & { primary: string };
   };
 
+  /** Leadership is presented as a section of the About page. */
   leadership: {
-    hero: PageHero;
     approach: Heading & { items: TitledText[] };
     profiles: Heading & { empty: string };
-    governance: Heading & { items: TitledText[] };
     cta: Heading & { primary: string };
   };
 

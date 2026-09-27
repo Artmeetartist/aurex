@@ -32,9 +32,7 @@ function DirectContact({ direct, className }: { direct: SiteContent["contact"]["
             <ArrowUpRight size={14} className="shrink-0 transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>
         </p>
-      ) : (
-        <p className="mt-6 text-[1.0625rem] font-light leading-relaxed tracking-[-0.01em] text-ink">{direct.emailPending}</p>
-      )}
+      ) : null}
       <p className="t-small mt-6 border-t border-ink/10 pt-5 text-stone">{direct.responseNote}</p>
     </div>
   );

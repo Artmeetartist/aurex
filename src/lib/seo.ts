@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { SiteContent } from "@/content/types";
 import { defaultLocale, localeMeta, locales, type Locale } from "@/i18n/config";
-import { routes, type RouteKey } from "./routes";
+import { routes, tradeSlugs, type RouteKey, type TradeSlugId } from "./routes";
 
 /**
  * Canonical origin. Set NEXT_PUBLIC_SITE_URL in production; on Vercel the
@@ -46,5 +46,33 @@ export function pageMetadata(locale: Locale, route: RouteKey, content: SiteConte
       title: route === "home" ? title : `${page.title} — ${content.meta.siteName}`,
       description: page.description,
     },
+  };
+}
+
+export function tradeUrl(locale: Locale, id: TradeSlugId) {
+  return `${siteUrl}/${locale}${routes.trade}/${tradeSlugs[id]}`;
+}
+
+/** Metadata for a trade-line page (/trade/[slug]). */
+export function tradeMetadata(locale: Locale, id: TradeSlugId, content: SiteContent): Metadata {
+  const trade = content.trades[id];
+  const url = tradeUrl(locale, id);
+  const languages: Record<string, string> = {};
+  for (const l of locales) languages[localeMeta[l].htmlLang] = tradeUrl(l, id);
+  languages["x-default"] = tradeUrl(defaultLocale, id);
+  const title = `${trade.name} — ${content.nav.labels.trade}`;
+  return {
+    title,
+    description: trade.intro,
+    alternates: { canonical: url, languages },
+    openGraph: {
+      type: "website",
+      url,
+      siteName: content.meta.siteName,
+      title: `${title} — ${content.meta.siteName}`,
+      description: trade.intro,
+      locale: localeMeta[locale].ogLocale,
+    },
+    twitter: { card: "summary_large_image", title: `${title} — ${content.meta.siteName}`, description: trade.intro },
   };
 }

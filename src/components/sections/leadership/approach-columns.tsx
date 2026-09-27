@@ -16,7 +16,7 @@ export function ApproachColumns({ items, className }: { items: TitledText[]; cla
         <RevealItem
           as="li"
           key={item.title}
-          className="group border-t border-ink/10 py-10 first:border-t-0 first:pt-0 md:border-l md:border-t-0 md:px-8 md:py-2 md:first:border-l-0 md:first:pl-0 lg:px-12 xl:px-14"
+          className="group border-t border-ink/10 py-10 first:border-t-0 first:pt-0 md:border-l md:border-t-0 md:px-8 md:py-2 md:first:border-l-0 md:first:pl-0 md:first:pt-2 last:pb-0 md:last:pb-2 lg:px-12 xl:px-14"
         >
           <span
             aria-hidden

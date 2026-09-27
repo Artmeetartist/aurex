@@ -3,10 +3,10 @@ import type { Locale } from "@/i18n/config";
 export const routes = {
   home: "",
   about: "/about",
-  businesses: "/businesses",
+  trade: "/trade",
+  sustainability: "/sustainability",
   portfolio: "/portfolio",
   presence: "/global-presence",
-  leadership: "/leadership",
   partnerships: "/partnerships",
   contact: "/contact",
   privacy: "/privacy",
@@ -17,7 +17,27 @@ export type RouteKey = keyof typeof routes;
 export const routeKeys = Object.keys(routes) as RouteKey[];
 
 /** Primary navigation order. */
-export const navRoutes: RouteKey[] = ["about", "businesses", "portfolio", "presence", "leadership", "partnerships"];
+export const navRoutes: RouteKey[] = ["about", "trade", "sustainability", "portfolio", "presence", "partnerships"];
+
+/** Trade line pages: /trade/[slug]. */
+export const tradeSlugs = {
+  food: "food",
+  medical: "medical",
+  electronics: "electronic-components",
+  larp: "larp-historical-goods",
+} as const;
+
+export type TradeSlugId = keyof typeof tradeSlugs;
+
+export const tradeIds = Object.keys(tradeSlugs) as TradeSlugId[];
+
+export function tradeHref(locale: Locale, id: TradeSlugId) {
+  return `/${locale}${routes.trade}/${tradeSlugs[id]}`;
+}
+
+export function tradeIdFromSlug(slug: string): TradeSlugId | undefined {
+  return tradeIds.find((id) => tradeSlugs[id] === slug);
+}
 
 export function href(locale: Locale, route: RouteKey, hash?: string) {
   return `/${locale}${routes[route]}${hash ? `#${hash}` : ""}`;

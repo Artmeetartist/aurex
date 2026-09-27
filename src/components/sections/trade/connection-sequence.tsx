@@ -10,7 +10,7 @@ type Step = TitledText & { link?: { label: string; href: string } };
 
 /**
  * The value chain as a numbered sequence joined by a hairline that draws in
- * once the list enters view. Horizontal from `md`, vertical below it.
+ * once the list enters view. Horizontal from `lg`, vertical below it.
  * Built for `surface-ink-deep` (markers mask the line with the surface colour).
  */
 export function ConnectionSequence({ steps }: { steps: Step[] }) {
@@ -18,25 +18,25 @@ export function ConnectionSequence({ steps }: { steps: Step[] }) {
   const inView = useInView(ref, { once: true, margin: "0px 0px -15% 0px" });
 
   return (
-    <ol ref={ref} className="grid md:grid-cols-4">
+    <ol ref={ref} className="grid lg:grid-cols-4">
       {steps.map((step, i) => {
         const last = i === steps.length - 1;
         const delay = 0.15 + i * 0.28;
         return (
           <li
             key={step.title}
-            className="relative grid grid-cols-[2.75rem_1fr] gap-x-6 pb-14 last:pb-0 md:block md:pb-0 md:pr-8 lg:pr-12"
+            className="relative grid grid-cols-[2.75rem_1fr] gap-x-6 pb-14 last:pb-0 lg:block lg:pb-0 lg:pr-10 xl:pr-12"
           >
             {!last && (
               <span
                 aria-hidden
-                className="absolute bottom-0 left-[1.375rem] top-11 w-px bg-white/10 md:bottom-auto md:left-11 md:right-0 md:top-[1.375rem] md:h-px md:w-auto"
+                className="absolute bottom-0 left-[1.375rem] top-11 w-px bg-white/10 lg:bottom-auto lg:left-11 lg:right-0 lg:top-[1.375rem] lg:h-px lg:w-auto"
               >
                 <span
                   style={{ transitionDelay: `${delay + 0.2}s` }}
                   className={cn(
-                    "absolute inset-0 origin-top bg-gold/70 transition-transform duration-[1400ms] ease-[var(--ease-out-expo)] md:origin-left",
-                    inView ? "scale-100" : "scale-y-0 md:scale-x-0 md:scale-y-100",
+                    "absolute inset-0 origin-top bg-gold/70 transition-transform duration-[1400ms] ease-[var(--ease-out-expo)] lg:origin-left",
+                    inView ? "scale-100" : "scale-y-0 lg:scale-x-0 lg:scale-y-100",
                   )}
                 />
               </span>
@@ -56,7 +56,7 @@ export function ConnectionSequence({ steps }: { steps: Step[] }) {
             <div
               style={{ transitionDelay: `${delay + 0.1}s` }}
               className={cn(
-                "pt-2.5 transition-[opacity,transform] duration-1000 ease-[var(--ease-out-expo)] md:pt-10",
+                "pt-2.5 transition-[opacity,transform] duration-1000 ease-[var(--ease-out-expo)] lg:pt-10",
                 inView ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0",
               )}
             >

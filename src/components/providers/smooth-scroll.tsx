@@ -8,7 +8,12 @@ function ScrollReset() {
   const pathname = usePathname();
   const lenis = useLenis();
   useEffect(() => {
-    lenis?.scrollTo(0, { immediate: true, force: true });
+    if (!lenis) return;
+    const hash = window.location.hash;
+    const target = hash ? document.getElementById(decodeURIComponent(hash.slice(1))) : null;
+    // Honour #anchors (e.g. /contact#inquiry); otherwise start new pages at the top.
+    if (target) lenis.scrollTo(target, { immediate: true, force: true, offset: -80 });
+    else lenis.scrollTo(0, { immediate: true, force: true });
   }, [pathname, lenis]);
   return null;
 }
