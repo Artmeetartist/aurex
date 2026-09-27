@@ -45,7 +45,7 @@ export function Partnerships({ locale, content }: { locale: Locale; content: Sit
                   />
                   <span className="t-eyebrow text-gold">{String(i + 1).padStart(2, "0")}</span>
                   <div className="flex-1">
-                    <h3 className="mt-10 text-[1.5rem] font-light leading-[1.15] tracking-[-0.02em] text-ivory [text-wrap:balance] md:mt-16 xl:min-h-[2.3em]">
+                    <h3 className="mt-10 text-[1.5rem] font-light leading-[1.15] tracking-[-0.02em] text-ivory [text-wrap:balance] md:mt-16 xl:flex xl:min-h-[2.3em] xl:items-end">
                       {model.name}
                     </h3>
                     <p className="mt-4 text-[0.9375rem] leading-relaxed text-mist">{model.summary}</p>

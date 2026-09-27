@@ -6,7 +6,7 @@ const fr: SiteContent = {
     tagline: "La valeur en mouvement",
     signature: "Standards européens. Portée mondiale.",
     description:
-      "AUREX, groupe international de négoce, de participations et d’investissement aux racines européennes, relie durablement marchés, partenaires et capitaux par-delà les frontières.",
+      "AUREX, groupe international de négoce, de participations et d’investissement aux racines européennes, relie durablement marchés, partenaires et capitaux.",
     pages: {
       home: {
         title: "La valeur en mouvement",
