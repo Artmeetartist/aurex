@@ -19,6 +19,7 @@ import {
   shipGeometry,
   truckGeometry,
   vanGeometry,
+  vertexMaterial,
   zoneX,
 } from "@/components/green/world";
 
@@ -33,8 +34,8 @@ export type GreenSceneProps = {
 };
 
 /** Haze colour shared by fog and the horizon of the sky dome. */
-const HAZE = "#2f4b44";
-const ZENITH = "#0a1a17";
+const HAZE = "#34473f";
+const ZENITH = "#0c1714";
 
 /** Camera framing per stage: focus offset from the zone centre and a distance factor. */
 type Frame = { dx: number; dz: number; k: number; yaw: number; elev: number; look: number; fov: number };
@@ -45,7 +46,7 @@ const FRAMES: Frame[] = [
   { dx: 0.4, dz: -3.6, k: 0.98, yaw: 0.18, elev: 0, look: 0, fov: 0 },
   { dx: -0.8, dz: -3.4, k: 0.98, yaw: 0.2, elev: 0, look: 0, fov: 0 },
   { dx: 0.4, dz: -4.4, k: 1.04, yaw: 0.2, elev: 0, look: 0, fov: 0 },
-  { dx: 2.2, dz: -9, k: 1.12, yaw: 0.2, elev: -3.5, look: 2.8, fov: 4 },
+  { dx: 1.5, dz: -12, k: 1.3, yaw: 0.5, elev: -3.5, look: 2.4, fov: 4 },
 ];
 
 /** Shared per-frame state: where the camera is looking and how wide the view is. */
@@ -243,14 +244,14 @@ type Vehicle = { x: number; dir: 1 | -1; speed: number };
 function Traffic({ models, focusRef, reduced, lite }: { models: Models; focusRef: RefObject<Focus>; reduced: boolean; lite: boolean }) {
   const trucks = useRef<THREE.InstancedMesh>(null);
   const vans = useRef<THREE.InstancedMesh>(null);
-  const mat = useMemo(() => createMaterials().vertex, []);
-  const state = useRef<{ trucks: Vehicle[]; vans: Vehicle[]; init: boolean }>({
+  const mat = useMemo(() => vertexMaterial(), []);
+  const state = useRef<{ trucks: Vehicle[]; vans: Vehicle[]; anchor: number | null }>({
     trucks: [
       { x: 0, dir: 1, speed: 1.35 },
       { x: 0, dir: 1, speed: 1.2 },
     ],
     vans: [{ x: 0, dir: -1, speed: 1.6 }],
-    init: false,
+    anchor: null,
   });
 
   useEffect(() => () => mat.dispose(), [mat]);
@@ -263,12 +264,15 @@ function Traffic({ models, focusRef, reduced, lite }: { models: Models; focusRef
     const lo = Math.max(ROAD_START, f.x - f.halfWidth);
     const hi = Math.min(GATE_X + 1.4, f.x + f.halfWidth);
 
-    if (!st.init) {
-      // Place one truck in view so every stage shows movement on the spine road.
-      st.trucks[0].x = f.x - 3.5;
-      st.trucks[1].x = f.x - f.halfWidth * 0.95;
-      st.vans[0].x = f.x + f.halfWidth * 0.45;
-      st.init = true;
+    // (Re)place traffic around the view: on the first frame, after a jump the traffic
+    // could not follow, and on every stage cut under reduced motion.
+    const lost = st.trucks.some((v) => v.x < lo - 30 || v.x > hi + 30) || st.vans.some((v) => v.x < lo - 30 || v.x > hi + 30);
+    if (st.anchor === null || lost || (reduced && Math.abs(st.anchor - f.x) > 1)) {
+      const road = (x: number) => Math.min(Math.max(x, ROAD_START), GATE_X - 2);
+      st.trucks[0].x = road(f.x - 3.5);
+      st.trucks[1].x = road(f.x - f.halfWidth * 0.95);
+      st.vans[0].x = road(f.x + f.halfWidth * 0.45);
+      st.anchor = f.x;
     }
 
     const place = (mesh: THREE.InstancedMesh, list: Vehicle[], lane: (v: Vehicle) => number) => {
@@ -276,14 +280,13 @@ function Traffic({ models, focusRef, reduced, lite }: { models: Models; focusRef
         v.x += v.dir * v.speed * dt;
         if (v.dir > 0 && v.x > hi) v.x = lo;
         if (v.dir < 0 && v.x < lo) v.x = hi;
-        if (v.x < lo - 30 || v.x > hi + 30) v.x = v.dir > 0 ? lo : hi;
         _q.setFromAxisAngle(_up, v.dir > 0 ? 0 : Math.PI);
         _m.compose(_v.set(v.x, 0.05, lane(v)), _q, _one);
         mesh.setMatrixAt(i, _m);
       });
       mesh.instanceMatrix.needsUpdate = true;
     };
-    place(trucks.current, st.trucks, (v) => (v.dir > 0 ? LANE_EAST : LANE_WEST));
+    place(trucks.current, st.trucks.slice(0, trucks.current.count), (v) => (v.dir > 0 ? LANE_EAST : LANE_WEST));
     place(vans.current, st.vans, (v) => (v.dir > 0 ? LANE_EAST : LANE_WEST));
   });
 
@@ -333,8 +336,8 @@ function Conveyor({ reduced, lite }: { reduced: boolean; lite: boolean }) {
 /** A container ship slowly heading out to sea. */
 function DepartingShip({ models, reduced }: { models: Models; reduced: boolean }) {
   const mesh = useRef<THREE.Mesh>(null);
-  const mat = useMemo(() => createMaterials().vertex, []);
-  const t = useRef(0.18);
+  const mat = useMemo(() => vertexMaterial(), []);
+  const t = useRef(0.12);
   useEffect(() => () => mat.dispose(), [mat]);
 
   useFrame((_, dt) => {
@@ -342,11 +345,11 @@ function DepartingShip({ models, reduced }: { models: Models; reduced: boolean }
     if (!m) return;
     if (!reduced) t.current = (t.current + Math.min(dt, 0.1) / 420) % 1;
     const u = t.current;
-    // Out of the basin, past the breakwater head, towards the north-eastern horizon.
-    const x = PORT.x1 + 8 + u * 110;
-    const z = PORT.quayZ - 11 - u * 75;
+    // Out of the basin, past the breakwater head, towards the northern horizon.
+    const x = PORT.x1 + 7 + u * 24;
+    const z = PORT.quayZ - 22 - u * 110;
     m.position.set(x, WATER_Y, z);
-    m.rotation.y = Math.atan2(75, 110);
+    m.rotation.y = Math.atan2(110, 24);
   });
 
   return <mesh ref={mesh} geometry={models.ship2} material={mat} castShadow receiveShadow />;
@@ -531,7 +534,7 @@ function Scene({
 
   return (
     <>
-      <fogExp2 attach="fog" args={[HAZE, 0.0078]} />
+      <fogExp2 attach="fog" args={[HAZE, 0.0092]} />
       <Rig progress={progress} stage={stage} reduced={reduced} focusRef={focusRef} />
       <Invalidator progress={progress} reduced={reduced} />
       <FirstFrame onReady={onReady} />
@@ -552,7 +555,7 @@ function Scene({
         <Lightformer form="rect" intensity={1.6} color="#eaf4ef" position={[0, 1.2, 8]} scale={[18, 1.6, 1]} rotation-y={Math.PI} />
         <Lightformer form="rect" intensity={1.2} color="#cfeee6" position={[-7, 2, 1]} scale={[1.2, 6, 1]} rotation-y={Math.PI / 2} />
         <Lightformer form="rect" intensity={1.0} color="#e2cf98" position={[7, 1.5, -2]} scale={[0.8, 5, 1]} rotation-y={-Math.PI / 2} />
-        <Lightformer form="ring" intensity={0.8} color="#009999" position={[0, 1, -8]} scale={5} />
+        <Lightformer form="ring" intensity={0.45} color="#3f8f8a" position={[0, 1, -8]} scale={5} />
       </Environment>
     </>
   );

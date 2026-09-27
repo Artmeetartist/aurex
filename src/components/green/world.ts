@@ -555,7 +555,7 @@ function port(b: Builder) {
     const bx = x0 + 1.4 + k * 4.2;
     for (let row = 0; row < 5; row++)
       for (let i = 0; i < 3; i++) {
-        const tiers = 1 + Math.floor(b.rand() * (row === 4 ? 2 : 4));
+        const tiers = 1 + Math.floor(b.rand() * (row === 4 ? 2 : 3));
         for (let t = 0; t < tiers; t++)
           b.block("box", bx + i * 1.08, 0.07 + t * 0.45, 1.9 - row * 0.5, 1.0, 0.44, 0.44, b.jitter(b.pick(CONTAINER_TONES), 0.03));
       }
@@ -574,13 +574,15 @@ function port(b: Builder) {
 
   // Port gate hall where the spine road ends: road traffic enters and leaves through it.
   const hx = GATE_X + 1.25;
-  b.block("box", hx, 0, ROAD_Z, 2.5, 1.5, 2.6, COLORS.cream);
-  b.block("box", hx, 1.5, ROAD_Z, 2.6, 0.08, 2.7, COLORS.creamShade);
+  b.block("box", hx, 0, ROAD_Z, 2.5, 1.2, 2.6, COLORS.cream);
+  b.block("box", hx, 1.2, ROAD_Z, 2.6, 0.08, 2.7, COLORS.creamShade);
+  b.box("glass", hx, 0.82, ROAD_Z + 1.31, 2.1, 0.2, 0.02, COLORS.glass);
+  b.box("metal", hx, 1.1, ROAD_Z + 1.31, 2.5, 0.03, 0.02, COLORS.brass);
   for (const z of [LANE_EAST, LANE_WEST]) {
     b.box("box", GATE_X - 0.005, 0.5, z, 0.02, 1.0, 0.62, COLORS.graphiteDark);
-    b.box("light", GATE_X - 0.02, 1.14, z, 0.02, 0.05, 0.14, COLORS.lime);
+    b.box("light", GATE_X - 0.02, 1.07, z, 0.02, 0.05, 0.14, COLORS.lime);
   }
-  b.box("metal", GATE_X - 0.02, 1.36, ROAD_Z, 0.02, 0.05, 2.5, COLORS.brass);
+  b.box("metal", GATE_X - 0.02, 1.16, ROAD_Z, 0.02, 0.04, 2.5, COLORS.brass);
   // Rail terminal buffer.
   b.block("box", ROAD_END - 1, 0.07, RAIL_Z, 0.3, 0.45, 0.8, COLORS.graphite);
 
@@ -665,10 +667,10 @@ function landscape(b: Builder) {
     for (let k = 0; k < n; k++) {
       const w = 1.2 + b.rand() * 3;
       const d = 1 + b.rand() * 2;
-      const h = 0.5 + b.rand() * 1.4;
+      const h = 0.4 + b.rand() * 1.0;
       const x = cx + (b.rand() - 0.5) * 5;
       const z = cz + (b.rand() - 0.5) * 3;
-      const tone = b.rand() < 0.65 ? COLORS.creamShade : COLORS.graphiteLight;
+      const tone = b.rand() < 0.4 ? COLORS.stone : COLORS.graphiteLight;
       b.block("box", x, 0, z, w, h, d, tone);
       if (b.rand() < 0.4) b.prism("gable", x, h, z, w, 0.4, d, COLORS.roof);
     }
@@ -830,6 +832,8 @@ function ridgeGeometry(lite: boolean) {
 
 // ── Assembly ─────────────────────────────────────────────────────
 export type WorldMaterials = {
+  /** Matte boxes with a hairline edge — the drawn look of an architectural model. */
+  outlined: THREE.MeshStandardMaterial;
   matte: THREE.MeshStandardMaterial;
   glass: THREE.MeshStandardMaterial;
   metal: THREE.MeshStandardMaterial;
@@ -837,14 +841,43 @@ export type WorldMaterials = {
   vertex: THREE.MeshStandardMaterial;
 };
 
+/**
+ * Darkens a ~1px band along each face edge of a unit box (via its UVs and
+ * screen-space derivatives), so every volume reads with a crisp drawn edge.
+ */
+function withEdges(mat: THREE.MeshStandardMaterial, strength = 0.3) {
+  mat.onBeforeCompile = (shader) => {
+    shader.vertexShader = shader.vertexShader
+      .replace("#include <common>", "#include <common>\nvarying vec2 vEdgeUv;")
+      .replace("#include <begin_vertex>", "#include <begin_vertex>\nvEdgeUv = uv;");
+    shader.fragmentShader = shader.fragmentShader
+      .replace("#include <common>", "#include <common>\nvarying vec2 vEdgeUv;")
+      .replace(
+        "#include <color_fragment>",
+        `#include <color_fragment>
+        vec2 edgeD = min(vEdgeUv, 1.0 - vEdgeUv) / max(fwidth(vEdgeUv), vec2(1e-5));
+        float edgeLine = 1.0 - smoothstep(0.4, 1.4, min(edgeD.x, edgeD.y));
+        diffuseColor.rgb *= 1.0 - edgeLine * ${strength.toFixed(2)};`,
+      );
+  };
+  mat.customProgramCacheKey = () => `aurex-edges-${strength}`;
+  return mat;
+}
+
 export function createMaterials(): WorldMaterials {
   return {
+    outlined: withEdges(new THREE.MeshStandardMaterial({ roughness: 0.8, metalness: 0, envMapIntensity: 1 })),
     matte: new THREE.MeshStandardMaterial({ roughness: 0.8, metalness: 0, envMapIntensity: 1 }),
     glass: new THREE.MeshStandardMaterial({ roughness: 0.1, metalness: 0.55, envMapIntensity: 1.6 }),
     metal: new THREE.MeshStandardMaterial({ roughness: 0.34, metalness: 0.85, envMapIntensity: 1.3 }),
     light: new THREE.MeshBasicMaterial({ toneMapped: false }),
-    vertex: new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.7, metalness: 0.05, envMapIntensity: 0.9 }),
+    vertex: vertexMaterial(),
   };
+}
+
+/** Material for the vertex-coloured vehicle and ship models. */
+export function vertexMaterial() {
+  return new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.7, metalness: 0.05, envMapIntensity: 0.9 });
 }
 
 function instanced(geo: THREE.BufferGeometry, mat: THREE.Material, list: Instance[] | THREE.Matrix4[], name: string, shadows = true) {
@@ -910,7 +943,7 @@ export function buildWorld(lite: boolean, mats: WorldMaterials, models: { truck:
   group.name = "green-world";
   const add = (m: THREE.Object3D) => group.add(m);
 
-  add(instanced(geos.box, mats.matte, b.items.box, "box"));
+  add(instanced(geos.box, mats.outlined, b.items.box, "box"));
   add(instanced(geos.box, mats.glass, b.items.glass, "glass"));
   add(instanced(geos.box, mats.metal, b.items.metal, "metal"));
   add(instanced(geos.cyl, mats.matte, b.items.cyl, "cyl"));
@@ -942,7 +975,6 @@ export function buildWorld(lite: boolean, mats: WorldMaterials, models: { truck:
   const sea = new THREE.Mesh(new THREE.PlaneGeometry(700, 700), seaMat);
   sea.rotation.x = -Math.PI / 2;
   sea.position.set(PORT.x0 + 340, WATER_Y, -250);
-  sea.receiveShadow = true;
   add(sea);
 
   const ridgeMat = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 1, metalness: 0, flatShading: true, envMapIntensity: 0.4 });

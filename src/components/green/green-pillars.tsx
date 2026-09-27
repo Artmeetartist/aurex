@@ -42,7 +42,6 @@ function Pillar({
         <span className="relative z-10 grid h-[1.125rem] w-[1.125rem] place-items-center rounded-full border border-brass/50 bg-forest-950">
           <motion.span style={{ scale: node }} className="h-2 w-2 rounded-full bg-brass motion-reduce:!transform-none" />
         </span>
-        <span className="t-eyebrow ml-3 hidden tabular-nums text-brass-soft lg:inline">{pad(index + 1)}</span>
       </div>
 
       <motion.div style={{ opacity, y }} className="h-full motion-reduce:!transform-none motion-reduce:!opacity-100">
@@ -52,12 +51,15 @@ function Pillar({
           tilt={4}
           className="h-full rounded-[1.25rem] border-cream/10 bg-graphite-900/55 hover:border-brass/45 hover:bg-graphite-900/80 focus-visible:border-brass"
         >
-          <div className="flex h-full min-h-[19rem] flex-col p-7 md:min-h-[21rem] md:p-8">
+          <div className="flex h-full min-h-[18rem] flex-col p-7 md:min-h-[20rem] md:p-8">
             <div className="flex items-start justify-between">
-              <span className="grid h-14 w-14 place-items-center rounded-2xl border border-cream/10 bg-forest-900/60 text-cream/85 transition-[color,border-color,background-color] duration-500 group-hover/card:border-brass/40 group-hover/card:bg-forest-800/70 group-hover/card:text-brass-soft">
-                <PillarIcon id={id} size={34} />
+              <span className="grid h-16 w-16 place-items-center rounded-2xl border border-cream/10 bg-forest-900/60 text-cream/85 transition-[color,border-color,background-color,transform] duration-500 ease-[var(--ease-out-expo)] group-hover/card:-translate-y-0.5 group-hover/card:border-brass/40 group-hover/card:bg-forest-800/70 group-hover/card:text-brass-soft">
+                <PillarIcon id={id} size={46} />
               </span>
-              <span aria-hidden className="t-eyebrow tabular-nums text-cream/55 lg:hidden">
+              <span
+                aria-hidden
+                className="text-[3.5rem] font-extralight leading-[0.8] tracking-[-0.05em] text-transparent tabular-nums transition-[-webkit-text-stroke-color] duration-500 [-webkit-text-stroke:1px_rgb(226_207_152/0.4)] group-hover/card:[-webkit-text-stroke:1px_rgb(226_207_152/0.85)]"
+              >
                 {pad(index + 1)}
               </span>
             </div>
@@ -104,27 +106,39 @@ export function GreenPillars({ locale, content }: { locale: Locale; content: Sit
 
       <div className="relative mt-14 md:mt-20">
         {/* Connecting line: horizontal on desktop, vertical on smaller screens. */}
-        <svg aria-hidden className="pointer-events-none absolute left-0 top-[0.625rem] hidden h-px w-full overflow-visible lg:block" viewBox="0 0 100 1" preserveAspectRatio="none">
-          <path d="M0 0.5H100" stroke="rgb(244 241 232 / 0.12)" strokeWidth="1" vectorEffect="non-scaling-stroke" />
-          <motion.path
-            d="M0 0.5H100"
-            stroke="url(#green-pillar-line)"
-            strokeWidth="1"
-            vectorEffect="non-scaling-stroke"
-            style={{ pathLength: draw }}
-            className="motion-reduce:[stroke-dasharray:none]"
-          />
+        {/* Pixel-space SVG lines (no viewBox), so the 1px stroke stays crisp while it draws. */}
+        <svg aria-hidden className="pointer-events-none absolute inset-x-0 top-[0.5625rem] hidden h-px w-full overflow-visible lg:block">
           <defs>
-            <linearGradient id="green-pillar-line" x1="0" x2="100" y1="0" y2="0" gradientUnits="userSpaceOnUse">
+            <linearGradient id="green-pillar-line" x1="0" x2="100%" y1="0" y2="0" gradientUnits="userSpaceOnUse">
               <stop offset="0" stopColor="#c8a24a" />
               <stop offset="0.6" stopColor="#8dc63f" />
               <stop offset="1" stopColor="#009999" />
             </linearGradient>
           </defs>
+          <line x1="9" y1="0.5" x2="100%" y2="0.5" stroke="rgb(244 241 232 / 0.12)" strokeWidth="1" />
+          <motion.line
+            x1="9"
+            y1="0.5"
+            x2="100%"
+            y2="0.5"
+            stroke="url(#green-pillar-line)"
+            strokeWidth="1"
+            style={{ pathLength: draw }}
+            className="motion-reduce:[stroke-dasharray:none]"
+          />
         </svg>
-        <svg aria-hidden className="pointer-events-none absolute left-[0.5625rem] top-0 h-full w-px overflow-visible lg:hidden" viewBox="0 0 1 100" preserveAspectRatio="none">
-          <path d="M0.5 2V100" stroke="rgb(244 241 232 / 0.12)" strokeWidth="1" vectorEffect="non-scaling-stroke" />
-          <motion.path d="M0.5 2V100" stroke="#c8a24a" strokeWidth="1" vectorEffect="non-scaling-stroke" style={{ pathLength: draw }} className="motion-reduce:[stroke-dasharray:none]" />
+        <svg aria-hidden className="pointer-events-none absolute left-[0.5rem] top-0 h-full w-0.5 overflow-visible lg:hidden">
+          <line x1="1" y1="20" x2="1" y2="100%" stroke="rgb(244 241 232 / 0.12)" strokeWidth="1" />
+          <motion.line
+            x1="1"
+            y1="20"
+            x2="1"
+            y2="100%"
+            stroke="#c8a24a"
+            strokeWidth="1"
+            style={{ pathLength: draw }}
+            className="motion-reduce:[stroke-dasharray:none]"
+          />
         </svg>
 
         <ol ref={list} className="relative grid gap-6 lg:grid-cols-4 lg:gap-5 xl:gap-6">

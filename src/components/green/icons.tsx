@@ -36,15 +36,16 @@ const paths: Record<GreenPillarId, React.ReactNode> = {
       <path d="M13.5 29.5l4 2" />
     </>
   ),
-  // Green Logistics — a route between two nodes carrying a container.
+  // Green Logistics — a container moving along a route, under a global arc.
   logistics: (
     <>
-      <circle cx="9.5" cy="12" r="2.5" />
-      <circle cx="38.5" cy="36" r="2.5" />
-      <path d="M12 12h12.5a6 6 0 0 1 6 6v0" strokeDasharray="2 2.5" />
-      <path d="M30.5 30v0a6 6 0 0 0 6 6h-.5" strokeDasharray="2 2.5" />
-      <path d="M22 19.5h17v10.5H22Z" />
-      <path d="M26 19.5V30M30.5 19.5V30M35 19.5V30" />
+      <path d="M13 18h22v11H13Z" />
+      <path d="M18.5 18v11M24 18v11M29.5 18v11" />
+      <circle cx="7.5" cy="35" r="2.5" />
+      <circle cx="40.5" cy="35" r="2.5" />
+      <path d="M10 35h28" />
+      <path d="M9 12.5C15 5.5 33 5.5 39 12.5" strokeDasharray="2 2.5" />
+      <path d="m35.6 11.7 3.4.8.3-3.4" />
     </>
   ),
 };

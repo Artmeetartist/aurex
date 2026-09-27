@@ -110,11 +110,17 @@ export function GreenStage({ locale, content }: { locale: Locale; content: SiteC
           aria-hidden
           className={cn(
             "pointer-events-none absolute inset-x-0 top-0 h-[46%] bg-gradient-to-b from-forest-950/90 via-forest-950/45 to-transparent transition-opacity duration-1000",
-            phase === "intro" ? "opacity-100" : "opacity-60",
+            phase === "intro" ? "opacity-100" : "opacity-45",
           )}
         />
-        <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-[52%] bg-gradient-to-t from-forest-950 via-forest-950/70 to-transparent" />
-        <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 hidden w-[55%] bg-gradient-to-r from-forest-950/55 to-transparent md:block" />
+        <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%] bg-gradient-to-t from-forest-950/95 via-forest-950/55 to-transparent" />
+        <div
+          aria-hidden
+          className={cn(
+            "pointer-events-none absolute inset-y-0 left-0 hidden w-[55%] bg-gradient-to-r from-forest-950/60 to-transparent transition-opacity duration-1000 md:block",
+            phase === "intro" ? "opacity-100" : "opacity-40",
+          )}
+        />
         <div
           aria-hidden
           className={cn(
@@ -152,7 +158,7 @@ export function GreenStage({ locale, content }: { locale: Locale; content: SiteC
             </motion.h2>
             <motion.p
               style={{ opacity: subtitleOpacity }}
-              className="t-lead mt-6 max-w-[34rem] text-cream/85 md:mt-8"
+              className="t-lead mt-6 max-w-[34rem] text-cream/85 md:mt-8 [@media(max-height:560px)]:hidden"
             >
               {copy.subtitle}
             </motion.p>
@@ -162,7 +168,7 @@ export function GreenStage({ locale, content }: { locale: Locale; content: SiteC
           <div className="relative mt-auto">
             <div
               className={cn(
-                "relative h-[8.5rem] transition-opacity duration-700 md:h-[10.5rem]",
+                "relative h-[8.5rem] transition-opacity duration-700 md:h-[10.5rem] [@media(max-height:560px)]:h-[4.5rem]",
                 phase === "travel" ? "opacity-100" : "opacity-0",
               )}
             >
@@ -171,7 +177,7 @@ export function GreenStage({ locale, content }: { locale: Locale; content: SiteC
                   <div className="flex items-end gap-5 md:gap-8">
                     <span
                       aria-hidden
-                      className="text-[clamp(4.5rem,9vw,8.5rem)] font-extralight leading-[0.8] tracking-[-0.06em] text-transparent tabular-nums [-webkit-text-stroke:1px_rgb(226_207_152/0.55)]"
+                      className="text-[clamp(4.5rem,9vw,8.5rem)] font-extralight [@media(max-height:560px)]:hidden leading-[0.8] tracking-[-0.06em] text-transparent tabular-nums [-webkit-text-stroke:1px_rgb(226_207_152/0.55)]"
                     >
                       {pad(i + 1)}
                     </span>
@@ -195,7 +201,7 @@ export function GreenStage({ locale, content }: { locale: Locale; content: SiteC
               )}
             >
               {copy.body.map((p, i) => (
-                <p key={i} className={cn("text-cream/85", i === 0 ? "t-lead" : "t-body mt-4 max-w-[34rem] text-cream/75")}>
+                <p key={i} className={cn("text-cream/85", i === 0 ? "t-lead" : "t-body mt-4 max-w-[34rem] text-cream/75 [@media(max-height:560px)]:hidden")}>
                   {p}
                 </p>
               ))}
@@ -248,14 +254,11 @@ export function GreenStage({ locale, content }: { locale: Locale; content: SiteC
             </ol>
           </div>
 
-          {/* Compact stage indicator (mobile / tablet) */}
+          {/* Compact stage indicator (mobile / tablet): the caption above names the stage. */}
           <div className="relative mt-6 flex items-center justify-between gap-4 lg:hidden" aria-hidden>
-            <p className="flex min-w-0 items-baseline gap-3">
-              <span className="t-eyebrow tabular-nums text-brass-soft">
-                {pad(stage + 1)} / {pad(STAGE_COUNT)}
-              </span>
-              <span className="truncate text-[0.9375rem] text-cream">{stages[stage]}</span>
-            </p>
+            <span className="t-eyebrow whitespace-nowrap tabular-nums text-brass-soft">
+              {pad(stage + 1)} / {pad(STAGE_COUNT)}
+            </span>
             <span className="flex shrink-0 items-center gap-1.5">
               {stages.map((name, i) => (
                 <span

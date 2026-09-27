@@ -64,6 +64,8 @@ export function GreenStatement({ locale, content }: { locale: Locale; content: S
       </motion.div>
       <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-forest-950 via-forest-950/70 to-ink-950" />
       <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-forest-950/80 via-forest-950/30 to-transparent" />
+      {/* Hand-off to the deep-teal section that follows. */}
+      <div aria-hidden className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-ink-950" />
 
       <div className="container-x section-y relative">
         <LitHeading text={copy.statement} className="t-display-xl max-w-[14ch] text-cream" />
