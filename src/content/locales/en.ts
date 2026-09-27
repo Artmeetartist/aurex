@@ -26,7 +26,7 @@ const en: SiteContent = {
       portfolio: {
         title: "Portfolio & investments",
         description:
-          "How AUREX invests: patient capital, strategic alignment and governance first, directed towards five sectors of strategic interest.",
+          "How AUREX invests: patient capital, strategic alignment and governance first, directed towards six sectors of strategic interest.",
       },
       presence: {
         title: "Global presence",
@@ -164,7 +164,7 @@ const en: SiteContent = {
     },
     sectors: {
       eyebrow: "Sectors",
-      title: "Five sectors of strategic interest.",
+      title: "Six sectors of strategic interest.",
       accent: ["strategic"],
       intro:
         "Areas where AUREX sees long-term relevance for trade and capital. Each will be approached deliberately, with partners and on its own merits.",
@@ -306,6 +306,12 @@ const en: SiteContent = {
       summary:
         "Opportunities in the energy and resource transition, approached with the same discipline as any long-term asset.",
       focus: ["Green transition", "Resource efficiency", "Long-term assets"],
+    },
+    larp: {
+      name: "LARP & Historical Goods",
+      summary:
+        "Costumes, armour, props and historical reproductions for live-action role-play, re-enactment and theatrical markets.",
+      focus: ["Costumes & armour", "Props & accessories", "Historical reproductions"],
     },
   },
 
@@ -504,7 +510,7 @@ const en: SiteContent = {
       eyebrow: "Sectors of interest",
       title: "Where capital is directed.",
       accent: ["capital"],
-      intro: "Investment interest is concentrated on five sectors of strategic relevance.",
+      intro: "Investment interest is concentrated on six sectors of strategic relevance.",
     },
     holdings: {
       eyebrow: "Holdings",

@@ -26,7 +26,7 @@ const fr: SiteContent = {
       portfolio: {
         title: "Portefeuille & investissements",
         description:
-          "Comment AUREX investit : capital patient, alignement stratégique et gouvernance avant tout, au service de cinq secteurs d’intérêt stratégique.",
+          "Comment AUREX investit : capital patient, alignement stratégique et gouvernance avant tout, au service de six secteurs d’intérêt stratégique.",
       },
       presence: {
         title: "Présence mondiale",
@@ -167,7 +167,7 @@ const fr: SiteContent = {
     },
     sectors: {
       eyebrow: "Secteurs",
-      title: "Cinq secteurs d’intérêt stratégique.",
+      title: "Six secteurs d’intérêt stratégique.",
       accent: ["stratégique."],
       intro:
         "Des domaines où AUREX voit une pertinence durable pour le commerce et le capital. Chacun sera abordé avec discernement, aux côtés de partenaires et selon ses propres mérites.",
@@ -329,6 +329,12 @@ const fr: SiteContent = {
       summary:
         "Des opportunités liées à la transition énergétique et à celle des ressources, abordées avec la même rigueur que tout actif de long terme.",
       focus: ["Transition écologique", "Efficacité des ressources", "Actifs de long terme"],
+    },
+    larp: {
+      name: "LARP & objets historiques",
+      summary:
+        "Costumes, armures, accessoires et reproductions historiques pour le jeu de rôle grandeur nature (GN), la reconstitution et le théâtre.",
+      focus: ["Costumes & armures", "Accessoires de scène", "Reproductions historiques"],
     },
   },
 
@@ -554,7 +560,7 @@ const fr: SiteContent = {
       eyebrow: "Secteurs d’intérêt",
       title: "Où s’oriente le capital.",
       accent: ["capital."],
-      intro: "L’intérêt d’investissement se concentre sur cinq secteurs d’importance stratégique.",
+      intro: "L’intérêt d’investissement se concentre sur six secteurs d’importance stratégique.",
     },
     holdings: {
       eyebrow: "Participations",

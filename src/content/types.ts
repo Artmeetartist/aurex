@@ -11,7 +11,7 @@
 import type { InquiryType, RouteKey } from "@/lib/routes";
 
 export type DivisionId = "trade" | "logistics" | "distribution" | "holdings";
-export type SectorId = "food" | "property" | "medical" | "electronics" | "sustainability";
+export type SectorId = "food" | "property" | "medical" | "electronics" | "sustainability" | "larp";
 export type MarketId = "eu" | "pl" | "ae" | "in" | "af";
 export type PartnerModelId = "suppliers" | "distributors" | "corporate" | "capital";
 

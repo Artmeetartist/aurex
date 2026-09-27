@@ -26,7 +26,7 @@ const pl: SiteContent = {
       portfolio: {
         title: "Portfel i inwestycje",
         description:
-          "Jak inwestuje AUREX: cierpliwy kapitał, spójność strategiczna i priorytet ładu korporacyjnego, ukierunkowane na pięć sektorów strategicznego zainteresowania.",
+          "Jak inwestuje AUREX: cierpliwy kapitał, spójność strategiczna i priorytet ładu korporacyjnego, ukierunkowane na sześć sektorów strategicznego zainteresowania.",
       },
       presence: {
         title: "Globalna obecność",
@@ -166,7 +166,7 @@ const pl: SiteContent = {
     },
     sectors: {
       eyebrow: "Sektory",
-      title: "Pięć sektorów strategicznego zainteresowania.",
+      title: "Sześć sektorów strategicznego zainteresowania.",
       accent: ["strategicznego"],
       intro:
         "Obszary, w których AUREX dostrzega długoterminowe znaczenie dla handlu i kapitału. Do każdego z nich podejdziemy z rozwagą, wspólnie z partnerami i po indywidualnej ocenie.",
@@ -313,6 +313,12 @@ const pl: SiteContent = {
       summary:
         "Możliwości związane z transformacją energetyczną i surowcową, traktowane z taką samą dyscypliną jak każde aktywo długoterminowe.",
       focus: ["Zielona transformacja", "Efektywne gospodarowanie zasobami", "Aktywa długoterminowe"],
+    },
+    larp: {
+      name: "LARP i artykuły historyczne",
+      summary:
+        "Kostiumy, zbroje, rekwizyty i repliki historyczne dla rynków LARP, rekonstrukcji historycznych i teatru.",
+      focus: ["Kostiumy i zbroje", "Rekwizyty i akcesoria", "Repliki historyczne"],
     },
   },
 
@@ -525,7 +531,7 @@ const pl: SiteContent = {
       eyebrow: "Sektory zainteresowania",
       title: "Dokąd trafia kapitał.",
       accent: ["kapitał."],
-      intro: "Zainteresowanie inwestycyjne koncentruje się na pięciu sektorach o strategicznym znaczeniu.",
+      intro: "Zainteresowanie inwestycyjne koncentruje się na sześciu sektorach o strategicznym znaczeniu.",
     },
     holdings: {
       eyebrow: "Udziały",

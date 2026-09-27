@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { ScrollProgress } from "@/components/layout/scroll-progress";
 import { SiteHeader } from "@/components/layout/site-header";
 import { MotionProvider } from "@/components/providers/motion-provider";
 import { SmoothScroll } from "@/components/providers/smooth-scroll";
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
 }
 
 export const viewport: Viewport = {
-  themeColor: "#111111",
+  themeColor: "#013333",
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
@@ -53,6 +54,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
         </a>
         <MotionProvider>
           <SmoothScroll>
+            <ScrollProgress />
             <SiteHeader
               locale={locale}
               nav={{

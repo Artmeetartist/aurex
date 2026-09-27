@@ -62,7 +62,12 @@ export function SiteHeader({ locale, nav }: { locale: Locale; nav: HeaderLabels 
     if (y < prev - 2) setHidden(false);
   });
 
-  useEffect(() => setOpen(false), [pathname]);
+  // Close the mobile menu when the route changes (derived during render, no effect).
+  const [lastPath, setLastPath] = useState(pathname);
+  if (pathname !== lastPath) {
+    setLastPath(pathname);
+    setOpen(false);
+  }
 
   useEffect(() => {
     document.documentElement.style.overflow = open ? "hidden" : "";

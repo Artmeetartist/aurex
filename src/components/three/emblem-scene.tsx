@@ -2,8 +2,8 @@
 
 import { Environment, Float, Lightformer } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
-import type { MotionValue } from "motion/react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useReducedMotion, type MotionValue } from "motion/react";
+import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 
 /** Mark geometry in the logo's 40×40 SVG space → centred 3D units. */
@@ -89,7 +89,7 @@ function Mark({ scroll, reduced }: { scroll?: MotionValue<number>; reduced: bool
     <group ref={group}>
       <mesh geometry={legs} castShadow>
         <meshPhysicalMaterial
-          color="#0f0f0f"
+          color="#023b3b"
           metalness={0.85}
           roughness={0.22}
           clearcoat={1}
@@ -98,7 +98,7 @@ function Mark({ scroll, reduced }: { scroll?: MotionValue<number>; reduced: bool
         />
       </mesh>
       <mesh geometry={bar}>
-        <meshPhysicalMaterial color="#c8a24a" metalness={1} roughness={0.18} clearcoat={0.4} envMapIntensity={1.6} />
+        <meshPhysicalMaterial color="#8dc63f" metalness={0.75} roughness={0.2} clearcoat={0.6} envMapIntensity={1.5} />
       </mesh>
     </group>
   );
@@ -116,11 +116,11 @@ function Orbits({ reduced }: { reduced: boolean }) {
     <>
       <mesh ref={a} rotation={[1.2, 0.2, 0]}>
         <torusGeometry args={[1.75, 0.0035, 8, 200]} />
-        <meshBasicMaterial color="#c8a24a" transparent opacity={0.55} />
+        <meshBasicMaterial color="#8dc63f" transparent opacity={0.55} />
       </mesh>
       <mesh ref={b} rotation={[1.45, -0.5, 0.4]}>
         <torusGeometry args={[2.05, 0.0025, 8, 200]} />
-        <meshBasicMaterial color="#e6d3a1" transparent opacity={0.3} />
+        <meshBasicMaterial color="#33b3b3" transparent opacity={0.4} />
       </mesh>
     </>
   );
@@ -135,8 +135,7 @@ export default function EmblemScene({
   active?: boolean;
   className?: string;
 }) {
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches), []);
+  const reduced = !!useReducedMotion();
 
   return (
     <div className={className}>
@@ -151,11 +150,11 @@ export default function EmblemScene({
         </Float>
         <Orbits reduced={reduced} />
         <Environment resolution={256} frames={1}>
-          <color attach="background" args={["#050505"]} />
-          <Lightformer form="rect" intensity={3.2} color="#fff5e0" position={[0, 4, 2]} scale={[8, 1.4, 1]} rotation-x={Math.PI / 2} />
-          <Lightformer form="rect" intensity={2.4} color="#e6d3a1" position={[-4, 0.5, 1]} scale={[1, 6, 1]} rotation-y={Math.PI / 2} />
+          <color attach="background" args={["#011e1e"]} />
+          <Lightformer form="rect" intensity={3.2} color="#f2fffb" position={[0, 4, 2]} scale={[8, 1.4, 1]} rotation-x={Math.PI / 2} />
+          <Lightformer form="rect" intensity={2.4} color="#bfeee6" position={[-4, 0.5, 1]} scale={[1, 6, 1]} rotation-y={Math.PI / 2} />
           <Lightformer form="rect" intensity={1.6} color="#ffffff" position={[4, -0.5, 1]} scale={[0.6, 6, 1]} rotation-y={-Math.PI / 2} />
-          <Lightformer form="ring" intensity={1.2} color="#c8a24a" position={[0, 0, -6]} scale={5} />
+          <Lightformer form="ring" intensity={1.4} color="#009999" position={[0, 0, -6]} scale={5} />
           <Lightformer form="rect" intensity={0.8} color="#ffffff" position={[0, -3, 3]} scale={[6, 0.4, 1]} rotation-x={-Math.PI / 2} />
         </Environment>
       </Canvas>

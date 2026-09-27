@@ -81,24 +81,23 @@ export function Hero({ locale, content }: { locale: Locale; content: SiteContent
   useEffect(() => {
     const v = video.current;
     if (!v) return;
-    if (reduce) {
-      v.pause();
-      setPlaying(false);
-    } else {
-      v.play().catch(() => setPlaying(false));
-    }
+    if (reduce) v.pause();
+    else v.play().catch(() => {});
   }, [reduce]);
+
+  const seek = (m: Mode) => {
+    const v = video.current;
+    const w = WINDOWS.find((win) => win.mode === m);
+    if (!v || !w) return;
+    v.currentTime = w.from + 0.05;
+    if (v.paused) v.play().catch(() => {});
+  };
 
   const toggle = () => {
     const v = video.current;
     if (!v) return;
-    if (v.paused) {
-      v.play();
-      setPlaying(true);
-    } else {
-      v.pause();
-      setPlaying(false);
-    }
+    if (v.paused) v.play().catch(() => {});
+    else v.pause();
   };
 
   const titleWords = hero.title.split(" ");
@@ -125,6 +124,8 @@ export function Hero({ locale, content }: { locale: Locale; content: SiteContent
           poster="/media/hero/poster.webp"
           aria-hidden
           tabIndex={-1}
+          onPlay={() => setPlaying(true)}
+          onPause={() => setPlaying(false)}
         >
           <source src="/media/hero/hero-854.mp4" type="video/mp4" media="(max-width: 767px)" />
           <source src="/media/hero/hero-1280.webm" type="video/webm" />
@@ -244,6 +245,12 @@ export function Hero({ locale, content }: { locale: Locale; content: SiteContent
               const active = m === mode;
               return (
                 <li key={m} className={cn("min-w-0 sm:max-w-40", active ? "flex-[2.2] sm:flex-1" : "flex-1")}>
+                  <button
+                    type="button"
+                    onClick={() => seek(m)}
+                    aria-current={active ? "step" : undefined}
+                    className="group/mode block w-full py-2 text-left"
+                  >
                   <div className="flex items-baseline gap-2">
                     <span className={cn("t-eyebrow transition-colors", active ? "text-gold" : "text-ivory/40")}>
                       {String(i + 1).padStart(2, "0")}
@@ -251,7 +258,7 @@ export function Hero({ locale, content }: { locale: Locale; content: SiteContent
                     <span
                       className={cn(
                         "truncate text-[0.8125rem] transition-colors duration-500",
-                        active ? "text-ivory" : "hidden text-ivory/45 sm:inline",
+                        active ? "text-ivory" : "hidden text-ivory/45 group-hover/mode:text-ivory sm:inline",
                       )}
                     >
                       {hero.modes[m]}
@@ -265,6 +272,7 @@ export function Hero({ locale, content }: { locale: Locale; content: SiteContent
                       className="h-px origin-left scale-x-0 bg-gold"
                     />
                   </div>
+                  </button>
                 </li>
               );
             })}

@@ -1,5 +1,6 @@
 "use client";
 
+import { useLenis } from "lenis/react";
 import { motion, useMotionValueEvent, useScroll, useTransform } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { TextLink } from "@/components/ui/button";
@@ -22,58 +23,20 @@ function frameUrl(path: string, i: number) {
   return `${path}${String(i + 1).padStart(3, "0")}.webp`;
 }
 
-/** Loads frames coarse-to-fine so scrubbing works before the full set arrives. */
-function useFrameSequence(
-  active: boolean,
-  frames: React.RefObject<(HTMLImageElement | null)[]>,
-  onFrameLoaded: () => void,
-) {
-  const [seq, setSeq] = useState<(typeof SEQUENCES)["desktop"] | null>(null);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 767px)");
-    setSeq(mq.matches ? SEQUENCES.mobile : SEQUENCES.desktop);
-  }, []);
-
-  useEffect(() => {
-    if (!active || !seq) return;
-    let cancelled = false;
-    frames.current = new Array(seq.count).fill(null);
-    const order: number[] = [];
-    const seen = new Set<number>();
-    for (const stride of [16, 8, 4, 2, 1]) {
-      for (let i = 0; i < seq.count; i += stride) {
-        if (!seen.has(i)) {
-          seen.add(i);
-          order.push(i);
-        }
+/** Coarse-to-fine load order so scrubbing works before the full set arrives. */
+function loadOrder(count: number) {
+  const order: number[] = [];
+  const seen = new Set<number>();
+  for (const stride of [16, 8, 4, 2, 1]) {
+    for (let i = 0; i < count; i += stride) {
+      if (!seen.has(i)) {
+        seen.add(i);
+        order.push(i);
       }
     }
-    if (!seen.has(seq.count - 1)) order.push(seq.count - 1);
-
-    let cursor = 0;
-    const CONCURRENCY = 6;
-    const next = () => {
-      if (cancelled || cursor >= order.length) return;
-      const index = order[cursor++];
-      const img = new Image();
-      img.decoding = "async";
-      img.src = frameUrl(seq.path, index);
-      img
-        .decode()
-        .then(() => {
-          if (cancelled) return;
-          frames.current[index] = img;
-          onFrameLoaded();
-        })
-        .catch(() => {})
-        .finally(next);
-    };
-    for (let i = 0; i < CONCURRENCY; i++) next();
-    return () => {
-      cancelled = true;
-    };
-  }, [active, seq, frames, onFrameLoaded]);
+  }
+  if (!seen.has(count - 1)) order.push(count - 1);
+  return order;
 }
 
 function Chapter({ index, current, children }: { index: number; current: number; children: React.ReactNode }) {
@@ -142,8 +105,35 @@ export function ValueInMotion({ locale, content }: { locale: Locale; content: Si
     drawn.current = idx;
   }, [scrollYProgress]);
 
-  const onFrameLoaded = useCallback(() => draw(), [draw]);
-  useFrameSequence(near, frames, onFrameLoaded);
+  useEffect(() => {
+    if (!near) return;
+    const seq = window.matchMedia("(max-width: 767px)").matches ? SEQUENCES.mobile : SEQUENCES.desktop;
+    let cancelled = false;
+    const list: (HTMLImageElement | null)[] = new Array(seq.count).fill(null);
+    frames.current = list;
+    const order = loadOrder(seq.count);
+    let cursor = 0;
+    const next = () => {
+      if (cancelled || cursor >= order.length) return;
+      const index = order[cursor++];
+      const img = new Image();
+      img.decoding = "async";
+      img.src = frameUrl(seq.path, index);
+      img
+        .decode()
+        .then(() => {
+          if (cancelled) return;
+          list[index] = img;
+          draw();
+        })
+        .catch(() => {})
+        .finally(next);
+    };
+    for (let i = 0; i < 6; i++) next();
+    return () => {
+      cancelled = true;
+    };
+  }, [near, draw]);
 
   useEffect(() => {
     const c = canvas.current;
@@ -166,6 +156,17 @@ export function ValueInMotion({ locale, content }: { locale: Locale; content: Si
     for (let i = 0; i < CHAPTER_STARTS.length; i++) if (p >= CHAPTER_STARTS[i] - 0.01) c = i;
     setChapter(c);
   });
+
+  const lenis = useLenis();
+  const goTo = (i: number) => {
+    const el = section.current;
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY;
+    const travel = el.offsetHeight - window.innerHeight;
+    const target = top + (CHAPTER_STARTS[i] + 0.03) * travel;
+    if (lenis) lenis.scrollTo(target, { duration: 1.4 });
+    else window.scrollTo({ top: target, behavior: "smooth" });
+  };
 
   const railScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
   const imageScale = useTransform(scrollYProgress, [0, 1], [1.08, 1]);
@@ -211,22 +212,26 @@ export function ValueInMotion({ locale, content }: { locale: Locale; content: Si
             </div>
 
             <div className="flex items-end justify-between md:col-span-5 md:flex-col md:items-end lg:col-span-6">
-              <ol className="hidden gap-3 md:flex md:flex-col md:items-end" aria-hidden>
+              <ol className="hidden gap-1 md:flex md:flex-col md:items-end">
                 {copy.chapters.map((c, i) => (
-                  <li
-                    key={c.division}
-                    className={cn(
-                      "flex items-center gap-3 text-[0.8125rem] transition-colors duration-500",
-                      chapter === i ? "text-ivory" : "text-ivory/35",
-                    )}
-                  >
-                    {c.mode}
-                    <span
+                  <li key={c.division}>
+                    <button
+                      type="button"
+                      onClick={() => goTo(i)}
+                      aria-current={chapter === i ? "step" : undefined}
                       className={cn(
-                        "h-px transition-all duration-700 ease-[var(--ease-out-expo)]",
-                        chapter === i ? "w-10 bg-gold" : "w-4 bg-white/30",
+                        "group/rail flex min-h-9 items-center gap-3 text-[0.8125rem] transition-colors duration-500",
+                        chapter === i ? "text-ivory" : "text-ivory/40 hover:text-ivory/80",
                       )}
-                    />
+                    >
+                      {c.mode}
+                      <span
+                        className={cn(
+                          "h-px transition-all duration-700 ease-[var(--ease-out-expo)]",
+                          chapter === i ? "w-10 bg-gold" : "w-4 bg-white/30 group-hover/rail:w-7 group-hover/rail:bg-gold/60",
+                        )}
+                      />
+                    </button>
                   </li>
                 ))}
               </ol>

@@ -26,7 +26,7 @@ const nl: SiteContent = {
       portfolio: {
         title: "Portfolio & investeringen",
         description:
-          "Hoe AUREX investeert: geduldig kapitaal, strategische afstemming en governance voorop, gericht op vijf sectoren van strategisch belang.",
+          "Hoe AUREX investeert: geduldig kapitaal, strategische afstemming en governance voorop, gericht op zes sectoren van strategisch belang.",
       },
       presence: {
         title: "Wereldwijde aanwezigheid",
@@ -164,7 +164,7 @@ const nl: SiteContent = {
     },
     sectors: {
       eyebrow: "Sectoren",
-      title: "Vijf sectoren van strategisch belang.",
+      title: "Zes sectoren van strategisch belang.",
       accent: ["strategisch"],
       intro:
         "Gebieden waarin AUREX relevantie op lange termijn ziet voor handel en kapitaal. Elke sector zal weloverwogen worden benaderd, met partners en op eigen merites.",
@@ -306,6 +306,12 @@ const nl: SiteContent = {
       summary:
         "Kansen in de energie- en grondstoffentransitie, benaderd met dezelfde discipline als elk ander actief voor de lange termijn.",
       focus: ["Groene transitie", "Grondstoffenefficiëntie", "Activa op lange termijn"],
+    },
+    larp: {
+      name: "LARP & historische goederen",
+      summary:
+        "Kostuums, harnassen, rekwisieten en historische reproducties voor live-action roleplay, re-enactment en theater.",
+      focus: ["Kostuums & harnassen", "Rekwisieten & accessoires", "Historische reproducties"],
     },
   },
 
@@ -504,7 +510,7 @@ const nl: SiteContent = {
       eyebrow: "Interessesectoren",
       title: "Waar kapitaal wordt ingezet.",
       accent: ["kapitaal"],
-      intro: "De investeringsbelangstelling is geconcentreerd op vijf sectoren van strategische relevantie.",
+      intro: "De investeringsbelangstelling is geconcentreerd op zes sectoren van strategische relevantie.",
     },
     holdings: {
       eyebrow: "Deelnemingen",

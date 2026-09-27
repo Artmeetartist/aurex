@@ -1,31 +1,42 @@
 @import "tailwindcss";
 
 /* ──────────────────────────────────────────────────────────────
-   AUREX design tokens
-   Matte black · rich gold · champagne gold · ivory
+   AUREX design tokens — teal theme (from the Aurex-Teal identity:
+   teal #009999 · teal-dark #006666 · teal-darker #004d4d · lime #8DC63F)
    ────────────────────────────────────────────────────────────── */
 @theme {
-  --color-ink-950: #0a0a0a;
-  --color-ink: #111111;
-  --color-ink-850: #161616;
-  --color-ink-800: #1c1c1c;
-  --color-ink-700: #262626;
-  --color-ink-600: #34332f;
+  /* Deep teal surfaces (dark) */
+  --color-ink-950: #012626;
+  --color-ink: #013333;
+  --color-ink-850: #023d3d;
+  --color-ink-800: #004747;
+  --color-ink-700: #0a5656;
+  --color-ink-600: #16605f;
 
-  --color-gold: #c8a24a;
-  --color-gold-bright: #d4af37;
-  --color-gold-soft: #e6d3a1;
-  /* Gold for text on light surfaces (5.5:1 on ivory) */
-  --color-gold-ink: #7d5f1a;
+  /* Brand teal — decorative use, glows, large display only */
+  --color-teal: #009999;
+  --color-teal-dark: #006666;
+  --color-teal-darker: #004d4d;
 
-  --color-ivory: #f8f6f0;
-  --color-ivory-200: #efebe1;
-  --color-ivory-300: #e4dfd2;
+  /* Lime accent (6.8:1 on deep teal) */
+  --color-gold: #8dc63f;
+  --color-gold-bright: #99cc00;
+  --color-gold-soft: #c3e28f;
+  /* Accent for text on light surfaces (6.5:1 on paper) */
+  --color-gold-ink: #006666;
 
-  /* Muted text: stone on light (6.3:1), mist on dark (7.6:1) */
-  --color-stone: #5e5a52;
-  --color-mist: #a8a49a;
-  --color-mist-dim: #8f8b82;
+  /* Logo arrow gold */
+  --color-sun: #f5b323;
+
+  /* Light surfaces */
+  --color-ivory: #f7faf9;
+  --color-ivory-200: #edf3f2;
+  --color-ivory-300: #dce8e6;
+
+  /* Muted text: stone on light (6.0:1), mist on dark (7.8:1) */
+  --color-stone: #566260;
+  --color-mist: #a9c9c6;
+  --color-mist-dim: #86aba8;
 
   --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-serif: var(--font-instrument-serif), ui-serif, Georgia, "Times New Roman", serif;
@@ -136,7 +147,7 @@
   border: 1px solid rgb(255 255 255 / 0.16);
 }
 @utility text-gold-gradient {
-  background: linear-gradient(100deg, #b8913c 0%, #e6d3a1 38%, #c8a24a 62%, #d4af37 100%);
+  background: linear-gradient(100deg, #00a8a8 0%, #8dc63f 42%, #99cc00 62%, #1fb3a3 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

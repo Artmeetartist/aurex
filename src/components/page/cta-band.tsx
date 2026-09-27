@@ -26,7 +26,7 @@ export function CtaBand({
       {tone === "light" && (
         <div
           aria-hidden
-          className="pointer-events-none absolute -bottom-1/2 left-1/2 h-[60rem] w-[60rem] -translate-x-1/2 rounded-full [background:radial-gradient(closest-side,rgb(200_162_74/0.14),transparent_70%)]"
+          className="pointer-events-none absolute -bottom-1/2 left-1/2 h-[60rem] w-[60rem] -translate-x-1/2 rounded-full [background:radial-gradient(closest-side,rgb(0_153_153/0.28),transparent_70%)]"
         />
       )}
       <div className="container-x relative flex flex-col items-start justify-between gap-12 lg:flex-row lg:items-end">

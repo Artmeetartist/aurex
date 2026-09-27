@@ -38,6 +38,7 @@ export const sectors: { id: SectorId; status: "strategic" }[] = [
   { id: "medical", status: "strategic" },
   { id: "electronics", status: "strategic" },
   { id: "sustainability", status: "strategic" },
+  { id: "larp", status: "strategic" },
 ];
 
 /**

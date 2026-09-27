@@ -1,7 +1,7 @@
 "use client";
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import type { MotionValue } from "motion/react";
+import { useReducedMotion, type MotionValue } from "motion/react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import type { MarketId } from "@/content/types";
@@ -10,7 +10,8 @@ export type GlobeMarket = { id: MarketId; lat: number; lng: number; label: strin
 
 type GlobeData = { regions: string[]; stride: number; points: number[] };
 
-const GOLD = new THREE.Color("#c8a24a");
+const ACCENT = new THREE.Color("#8dc63f");
+const TEAL = new THREE.Color("#009999");
 const DEG = Math.PI / 180;
 
 /** Region indices in public/data/globe.json → markets they light up. */
@@ -55,10 +56,10 @@ const dotsVertex = /* glsl */ `
     float isFocus = step(0.5, aRegion);
     float isLit = (uActiveA < 0.0) ? 0.0 :
       max(1.0 - step(0.5, abs(aRegion - uActiveA)), 1.0 - step(0.5, abs(aRegion - uActiveB)));
-    vec3 land = vec3(0.50, 0.49, 0.46);
-    vec3 gold = vec3(0.784, 0.635, 0.29);
-    vec3 champagne = vec3(0.93, 0.84, 0.62);
-    vColor = mix(mix(land, gold, isFocus), champagne, isLit);
+    vec3 land = vec3(0.42, 0.58, 0.57);
+    vec3 accent = vec3(0.553, 0.776, 0.247);
+    vec3 lit = vec3(0.86, 0.96, 0.62);
+    vColor = mix(mix(land, accent, isFocus), lit, isLit);
     float twinkle = 1.0 - uMotion * 0.18 * (0.5 + 0.5 * sin(uTime * 1.2 + aSeed * 6.2831));
     vAlpha = smoothstep(-0.1, 0.4, facing) * mix(0.38, 0.95, isFocus) * twinkle;
     float size = mix(2.1, 2.9, isFocus) + isLit * 1.3;
@@ -92,8 +93,8 @@ const sphereFragment = /* glsl */ `
   varying vec3 vView;
   void main() {
     float rim = pow(1.0 - max(dot(vNormal, vView), 0.0), 3.0);
-    vec3 base = vec3(0.045, 0.045, 0.043);
-    gl_FragColor = vec4(base + uGold * rim * 0.2, 1.0);
+    vec3 base = vec3(0.004, 0.13, 0.13);
+    gl_FragColor = vec4(base + uGold * rim * 0.35, 1.0);
   }
 `;
 const atmosphereFragment = /* glsl */ `
@@ -168,13 +169,16 @@ function Dots({ data, focus, reduced }: { data: GlobeData; focus: MarketId | nul
   );
 
   useEffect(() => {
+    const m = material.current;
+    if (!m) return;
     const [a, b] = focus ? MARKET_REGIONS[focus] : [-1, -1];
-    uniforms.uActiveA.value = a;
-    uniforms.uActiveB.value = b;
-  }, [focus, uniforms]);
+    m.uniforms.uActiveA.value = a;
+    m.uniforms.uActiveB.value = b;
+  }, [focus]);
 
   useFrame((_, dt) => {
-    uniforms.uTime.value += dt;
+    const m = material.current;
+    if (m) m.uniforms.uTime.value += dt;
   });
 
   useEffect(() => () => geometry.dispose(), [geometry]);
@@ -222,19 +226,22 @@ function Arc({
     return new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 96, 0.0032, 6, false);
   }, [from, to]);
 
+  const material = useRef<THREE.ShaderMaterial>(null);
   const uniforms = useMemo(
     () => ({
       uTime: { value: reduced ? 0.35 : 0 },
       uOffset: { value: offset },
       uEmphasis: { value: 0 },
-      uColor: { value: GOLD.clone().lerp(new THREE.Color("#e6d3a1"), 0.25) },
+      uColor: { value: ACCENT.clone().lerp(new THREE.Color("#d8f0b0"), 0.25) },
     }),
     [offset, reduced],
   );
 
   useFrame((_, dt) => {
-    if (!reduced) uniforms.uTime.value += dt;
-    uniforms.uEmphasis.value = THREE.MathUtils.damp(uniforms.uEmphasis.value, emphasis ? 1 : 0, 6, dt);
+    const u = material.current?.uniforms;
+    if (!u) return;
+    if (!reduced) u.uTime.value += dt;
+    u.uEmphasis.value = THREE.MathUtils.damp(u.uEmphasis.value, emphasis ? 1 : 0, 6, dt);
   });
 
   useEffect(() => () => geometry.dispose(), [geometry]);
@@ -242,6 +249,7 @@ function Arc({
   return (
     <mesh geometry={geometry}>
       <shaderMaterial
+        ref={material}
         vertexShader={arcVertex}
         fragmentShader={arcFragment}
         uniforms={uniforms}
@@ -275,11 +283,11 @@ function Marker({ market, active, reduced }: { market: GlobeMarket; active: bool
     <group ref={group} position={position}>
       <mesh>
         <circleGeometry args={[active ? 0.019 : 0.014, 24]} />
-        <meshBasicMaterial color={active ? "#f1e2b8" : "#d4af37"} transparent opacity={0.95} depthWrite={false} />
+        <meshBasicMaterial color={active ? "#e4f5c4" : "#99cc00"} transparent opacity={0.95} depthWrite={false} />
       </mesh>
       <mesh ref={ring}>
         <ringGeometry args={[0.018, 0.022, 40]} />
-        <meshBasicMaterial color="#d4af37" transparent opacity={0.6} depthWrite={false} side={THREE.DoubleSide} />
+        <meshBasicMaterial color="#8dc63f" transparent opacity={0.6} depthWrite={false} side={THREE.DoubleSide} />
       </mesh>
     </group>
   );
@@ -309,7 +317,7 @@ function Graticule() {
   }, []);
   return (
     <lineSegments geometry={geometry}>
-      <lineBasicMaterial color="#c8a24a" transparent opacity={0.07} depthWrite={false} />
+      <lineBasicMaterial color="#33b3b3" transparent opacity={0.09} depthWrite={false} />
     </lineSegments>
   );
 }
@@ -328,7 +336,7 @@ function Globe({
   corridors: [MarketId, MarketId][];
   focus: MarketId | null;
   scroll?: MotionValue<number>;
-  drag: React.RefObject<{ dx: number; dy: number; active: boolean; lastInteraction: number }>;
+  drag: () => { dx: number; dy: number; active: boolean; lastInteraction: number };
   reduced: boolean;
 }) {
   const tilt = useRef<THREE.Group>(null);
@@ -341,13 +349,11 @@ function Globe({
   useFrame((_, dt) => {
     if (!tilt.current || !spin.current) return;
     clock.current += dt;
-    const d = drag.current;
+    const d = drag();
 
     if (d.active || Math.abs(d.dx) + Math.abs(d.dy) > 0) {
       userOffset.current.y += d.dx * 0.005;
       userOffset.current.x = THREE.MathUtils.clamp(userOffset.current.x + d.dy * 0.004, -0.6, 0.6);
-      d.dx = 0;
-      d.dy = 0;
     } else if (performance.now() - d.lastInteraction > 2600) {
       userOffset.current.x = THREE.MathUtils.damp(userOffset.current.x, 0, 1.2, dt);
       userOffset.current.y = THREE.MathUtils.damp(userOffset.current.y, 0, 1.2, dt);
@@ -370,7 +376,7 @@ function Globe({
       <group ref={spin} rotation={[0, home.y, 0]}>
         <mesh>
           <sphereGeometry args={[1, 96, 96]} />
-          <shaderMaterial vertexShader={sphereVertex} fragmentShader={sphereFragment} uniforms={{ uGold: { value: GOLD } }} />
+          <shaderMaterial vertexShader={sphereVertex} fragmentShader={sphereFragment} uniforms={{ uGold: { value: TEAL } }} />
         </mesh>
         <Graticule />
         <Dots data={data} focus={focus} reduced={reduced} />
@@ -393,7 +399,7 @@ function Globe({
         <shaderMaterial
           vertexShader={sphereVertex}
           fragmentShader={atmosphereFragment}
-          uniforms={{ uGold: { value: GOLD } }}
+          uniforms={{ uGold: { value: TEAL } }}
           side={THREE.BackSide}
           transparent
           depthWrite={false}
@@ -420,12 +426,19 @@ export default function GlobeScene({
   className?: string;
 }) {
   const [data, setData] = useState<GlobeData | null>(null);
-  const [reduced, setReduced] = useState(false);
+  const reduced = !!useReducedMotion();
   const drag = useRef({ dx: 0, dy: 0, active: false, lastInteraction: 0 });
   const last = useRef<{ x: number; y: number } | null>(null);
 
+  /** Returns accumulated pointer deltas and resets them (read once per frame). */
+  const consumeDrag = () => {
+    const d = { ...drag.current };
+    drag.current.dx = 0;
+    drag.current.dy = 0;
+    return d;
+  };
+
   useEffect(() => {
-    setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
     let alive = true;
     fetch("/data/globe.json")
       .then((r) => r.json())
@@ -469,7 +482,7 @@ export default function GlobeScene({
           gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
           style={{ cursor: "grab" }}
         >
-          <Globe data={data} markets={markets} corridors={corridors} focus={focus} scroll={scroll} drag={drag} reduced={reduced} />
+          <Globe data={data} markets={markets} corridors={corridors} focus={focus} scroll={scroll} drag={consumeDrag} reduced={reduced} />
         </Canvas>
       )}
     </div>

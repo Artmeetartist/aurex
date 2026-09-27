@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/brand/logo";
+import { BackToTop } from "@/components/layout/back-to-top";
 import { ButtonLink } from "@/components/ui/button";
 import type { SiteContent } from "@/content/types";
 import { localeMeta, locales, type Locale } from "@/i18n/config";
@@ -84,6 +85,7 @@ export function SiteFooter({ locale, content }: { locale: Locale; content: SiteC
               ))}
             </nav>
             <p className="t-eyebrow !text-[0.625rem] text-mist-dim">{meta.signature}</p>
+            <BackToTop label={content.common.backToTop} />
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { AnchorOnLoad } from "@/components/inquiry/anchor-on-load";
 import { InquiryForm } from "@/components/inquiry/inquiry-form";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { PageHero } from "@/components/page/page-hero";
@@ -52,6 +53,7 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
       />
 
       <section id="inquiry" className="surface-ivory section-y scroll-mt-[var(--header-h)]">
+        <AnchorOnLoad id="inquiry" />
         <div className="container-x grid gap-14 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-32">
@@ -86,7 +88,7 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
 
           <div className="lg:col-span-7">
             <Reveal y={20}>
-              <div className="rounded-[1.75rem] border border-white/10 bg-ink-850 p-6 text-ivory shadow-[0_48px_96px_-56px_rgb(17_17_17/0.55)] sm:p-9 md:p-12">
+              <div className="rounded-[1.75rem] border border-white/10 bg-ink-850 p-6 text-ivory shadow-[0_40px_80px_-48px_rgb(17_17_17/0.35)] sm:p-9 md:p-12">
                 <Suspense fallback={null}>
                   <InquiryForm locale={locale} inquiry={inquiry} surface="dark" />
                 </Suspense>

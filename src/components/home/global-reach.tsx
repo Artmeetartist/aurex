@@ -36,7 +36,7 @@ export function GlobalReach({ locale, content, heading, footnote, index, link, a
     <section ref={section} className="surface-ink-deep section-y relative overflow-hidden">
       <div
         aria-hidden
-        className="pointer-events-none absolute right-[-20%] top-1/2 h-[70rem] w-[70rem] -translate-y-1/2 rounded-full opacity-60 [background:radial-gradient(closest-side,rgb(200_162_74/0.12),transparent_70%)]"
+        className="pointer-events-none absolute right-[-20%] top-1/2 h-[70rem] w-[70rem] -translate-y-1/2 rounded-full opacity-60 [background:radial-gradient(closest-side,rgb(0_153_153/0.22),transparent_70%)]"
       />
       <div className="container-x relative grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-5">

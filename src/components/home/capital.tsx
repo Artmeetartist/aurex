@@ -37,7 +37,7 @@ export function Capital({ locale, content }: { locale: Locale; content: SiteCont
         </div>
 
         <div className="lg:col-span-6 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:self-center">
-          <div ref={stage} aria-hidden className="relative mx-auto aspect-square w-[80%] max-w-[34rem] sm:w-full">
+          <div ref={stage} aria-hidden className="relative mx-auto aspect-square w-[80%] max-w-[34rem] sm:w-full lg:w-[84%] xl:w-full">
             <motion.div
               style={{ opacity: glowOpacity, scale: glowScale }}
               className="pointer-events-none absolute inset-[-10%] rounded-full [background:radial-gradient(closest-side,rgb(200_162_74/0.26),rgb(200_162_74/0.08)_50%,transparent_78%)]"
