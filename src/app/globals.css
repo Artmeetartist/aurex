@@ -5,13 +5,14 @@
    teal #009999 · teal-dark #006666 · teal-darker #004d4d · lime #8DC63F)
    ────────────────────────────────────────────────────────────── */
 @theme {
-  /* Deep teal surfaces (dark) */
-  --color-ink-950: #012626;
-  --color-ink: #013333;
-  --color-ink-850: #023d3d;
-  --color-ink-800: #004747;
-  --color-ink-700: #0a5656;
-  --color-ink-600: #16605f;
+  /* Teal-black surfaces (dark): deep enough for cinematic depth, so brand teal
+     and lime read as light sources. Lime 9.1:1, ivory 17.7:1 on --color-ink. */
+  --color-ink-950: #020c0c;
+  --color-ink: #051616;
+  --color-ink-850: #0a2020;
+  --color-ink-800: #0f2a2a;
+  --color-ink-700: #163535;
+  --color-ink-600: #214242;
 
   /* Brand teal — decorative use, glows, large display only */
   --color-teal: #009999;
@@ -136,17 +137,39 @@
 }
 
 /* ── Surfaces ─────────────────────────────────────────────────── */
+/* Lit surfaces: soft teal light sources give dark sections dimensional depth. */
 @utility surface-ink {
   background-color: var(--color-ink);
+  background-image:
+    radial-gradient(70rem 40rem at 6% -10%, rgb(0 153 153 / 0.17), transparent 62%),
+    radial-gradient(56rem 34rem at 106% 110%, rgb(141 198 63 / 0.06), transparent 60%);
   color: var(--color-ivory);
 }
 @utility surface-ink-deep {
   background-color: var(--color-ink-950);
+  background-image:
+    radial-gradient(80rem 44rem at 50% -24%, rgb(0 153 153 / 0.15), transparent 62%),
+    radial-gradient(40rem 30rem at -6% 100%, rgb(0 102 102 / 0.14), transparent 60%);
   color: var(--color-ivory);
 }
 @utility surface-ivory {
   background-color: var(--color-ivory);
+  background-image:
+    linear-gradient(180deg, rgb(5 22 22 / 0.045), transparent 9rem),
+    radial-gradient(70rem 36rem at 100% 0%, rgb(0 153 153 / 0.07), transparent 60%);
   color: var(--color-ink);
+}
+/* Elevation for cards and panels on dark surfaces: top-edge highlight + deep drop shadow. */
+@utility elevate {
+  box-shadow:
+    inset 0 1px 0 0 rgb(255 255 255 / 0.07),
+    0 1px 2px rgb(0 0 0 / 0.3),
+    0 28px 60px -28px rgb(0 0 0 / 0.75);
+}
+@utility elevate-light {
+  box-shadow:
+    0 1px 2px rgb(5 22 22 / 0.06),
+    0 24px 50px -28px rgb(5 22 22 / 0.28);
 }
 @utility glass {
   background: color-mix(in oklab, var(--color-ink) 42%, transparent);

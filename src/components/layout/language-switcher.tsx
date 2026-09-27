@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { LOCALE_COOKIE, localeMeta, locales, type Locale } from "@/i18n/config";
 import { cn } from "@/lib/cn";
 import { Globe } from "@/components/ui/icons";
@@ -26,6 +26,7 @@ export function LanguageSwitcher({ locale, label, className }: { locale: Locale;
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const localized = useLocalizedPath();
+  const listId = useId();
 
   useEffect(() => {
     if (!open) return;
@@ -45,8 +46,8 @@ export function LanguageSwitcher({ locale, label, className }: { locale: Locale;
     <div ref={ref} className={cn("relative", className)}>
       <button
         type="button"
-        aria-haspopup="listbox"
         aria-expanded={open}
+        aria-controls={listId}
         aria-label={label}
         onClick={() => setOpen((v) => !v)}
         className="glass inline-flex h-11 items-center gap-2 rounded-full px-4 text-[0.8125rem] font-medium text-ivory/85 transition-colors hover:text-ivory"
@@ -54,8 +55,9 @@ export function LanguageSwitcher({ locale, label, className }: { locale: Locale;
         <Globe size={15} className="text-gold" />
         <span className="uppercase tracking-[0.08em]">{locale}</span>
       </button>
+      {/* Disclosure of plain links (a listbox cannot contain links). */}
       <ul
-        role="listbox"
+        id={listId}
         aria-label={label}
         className={cn(
           "glass absolute right-0 top-[calc(100%+0.5rem)] min-w-44 overflow-hidden rounded-2xl p-1.5 transition-all duration-300 ease-[var(--ease-out-expo)]",
@@ -63,17 +65,18 @@ export function LanguageSwitcher({ locale, label, className }: { locale: Locale;
         )}
       >
         {locales.map((l) => (
-          <li key={l} role="option" aria-selected={l === locale}>
+          <li key={l}>
             <Link
               href={localized(l)}
               hrefLang={localeMeta[l].htmlLang}
               lang={localeMeta[l].htmlLang}
+              aria-current={l === locale ? "true" : undefined}
               onClick={() => {
                 rememberLocale(l);
                 setOpen(false);
               }}
               className={cn(
-                "flex items-center justify-between rounded-xl px-3.5 py-2.5 text-[0.875rem] transition-colors",
+                "flex min-h-11 items-center justify-between rounded-xl px-3.5 text-[0.875rem] transition-colors",
                 l === locale ? "bg-white/10 text-ivory" : "text-ivory/70 hover:bg-white/5 hover:text-ivory",
               )}
             >

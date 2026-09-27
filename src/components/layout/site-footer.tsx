@@ -5,6 +5,7 @@ import { FooterWordmark } from "@/components/layout/footer-wordmark";
 import { ButtonLink } from "@/components/ui/button";
 import type { SiteContent } from "@/content/types";
 import { localeMeta, locales, type Locale } from "@/i18n/config";
+import { cn } from "@/lib/cn";
 import { contactHref, href, tradeHref, tradeIds, type RouteKey } from "@/lib/routes";
 
 export function SiteFooter({ locale, content }: { locale: Locale; content: SiteContent }) {
@@ -50,10 +51,13 @@ export function SiteFooter({ locale, content }: { locale: Locale; content: SiteC
             {columns.map((col) => (
               <div key={col.title}>
                 <p className="t-eyebrow text-gold">{col.title}</p>
-                <ul className="mt-6 space-y-3.5">
+                <ul className="mt-4">
                   {col.links.map((l) => (
                     <li key={l.href}>
-                      <Link href={l.href} className="text-[0.9375rem] text-ivory/75 transition-colors hover:text-ivory">
+                      <Link
+                        href={l.href}
+                        className="inline-flex min-h-11 items-center text-[0.9375rem] text-ivory/75 transition-colors hover:text-ivory"
+                      >
                         {l.label}
                       </Link>
                     </li>
@@ -71,16 +75,20 @@ export function SiteFooter({ locale, content }: { locale: Locale; content: SiteC
             © {year} {meta.siteName}. {footer.rights}
           </p>
           <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
-            <Link href={href(locale, "privacy")} className="hover:text-ivory">
+            <Link href={href(locale, "privacy")} className="inline-flex min-h-11 items-center hover:text-ivory">
               {nav.labels.privacy}
             </Link>
-            <nav aria-label={footer.languages} className="flex items-center gap-4">
+            <nav aria-label={footer.languages} className="flex items-center gap-1">
               {locales.map((l) => (
                 <Link
                   key={l}
                   href={`/${l}`}
                   hrefLang={localeMeta[l].htmlLang}
-                  className={l === locale ? "text-gold" : "hover:text-ivory"}
+                  aria-current={l === locale ? "true" : undefined}
+                  className={cn(
+                    "inline-flex min-h-11 min-w-11 items-center justify-center transition-colors",
+                    l === locale ? "text-gold" : "hover:text-ivory",
+                  )}
                 >
                   {l.toUpperCase()}
                 </Link>

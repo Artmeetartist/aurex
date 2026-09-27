@@ -32,21 +32,25 @@ export function WhyAurex({ content }: { content: SiteContent }) {
 
         <ol className="border-t border-ink/10 lg:col-span-6 lg:col-start-7">
           {copy.pillars.map((p, i) => (
-            <li key={p.title} className="border-b border-ink/10">
+            <li key={p.title} className="group relative border-b border-ink/10">
               <Reveal y={36} className="grid gap-6 py-12 sm:grid-cols-[6.5rem_1fr] sm:gap-8 md:py-16">
                 <p aria-hidden className="flex items-baseline gap-2">
-                  <span className="t-accent text-[clamp(3.25rem,5vw,4.5rem)] leading-[0.8] text-gold-ink">
+                  <span className="t-accent inline-block text-[clamp(3.25rem,5vw,4.5rem)] leading-[0.8] text-gold-ink transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:-translate-y-1.5 motion-reduce:transform-none">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="t-eyebrow text-stone sm:hidden">/ {total}</span>
                 </p>
                 <div>
-                  <h3 className="text-[clamp(1.625rem,2.4vw,2.25rem)] font-light leading-[1.1] tracking-[-0.03em] text-ink">
+                  <h3 className="text-[clamp(1.625rem,2.4vw,2.25rem)] font-light leading-[1.1] tracking-[-0.03em] text-ink transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:translate-x-1 motion-reduce:transform-none">
                     {p.title}
                   </h3>
                   <p className="t-lead mt-5 max-w-xl text-stone">{p.text}</p>
                 </div>
               </Reveal>
+              <span
+                aria-hidden
+                className="absolute inset-x-0 -bottom-px h-px origin-left scale-x-0 bg-gold-ink transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-x-100"
+              />
             </li>
           ))}
         </ol>

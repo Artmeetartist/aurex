@@ -51,11 +51,13 @@ export function InteractiveCard({
   };
 
   const classes = cn(
-    "group/card relative isolate block overflow-hidden rounded-[1.5rem] border outline-none",
+    "group/card relative isolate block overflow-hidden rounded-[1.5rem] border",
     "[transform:perspective(1100px)_rotateX(var(--rx,0deg))_rotateY(var(--ry,0deg))] transition-[transform,border-color,background-color,box-shadow] duration-500 ease-[var(--ease-out-expo)] motion-reduce:[transform:none]",
+    // Focus: a 2px ring that follows the radius (lime on dark, deep teal on light surfaces).
+    "focus-visible:outline-2 focus-visible:outline-offset-4",
     tone === "dark"
-      ? "border-white/10 bg-ink-850/60 hover:border-gold/40 hover:bg-ink-850 focus-visible:border-gold"
-      : "border-ink/10 bg-ivory hover:border-gold-ink/40 hover:shadow-[0_24px_60px_-30px_rgb(1_51_51/0.35)] focus-visible:border-gold-ink",
+      ? "border-white/10 bg-ink-850/60 hover:border-gold/40 hover:bg-ink-850 focus-visible:border-gold focus-visible:outline-gold"
+      : "border-ink/10 bg-ivory hover:border-gold-ink/40 hover:shadow-[0_24px_60px_-30px_rgb(1_51_51/0.35)] focus-visible:border-gold-ink focus-visible:outline-gold-ink",
     href && "cursor-pointer",
     className,
   );
@@ -63,7 +65,7 @@ export function InteractiveCard({
   const spotlight = (
     <span
       aria-hidden
-      className="pointer-events-none absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover/card:opacity-100"
+      className="pointer-events-none absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover/card:opacity-100 group-focus-visible/card:opacity-100"
       style={
         {
           background:

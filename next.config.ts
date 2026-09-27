@@ -28,6 +28,8 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: {
     formats: ["image/avif", "image/webp"],
+    // Free Unsplash photography (see src/content/media.ts).
+    remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com", pathname: "/photo-**" }],
   },
   /** Consolidated pages keep their old URLs working. */
   async redirects() {

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { PhotoBand } from "@/components/media/photo-band";
 import { RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { ScrollText } from "@/components/motion/scroll-text";
 import { CtaBand } from "@/components/page/cta-band";
@@ -12,6 +13,7 @@ import { Eyebrow, StatusTag } from "@/components/ui/eyebrow";
 import { InteractiveCard } from "@/components/ui/interactive-card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { markets } from "@/content/facts";
+import { photos, type Photo } from "@/content/media";
 import { getContent } from "@/content/repository";
 import { isLocale } from "@/i18n/config";
 import { loadPage } from "@/lib/page";
@@ -24,12 +26,12 @@ export function generateStaticParams() {
   return tradeIds.map((id) => ({ slug: tradeSlugs[id] }));
 }
 
-/** Framing stills from the AUREX footage, one per trade line. */
-const heroImage: Record<TradeSlugId, string> = {
-  food: "/media/stills/still-sea",
-  medical: "/media/stills/still-air",
-  electronics: "/media/stills/still-portland",
-  larp: "/media/stills/still-coast",
+/** Dedicated photography and atmosphere per trade line. */
+const art: Record<TradeSlugId, { hero: Photo; band: Photo; tint: string }> = {
+  food: { hero: photos.foodProduce, band: photos.foodFields, tint: "#d79a2b" },
+  medical: { hero: photos.medical, band: photos.containerShip, tint: "#5fb8c9" },
+  electronics: { hero: photos.electronics, band: photos.warehouse, tint: "#2f6fb5" },
+  larp: { hero: photos.larp, band: photos.containerShip, tint: "#8c4a2f" },
 };
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/trade/[slug]">): Promise<Metadata> {
@@ -52,7 +54,8 @@ export default async function TradeLinePage({ params }: PageProps<"/[locale]/tra
     <>
       <PageHero
         hero={{ eyebrow: tradePage.eyebrow, title: trade.title, accent: trade.accent, intro: trade.intro }}
-        image={heroImage[id]}
+        photo={art[id].hero}
+        tint={art[id].tint}
         breadcrumb={{
           home: common.breadcrumbHome,
           homeHref: href(locale, "home"),
@@ -79,38 +82,35 @@ export default async function TradeLinePage({ params }: PageProps<"/[locale]/tra
         </div>
       </PageHero>
 
-      {/* 01 — Overview */}
-      <section className="surface-ivory section-y">
-        <div className="container-x grid gap-10 lg:grid-cols-12">
+      {/* 01 — Overview, over a full-bleed photograph */}
+      <PhotoBand photo={art[id].band} tint={art[id].tint}>
+        <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-3">
-            <Eyebrow index="01" tone="dark">
-              {tradePage.overview}
-            </Eyebrow>
+            <Eyebrow index="01">{tradePage.overview}</Eyebrow>
           </div>
-          <ScrollText text={trade.overview} className="t-display-sm text-ink lg:col-span-9" />
+          <ScrollText text={trade.overview} className="t-display-sm text-ivory lg:col-span-9" />
         </div>
-      </section>
+      </PhotoBand>
 
       {/* 02 — Focus categories */}
-      <section className="surface-ink section-y relative overflow-hidden">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-[20%] top-0 h-[50rem] w-[50rem] rounded-full [background:radial-gradient(closest-side,rgb(0_153_153/0.16),transparent_70%)]"
-        />
-        <div className="container-x relative">
-          <SectionHeading index="02" eyebrow={tradePage.categoriesEyebrow} title={tradePage.categoriesTitle} size="md" />
+      <section className="surface-ivory section-y">
+        <div className="container-x">
+          <SectionHeading index="02" eyebrow={tradePage.categoriesEyebrow} title={tradePage.categoriesTitle} tone="dark" size="md" />
           <RevealGroup as="ul" className="mt-16 grid gap-4 md:grid-cols-3 md:gap-5" stagger={0.1}>
             {trade.categories.map((c, i) => (
               <RevealItem as="li" key={c.title}>
-                <InteractiveCard className="flex h-full min-h-[17rem] flex-col p-8 md:p-10">
-                  <span className="t-eyebrow text-gold">{String(i + 1).padStart(2, "0")}</span>
-                  <h3 className="mt-auto pt-14 text-[1.625rem] font-light leading-tight tracking-[-0.025em] text-ivory">
-                    {c.title}
-                  </h3>
-                  <p className="mt-3 text-[0.9375rem] leading-relaxed text-mist">{c.text}</p>
+                <InteractiveCard tone="light" className="elevate-light flex h-full min-h-[18rem] flex-col p-8 md:p-10">
+                  <div className="flex items-start justify-between">
+                    <span className="t-eyebrow text-gold-ink">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="text-gold-ink/70 transition-colors duration-500 group-hover/card:text-gold-ink">
+                      <Icon size={28} />
+                    </span>
+                  </div>
+                  <h3 className="mt-auto pt-14 text-[1.625rem] font-light leading-tight tracking-[-0.025em] text-ink">{c.title}</h3>
+                  <p className="mt-3 text-[0.9375rem] leading-relaxed text-stone">{c.text}</p>
                   <span
                     aria-hidden
-                    className="mt-8 block h-px w-10 bg-gold/60 transition-all duration-700 ease-[var(--ease-out-expo)] group-hover/card:w-full"
+                    className="mt-8 block h-px w-10 bg-gold-ink/60 transition-all duration-700 ease-[var(--ease-out-expo)] group-hover/card:w-full"
                   />
                 </InteractiveCard>
               </RevealItem>
@@ -120,22 +120,22 @@ export default async function TradeLinePage({ params }: PageProps<"/[locale]/tra
       </section>
 
       {/* 03 — Approach */}
-      <section className="surface-ivory section-y">
+      <section className="surface-ink section-y">
         <div className="container-x grid gap-16 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-32">
-              <SectionHeading index="03" eyebrow={tradePage.approachEyebrow} title={tradePage.approachTitle} tone="dark" size="md" />
+              <SectionHeading index="03" eyebrow={tradePage.approachEyebrow} title={tradePage.approachTitle} size="md" />
             </div>
           </div>
-          <RevealGroup as="ol" className="border-t border-ink/10 lg:col-span-6 lg:col-start-7">
+          <RevealGroup as="ol" className="border-t border-white/10 lg:col-span-6 lg:col-start-7">
             {trade.approach.map((a, i) => (
-              <RevealItem as="li" key={a.title} className="group grid grid-cols-[4rem_1fr] gap-4 border-b border-ink/10 py-10">
-                <span className="text-[2.5rem] font-light leading-none tracking-[-0.04em] text-ink/20 transition-colors duration-500 group-hover:text-gold-ink">
+              <RevealItem as="li" key={a.title} className="group grid grid-cols-[4rem_1fr] gap-4 border-b border-white/10 py-10">
+                <span className="text-[2.5rem] font-light leading-none tracking-[-0.04em] text-ivory/20 transition-colors duration-500 group-hover:text-gold">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div>
-                  <h3 className="t-title text-ink">{a.title}</h3>
-                  <p className="mt-3 text-[0.9375rem] leading-relaxed text-stone">{a.text}</p>
+                  <h3 className="t-title text-ivory">{a.title}</h3>
+                  <p className="mt-3 text-[0.9375rem] leading-relaxed text-mist">{a.text}</p>
                 </div>
               </RevealItem>
             ))}

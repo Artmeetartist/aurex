@@ -17,7 +17,7 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-const INK_DEEP = "#012626";
+const INK_DEEP = "#020c0c";
 const IVORY = "#F7FAF9";
 const MIST = "#A9C9C6";
 const MIST_DIM = "#86ABA8";

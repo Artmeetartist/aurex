@@ -56,11 +56,11 @@ export function renderInquiryEmail(inquiry: InquiryRecord, content: SiteContent,
   const rowHtml = list
     .map((r) => {
       const value = r.href
-        ? `<a href="${escapeHtml(r.href)}" style="color:#7D5F1A;text-decoration:underline;">${escapeHtml(r.value)}</a>`
+        ? `<a href="${escapeHtml(r.href)}" style="color:#006666;text-decoration:underline;">${escapeHtml(r.value)}</a>`
         : escapeHtml(r.value);
       return `<tr>
-  <td valign="top" style="padding:12px 0;border-top:1px solid #EFEBE1;width:34%;font:500 11px/1.6 ${mono};letter-spacing:.14em;text-transform:uppercase;color:#5E5A52;">${escapeHtml(r.label)}</td>
-  <td valign="top" style="padding:12px 0;border-top:1px solid #EFEBE1;font:400 15px/1.5 ${sans};color:#111111;">${value}</td>
+  <td valign="top" style="padding:12px 0;border-top:1px solid #EDF3F2;width:34%;font:500 11px/1.6 ${mono};letter-spacing:.14em;text-transform:uppercase;color:#566260;">${escapeHtml(r.label)}</td>
+  <td valign="top" style="padding:12px 0;border-top:1px solid #EDF3F2;font:400 15px/1.5 ${sans};color:#051616;">${value}</td>
 </tr>`;
     })
     .join("\n");
@@ -74,13 +74,13 @@ export function renderInquiryEmail(inquiry: InquiryRecord, content: SiteContent,
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${escapeHtml(subject)}</title>
 </head>
-<body style="margin:0;padding:0;background:#F8F6F0;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F8F6F0;">
+<body style="margin:0;padding:0;background:#F7FAF9;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F7FAF9;">
 <tr><td align="center" style="padding:32px 16px;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#FFFFFF;border:1px solid #E4DFD2;border-radius:16px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#FFFFFF;border:1px solid #DCE8E6;border-radius:16px;">
     <tr><td style="padding:32px 32px 8px;">
-      <div style="font:500 11px/1 ${mono};letter-spacing:.2em;text-transform:uppercase;color:#7D5F1A;">${escapeHtml(siteName)} &nbsp;·&nbsp; ${escapeHtml(content.inquiry.title)}</div>
-      <div style="margin-top:16px;font:300 26px/1.2 ${sans};letter-spacing:-.02em;color:#111111;">${escapeHtml(typeLabel)} — ${escapeHtml(inquiry.organisation)}</div>
+      <div style="font:500 11px/1 ${mono};letter-spacing:.2em;text-transform:uppercase;color:#006666;">${escapeHtml(siteName)} &nbsp;·&nbsp; ${escapeHtml(content.inquiry.title)}</div>
+      <div style="margin-top:16px;font:300 26px/1.2 ${sans};letter-spacing:-.02em;color:#051616;">${escapeHtml(typeLabel)} — ${escapeHtml(inquiry.organisation)}</div>
     </td></tr>
     <tr><td style="padding:16px 32px 8px;">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
@@ -88,10 +88,10 @@ ${rowHtml}
       </table>
     </td></tr>
     <tr><td style="padding:8px 32px 32px;">
-      <div style="padding-top:20px;border-top:1px solid #EFEBE1;font:500 11px/1 ${mono};letter-spacing:.14em;text-transform:uppercase;color:#5E5A52;">${escapeHtml(content.inquiry.fields.message)}</div>
-      <div style="margin-top:14px;font:400 15px/1.7 ${sans};color:#111111;">${messageHtml}</div>
+      <div style="padding-top:20px;border-top:1px solid #EDF3F2;font:500 11px/1 ${mono};letter-spacing:.14em;text-transform:uppercase;color:#566260;">${escapeHtml(content.inquiry.fields.message)}</div>
+      <div style="margin-top:14px;font:400 15px/1.7 ${sans};color:#051616;">${messageHtml}</div>
     </td></tr>
-    <tr><td style="padding:16px 32px;border-top:1px solid #EFEBE1;font:400 12px/1.5 ${mono};color:#8F8B82;">${escapeHtml(stamp(meta.receivedAt))} &nbsp;·&nbsp; ${escapeHtml(meta.id)}</td></tr>
+    <tr><td style="padding:16px 32px;border-top:1px solid #EDF3F2;font:400 12px/1.5 ${mono};color:#86ABA8;">${escapeHtml(stamp(meta.receivedAt))} &nbsp;·&nbsp; ${escapeHtml(meta.id)}</td></tr>
   </table>
 </td></tr>
 </table>

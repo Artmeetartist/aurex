@@ -75,7 +75,7 @@ export function TradeMenu({ data, active }: { data: TradeMenuData; active: boole
         aria-controls={panelId}
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "inline-flex h-8 items-center gap-1.5 rounded-full px-3.5 text-[0.8125rem] transition-colors duration-300 xl:px-4",
+          "relative after:absolute after:inset-x-0 after:-inset-y-1.5 after:content-[''] inline-flex h-8 items-center gap-1.5 rounded-full px-3.5 text-[0.8125rem] transition-colors duration-300 xl:px-4",
           active || open ? "bg-white/12 text-ivory" : "text-ivory/70 hover:text-ivory",
         )}
       >

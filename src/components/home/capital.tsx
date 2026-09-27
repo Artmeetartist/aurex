@@ -57,12 +57,22 @@ export function Capital({ locale, content }: { locale: Locale; content: SiteCont
         <div className="lg:col-span-6 lg:col-start-7 lg:row-start-2 lg:self-start xl:col-span-5 xl:col-start-8">
           <RevealGroup as="ol" className="border-t border-white/10">
             {copy.principles.map((p, i) => (
-              <RevealItem as="li" key={p.title} className="grid grid-cols-[2.75rem_1fr] gap-4 border-b border-white/10 py-7">
-                <span className="t-eyebrow pt-2 text-gold">{String(i + 1).padStart(2, "0")}</span>
+              <RevealItem
+                as="li"
+                key={p.title}
+                className="group relative grid grid-cols-[2.75rem_1fr] gap-4 border-b border-white/10 py-7"
+              >
+                <span className="t-eyebrow pt-2 text-gold transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:translate-x-1 motion-reduce:transform-none">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <div>
-                  <h3 className="t-title font-normal text-ivory">{p.title}</h3>
+                  <h3 className="t-title font-normal text-ivory transition-colors duration-500 group-hover:text-gold-soft">{p.title}</h3>
                   <p className="mt-2.5 max-w-md text-[0.9375rem] leading-relaxed text-mist">{p.text}</p>
                 </div>
+                <span
+                  aria-hidden
+                  className="absolute inset-x-0 -bottom-px h-px origin-left scale-x-0 bg-gold/70 transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-x-100"
+                />
               </RevealItem>
             ))}
           </RevealGroup>

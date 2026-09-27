@@ -4,7 +4,9 @@ import { CtaBand } from "@/components/page/cta-band";
 import { PageHero } from "@/components/page/page-hero";
 import { ApproachColumns } from "@/components/sections/leadership/approach-columns";
 import { LeaderProfiles } from "@/components/sections/leadership/leader-profiles";
+import { CardArrow } from "@/components/ui/card-arrow";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { InteractiveCard } from "@/components/ui/interactive-card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { divisions, leaders } from "@/content/facts";
 import { loadPage, metadataFor } from "@/lib/page";
@@ -57,14 +59,21 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
       <section className="surface-ink section-y">
         <div className="container-x">
           <SectionHeading index="02" eyebrow={about.principles.eyebrow} title={about.principles.title} accent={about.principles.accent} />
-          <RevealGroup as="ul" className="mt-20 grid gap-px overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/10 md:grid-cols-2">
+          <RevealGroup as="ul" className="mt-20 grid gap-4 md:grid-cols-2 md:gap-5">
             {about.principles.items.map((item, i) => (
-              <RevealItem as="li" key={item.title} className="group bg-ink p-8 transition-colors duration-500 hover:bg-ink-850 md:p-12">
-                <span className="t-eyebrow text-gold">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="mt-14 text-[1.75rem] font-light leading-tight tracking-[-0.025em] text-ivory md:text-[2rem]">
-                  {item.title}
-                </h3>
-                <p className="mt-4 max-w-md text-[0.9375rem] leading-relaxed text-mist">{item.text}</p>
+              <RevealItem as="li" key={item.title} className="h-full">
+                <InteractiveCard tone="dark" tilt={3} className="flex h-full flex-col p-8 md:p-12">
+                  <span aria-hidden className="t-eyebrow text-gold">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="mt-14 text-[1.75rem] font-light leading-tight tracking-[-0.025em] text-ivory md:text-[2rem]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-4 max-w-md text-[0.9375rem] leading-relaxed text-mist">{item.text}</p>
+                  <span aria-hidden className="mt-auto block pt-8">
+                    <span className="block h-px w-10 bg-gold/60 transition-[width] duration-700 ease-[var(--ease-out-expo)] group-hover/card:w-full" />
+                  </span>
+                </InteractiveCard>
               </RevealItem>
             ))}
           </RevealGroup>
@@ -92,13 +101,22 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
             <div aria-hidden className="mx-auto hidden h-px w-3/4 bg-ink/20 md:block" />
             <RevealGroup as="ul" className="grid gap-4 md:grid-cols-4 md:gap-6">
               {divisions.map((d, i) => (
-                <RevealItem as="li" key={d.id} className="relative">
-                  <span aria-hidden className="mx-auto hidden h-10 w-px bg-ink/20 md:block" />
-                  <div className="h-full rounded-[1.5rem] border border-ink/10 bg-ivory-200/60 p-7">
-                    <span className="t-eyebrow text-gold-ink">{String(i + 1).padStart(2, "0")}</span>
-                    <h3 className="mt-8 text-[1.25rem] font-normal tracking-[-0.015em] text-ink">{content.divisions[d.id].short}</h3>
+                <RevealItem as="li" key={d.id} className="relative flex flex-col">
+                  <span aria-hidden className="mx-auto hidden h-10 w-px shrink-0 bg-ink/20 md:block" />
+                  <InteractiveCard
+                    href={href(locale, "trade", d.id)}
+                    tone="light"
+                    className="flex flex-1 flex-col bg-ivory-200/60 p-7 hover:bg-ivory focus-visible:bg-ivory"
+                  >
+                    <span className="flex items-start justify-between gap-4">
+                      <span aria-hidden className="t-eyebrow pt-2 text-gold-ink">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <CardArrow />
+                    </span>
+                    <h3 className="mt-6 text-[1.25rem] font-normal tracking-[-0.015em] text-ink">{content.divisions[d.id].short}</h3>
                     <p className="mt-3 text-[0.875rem] leading-relaxed text-stone">{content.divisions[d.id].summary}</p>
-                  </div>
+                  </InteractiveCard>
                 </RevealItem>
               ))}
             </RevealGroup>

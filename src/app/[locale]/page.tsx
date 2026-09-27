@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Capital } from "@/components/home/capital";
 import { GlobalReach } from "@/components/home/global-reach";
+import { GreenTransition } from "@/components/home/green-transition";
 import { Hero } from "@/components/home/hero";
 import { HomeContact } from "@/components/home/home-contact";
 import { LeadershipTeaser } from "@/components/home/leadership-teaser";
@@ -32,6 +33,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <WhoWeAre locale={locale} content={content} />
       <ValueInMotion locale={locale} content={content} />
       <TradeLines locale={locale} content={content} />
+      <GreenTransition locale={locale} content={content} />
       <GlobalReach
         locale={locale}
         content={content}

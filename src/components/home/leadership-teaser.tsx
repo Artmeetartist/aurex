@@ -39,16 +39,16 @@ export function LeadershipTeaser({ locale, content }: { locale: Locale; content:
             <RevealItem
               as="li"
               key={principle}
-              className="flex gap-5 border-b border-ink/10 py-8 sm:flex-col sm:gap-12 sm:py-10 sm:pr-8 sm:even:border-l sm:even:pl-8 lg:border-b-0 lg:pb-2 lg:[&:not(:first-child)]:border-l lg:[&:not(:first-child)]:pl-8"
+              className="group flex gap-5 border-b border-ink/10 py-8 sm:flex-col sm:gap-12 sm:py-10 sm:pr-8 sm:even:border-l sm:even:pl-8 lg:border-b-0 lg:pb-2 lg:[&:not(:first-child)]:border-l lg:[&:not(:first-child)]:pl-8"
             >
               <span className="flex items-center gap-4">
                 <span
                   aria-hidden
-                  className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gold-ink/35 text-gold-ink"
+                  className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gold-ink/35 text-gold-ink transition-[background-color,border-color,color,transform] duration-500 ease-[var(--ease-out-expo)] group-hover:scale-110 group-hover:border-gold-ink group-hover:bg-gold-ink group-hover:text-ivory motion-reduce:transform-none"
                 >
                   <Check size={14} />
                 </span>
-                <span aria-hidden className="t-eyebrow hidden text-stone sm:inline">
+                <span aria-hidden className="t-eyebrow hidden text-stone transition-colors duration-500 group-hover:text-gold-ink sm:inline">
                   {String(i + 1).padStart(2, "0")}
                 </span>
               </span>

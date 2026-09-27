@@ -39,7 +39,7 @@ function MobileLanguages({ locale, onPick }: { locale: Locale; onPick: () => voi
             onPick();
           }}
           className={cn(
-            "t-eyebrow inline-flex h-10 items-center rounded-full border px-4",
+            "t-eyebrow inline-flex h-11 items-center rounded-full border px-4",
             l === locale ? "border-gold text-gold" : "border-white/15 text-mist",
           )}
         >
@@ -112,7 +112,7 @@ export function SiteHeader({ locale, nav }: { locale: Locale; nav: HeaderLabels 
                       href={href(locale, route)}
                       aria-current={isActive(route) ? "page" : undefined}
                       className={cn(
-                        "inline-flex h-8 items-center rounded-full px-3.5 text-[0.8125rem] transition-colors duration-300 xl:px-4",
+                        "relative after:absolute after:inset-x-0 after:-inset-y-1.5 after:content-[''] inline-flex h-8 items-center rounded-full px-3.5 text-[0.8125rem] transition-colors duration-300 xl:px-4",
                         isActive(route) ? "bg-white/12 text-ivory" : "text-ivory/70 hover:text-ivory",
                       )}
                     >

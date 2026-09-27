@@ -9,8 +9,8 @@ import { ImageResponse } from "next/og";
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
 
-const INK = "#013333";
-const INK_DEEP = "#012626";
+const INK = "#051616";
+const INK_DEEP = "#020c0c";
 const TEAL_GLOW = "rgba(0, 153, 153, 0.35)";
 const IVORY = "#F7FAF9";
 const ACCENT = "#8DC63F";

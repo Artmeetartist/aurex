@@ -220,7 +220,7 @@ export function ValueInMotion({ locale, content }: { locale: Locale; content: Si
                       onClick={() => goTo(i)}
                       aria-current={chapter === i ? "step" : undefined}
                       className={cn(
-                        "group/rail flex min-h-9 items-center gap-3 text-[0.8125rem] transition-colors duration-500",
+                        "group/rail flex min-h-11 items-center gap-3 text-[0.8125rem] transition-colors duration-500",
                         chapter === i ? "text-ivory" : "text-ivory/40 hover:text-ivory/80",
                       )}
                     >

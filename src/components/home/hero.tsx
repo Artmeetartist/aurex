@@ -249,7 +249,7 @@ export function Hero({ locale, content }: { locale: Locale; content: SiteContent
                     type="button"
                     onClick={() => seek(m)}
                     aria-current={active ? "step" : undefined}
-                    className="group/mode block w-full py-2 text-left"
+                    className="group/mode block min-h-11 w-full py-2 text-left"
                   >
                   <div className="flex items-baseline gap-2">
                     <span className={cn("t-eyebrow transition-colors", active ? "text-gold" : "text-ivory/40")}>
@@ -281,7 +281,7 @@ export function Hero({ locale, content }: { locale: Locale; content: SiteContent
             type="button"
             onClick={toggle}
             aria-label={playing ? hero.pause : hero.play}
-            className="glass inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-ivory/80 hover:text-ivory"
+            className="glass inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-ivory/80 transition-colors hover:text-ivory"
           >
             {playing ? (
               <svg width="10" height="12" viewBox="0 0 10 12" aria-hidden>

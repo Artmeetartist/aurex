@@ -1,4 +1,5 @@
 import { RevealGroup, RevealItem } from "@/components/motion/reveal";
+import { InteractiveCard } from "@/components/ui/interactive-card";
 import type { TitledText } from "@/content/types";
 import { cn } from "@/lib/cn";
 
@@ -20,7 +21,11 @@ export function CorridorGrid({ items, className }: { items: TitledText[]; classN
         const ends = route(item.title);
         return (
           <RevealItem as="li" key={item.title} className="h-full">
-            <article className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-ink/10 bg-ivory-200/55 p-7 transition-[border-color,background-color,box-shadow] duration-700 ease-[var(--ease-out-expo)] hover:border-ink/20 hover:bg-ivory hover:shadow-[0_28px_70px_-40px_rgb(1_51_51/0.35)] sm:p-10 xl:p-12">
+            <InteractiveCard
+              tone="light"
+              tilt={3}
+              className="flex h-full flex-col rounded-[1.75rem] bg-ivory-200/55 p-7 hover:bg-ivory sm:p-10 xl:p-12"
+            >
               <span className="t-eyebrow tabular-nums text-gold-ink">{String(i + 1).padStart(2, "0")}</span>
 
               <h3 className="mt-12 text-[clamp(1.5rem,2.3vw,2.125rem)] font-light leading-[1.1] tracking-[-0.028em] text-ink md:mt-20">
@@ -32,7 +37,8 @@ export function CorridorGrid({ items, className }: { items: TitledText[]; classN
                       <span className="relative h-px bg-ink/15">
                         <span className="absolute left-0 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-gold-ink" />
                         <span className="absolute right-0 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full border border-gold-ink bg-ivory" />
-                        <span className="absolute inset-y-0 left-0 w-full origin-left scale-x-0 bg-gold-ink/60 transition-transform duration-[1100ms] ease-[var(--ease-out-expo)] group-hover:scale-x-100" />
+                        <span className="absolute inset-y-0 left-0 w-full origin-left scale-x-0 bg-gold-ink/60 transition-transform duration-[1100ms] ease-[var(--ease-out-expo)] group-hover/card:scale-x-100" />
+                        <span className="absolute left-0 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-gold-ink opacity-0 shadow-[0_0_0_4px_rgb(0_102_102/0.14)] transition-[left,opacity] duration-[1100ms] ease-[var(--ease-out-expo)] group-hover/card:left-[calc(100%-0.5rem)] group-hover/card:opacity-100" />
                       </span>
                       <span className="text-right [text-wrap:balance]">{ends[1]}</span>
                     </span>
@@ -43,7 +49,7 @@ export function CorridorGrid({ items, className }: { items: TitledText[]; classN
               </h3>
 
               <p className="mt-6 max-w-md text-[0.9375rem] leading-relaxed text-stone md:mt-8">{item.text}</p>
-            </article>
+            </InteractiveCard>
           </RevealItem>
         );
       })}

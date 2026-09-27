@@ -3,6 +3,7 @@ import { CtaBand } from "@/components/page/cta-band";
 import { PageHero } from "@/components/page/page-hero";
 import { HoldingsRegister } from "@/components/sections/portfolio/holdings-register";
 import { SectorColumns } from "@/components/sections/portfolio/sector-columns";
+import { InteractiveCard } from "@/components/ui/interactive-card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { holdings } from "@/content/facts";
 import { loadPage, metadataFor } from "@/lib/page";
@@ -37,22 +38,26 @@ export default async function PortfolioPage({ params }: PageProps<"/[locale]/por
             className="mt-16 grid gap-px overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/10 md:mt-20 md:grid-cols-2 lg:grid-cols-4"
           >
             {portfolio.approach.items.map((item, i) => (
-              <RevealItem
-                as="li"
-                key={item.title}
-                className="group relative flex flex-col bg-ink p-8 transition-colors duration-500 hover:bg-ink-850 md:p-10 md:pb-14"
-              >
-                <span className="t-eyebrow tabular-nums text-gold">{String(i + 1).padStart(2, "0")}</span>
-                <div className="mt-14 md:mt-24">
-                  <h3 className="text-[1.875rem] font-light leading-tight tracking-[-0.028em] text-ivory md:text-[2.125rem]">
-                    {item.title}
-                  </h3>
-                  <p className="mt-4 max-w-sm text-[0.9375rem] leading-relaxed text-mist">{item.text}</p>
-                </div>
-                <span
-                  aria-hidden
-                  className="absolute inset-x-8 bottom-0 h-px origin-left scale-x-0 bg-gold/70 transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-x-100 md:inset-x-10"
-                />
+              <RevealItem as="li" key={item.title} className="bg-ink">
+                <InteractiveCard
+                  tone="dark"
+                  tilt={0}
+                  className="flex h-full flex-col rounded-none border-0 bg-ink p-8 hover:bg-ink-850 md:p-10 md:pb-14"
+                >
+                  <span aria-hidden className="t-eyebrow tabular-nums text-gold">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div className="mt-14 md:mt-24">
+                    <h3 className="text-[1.875rem] font-light leading-tight tracking-[-0.028em] text-ivory md:text-[2.125rem]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-4 max-w-sm text-[0.9375rem] leading-relaxed text-mist">{item.text}</p>
+                  </div>
+                  <span
+                    aria-hidden
+                    className="absolute inset-x-8 bottom-0 h-px origin-left scale-x-0 bg-gold/70 transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover/card:scale-x-100 md:inset-x-10"
+                  />
+                </InteractiveCard>
               </RevealItem>
             ))}
           </RevealGroup>
@@ -108,7 +113,7 @@ export default async function PortfolioPage({ params }: PageProps<"/[locale]/por
             intro={portfolio.sectors.intro}
           />
           <div className="mt-16 md:mt-20">
-            <SectorColumns content={content} />
+            <SectorColumns locale={locale} content={content} />
           </div>
         </div>
       </section>
