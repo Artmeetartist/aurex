@@ -11,6 +11,7 @@ import { TradeLineGrid } from "@/components/trade/trade-line-grid";
 import { ArrowUpRight } from "@/components/ui/icons";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { divisions } from "@/content/facts";
+import { photos } from "@/content/media";
 import { loadPage, metadataFor } from "@/lib/page";
 import { contactHref, href, tradeHref, tradeIds } from "@/lib/routes";
 
@@ -27,7 +28,7 @@ export default async function TradePage({ params }: PageProps<"/[locale]/trade">
     <>
       <PageHero
         hero={tradeHub.hero}
-        image="/media/stills/still-sea"
+        photo={photos.containerShip}
         breadcrumb={{ home: common.breadcrumbHome, homeHref: href(locale, "home"), current: nav.labels.trade }}
       >
         <DivisionIndex
