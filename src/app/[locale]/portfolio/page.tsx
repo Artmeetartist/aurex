@@ -39,13 +39,15 @@ export default async function PortfolioPage({ params }: PageProps<"/[locale]/por
               <RevealItem
                 as="li"
                 key={item.title}
-                className="group relative flex flex-col bg-ink p-8 transition-colors duration-500 hover:bg-ink-850 md:p-10 lg:min-h-[24rem]"
+                className="group relative flex flex-col bg-ink p-8 transition-colors duration-500 hover:bg-ink-850 md:min-h-[20rem] md:p-10 lg:min-h-[24rem]"
               >
                 <span className="t-eyebrow tabular-nums text-gold">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="mt-14 text-[1.875rem] font-light leading-tight tracking-[-0.028em] text-ivory md:mt-20 md:text-[2.125rem]">
-                  {item.title}
-                </h3>
-                <p className="mt-4 max-w-sm text-[0.9375rem] leading-relaxed text-mist">{item.text}</p>
+                <div className="mt-14 md:mt-auto md:pt-16">
+                  <h3 className="text-[1.875rem] font-light leading-tight tracking-[-0.028em] text-ivory md:text-[2.125rem]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-4 max-w-sm text-[0.9375rem] leading-relaxed text-mist">{item.text}</p>
+                </div>
                 <span
                   aria-hidden
                   className="absolute inset-x-8 bottom-0 h-px origin-left scale-x-0 bg-gold/70 transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-x-100 md:inset-x-10"
