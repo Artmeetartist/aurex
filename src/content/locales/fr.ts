@@ -787,7 +787,7 @@ const fr: SiteContent = {
       eyebrow: "Ensuite",
       title: "Découvrir comment le groupe est conçu pour créer de la valeur.",
       accent: ["valeur."],
-      primary: "Nos activités",
+      primary: "Découvrir le négoce",
       secondary: "Engager le dialogue",
     },
   },

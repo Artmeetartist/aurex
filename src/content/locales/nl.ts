@@ -632,7 +632,7 @@ const nl: SiteContent = {
       eyebrow: "Volgende stap",
       title: "Ontdek hoe de groep is opgezet om waarde te creëren.",
       accent: ["waarde"],
-      primary: "Onze activiteiten",
+      primary: "Ontdek de handel",
       secondary: "Start een gesprek",
     },
   },

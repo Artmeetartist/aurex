@@ -446,7 +446,7 @@ const pl: SiteContent = {
       title: "Dostawy medyczne, w których zgodność ma pierwszeństwo.",
       accent: ["zgodność"],
       intro:
-        "Produkty i sprzęt medyczny wymagają udokumentowanej jakości, zgodności z wymogami regulacyjnymi i pełnej identyfikowalności. AUREX podchodzi do tego sektora z należytą starannością, jakiej on wymaga.",
+        "Produkty i sprzęt medyczny wymagają udokumentowanej jakości, zgodności z wymogami regulacyjnymi i pełnej identyfikowalności. AUREX podchodzi do tego sektora z wymaganą przez niego starannością.",
       overview:
         "Łańcuchy dostaw w ochronie zdrowia nie tolerują niepewności. Podejście AUREX do handlu produktami medycznymi wyznaczają staranna weryfikacja regulacyjna, sprawdzeni producenci i identyfikowalny przepływ towarów, a także wymóg, by partnerzy posiadali odpowiednie zezwolenia na każdym rynku.",
       categories: [
@@ -729,7 +729,7 @@ const pl: SiteContent = {
       eyebrow: "Dalej",
       title: "Jak grupa jest zbudowana, by tworzyć wartość.",
       accent: ["wartość."],
-      primary: "Nasza działalność",
+      primary: "Poznaj handel",
       secondary: "Rozpocznijmy rozmowę",
     },
   },
