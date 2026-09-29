@@ -23,7 +23,6 @@ export function HoldingsRegister({ content, index }: { content: SiteContent; ind
         index={index}
         eyebrow={copy.eyebrow}
         title={copy.title}
-        accent={copy.accent}
         intro={copy.intro}
         tone="dark"
         size="md"
@@ -33,7 +32,7 @@ export function HoldingsRegister({ content, index }: { content: SiteContent; ind
       {empty ? (
         <Reveal
           delay={0.1}
-          className="rounded-[1.75rem] border border-ink/10 bg-ivory-200/50 px-7 py-12 sm:px-10 md:px-14 md:py-16 lg:col-span-7"
+          className="rounded-xl border border-ink/10 bg-ivory-200/50 px-7 py-12 sm:px-10 md:px-14 md:py-16 lg:col-span-7"
         >
           <span aria-hidden className="block h-px w-12 bg-gold-ink" />
           <p className="mt-9 max-w-xl text-[clamp(1.375rem,2.1vw,1.875rem)] font-light leading-[1.3] tracking-[-0.022em] text-ink [text-wrap:pretty]">

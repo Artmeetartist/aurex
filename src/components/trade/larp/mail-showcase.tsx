@@ -32,16 +32,12 @@ export function MailShowcase({ showcase, id }: { showcase: Showcase; id?: string
 
   return (
     <section ref={ref} id={id} className="surface-ink-deep section-y relative scroll-mt-20 overflow-hidden">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-[-10%] top-1/4 h-[48rem] w-[48rem] rounded-full [background:radial-gradient(closest-side,rgb(140_74_47/0.22),transparent_70%)]"
-      />
       <div className="container-x relative grid gap-14 lg:grid-cols-12 lg:gap-10">
         {/* Stage */}
         <div className="lg:col-span-7 [perspective:1600px]">
           <motion.figure
             style={reduce ? undefined : { rotateX, scale }}
-            className="elevate relative origin-bottom overflow-hidden rounded-[1.75rem] border border-white/10 bg-[radial-gradient(120%_80%_at_50%_0%,#1b2b29_0%,#081a1a_55%,#020c0c_100%)]"
+            className="elevate relative origin-bottom overflow-hidden rounded-xl border border-white/10 bg-[radial-gradient(120%_80%_at_50%_0%,#1b2b29_0%,#081a1a_55%,#020c0c_100%)]"
           >
             <motion.span
               aria-hidden
@@ -111,13 +107,13 @@ export function MailShowcase({ showcase, id }: { showcase: Showcase; id?: string
           <Reveal y={12}>
             <Eyebrow>{showcase.eyebrow}</Eyebrow>
           </Reveal>
-          <MaskText as="h2" text={showcase.title} accent={showcase.accent} className="t-display-md mt-7 text-ivory" />
+          <MaskText as="h2" text={showcase.title} className="t-display-md mt-7 text-ivory" />
           <Reveal delay={0.1}>
             <p className="mt-6 text-[1rem] leading-relaxed text-mist">{showcase.text}</p>
           </Reveal>
 
           <div id="mail-detail" aria-live="polite" className="mt-10 grid grid-cols-[7.5rem_1fr] items-center gap-6 md:grid-cols-[9rem_1fr]">
-            <div className="relative aspect-square overflow-hidden rounded-[1.25rem] border border-white/10 bg-ink-850">
+            <div className="relative aspect-square overflow-hidden rounded-lg border border-white/10 bg-ink-850">
               <AnimatePresence initial={false} mode="popLayout">
                 <motion.div
                   key={current.key}
@@ -161,7 +157,7 @@ export function MailShowcase({ showcase, id }: { showcase: Showcase; id?: string
                     aria-pressed={on}
                     aria-controls="mail-detail"
                     className={cn(
-                      "group/thumb relative block aspect-square w-full overflow-hidden rounded-[0.875rem] border transition-[border-color,transform] duration-500 ease-[var(--ease-out-expo)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold",
+                      "group/thumb relative block aspect-square w-full overflow-hidden rounded-md border transition-[border-color,transform] duration-500 ease-[var(--ease-out-expo)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold",
                       on ? "border-brass-soft" : "border-white/10 hover:-translate-y-0.5 hover:border-white/30",
                     )}
                   >

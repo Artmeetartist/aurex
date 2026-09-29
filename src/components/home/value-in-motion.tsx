@@ -8,7 +8,6 @@ import { Eyebrow } from "@/components/ui/eyebrow";
 import type { SiteContent } from "@/content/types";
 import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/cn";
-import { accentMatcher } from "@/lib/text";
 import { href } from "@/lib/routes";
 
 const SEQUENCES = {
@@ -58,7 +57,6 @@ function Chapter({ index, current, children }: { index: number; current: number;
 
 export function ValueInMotion({ locale, content }: { locale: Locale; content: SiteContent }) {
   const { motion: copy } = content.home;
-  const isAccent = accentMatcher(copy.accent);
   const section = useRef<HTMLElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
   const [near, setNear] = useState(false);
@@ -187,11 +185,7 @@ export function ValueInMotion({ locale, content }: { locale: Locale; content: Si
           <div className="max-w-3xl">
             <Eyebrow index="02">{copy.eyebrow}</Eyebrow>
             <h2 id="motion-title" className="t-display-md mt-6 max-w-[18ch] text-ivory">
-              {copy.title.split(" ").map((w, i) => (
-                <span key={i} className={cn(isAccent(w) && "t-accent text-gold")}>
-                  {w}{" "}
-                </span>
-              ))}
+              {copy.title}
             </h2>
           </div>
 

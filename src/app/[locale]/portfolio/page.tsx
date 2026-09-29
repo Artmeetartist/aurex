@@ -19,7 +19,6 @@ export default async function PortfolioPage({ params }: PageProps<"/[locale]/por
     <>
       <PageHero
         hero={portfolio.hero}
-        image="/media/stills/still-connected"
         breadcrumb={{ home: common.breadcrumbHome, homeHref: href(locale, "home"), current: nav.labels.portfolio }}
       />
 
@@ -30,18 +29,17 @@ export default async function PortfolioPage({ params }: PageProps<"/[locale]/por
             index="01"
             eyebrow={portfolio.approach.eyebrow}
             title={portfolio.approach.title}
-            accent={portfolio.approach.accent}
             intro={portfolio.approach.intro}
           />
           <RevealGroup
             as="ol"
-            className="mt-16 grid gap-px overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/10 md:mt-20 md:grid-cols-2 lg:grid-cols-4"
+            className="mt-16 grid gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 md:mt-20 md:grid-cols-2 lg:grid-cols-4"
           >
             {portfolio.approach.items.map((item, i) => (
               <RevealItem as="li" key={item.title} className="bg-ink">
                 <InteractiveCard
                   tone="dark"
-                  tilt={0}
+                 
                   className="flex h-full flex-col rounded-none border-0 bg-ink p-8 hover:bg-ink-850 md:p-10 md:pb-14"
                 >
                   <span aria-hidden className="t-eyebrow tabular-nums text-gold">
@@ -73,7 +71,6 @@ export default async function PortfolioPage({ params }: PageProps<"/[locale]/por
                 index="02"
                 eyebrow={portfolio.criteria.eyebrow}
                 title={portfolio.criteria.title}
-                accent={portfolio.criteria.accent}
                 intro={portfolio.criteria.intro}
                 tone="dark"
                 size="md"
@@ -109,7 +106,6 @@ export default async function PortfolioPage({ params }: PageProps<"/[locale]/por
             index="03"
             eyebrow={portfolio.sectors.eyebrow}
             title={portfolio.sectors.title}
-            accent={portfolio.sectors.accent}
             intro={portfolio.sectors.intro}
           />
           <div className="mt-16 md:mt-20">
@@ -128,7 +124,6 @@ export default async function PortfolioPage({ params }: PageProps<"/[locale]/por
       <CtaBand
         eyebrow={portfolio.cta.eyebrow}
         title={portfolio.cta.title}
-        accent={portfolio.cta.accent}
         intro={portfolio.cta.intro}
         primary={{ label: portfolio.cta.primary, href: contactHref(locale, "investment") }}
       />

@@ -1,13 +1,15 @@
-import { Reveal } from "@/components/motion/reveal";
+import { MaskText, Reveal } from "@/components/motion/reveal";
 import { ButtonLink } from "@/components/ui/button";
-import { SectionHeading } from "@/components/ui/section-heading";
+import { Eyebrow } from "@/components/ui/eyebrow";
 import { cn } from "@/lib/cn";
 
-/** Closing call-to-action band used at the end of inner pages. */
+/**
+ * Closing call to action for inner pages: one large statement and the next
+ * step. Typographic, no decoration; the only colour is the action itself.
+ */
 export function CtaBand({
   eyebrow,
   title,
-  accent,
   intro,
   primary,
   secondary,
@@ -15,32 +17,39 @@ export function CtaBand({
 }: {
   eyebrow: string;
   title: string;
-  accent?: string[];
   intro?: string;
   primary: { label: string; href: string };
   secondary?: { label: string; href: string };
+  /** "light" = light text on ink (default), "dark" = ink text on paper. */
   tone?: "light" | "dark";
 }) {
+  const light = tone === "light";
   return (
-    <section className={cn("section-y relative overflow-hidden", tone === "light" ? "surface-ink" : "surface-ivory")}>
-      {tone === "light" && (
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -bottom-1/2 left-1/2 h-[60rem] w-[60rem] -translate-x-1/2 rounded-full [background:radial-gradient(closest-side,rgb(0_153_153/0.28),transparent_70%)]"
-        />
-      )}
-      <div className="container-x relative flex flex-col items-start justify-between gap-12 lg:flex-row lg:items-end">
-        <SectionHeading eyebrow={eyebrow} title={title} accent={accent} intro={intro} tone={tone} size="lg" />
-        <Reveal delay={0.2} className="flex shrink-0 flex-wrap gap-3">
-          <ButtonLink href={primary.href} size="lg" variant={tone === "light" ? "gold" : "ink"}>
-            {primary.label}
-          </ButtonLink>
-          {secondary && (
-            <ButtonLink href={secondary.href} size="lg" variant={tone === "light" ? "outline-light" : "outline-dark"}>
-              {secondary.label}
-            </ButtonLink>
-          )}
+    <section className={cn("relative py-[clamp(5rem,10vw,9rem)]", light ? "bg-ink-950 text-ivory" : "surface-ivory")}>
+      <div className="container-x">
+        <Reveal y={0} className={cn("border-t pt-4", light ? "border-white/15" : "border-ink/15")}>
+          <Eyebrow tone={tone}>{eyebrow}</Eyebrow>
         </Reveal>
+        <div className="mt-10 grid gap-10 md:mt-14 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-8">
+            <MaskText as="h2" text={title} className={cn("t-display-lg max-w-[18ch]", light ? "text-ivory" : "text-ink")} />
+            {intro && (
+              <Reveal delay={0.1} y={12}>
+                <p className={cn("t-lead mt-6 max-w-[38rem]", light ? "text-mist" : "text-stone")}>{intro}</p>
+              </Reveal>
+            )}
+          </div>
+          <Reveal delay={0.15} y={12} className="flex flex-wrap gap-3 lg:col-span-4 lg:justify-end">
+            <ButtonLink href={primary.href} size="lg" variant={light ? "gold" : "ink"}>
+              {primary.label}
+            </ButtonLink>
+            {secondary && (
+              <ButtonLink href={secondary.href} size="lg" variant={light ? "outline-light" : "outline-dark"}>
+                {secondary.label}
+              </ButtonLink>
+            )}
+          </Reveal>
+        </div>
       </div>
     </section>
   );

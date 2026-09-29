@@ -7,7 +7,7 @@ import { ConnectionSequence } from "@/components/sections/trade/connection-seque
 import { DivisionIndex } from "@/components/sections/trade/division-index";
 import { DivisionRow } from "@/components/sections/trade/division-row";
 import { GreenLoop } from "@/components/trade/trade-icons";
-import { TradeLineGrid } from "@/components/trade/trade-line-grid";
+import { TradeIndex } from "@/components/trade/trade-index";
 import { ArrowUpRight } from "@/components/ui/icons";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { divisions } from "@/content/facts";
@@ -48,7 +48,6 @@ export default async function TradePage({ params }: PageProps<"/[locale]/trade">
               index="01"
               eyebrow={tradeHub.lines.eyebrow}
               title={tradeHub.lines.title}
-              accent={tradeHub.lines.accent}
               intro={tradeHub.lines.intro}
               tone="dark"
               size="md"
@@ -60,14 +59,14 @@ export default async function TradePage({ params }: PageProps<"/[locale]/trade">
               </p>
             </Reveal>
           </div>
-          <TradeLineGrid locale={locale} content={content} className="mt-16 md:mt-20" />
+          <TradeIndex locale={locale} content={content} green={false} className="mt-14 md:mt-20" />
         </div>
       </section>
 
       {/* 02 — How AUREX trades: the four disciplines */}
       <section className="surface-ink section-y">
         <div className="container-x">
-          <SectionHeading index="02" eyebrow={tradeHub.core.eyebrow} title={tradeHub.core.title} accent={tradeHub.core.accent} />
+          <SectionHeading index="02" eyebrow={tradeHub.core.eyebrow} title={tradeHub.core.title} />
           <div className="mt-20 space-y-24 md:mt-28 md:space-y-36 lg:space-y-40">
             {divisions.map((d, i) => {
               const division = content.divisions[d.id];
@@ -94,16 +93,11 @@ export default async function TradePage({ params }: PageProps<"/[locale]/trade">
 
       {/* 03 — The AUREX model */}
       <section className="surface-ink-deep section-y relative overflow-hidden">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -top-1/3 left-[-15%] h-[56rem] w-[56rem] rounded-full opacity-70 [background:radial-gradient(closest-side,rgb(0_153_153/0.18),transparent_70%)]"
-        />
         <div className="container-x relative">
           <SectionHeading
             index="03"
             eyebrow={tradeHub.connection.eyebrow}
             title={tradeHub.connection.title}
-            accent={tradeHub.connection.accent}
             intro={tradeHub.connection.intro}
           />
           <div className="mt-16 md:mt-24">
@@ -117,12 +111,8 @@ export default async function TradePage({ params }: PageProps<"/[locale]/trade">
         <div className="container-x">
           <Link
             href={href(locale, "sustainability")}
-            className="group relative grid items-end gap-10 overflow-hidden rounded-[1.75rem] border border-cream/10 bg-forest-900 p-8 transition-colors duration-700 hover:border-brass/40 md:p-14 lg:grid-cols-12"
+            className="group relative grid items-end gap-10 overflow-hidden rounded-xl border border-cream/10 bg-forest-900 p-8 transition-colors duration-700 hover:border-brass/40 md:p-14 lg:grid-cols-12"
           >
-            <span
-              aria-hidden
-              className="pointer-events-none absolute -right-40 -top-40 h-[34rem] w-[34rem] rounded-full opacity-60 transition-opacity duration-700 group-hover:opacity-100 [background:radial-gradient(closest-side,rgb(0_153_153/0.35),transparent_70%)]"
-            />
             <div className="relative lg:col-span-8">
               <span className="text-brass">
                 <GreenLoop size={52} />
@@ -144,7 +134,6 @@ export default async function TradePage({ params }: PageProps<"/[locale]/trade">
       <CtaBand
         eyebrow={tradeHub.cta.eyebrow}
         title={tradeHub.cta.title}
-        accent={tradeHub.cta.accent}
         intro={tradeHub.cta.intro}
         primary={{ label: tradeHub.cta.primary, href: contactHref(locale, "partnership") }}
       />

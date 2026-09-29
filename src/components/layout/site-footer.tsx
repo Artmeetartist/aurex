@@ -50,7 +50,7 @@ export function SiteFooter({ locale, content }: { locale: Locale; content: SiteC
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:col-span-7">
             {columns.map((col) => (
               <div key={col.title}>
-                <p className="t-eyebrow text-gold">{col.title}</p>
+                <p className="t-eyebrow text-ivory/50">{col.title}</p>
                 <ul className="mt-4">
                   {col.links.map((l) => (
                     <li key={l.href}>
@@ -87,14 +87,14 @@ export function SiteFooter({ locale, content }: { locale: Locale; content: SiteC
                   aria-current={l === locale ? "true" : undefined}
                   className={cn(
                     "inline-flex min-h-11 min-w-11 items-center justify-center transition-colors",
-                    l === locale ? "text-gold" : "hover:text-ivory",
+                    l === locale ? "text-ivory underline underline-offset-4" : "hover:text-ivory",
                   )}
                 >
                   {l.toUpperCase()}
                 </Link>
               ))}
             </nav>
-            <p className="t-eyebrow !text-[0.625rem] text-mist-dim">{meta.signature}</p>
+            <p className="t-eyebrow text-mist-dim">{meta.signature}</p>
             <BackToTop label={content.common.backToTop} />
           </div>
         </div>

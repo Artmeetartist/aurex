@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { cn } from "@/lib/cn";
 
 function Word({ children, progress, range }: { children: string; progress: MotionValue<number>; range: [number, number] }) {
-  const opacity = useTransform(progress, range, [0.16, 1]);
+  const opacity = useTransform(progress, range, [0.3, 1]);
   return (
     <motion.span style={{ opacity }} className="inline">
       {children}

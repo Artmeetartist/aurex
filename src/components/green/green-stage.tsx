@@ -3,13 +3,12 @@
 import { useLenis } from "lenis/react";
 import { motion, useMotionValueEvent, useReducedMotion, useScroll } from "motion/react";
 import { useRef, useState, type ReactNode } from "react";
-import { GreenScene, useViewportPresence } from "@/components/three/lazy";
+import { GreenScene, useViewportPresence, useWebGL } from "@/components/three/lazy";
 import { ButtonLink } from "@/components/ui/button";
 import type { SiteContent } from "@/content/types";
 import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/cn";
 import { contactHref, href } from "@/lib/routes";
-import { accentMatcher } from "@/lib/text";
 import { STAGE_COUNT, STAGE_PILLAR, TRAVEL, progressForStage, stageAt } from "./stages";
 import { useRange } from "./use-range";
 
@@ -54,8 +53,8 @@ function Caption({ state, children }: { state: "active" | "past" | "future"; chi
 export function GreenStage({ locale, content }: { locale: Locale; content: SiteContent }) {
   const copy = content.home.green;
   const stages = copy.stages.slice(0, STAGE_COUNT);
-  const isAccent = accentMatcher(content.sustainability.hero.accent);
   const reduced = !!useReducedMotion();
+  const webgl = useWebGL();
 
   const track = useRef<HTMLDivElement>(null);
   const { mounted, visible } = useViewportPresence(track, "60% 0px");
@@ -93,14 +92,21 @@ export function GreenStage({ locale, content }: { locale: Locale; content: SiteC
   const pillarName = (i: number) => content.greenPillars[STAGE_PILLAR[i]].name;
 
   return (
-    <div ref={track} className="relative h-[460vh] md:h-[540vh]">
+    <div ref={track} className="relative h-[400vh] md:h-[460vh]">
       <div className="sticky top-0 h-[100svh] overflow-hidden bg-forest-950">
-        {/* Poster behind the canvas: shown while WebGL loads, or if it is unavailable. */}
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-cover bg-[position:60%_50%] opacity-90"
-          style={{ backgroundImage: "url(/media/green/stage-0.webp)" }}
-        />
+        {/* Poster behind the canvas while WebGL loads. Without WebGL, the rendered
+            stills of each stage take over and follow the scroll instead. */}
+        {(webgl ? [0] : Array.from({ length: STAGE_COUNT }, (_, i) => i)).map((i) => (
+          <div
+            key={i}
+            aria-hidden
+            className={cn(
+              "absolute inset-0 bg-cover bg-[position:60%_50%] transition-opacity duration-1000",
+              webgl || i === stage ? "opacity-90" : "opacity-0",
+            )}
+            style={{ backgroundImage: `url(/media/green/stage-${i}.webp)` }}
+          />
+        ))}
         {mounted && (
           <GreenScene progress={travel} active={visible} className="pointer-events-none absolute inset-0" />
         )}
@@ -151,11 +157,7 @@ export function GreenStage({ locale, content }: { locale: Locale; content: SiteC
               style={{ scale: titleScale }}
               className="t-display-xl mt-5 max-w-[11ch] origin-top-left text-cream [text-wrap:balance] md:mt-6"
             >
-              {copy.title.split(" ").map((w, i) => (
-                <span key={i} className={cn(isAccent(w) && "t-accent text-gold")}>
-                  {w}{" "}
-                </span>
-              ))}
+              {copy.title}
             </motion.h2>
             <motion.p
               style={{ opacity: subtitleOpacity }}

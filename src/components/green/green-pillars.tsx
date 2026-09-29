@@ -1,9 +1,9 @@
 "use client";
 
 import { motion, useScroll, type MotionValue } from "motion/react";
+import Link from "next/link";
 import { useRef } from "react";
 import { MaskText, Reveal } from "@/components/motion/reveal";
-import { InteractiveCard } from "@/components/ui/interactive-card";
 import { ArrowRight } from "@/components/ui/icons";
 import type { GreenPillarId, SiteContent } from "@/content/types";
 import type { Locale } from "@/i18n/config";
@@ -45,38 +45,24 @@ function Pillar({
       </div>
 
       <motion.div style={{ opacity, y }} className="h-full motion-reduce:!transform-none motion-reduce:!opacity-100">
-        <InteractiveCard
+        <Link
           href={href(locale, "sustainability", id)}
-          ariaLabel={`${pillar.name}. ${explore}`}
-          tilt={4}
-          className="h-full rounded-[1.25rem] border-cream/10 bg-graphite-900/55 hover:border-brass/45 hover:bg-graphite-900/80 focus-visible:border-brass"
+          aria-label={`${pillar.name}. ${explore}`}
+          className="group/pillar flex h-full flex-col border-t border-cream/15 pt-6 pb-2 transition-colors duration-300 hover:border-brass/70 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brass lg:pr-6"
         >
-          <div className="flex h-full min-h-[18rem] flex-col p-7 md:min-h-[20rem] md:p-8">
-            <div className="flex items-start justify-between">
-              <span className="grid h-16 w-16 place-items-center rounded-2xl border border-cream/10 bg-forest-900/60 text-cream/85 transition-[color,border-color,background-color,transform] duration-500 ease-[var(--ease-out-expo)] group-hover/card:-translate-y-0.5 group-hover/card:border-brass/40 group-hover/card:bg-forest-800/70 group-hover/card:text-brass-soft">
-                <PillarIcon id={id} size={46} />
-              </span>
-              <span
-                aria-hidden
-                className="text-[3.5rem] font-extralight leading-[0.8] tracking-[-0.05em] text-transparent tabular-nums transition-[-webkit-text-stroke-color] duration-500 [-webkit-text-stroke:1px_rgb(226_207_152/0.4)] group-hover/card:[-webkit-text-stroke:1px_rgb(226_207_152/0.85)]"
-              >
-                {pad(index + 1)}
-              </span>
-            </div>
-            <h4 className="mt-auto pt-12 text-[1.625rem] font-light leading-[1.1] tracking-[-0.025em] text-cream">{pillar.name}</h4>
-            <p className="mt-3 text-[0.9375rem] leading-relaxed text-cream/70">{pillar.summary}</p>
-            <span className="mt-7 inline-flex items-center gap-2.5 text-[0.875rem] font-medium text-cream transition-colors duration-500 group-hover/card:text-brass-soft">
-              {explore}
-              <span className="relative inline-flex h-7 w-7 items-center justify-center overflow-hidden rounded-full border border-cream/20 transition-[border-color,background-color] duration-500 group-hover/card:border-brass/60 group-hover/card:bg-brass/10">
-                <ArrowRight size={12} className="transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover/card:translate-x-0.5" />
-              </span>
-            </span>
-          </div>
-          <span
-            aria-hidden
-            className="pointer-events-none absolute inset-x-8 bottom-0 h-px origin-left scale-x-0 bg-gradient-to-r from-brass via-gold to-transparent transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover/card:scale-x-100"
-          />
-        </InteractiveCard>
+          <span className="flex items-center justify-between text-cream/70">
+            <span className="t-meta text-brass-soft">{pad(index + 1)}</span>
+            <PillarIcon id={id} size={30} className="transition-colors duration-300 group-hover/pillar:text-brass-soft" />
+          </span>
+          <h4 className="mt-10 font-serif text-[1.625rem] leading-[1.12] tracking-[-0.012em] text-cream [font-variation-settings:'opsz'_36] md:mt-14">
+            {pillar.name}
+          </h4>
+          <p className="mt-3 text-[1rem] leading-relaxed text-cream/70">{pillar.summary}</p>
+          <span className="mt-6 inline-flex items-center gap-2 text-[0.9375rem] font-medium text-cream">
+            {explore}
+            <ArrowRight size={14} className="transition-transform duration-300 group-hover/pillar:translate-x-1 motion-reduce:transform-none" />
+          </span>
+        </Link>
       </motion.div>
     </li>
   );
@@ -95,12 +81,9 @@ export function GreenPillars({ locale, content }: { locale: Locale; content: Sit
       <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
         <div className="lg:col-span-8">
           <Reveal y={12}>
-            <p className="t-eyebrow flex items-center gap-3 text-brass-soft">
-              <span aria-hidden className="h-px w-8 bg-brass/70" />
-              {copy.pillarsEyebrow}
-            </p>
+            <p className="t-eyebrow border-t border-cream/15 pt-4 text-cream/70">{copy.pillarsEyebrow}</p>
           </Reveal>
-          <MaskText as="h3" text={heading.title} accent={heading.accent} className="t-display-lg mt-7 max-w-[16ch] text-cream" />
+          <MaskText as="h3" text={heading.title} className="t-display-lg mt-7 max-w-[16ch] text-cream" />
         </div>
       </div>
 

@@ -18,7 +18,6 @@ export default async function PartnershipsPage({ params }: PageProps<"/[locale]/
     <>
       <PageHero
         hero={partnerships.hero}
-        image="/media/stills/still-coast"
         breadcrumb={{ home: common.breadcrumbHome, homeHref: href(locale, "home"), current: nav.labels.partnerships }}
       />
 
@@ -29,7 +28,6 @@ export default async function PartnershipsPage({ params }: PageProps<"/[locale]/
             index="01"
             eyebrow={partnerships.models.eyebrow}
             title={partnerships.models.title}
-            accent={partnerships.models.accent}
             intro={partnerships.models.intro}
             tone="dark"
           />
@@ -39,16 +37,11 @@ export default async function PartnershipsPage({ params }: PageProps<"/[locale]/
 
       {/* What AUREX brings + what we look for */}
       <section className="surface-ink section-y relative overflow-hidden">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -left-[18%] top-[-12%] h-[56rem] w-[56rem] rounded-full [background:radial-gradient(closest-side,rgb(0_153_153/0.16),transparent_70%)]"
-        />
         <div className="container-x relative">
           <SectionHeading
             index="02"
             eyebrow={partnerships.offer.eyebrow}
             title={partnerships.offer.title}
-            accent={partnerships.offer.accent}
             intro={partnerships.offer.intro}
           />
           <OfferGrid items={partnerships.offer.items} className="mt-16 md:mt-20" />
@@ -60,7 +53,6 @@ export default async function PartnershipsPage({ params }: PageProps<"/[locale]/
                   index="03"
                   eyebrow={partnerships.seek.eyebrow}
                   title={partnerships.seek.title}
-                  accent={partnerships.seek.accent}
                   intro={partnerships.seek.intro}
                   size="md"
                 />
@@ -78,7 +70,6 @@ export default async function PartnershipsPage({ params }: PageProps<"/[locale]/
             index="04"
             eyebrow={partnerships.process.eyebrow}
             title={partnerships.process.title}
-            accent={partnerships.process.accent}
             intro={partnerships.process.intro}
             tone="dark"
           />
@@ -89,7 +80,6 @@ export default async function PartnershipsPage({ params }: PageProps<"/[locale]/
       <CtaBand
         eyebrow={partnerships.cta.eyebrow}
         title={partnerships.cta.title}
-        accent={partnerships.cta.accent}
         intro={partnerships.cta.intro}
         primary={{ label: partnerships.cta.primary, href: contactHref(locale, "partnership") }}
       />

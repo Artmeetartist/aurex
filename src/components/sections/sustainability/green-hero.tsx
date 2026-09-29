@@ -208,7 +208,7 @@ export function GreenHero({ locale, content }: { locale: Locale; content: SiteCo
             >
               <GreenEyebrow>{hero.eyebrow}</GreenEyebrow>
             </motion.div>
-            <MaskText as="h1" text={hero.title} accent={hero.accent} delay={0.15} className="t-display-xl mt-6 max-w-[11ch] text-cream" />
+            <MaskText as="h1" text={hero.title} delay={0.15} className="t-display-xl mt-6 max-w-[11ch] text-cream" />
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -240,7 +240,7 @@ export function GreenHero({ locale, content }: { locale: Locale; content: SiteCo
             transition={{ duration: 1, ease: EASE, delay: 0.9 }}
             className="motion-reduce:hidden md:max-w-[26rem] lg:col-span-4 lg:col-start-9 lg:max-w-none"
           >
-            <div className="rounded-[1.25rem] border border-cream/12 bg-forest-950/50 p-4 backdrop-blur-md md:p-5">
+            <div className="rounded-lg border border-cream/12 bg-forest-950/50 p-4 backdrop-blur-md md:p-5">
               <div className="flex items-center gap-4">
                 <button
                   type="button"

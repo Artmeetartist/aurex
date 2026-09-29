@@ -26,10 +26,6 @@ export default async function NotFound() {
       {/* Decorative: soft brand glow and an oversized, near-invisible mark. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -bottom-[30rem] -left-[20rem] -z-10 h-[64rem] w-[64rem] rounded-full [background:radial-gradient(closest-side,rgb(0_153_153/0.22),transparent_70%)]"
-      />
-      <div
-        aria-hidden
         className="pointer-events-none absolute -right-[18%] top-[4%] -z-10 w-[min(64rem,110vw)] opacity-[0.07] md:-right-[6%] md:top-1/2 md:w-[min(52rem,62vw)] md:-translate-y-1/2"
       >
         <LogoMark className="h-auto w-full text-ivory" />

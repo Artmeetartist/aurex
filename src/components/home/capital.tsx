@@ -3,7 +3,8 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import { RevealGroup, RevealItem, Reveal } from "@/components/motion/reveal";
-import { EmblemScene, useViewportPresence } from "@/components/three/lazy";
+import { LogoMark } from "@/components/brand/logo";
+import { EmblemScene, useViewportPresence, useWebGL } from "@/components/three/lazy";
 import { ButtonLink } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import type { SiteContent } from "@/content/types";
@@ -16,6 +17,7 @@ export function Capital({ locale, content }: { locale: Locale; content: SiteCont
   const section = useRef<HTMLElement>(null);
   const stage = useRef<HTMLDivElement>(null);
   const { mounted, visible } = useViewportPresence(stage);
+  const webgl = useWebGL();
   const { scrollYProgress } = useScroll({ target: section, offset: ["start end", "end start"] });
 
   // Glow breathes in as the emblem reaches the centre of the viewport.
@@ -30,7 +32,6 @@ export function Capital({ locale, content }: { locale: Locale; content: SiteCont
             index="06"
             eyebrow={copy.eyebrow}
             title={copy.title}
-            accent={copy.accent}
             intro={copy.intro}
             size="md"
           />
@@ -44,6 +45,9 @@ export function Capital({ locale, content }: { locale: Locale; content: SiteCont
             />
             <div className="pointer-events-none absolute inset-[6%] rounded-full border border-white/[0.07]" />
             {/* The emblem's orbits are wider than they are tall, so the canvas is a wide band centred on the stage. */}
+            {!webgl && (
+              <LogoMark className="absolute left-1/2 top-1/2 h-[46%] w-[46%] -translate-x-1/2 -translate-y-1/2 text-ivory/85" />
+            )}
             {mounted && (
               <EmblemScene
                 scroll={scrollYProgress}

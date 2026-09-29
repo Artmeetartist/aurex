@@ -1,14 +1,11 @@
 "use client";
 
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { ButtonLink } from "@/components/ui/button";
-import { ArrowUpRight } from "@/components/ui/icons";
 import type { SiteContent } from "@/content/types";
 import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/cn";
-import { accentMatcher } from "@/lib/text";
 import { contactHref, href } from "@/lib/routes";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -30,7 +27,7 @@ function modeAt(t: number) {
 }
 
 /** Tracks the footage chapter; progress bars are written straight to the DOM to avoid re-renders. */
-function useVideoMode(video: React.RefObject<HTMLVideoElement | null>, bars: React.RefObject<(HTMLDivElement | null)[]>) {
+function useVideoMode(video: React.RefObject<HTMLVideoElement | null>, bars: React.RefObject<(HTMLSpanElement | null)[]>) {
   const [mode, setMode] = useState<Mode>("sea");
   useEffect(() => {
     let raf = 0;
@@ -66,14 +63,14 @@ export function Hero({ locale, content }: { locale: Locale; content: SiteContent
   const video = useRef<HTMLVideoElement>(null);
   const reduce = useReducedMotion();
   const [playing, setPlaying] = useState(true);
-  const bars = useRef<(HTMLDivElement | null)[]>([]);
+  const bars = useRef<(HTMLSpanElement | null)[]>([]);
   const mode = useVideoMode(video, bars);
 
   const { scrollYProgress } = useScroll({ target: section, offset: ["start start", "end start"] });
   const frameScale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
   const frameY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
   const frameRotate = useTransform(scrollYProgress, [0, 1], [0, 7]);
-  const radius = useTransform(scrollYProgress, [0, 1], [28, 44]);
+  const radius = useTransform(scrollYProgress, [0, 1], [12, 28]);
   const darken = useTransform(scrollYProgress, [0, 0.9], [0, 0.65]);
   const contentY = useTransform(scrollYProgress, [0, 1], [0, -120]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
@@ -101,7 +98,6 @@ export function Hero({ locale, content }: { locale: Locale; content: SiteContent
   };
 
   const titleWords = hero.title.split(" ");
-  const isAccentWord = accentMatcher(hero.accent);
 
   return (
     <section
@@ -110,8 +106,8 @@ export function Hero({ locale, content }: { locale: Locale; content: SiteContent
       className="surface-ink relative h-[100svh] min-h-[640px] [perspective:1400px]"
     >
       <motion.div
-        style={{ scale: frameScale, y: frameY, rotateX: frameRotate, borderRadius: radius }}
-        className="absolute inset-2 origin-top overflow-hidden bg-ink-850 will-change-transform md:inset-3"
+        style={reduce ? undefined : { scale: frameScale, y: frameY, rotateX: frameRotate, borderRadius: radius }}
+        className="absolute inset-2 origin-top overflow-hidden rounded-xl bg-ink-850 will-change-transform md:inset-3"
       >
         <video
           ref={video}
@@ -132,146 +128,111 @@ export function Hero({ locale, content }: { locale: Locale; content: SiteContent
           <source src="/media/hero/hero-1280.mp4" type="video/mp4" />
         </video>
 
-        {/* Legibility layers */}
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/35 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/75 via-ink/20 to-transparent" />
-        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-ink/60 to-transparent" />
-        <motion.div style={{ opacity: darken }} className="absolute inset-0 bg-ink" />
+        {/* Legibility: a low horizon of shadow, nothing decorative */}
+        <div className="absolute inset-0 bg-gradient-to-t from-ink-950/95 via-ink-950/35 to-ink-950/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink-950/70 via-ink-950/15 to-transparent" />
+        <motion.div style={{ opacity: darken }} className="absolute inset-0 bg-ink-950" />
       </motion.div>
 
       <motion.div
-        style={{ y: contentY, opacity: contentOpacity }}
-        className="container-x relative z-10 flex h-full flex-col justify-end pb-28 md:pb-32"
+        style={reduce ? undefined : { y: contentY, opacity: contentOpacity }}
+        className="container-x relative z-10 flex h-full flex-col justify-end pb-32 md:pb-36"
       >
-        <div className="grid items-end gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-7 xl:col-span-8">
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: EASE, delay: 0.2 }}
-              className="glass t-eyebrow inline-flex min-h-8 items-center gap-2.5 rounded-2xl px-4 sm:rounded-full py-2 !leading-[1.5] !tracking-[0.12em] text-ivory/85 sm:!tracking-[0.18em]"
-            >
-              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden />
-              {hero.eyebrow}
-            </motion.p>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, ease: EASE, delay: 0.2 }}
+          className="flex items-center gap-4 text-ivory/80"
+        >
+          <span aria-hidden className="h-px w-10 bg-ivory/50" />
+          <span className="t-eyebrow">{hero.eyebrow}</span>
+        </motion.p>
 
-            <h1 id="hero-title" className="t-display-xl mt-7 max-w-[14ch] text-ivory">
-              <span className="sr-only">{hero.title}</span>
-              <span aria-hidden>
-                {titleWords.map((word, i) => {
-                  const isAccent = isAccentWord(word);
-                  return (
-                    <span key={i} className="inline-block overflow-hidden pb-[0.14em] -mb-[0.14em] align-bottom">
-                      <motion.span
-                        initial={{ y: "110%" }}
-                        animate={{ y: "0%" }}
-                        transition={{ duration: 1.3, ease: EASE, delay: 0.35 + i * 0.08 }}
-                        className={cn("inline-block", isAccent && "t-accent text-gold-gradient pr-[0.06em]")}
-                      >
-                        {word}
-                      </motion.span>
-                      {i < titleWords.length - 1 && " "}
-                    </span>
-                  );
-                })}
+        <h1
+          id="hero-title"
+          className="mt-7 max-w-[17ch] font-serif text-[clamp(2.75rem,6.2vw,6.25rem)] font-normal leading-[1] tracking-[-0.026em] text-ivory [font-variation-settings:'opsz'_60] [text-wrap:balance]"
+        >
+          <span className="sr-only">{hero.title}</span>
+          <span aria-hidden>
+            {titleWords.map((word, i) => (
+              <span key={i} className="inline-block overflow-hidden pb-[0.12em] -mb-[0.12em] align-bottom">
+                <motion.span
+                  initial={reduce ? false : { y: "110%" }}
+                  animate={{ y: "0%" }}
+                  transition={{ duration: 1.2, ease: EASE, delay: 0.3 + i * 0.06 }}
+                  className="inline-block"
+                >
+                  {word}
+                </motion.span>
+                {i < titleWords.length - 1 && "\u00a0"}
               </span>
-            </h1>
+            ))}
+          </span>
+        </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.1, ease: EASE, delay: 0.8 }}
-              className="t-lead mt-7 max-w-[34rem] text-ivory/80"
-            >
-              {hero.intro}
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.1, ease: EASE, delay: 0.95 }}
-              className="mt-10 flex flex-wrap items-center gap-3"
-            >
-              <ButtonLink href={href(locale, "about")} size="lg">
-                {hero.primaryCta}
-              </ButtonLink>
-              <ButtonLink href={contactHref(locale, "partnership")} size="lg" variant="glass">
-                {hero.secondaryCta}
-              </ButtonLink>
-            </motion.div>
-          </div>
-
-          <motion.aside
-            initial={{ opacity: 0, y: 30 }}
+        <div className="mt-8 grid gap-8 md:mt-10 md:grid-cols-12 md:items-end">
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: EASE, delay: 1.1 }}
-            aria-label={hero.panelTitle}
-            className="glass hidden rounded-[1.75rem] p-2 lg:col-span-5 lg:block xl:col-span-4"
+            transition={{ duration: 1, ease: EASE, delay: 0.75 }}
+            className="t-lead max-w-[34rem] text-ivory/85 md:col-span-6"
           >
-            <div className="px-5 pb-4 pt-5">
-              <p className="t-eyebrow text-gold">{hero.panelTitle}</p>
-              <p className="mt-3 text-[0.9375rem] leading-relaxed text-ivory/75">{hero.panelIntro}</p>
-            </div>
-            <ul className="space-y-1">
-              {(["partnership", "investment", "corporate"] as const).map((type) => (
-                <li key={type}>
-                  <Link
-                    href={contactHref(locale, type)}
-                    className="group flex items-center justify-between gap-4 rounded-[1.25rem] bg-white/[0.04] px-5 py-4 transition-colors duration-300 hover:bg-white/[0.09]"
-                  >
-                    <span>
-                      <span className="block text-[0.9375rem] font-medium text-ivory">{content.inquiry.types[type].label}</span>
-                      <span className="mt-0.5 block text-[0.8125rem] text-mist">{content.inquiry.types[type].description}</span>
-                    </span>
-                    <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/15 text-ivory transition-all duration-500 ease-[var(--ease-out-expo)] group-hover:rotate-45 group-hover:border-gold group-hover:bg-gold group-hover:text-ink">
-                      <ArrowUpRight size={14} />
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </motion.aside>
+            {hero.intro}
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: EASE, delay: 0.9 }}
+            className="flex flex-wrap items-center gap-3 md:col-span-6 md:justify-end"
+          >
+            <ButtonLink href={href(locale, "about")} size="lg">
+              {hero.primaryCta}
+            </ButtonLink>
+            <ButtonLink href={contactHref(locale, "partnership")} size="lg" variant="glass">
+              {hero.secondaryCta}
+            </ButtonLink>
+          </motion.div>
         </div>
       </motion.div>
 
-      {/* Mode rail — synced to the footage: sea → air → land → connected */}
+      {/* Footage chapters: sea → air → land → connected */}
       <motion.div
-        style={{ opacity: contentOpacity }}
+        style={reduce ? undefined : { opacity: contentOpacity }}
         className="container-x absolute inset-x-0 bottom-6 z-10 md:bottom-8"
       >
-        <div className="flex items-center gap-4 border-t border-white/15 pt-4">
-          <ol className="flex flex-1 items-center gap-4 sm:gap-8" aria-label={hero.scroll}>
+        <div className="flex items-center gap-4 border-t border-white/20 pt-3">
+          <ol className="flex flex-1 items-center gap-3 sm:gap-8" aria-label={hero.scroll}>
             {MODES.map((m, i) => {
               const active = m === mode;
               return (
-                <li key={m} className={cn("min-w-0 sm:max-w-40", active ? "flex-[2.2] sm:flex-1" : "flex-1")}>
+                <li key={m} className={cn("min-w-0 sm:max-w-44", active ? "flex-[2.2] sm:flex-1" : "flex-1")}>
                   <button
                     type="button"
                     onClick={() => seek(m)}
                     aria-current={active ? "step" : undefined}
                     className="group/mode block min-h-11 w-full py-2 text-left"
                   >
-                  <div className="flex items-baseline gap-2">
-                    <span className={cn("t-eyebrow transition-colors", active ? "text-gold" : "text-ivory/40")}>
-                      {String(i + 1).padStart(2, "0")}
+                    <span className="flex items-baseline gap-2">
+                      <span className={cn("t-meta transition-colors", active ? "text-ivory" : "text-ivory/45")}>
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span
+                        className={cn(
+                          "truncate text-[0.8125rem] transition-colors duration-500",
+                          active ? "text-ivory" : "hidden text-ivory/50 group-hover/mode:text-ivory sm:inline",
+                        )}
+                      >
+                        {hero.modes[m]}
+                      </span>
                     </span>
-                    <span
-                      className={cn(
-                        "truncate text-[0.8125rem] transition-colors duration-500",
-                        active ? "text-ivory" : "hidden text-ivory/45 group-hover/mode:text-ivory sm:inline",
-                      )}
-                    >
-                      {hero.modes[m]}
+                    <span className="mt-2 block h-px w-full bg-white/15">
+                      <span
+                        ref={(el) => {
+                          bars.current[i] = el;
+                        }}
+                        className="block h-px origin-left scale-x-0 bg-ivory"
+                      />
                     </span>
-                  </div>
-                  <div className="mt-2.5 h-px w-full bg-white/15">
-                    <div
-                      ref={(el) => {
-                        bars.current[i] = el;
-                      }}
-                      className="h-px origin-left scale-x-0 bg-gold"
-                    />
-                  </div>
                   </button>
                 </li>
               );
@@ -281,7 +242,7 @@ export function Hero({ locale, content }: { locale: Locale; content: SiteContent
             type="button"
             onClick={toggle}
             aria-label={playing ? hero.pause : hero.play}
-            className="glass inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-ivory/80 transition-colors hover:text-ivory"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[4px] border border-white/20 text-ivory/80 transition-colors hover:border-white/50 hover:text-ivory"
           >
             {playing ? (
               <svg width="10" height="12" viewBox="0 0 10 12" aria-hidden>
@@ -293,12 +254,6 @@ export function Hero({ locale, content }: { locale: Locale; content: SiteContent
               </svg>
             )}
           </button>
-          <div className="hidden items-center gap-3 md:flex">
-            <span className="t-eyebrow text-ivory/50">{hero.scroll}</span>
-            <span className="relative h-9 w-px overflow-hidden bg-white/15">
-              <span className="absolute inset-0 bg-gold [animation:aurex-scroll-cue_2.4s_var(--ease-in-out-quart)_infinite]" />
-            </span>
-          </div>
         </div>
       </motion.div>
     </section>

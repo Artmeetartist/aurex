@@ -9,7 +9,7 @@ export function OfferGrid({ items, className }: { items: TitledText[]; className
     <RevealGroup
       as="ul"
       className={cn(
-        "grid gap-px overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/10 sm:grid-cols-2 xl:grid-cols-4",
+        "grid gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 sm:grid-cols-2 xl:grid-cols-4",
         className,
       )}
     >
@@ -17,7 +17,7 @@ export function OfferGrid({ items, className }: { items: TitledText[]; className
         <RevealItem as="li" key={item.title} className="bg-ink">
           <InteractiveCard
             tone="dark"
-            tilt={0}
+           
             className="flex h-full flex-col rounded-none border-0 bg-ink p-8 hover:bg-ink-850 md:p-10"
           >
             <span className="t-eyebrow tabular-nums text-gold">{String(i + 1).padStart(2, "0")}</span>

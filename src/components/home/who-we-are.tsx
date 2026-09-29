@@ -1,9 +1,9 @@
+import Link from "next/link";
 import { RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { ScrollText } from "@/components/motion/scroll-text";
 import { TextLink } from "@/components/ui/button";
-import { CardArrow } from "@/components/ui/card-arrow";
 import { Eyebrow } from "@/components/ui/eyebrow";
-import { InteractiveCard } from "@/components/ui/interactive-card";
+import { ArrowRight } from "@/components/ui/icons";
 import type { SiteContent } from "@/content/types";
 import type { Locale } from "@/i18n/config";
 import { href } from "@/lib/routes";
@@ -17,7 +17,7 @@ export function WhoWeAre({ locale, content }: { locale: Locale; content: SiteCon
       <div className="container-x">
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-3">
-            <Eyebrow index="01" tone="dark">
+            <Eyebrow index="01" tone="dark" className="border-t border-ink/15 pt-4">
               {who.eyebrow}
             </Eyebrow>
           </div>
@@ -34,28 +34,22 @@ export function WhoWeAre({ locale, content }: { locale: Locale; content: SiteCon
           </div>
         </div>
 
-        <RevealGroup as="ul" className="mt-24 grid gap-px overflow-hidden rounded-[1.75rem] border border-ink/10 bg-ink/10 md:grid-cols-3">
+        <RevealGroup as="ul" stagger={0.06} className="mt-20 grid border-t border-ink/15 md:mt-28 md:grid-cols-3">
           {who.pillars.map((p, i) => (
-            <RevealItem as="li" key={p.title} className="bg-ivory">
-              <InteractiveCard
+            <RevealItem as="li" key={p.title} y={12} className="border-b border-ink/15 md:border-b-0 md:border-r md:last:border-r-0">
+              <Link
                 href={pillarHref[i] ?? href(locale, "about")}
-                tone="light"
-                tilt={0}
-                className="flex h-full flex-col rounded-none border-0 bg-ivory p-8 hover:bg-ivory-200 hover:shadow-none focus-visible:bg-ivory-200 focus-visible:outline-offset-[-6px] md:p-10"
+                className="group/p flex h-full flex-col py-8 transition-colors duration-300 hover:bg-ink/[0.03] focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-gold-ink md:px-8 md:py-10 md:first:pl-0 md:hover:first:pl-0"
               >
-                <span className="flex items-start justify-between gap-6">
-                  <span aria-hidden className="t-eyebrow pt-2 text-gold-ink">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <CardArrow />
+                <span className="flex items-center justify-between">
+                  <span className="t-meta text-gold-ink">{String(i + 1).padStart(2, "0")}</span>
+                  <ArrowRight size={16} className="text-ink/50 transition-[transform,color] duration-300 group-hover/p:translate-x-1 group-hover/p:text-ink motion-reduce:transform-none" />
                 </span>
-                <h3 className="mt-12 text-[1.75rem] font-light tracking-[-0.025em] text-ink md:mt-20">{p.title}</h3>
-                <p className="mt-4 max-w-sm text-[0.9375rem] leading-relaxed text-stone">{p.text}</p>
-                <span
-                  aria-hidden
-                  className="absolute inset-x-8 bottom-0 h-px origin-left scale-x-0 bg-gold-ink transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover/card:scale-x-100 group-focus-visible/card:scale-x-100 md:inset-x-10"
-                />
-              </InteractiveCard>
+                <h3 className="mt-10 font-serif text-[1.875rem] leading-[1.1] tracking-[-0.015em] text-ink [font-variation-settings:'opsz'_48] md:mt-16">
+                  {p.title}
+                </h3>
+                <p className="mt-4 max-w-sm text-[1rem] leading-relaxed text-stone">{p.text}</p>
+              </Link>
             </RevealItem>
           ))}
         </RevealGroup>

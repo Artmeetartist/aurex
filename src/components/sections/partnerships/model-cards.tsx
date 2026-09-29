@@ -39,8 +39,8 @@ export function ModelCards({ locale, content, className }: { locale: Locale; con
             <InteractiveCard
               href={contactHref(locale, type)}
               tone="light"
-              tilt={3}
-              className="flex h-full flex-col rounded-[1.75rem] bg-ivory-200/55 p-7 hover:bg-ivory focus-visible:bg-ivory sm:p-10 xl:p-12"
+             
+              className="flex h-full flex-col rounded-xl bg-ivory-200/55 p-7 hover:bg-ivory focus-visible:bg-ivory sm:p-10 xl:p-12"
             >
               <span
                 aria-hidden

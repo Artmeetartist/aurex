@@ -4,14 +4,13 @@ import { Eyebrow } from "@/components/ui/eyebrow";
 import { cn } from "@/lib/cn";
 
 /**
- * Standard section opener: indexed eyebrow, masked display title, optional intro.
- * `tone="dark"` is for ivory surfaces.
+ * Section opener: a hairline running head (number + label) above a serif
+ * statement and an optional lead. `tone="dark"` is for paper surfaces.
  */
 export function SectionHeading({
   index,
   eyebrow,
   title,
-  accent,
   intro,
   tone = "light",
   size = "lg",
@@ -22,7 +21,6 @@ export function SectionHeading({
   index?: string;
   eyebrow: string;
   title: string;
-  accent?: string[];
   intro?: string;
   tone?: "light" | "dark";
   size?: "xl" | "lg" | "md";
@@ -32,7 +30,7 @@ export function SectionHeading({
 }) {
   return (
     <div className={cn("max-w-4xl", className)}>
-      <Reveal y={12}>
+      <Reveal y={0} className={cn("border-t pt-4", tone === "light" ? "border-white/15" : "border-ink/15")}>
         <Eyebrow index={index} tone={tone}>
           {eyebrow}
         </Eyebrow>
@@ -40,17 +38,15 @@ export function SectionHeading({
       <MaskText
         as={as}
         text={title}
-        accent={accent}
-        tone={tone}
         className={cn(
-          "mt-7",
+          "mt-8 md:mt-10",
           size === "xl" ? "t-display-xl" : size === "lg" ? "t-display-lg" : "t-display-md",
           tone === "light" ? "text-ivory" : "text-ink",
         )}
       />
       {intro && (
-        <Reveal delay={0.15}>
-          <p className={cn("t-lead mt-7 max-w-2xl", tone === "light" ? "text-mist" : "text-stone")}>{intro}</p>
+        <Reveal delay={0.1} y={12}>
+          <p className={cn("t-lead mt-6 max-w-[40rem]", tone === "light" ? "text-mist" : "text-stone")}>{intro}</p>
         </Reveal>
       )}
       {children}

@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { AnimatePresence, motion, useScroll } from "motion/react";
 import { useRef, useState } from "react";
-import { GlobeScene, useViewportPresence } from "@/components/three/lazy";
+import { GlobeScene, useViewportPresence, useWebGL } from "@/components/three/lazy";
 import { TextLink } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { corridors, markets } from "@/content/facts";
@@ -27,6 +28,7 @@ export function GlobalReach({ locale, content, heading, footnote, index, link, a
   const stage = useRef<HTMLDivElement>(null);
   const [focus, setFocus] = useState<MarketId | null>(null);
   const { mounted, visible } = useViewportPresence(stage);
+  const webgl = useWebGL();
   const { scrollYProgress } = useScroll({ target: section, offset: ["start end", "end start"] });
 
   const globeMarkets = markets.map((m) => ({ ...m, label: content.markets[m.id].name }));
@@ -36,10 +38,6 @@ export function GlobalReach({ locale, content, heading, footnote, index, link, a
     <section ref={section} className="surface-ink-deep section-y relative overflow-hidden">
       {/* Fades the surface's top glow in from the ink of the section above, so no edge shows. */}
       <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-ink-950 to-transparent" />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute right-[-20%] top-1/2 h-[70rem] w-[70rem] -translate-y-1/2 rounded-full opacity-60 [background:radial-gradient(closest-side,rgb(0_153_153/0.22),transparent_70%)]"
-      />
       <div className="container-x relative grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-5">
           <SectionHeading index={index} as={as} size="md" {...heading} />
@@ -106,6 +104,9 @@ export function GlobalReach({ locale, content, heading, footnote, index, link, a
 
         <div className="lg:col-span-7">
           <div ref={stage} className="relative mx-auto aspect-square w-full max-w-[46rem]">
+            {!webgl && (
+              <Image src="/media/globe/poster.webp" alt="" fill sizes="(min-width: 1024px) 46rem, 100vw" className="object-contain" />
+            )}
             {mounted && (
               <GlobeScene
                 markets={globeMarkets}

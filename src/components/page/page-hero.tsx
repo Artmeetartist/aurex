@@ -44,7 +44,7 @@ export function PageHero({
   const imageScale = useTransform(scrollYProgress, [0, 1], [1.06, 1.16]);
   const frameRotate = useTransform(scrollYProgress, [0, 1], [0, 8]);
   const frameScale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
-  const frameRadius = useTransform(scrollYProgress, [0, 1], [28, 48]);
+  const frameRadius = useTransform(scrollYProgress, [0, 1], [12, 24]);
   const darken = useTransform(scrollYProgress, [0, 0.9], [0, 0.6]);
   const contentY = useTransform(scrollYProgress, [0, 1], [0, -90]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
@@ -52,7 +52,10 @@ export function PageHero({
   return (
     <section
       ref={ref}
-      className={cn("surface-ink relative overflow-hidden [perspective:1400px]", hasImage ? "min-h-[88svh]" : "min-h-[62svh]")}
+      className={cn(
+        "relative overflow-hidden [perspective:1400px]",
+        hasImage ? "surface-ink min-h-[88svh]" : "min-h-[70svh] bg-ink-950 text-ivory",
+      )}
     >
       {hasImage && (
         <motion.div
@@ -79,10 +82,10 @@ export function PageHero({
       )}
 
       <motion.div
-        style={{ y: contentY, opacity: contentOpacity }}
+        style={hasImage ? { y: contentY, opacity: contentOpacity } : undefined}
         className={cn(
           "container-x relative flex flex-col justify-end pb-16 pt-[calc(var(--header-h)+5rem)] md:pb-24",
-          hasImage ? "min-h-[88svh]" : "min-h-[62svh]",
+          hasImage ? "min-h-[88svh]" : "min-h-[70svh]",
         )}
       >
         <motion.nav
@@ -91,13 +94,13 @@ export function PageHero({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: EASE, delay: 0.1 }}
         >
-          <ol className="t-eyebrow flex flex-wrap items-center gap-x-3 text-mist">
+          <ol className="t-eyebrow flex flex-wrap items-center gap-x-2.5 text-ivory/60">
             <li>
               <Link href={breadcrumb.homeHref} className="inline-flex min-h-11 items-center hover:text-ivory">
                 {breadcrumb.home}
               </Link>
             </li>
-            <li aria-hidden className="h-px w-6 bg-gold/60" />
+            <li aria-hidden className="text-ivory/35">/</li>
             {breadcrumb.parent && (
               <>
                 <li>
@@ -105,10 +108,10 @@ export function PageHero({
                     {breadcrumb.parent.label}
                   </Link>
                 </li>
-                <li aria-hidden className="h-px w-6 bg-gold/60" />
+                <li aria-hidden className="text-ivory/35">/</li>
               </>
             )}
-            <li aria-current="page" className="text-gold">
+            <li aria-current="page" className="text-ivory">
               {breadcrumb.current}
             </li>
           </ol>
@@ -117,17 +120,19 @@ export function PageHero({
         <MaskText
           as="h1"
           text={hero.title}
-          accent={hero.accent}
           delay={0.15}
-          className="t-display-xl mt-8 max-w-[16ch] text-ivory"
+          className={cn("t-display-xl mt-8 text-ivory", hasImage ? "max-w-[16ch]" : "max-w-[20ch]")}
         />
 
-        <div className="mt-10 grid gap-10 md:grid-cols-12">
+        <div className={cn("mt-10 grid gap-10 md:grid-cols-12", !hasImage && "mt-14 border-t border-white/15 pt-8")}>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: EASE, delay: 0.55 }}
-            className="t-lead text-ivory/80 md:col-span-7 lg:col-span-6"
+            className={cn(
+              "t-lead text-ivory/80",
+              hasImage ? "md:col-span-7 lg:col-span-6" : "md:col-span-6 md:col-start-7 lg:col-span-5 lg:col-start-8",
+            )}
           >
             {hero.intro}
           </motion.p>

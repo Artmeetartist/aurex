@@ -416,7 +416,7 @@ export function InquiryForm({ locale, inquiry, defaultType, surface = "dark", cl
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.4, ease: EASE }}
-                    className={cn("t-small mt-7 rounded-[0.875rem] border px-4 py-3.5", tone.alert)}
+                    className={cn("t-small mt-7 rounded-md border px-4 py-3.5", tone.alert)}
                   >
                     {failure}
                   </motion.p>

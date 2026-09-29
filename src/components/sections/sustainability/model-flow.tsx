@@ -51,17 +51,13 @@ export function ModelFlow({ content }: { content: SiteContent }) {
 
   return (
     <section className="relative overflow-hidden bg-forest-950 text-cream">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-1/2 top-0 h-[44rem] w-[84rem] -translate-x-1/2 -translate-y-1/3 rounded-full [background:radial-gradient(closest-side,rgb(0_153_153/0.16),transparent_70%)]"
-      />
       <div className="container-x section-y relative">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
             <Reveal y={12}>
               <GreenEyebrow>{flow.eyebrow}</GreenEyebrow>
             </Reveal>
-            <MaskText as="h2" text={flow.title} accent={flow.accent} className="t-display-lg mt-7 max-w-[13ch] text-cream" />
+            <MaskText as="h2" text={flow.title} className="t-display-lg mt-7 max-w-[13ch] text-cream" />
           </div>
           {flow.intro && (
             <Reveal delay={0.12} className="lg:col-span-4 lg:col-start-9">

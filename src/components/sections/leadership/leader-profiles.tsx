@@ -24,7 +24,6 @@ export function LeaderProfiles({ content, index }: { content: SiteContent; index
         index={index}
         eyebrow={copy.eyebrow}
         title={copy.title}
-        accent={copy.accent}
         intro={copy.intro}
         size="md"
         className={cn(empty && "lg:col-span-5")}
@@ -33,7 +32,7 @@ export function LeaderProfiles({ content, index }: { content: SiteContent; index
       {empty ? (
         <Reveal
           delay={0.1}
-          className="relative isolate overflow-hidden rounded-[1.75rem] border border-white/10 bg-ink-850/70 px-7 py-12 sm:px-10 md:px-14 md:py-16 lg:col-span-7"
+          className="relative isolate overflow-hidden rounded-xl border border-white/10 bg-ink-850/70 px-7 py-12 sm:px-10 md:px-14 md:py-16 lg:col-span-7"
         >
           <LogoMark className="pointer-events-none absolute -bottom-10 -right-8 -z-10 h-56 w-56 text-ivory opacity-[0.05] md:h-72 md:w-72" />
           <span aria-hidden className="block h-px w-12 bg-gold" />
@@ -48,7 +47,7 @@ export function LeaderProfiles({ content, index }: { content: SiteContent; index
             <RevealItem as="li" key={leader.name}>
               <article>
                 {leader.portrait && (
-                  <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-ink-850">
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-ink-850">
                     <Image
                       src={leader.portrait}
                       alt=""
@@ -56,7 +55,7 @@ export function LeaderProfiles({ content, index }: { content: SiteContent; index
                       sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
                       className="object-cover saturate-[0.85]"
                     />
-                    <div aria-hidden className="absolute inset-0 rounded-[1.5rem] ring-1 ring-inset ring-white/10" />
+                    <div aria-hidden className="absolute inset-0 rounded-xl ring-1 ring-inset ring-white/10" />
                   </div>
                 )}
                 <div className={cn("border-t border-white/10 pt-6", leader.portrait && "mt-7")}>

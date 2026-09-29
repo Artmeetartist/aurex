@@ -32,7 +32,7 @@ export function PhotoBand({
     <section ref={ref} id={id} className="surface-ink-deep relative py-2 [perspective:1600px] md:py-3">
       <motion.div
         style={reduce ? undefined : { rotateX, scale }}
-        className="elevate relative mx-2 min-h-[88svh] origin-bottom overflow-hidden rounded-[1.25rem] md:mx-3 md:rounded-[1.75rem]"
+        className="elevate relative mx-2 min-h-[88svh] origin-bottom overflow-hidden rounded-lg md:mx-3 md:rounded-xl"
       >
         <motion.div style={reduce ? undefined : { y }} className="absolute inset-x-0 -inset-y-[12%]">
           <Photo photo={photo} />

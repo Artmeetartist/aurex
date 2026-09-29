@@ -50,9 +50,9 @@ export function LanguageSwitcher({ locale, label, className }: { locale: Locale;
         aria-controls={listId}
         aria-label={label}
         onClick={() => setOpen((v) => !v)}
-        className="glass inline-flex h-11 items-center gap-2 rounded-full px-4 text-[0.8125rem] font-medium text-ivory/85 transition-colors hover:text-ivory"
+        className="inline-flex h-11 items-center gap-2 rounded-[4px] border border-white/20 bg-ink-950/30 px-3.5 text-[0.8125rem] font-medium text-ivory/85 backdrop-blur-md transition-colors hover:border-white/40 hover:text-ivory"
       >
-        <Globe size={15} className="text-gold" />
+        <Globe size={15} className="text-ivory/60" />
         <span className="uppercase tracking-[0.08em]">{locale}</span>
       </button>
       {/* Disclosure of plain links (a listbox cannot contain links). */}
@@ -60,7 +60,7 @@ export function LanguageSwitcher({ locale, label, className }: { locale: Locale;
         id={listId}
         aria-label={label}
         className={cn(
-          "glass absolute right-0 top-[calc(100%+0.5rem)] min-w-44 overflow-hidden rounded-2xl p-1.5 transition-all duration-300 ease-[var(--ease-out-expo)]",
+          "absolute right-0 top-[calc(100%+0.5rem)] min-w-44 overflow-hidden rounded-lg border border-white/12 bg-ink-950 p-1.5 transition-all duration-300 ease-[var(--ease-out-expo)]",
           open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-1 opacity-0",
         )}
       >
@@ -76,12 +76,12 @@ export function LanguageSwitcher({ locale, label, className }: { locale: Locale;
                 setOpen(false);
               }}
               className={cn(
-                "flex min-h-11 items-center justify-between rounded-xl px-3.5 text-[0.875rem] transition-colors",
+                "flex min-h-11 items-center justify-between rounded-md px-3.5 text-[0.875rem] transition-colors",
                 l === locale ? "bg-white/10 text-ivory" : "text-ivory/70 hover:bg-white/5 hover:text-ivory",
               )}
             >
               <span>{localeMeta[l].native}</span>
-              <span className="t-eyebrow !text-[0.625rem] text-mist">{l}</span>
+              <span className="t-meta uppercase text-mist-dim">{l}</span>
             </Link>
           </li>
         ))}

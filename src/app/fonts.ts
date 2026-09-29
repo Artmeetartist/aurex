@@ -1,23 +1,24 @@
-import { IBM_Plex_Mono, Instrument_Serif, Inter_Tight } from "next/font/google";
+import { Hanken_Grotesk, IBM_Plex_Mono, Source_Serif_4 } from "next/font/google";
 
-export const sans = Inter_Tight({
+/** Text and interface: a neutral grotesk with a little more character than the usual defaults. */
+export const sans = Hanken_Grotesk({
   subsets: ["latin", "latin-ext"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-inter-tight",
+  variable: "--font-text",
   display: "swap",
 });
 
-export const serif = Instrument_Serif({
+/** Display: Source Serif at its display optical size. Headlines are set roman, never as accent italics. */
+export const serif = Source_Serif_4({
   subsets: ["latin", "latin-ext"],
-  weight: "400",
-  style: ["normal", "italic"],
-  variable: "--font-instrument-serif",
+  axes: ["opsz"],
+  variable: "--font-display",
   display: "swap",
 });
 
+/** Data only: references, counters, coordinates, regulation numbers. */
 export const mono = IBM_Plex_Mono({
   subsets: ["latin", "latin-ext"],
   weight: ["400", "500"],
-  variable: "--font-plex-mono",
+  variable: "--font-data",
   display: "swap",
 });

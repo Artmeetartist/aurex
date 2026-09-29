@@ -87,8 +87,8 @@ const en: SiteContent = {
 
   home: {
     hero: {
-      eyebrow: "International trading · Holdings · Investment",
-      title: "Value in motion.",
+      eyebrow: "Value in Motion.",
+      title: "International trade, holdings and investment, rooted in Europe.",
       accent: ["motion"],
       intro:
         "AUREX is a European-rooted group built to connect markets, partners and capital across borders, to institutional standards and for the long term.",
@@ -229,9 +229,9 @@ const en: SiteContent = {
     },
     why: {
       eyebrow: "Why AUREX",
-      title: "Built for decades, not transactions.",
-      accent: ["decades,"],
-      intro: "Resilience over speed. Reputation over volume. Long-term value over short-term gain.",
+      title: "What AUREX is built on.",
+      accent: [],
+      intro: "Four commitments that shape how the group trades, holds and invests, and what partners can expect from it.",
       pillars: [
         {
           title: "European standards",
@@ -247,7 +247,7 @@ const en: SiteContent = {
         },
         {
           title: "Long-term value",
-          text: "Resilience over speed, reputation over volume. We aim to compound value across cycles and across borders.",
+          text: "Decisions measured over cycles rather than quarters, with the aim of compounding value for the group and its partners.",
         },
       ],
     },

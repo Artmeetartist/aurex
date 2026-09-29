@@ -45,7 +45,7 @@ export function TypeOptions({
               key={type}
               htmlFor={id}
               className={cn(
-                "relative flex min-h-[4.75rem] cursor-pointer items-start gap-4 rounded-[1.125rem] border p-4 transition-[border-color,background-color] duration-300 sm:p-5",
+                "relative flex min-h-[4.75rem] cursor-pointer items-start gap-4 rounded-lg border p-4 transition-[border-color,background-color] duration-300 sm:p-5",
                 "has-[input:focus-visible]:outline-2 has-[input:focus-visible]:outline-offset-2 has-[input:focus-visible]:outline-gold",
                 checked ? tone.optionChecked : tone.option,
                 error && !checked && tone.controlInvalid,

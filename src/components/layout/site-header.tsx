@@ -102,7 +102,7 @@ export function SiteHeader({ locale, nav }: { locale: Locale; nav: HeaderLabels 
           </Link>
 
           <nav aria-label={nav.primaryLabel} className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
-            <ul className="glass flex h-11 items-center gap-0.5 rounded-full px-1.5">
+            <ul className="flex h-11 items-center gap-1 xl:gap-2">
               {navRoutes.map((route) =>
                 route === "trade" ? (
                   <TradeMenu key={route} data={nav.trade} active={isActive(route)} />
@@ -112,8 +112,9 @@ export function SiteHeader({ locale, nav }: { locale: Locale; nav: HeaderLabels 
                       href={href(locale, route)}
                       aria-current={isActive(route) ? "page" : undefined}
                       className={cn(
-                        "relative after:absolute after:inset-x-0 after:-inset-y-1.5 after:content-[''] inline-flex h-8 items-center rounded-full px-3.5 text-[0.8125rem] transition-colors duration-300 xl:px-4",
-                        isActive(route) ? "bg-white/12 text-ivory" : "text-ivory/70 hover:text-ivory",
+                        "relative inline-flex h-11 items-center px-2.5 text-[0.875rem] transition-colors duration-300 xl:px-3",
+                        "before:absolute before:inset-x-2.5 before:bottom-2 before:h-px before:origin-left before:bg-current before:transition-transform before:duration-300 before:content-[''] xl:before:inset-x-3",
+                        isActive(route) ? "text-ivory before:scale-x-100" : "text-ivory/75 before:scale-x-0 hover:text-ivory hover:before:scale-x-100",
                       )}
                     >
                       {nav.labels[route]}
@@ -137,7 +138,7 @@ export function SiteHeader({ locale, nav }: { locale: Locale; nav: HeaderLabels 
               aria-expanded={open}
               aria-controls="mobile-menu"
               aria-label={open ? nav.close : nav.menu}
-              className="glass inline-flex h-11 w-11 items-center justify-center rounded-full text-ivory lg:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-[4px] border border-white/25 bg-ink-950/40 text-ivory backdrop-blur-md lg:hidden"
             >
               {open ? <Close /> : <Menu />}
             </button>
@@ -171,10 +172,10 @@ export function SiteHeader({ locale, nav }: { locale: Locale; nav: HeaderLabels 
                     <Link
                       href={route === "contact" ? contactHref(locale) : href(locale, route)}
                       onClick={() => setOpen(false)}
-                      className="flex items-baseline justify-between py-4 text-[1.75rem] font-light tracking-[-0.02em] text-ivory"
+                      className="flex items-baseline justify-between py-4 font-serif text-[2rem] leading-tight tracking-[-0.015em] text-ivory [font-variation-settings:'opsz'_48]"
                     >
                       {nav.labels[route]}
-                      <span className="t-eyebrow text-gold">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="t-meta text-mist-dim">{String(i + 1).padStart(2, "0")}</span>
                     </Link>
                     {route === "trade" && (
                       <ul className="-mt-1 mb-4 grid grid-cols-1 gap-1 pl-1 sm:grid-cols-2">
@@ -185,7 +186,7 @@ export function SiteHeader({ locale, nav }: { locale: Locale; nav: HeaderLabels 
                               onClick={() => setOpen(false)}
                               className="flex min-h-11 items-center gap-3 text-[1rem] text-ivory/70 hover:text-ivory"
                             >
-                              <span aria-hidden className="h-px w-4 bg-gold" />
+                              <span aria-hidden className="h-px w-4 bg-ivory/40" />
                               {item.name}
                             </Link>
                           </li>

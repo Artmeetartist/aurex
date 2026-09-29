@@ -87,8 +87,8 @@ const nl: SiteContent = {
 
   home: {
     hero: {
-      eyebrow: "Internationale handel · Holding · Investeringen",
-      title: "Waarde in beweging.",
+      eyebrow: "Value in Motion.",
+      title: "Internationale handel, holding en investeringen, geworteld in Europa.",
       accent: ["beweging."],
       intro:
         "AUREX is een groep met Europese wortels, opgezet om markten, partners en kapitaal over grenzen heen te verbinden, volgens institutionele standaarden en voor de lange termijn.",

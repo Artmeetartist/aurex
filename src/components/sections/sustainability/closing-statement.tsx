@@ -7,14 +7,13 @@ import { Reveal } from "@/components/motion/reveal";
 import { ButtonLink } from "@/components/ui/button";
 import type { SiteContent } from "@/content/types";
 import type { Locale } from "@/i18n/config";
-import { cn } from "@/lib/cn";
 import { contactHref } from "@/lib/routes";
 import { WIDE_STILL } from "./shared";
 
-function Word({ children, progress, range, accent }: { children: string; progress: MotionValue<number>; range: [number, number]; accent: boolean }) {
+function Word({ children, progress, range }: { children: string; progress: MotionValue<number>; range: [number, number] }) {
   const opacity = useRange(progress, range, [0.2, 1]);
   return (
-    <motion.span style={{ opacity }} className={cn("motion-reduce:!opacity-100", accent && "t-accent text-gold")}>
+    <motion.span style={{ opacity }} className="motion-reduce:!opacity-100">
       {children}
     </motion.span>
   );
@@ -61,7 +60,7 @@ export function ClosingStatement({ locale, content }: { locale: Locale; content:
                   const start = (i / words.length) * 0.85;
                   return (
                     <span key={i}>
-                      <Word progress={read} range={[start, start + 0.85 / words.length]} accent={i === words.length - 1 && words.length > 2}>
+                      <Word progress={read} range={[start, start + 0.85 / words.length]}>
                         {w}
                       </Word>
                       {i < words.length - 1 ? " " : ""}

@@ -58,7 +58,7 @@ export function FlowTrack({ steps, tint }: { steps: TitledText[]; tint: string }
           </span>
           <div
             className={cn(
-              "origin-top rounded-[1.25rem] border p-6 transition-[transform,opacity,border-color,background-color] duration-[900ms] ease-[var(--ease-out-expo)] lg:mt-10 lg:p-7",
+              "origin-top rounded-lg border p-6 transition-[transform,opacity,border-color,background-color] duration-[900ms] ease-[var(--ease-out-expo)] lg:mt-10 lg:p-7",
               lit(i)
                 ? "border-white/12 bg-ink-850/70 opacity-100 [transform:rotateX(0deg)_translateY(0)]"
                 : "border-white/5 bg-transparent opacity-40 [transform:rotateX(18deg)_translateY(14px)]",

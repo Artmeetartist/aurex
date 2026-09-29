@@ -41,7 +41,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
           <div className="mt-28 grid gap-14 border-t border-ink/10 pt-16 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <div className="lg:sticky lg:top-32">
-                <SectionHeading eyebrow={about.story.eyebrow} title={about.story.title} accent={about.story.accent} tone="dark" size="md" />
+                <SectionHeading eyebrow={about.story.eyebrow} title={about.story.title} tone="dark" size="md" />
               </div>
             </div>
             <RevealGroup className="space-y-8 lg:col-span-6 lg:col-start-7">
@@ -58,11 +58,11 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
       {/* Principles */}
       <section className="surface-ink section-y">
         <div className="container-x">
-          <SectionHeading index="02" eyebrow={about.principles.eyebrow} title={about.principles.title} accent={about.principles.accent} />
+          <SectionHeading index="02" eyebrow={about.principles.eyebrow} title={about.principles.title} />
           <RevealGroup as="ul" className="mt-20 grid gap-4 md:grid-cols-2 md:gap-5">
             {about.principles.items.map((item, i) => (
               <RevealItem as="li" key={item.title} className="h-full">
-                <InteractiveCard tone="dark" tilt={3} className="flex h-full flex-col p-8 md:p-12">
+                <InteractiveCard tone="dark" className="flex h-full flex-col p-8 md:p-12">
                   <span aria-hidden className="t-eyebrow text-gold">
                     {String(i + 1).padStart(2, "0")}
                   </span>
@@ -87,13 +87,12 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
             index="03"
             eyebrow={about.structure.eyebrow}
             title={about.structure.title}
-            accent={about.structure.accent}
             intro={about.structure.intro}
             tone="dark"
           />
 
           <div className="mt-20">
-            <Reveal className="mx-auto max-w-md rounded-[1.5rem] bg-ink p-8 text-center text-ivory">
+            <Reveal className="mx-auto max-w-md rounded-xl bg-ink p-8 text-center text-ivory">
               <p className="t-eyebrow text-gold">{about.structure.groupLabel}</p>
               <p className="mt-3 text-[1.0625rem] text-ivory/85">{about.structure.groupText}</p>
             </Reveal>
@@ -133,7 +132,6 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
                 index="04"
                 eyebrow={about.governance.eyebrow}
                 title={about.governance.title}
-                accent={about.governance.accent}
                 intro={about.governance.intro}
                 size="md"
               />
@@ -160,7 +158,6 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
             index="05"
             eyebrow={leadership.approach.eyebrow}
             title={leadership.approach.title}
-            accent={leadership.approach.accent}
             intro={leadership.approach.intro}
             tone="dark"
           />
@@ -176,7 +173,6 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
       <CtaBand
         eyebrow={about.cta.eyebrow}
         title={about.cta.title}
-        accent={about.cta.accent}
         primary={{ label: about.cta.primary, href: href(locale, "trade") }}
         secondary={{ label: about.cta.secondary, href: contactHref(locale) }}
       />

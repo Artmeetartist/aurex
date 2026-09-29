@@ -87,8 +87,8 @@ const pl: SiteContent = {
 
   home: {
     hero: {
-      eyebrow: "Handel międzynarodowy · Holding · Inwestycje",
-      title: "Wartość w ruchu.",
+      eyebrow: "Value in Motion.",
+      title: "Handel międzynarodowy, holding i inwestycje z europejskimi korzeniami.",
       accent: ["ruchu."],
       intro:
         "AUREX to grupa o europejskich korzeniach, stworzona, by łączyć rynki, partnerów i kapitał ponad granicami – według standardów instytucjonalnych i z myślą o długiej perspektywie.",

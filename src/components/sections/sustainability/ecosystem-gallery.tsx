@@ -53,10 +53,6 @@ export function EcosystemGallery({ content }: { content: SiteContent }) {
             />
           </motion.div>
           <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-b from-forest-950 via-forest-950/60 to-forest-950" />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[50rem] w-[90rem] -translate-x-1/2 -translate-y-1/2 opacity-80 [background:radial-gradient(closest-side,rgb(0_153_153/0.12),transparent_70%)]"
-          />
 
           <div className="relative flex flex-col py-[clamp(5.5rem,11vw,9rem)] lg:motion-safe:h-full lg:motion-safe:py-0 lg:motion-safe:pb-10 lg:motion-safe:pt-[calc(var(--header-h)+2.25rem)]">
             <div className="container-x flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
@@ -67,7 +63,6 @@ export function EcosystemGallery({ content }: { content: SiteContent }) {
                 <MaskText
                   as="h2"
                   text={heading.title}
-                  accent={heading.accent}
                   className="t-display-md mt-6 max-w-[14ch] text-cream lg:max-w-[20ch]"
                 />
               </div>
@@ -96,7 +91,7 @@ export function EcosystemGallery({ content }: { content: SiteContent }) {
                     <li key={name} className="snap-start">
                       <figure className="group/stage w-[min(78vw,24rem)] md:w-[26rem] lg:w-[min(36vw,34rem,calc((100svh_-_31rem)*1.6))]">
                         <div className="relative">
-                          <div className="elevate relative aspect-[16/10] overflow-hidden rounded-[1.25rem] bg-forest-900">
+                          <div className="elevate relative aspect-[16/10] overflow-hidden rounded-lg bg-forest-900">
                             <motion.div style={{ x: imageX }} className="absolute -inset-x-[6%] inset-y-0 motion-reduce:!transform-none">
                               <Image
                                 src={stageStill(i)}

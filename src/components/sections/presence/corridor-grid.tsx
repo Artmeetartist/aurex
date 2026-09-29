@@ -23,8 +23,8 @@ export function CorridorGrid({ items, className }: { items: TitledText[]; classN
           <RevealItem as="li" key={item.title} className="h-full">
             <InteractiveCard
               tone="light"
-              tilt={3}
-              className="flex h-full flex-col rounded-[1.75rem] bg-ivory-200/55 p-7 hover:bg-ivory sm:p-10 xl:p-12"
+             
+              className="flex h-full flex-col rounded-xl bg-ivory-200/55 p-7 hover:bg-ivory sm:p-10 xl:p-12"
             >
               <span className="t-eyebrow tabular-nums text-gold-ink">{String(i + 1).padStart(2, "0")}</span>
 

@@ -58,7 +58,7 @@ export default async function OpenGraphImage({ params }: { params: Promise<{ loc
       >
         {/* Oversized, near-invisible mark as a watermark on the right. */}
         <div style={{ position: "absolute", right: -120, top: 40, display: "flex", opacity: 0.06 }}>
-          <Mark width={640} stroke={IVORY} accent={IVORY} />
+          <Mark width={640} stroke={IVORY} />
         </div>
 
         {/* Lockup */}

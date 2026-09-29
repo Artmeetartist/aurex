@@ -12,7 +12,7 @@ import { MailVitrine } from "@/components/trade/larp/mail-vitrine";
 import { MailWeave } from "@/components/trade/larp/mail-weave";
 import { CategoryGrid, Counterparts, StandardsGrid } from "@/components/trade/line-sections";
 import { tradeIcons } from "@/components/trade/trade-icons";
-import { TradeLineGrid } from "@/components/trade/trade-line-grid";
+import { TradeIndex } from "@/components/trade/trade-index";
 import { Eyebrow, StatusTag } from "@/components/ui/eyebrow";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { markets } from "@/content/facts";
@@ -77,7 +77,7 @@ export default async function TradeLinePage({ params }: PageProps<"/[locale]/tra
             link={{ label: `${showcase.eyebrow} · ${showcase.title}`, href: "#in-focus" }}
           />
         ) : (
-          <div className="glass rounded-[1.5rem] p-6">
+          <div className="glass rounded-xl p-6">
             <div className="flex items-start justify-between gap-4">
               <span className="text-gold">
                 <Icon size={48} />
@@ -120,11 +120,6 @@ export default async function TradeLinePage({ params }: PageProps<"/[locale]/tra
 
       {/* 03 — From origin to market */}
       <section className="surface-ink-deep section-y relative overflow-hidden">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -left-[15%] top-0 h-[48rem] w-[48rem] rounded-full opacity-[0.16]"
-          style={{ background: `radial-gradient(closest-side, ${tint}, transparent 70%)` }}
-        />
         <div className="container-x relative">
           <SectionHeading index="03" eyebrow={tradePage.flowEyebrow} title={tradePage.flowTitle} size="md" />
           <div className="mt-16 md:mt-24">
@@ -198,14 +193,13 @@ export default async function TradeLinePage({ params }: PageProps<"/[locale]/tra
               {tradePage.allTrade}
             </Link>
           </div>
-          <TradeLineGrid locale={locale} content={content} exclude={id} className="mt-12" />
+          <TradeIndex locale={locale} content={content} exclude={id} className="mt-10" />
         </div>
       </section>
 
       <CtaBand
         eyebrow={tradeHub.cta.eyebrow}
         title={trade.cta.title}
-        accent={trade.cta.accent}
         primary={{ label: trade.cta.primary, href: contactHref(locale, "partnership") }}
       />
     </>

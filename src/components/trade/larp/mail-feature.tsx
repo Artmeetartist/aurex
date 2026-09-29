@@ -5,7 +5,6 @@ import { Eyebrow } from "@/components/ui/eyebrow";
 import { ArrowUpRight } from "@/components/ui/icons";
 import type { SiteContent } from "@/content/types";
 import { cn } from "@/lib/cn";
-import { accentMatcher } from "@/lib/text";
 import { mailDetails, mailSet } from "./mail-assets";
 
 /**
@@ -16,25 +15,19 @@ export function MailFeature({ trade, href, className }: { trade: SiteContent["tr
   const showcase = trade.showcase;
   if (!showcase) return null;
   const thumbs = showcase.details.filter((d) => d.key !== "collar" && d.key !== "mantle");
-  const isAccent = accentMatcher(showcase.accent);
 
   return (
     <Reveal className={className}>
       <Link
         href={href}
-        className="elevate group/feature relative grid overflow-hidden rounded-[1.75rem] bg-ink-950 text-ivory focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-ink lg:grid-cols-12"
+        className="elevate group/feature relative grid overflow-hidden rounded-xl bg-ink-950 text-ivory focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-ink lg:grid-cols-12"
       >
         <div className="relative flex flex-col p-8 md:p-12 lg:col-span-5">
           <Eyebrow>
             {showcase.eyebrow} · {trade.name}
           </Eyebrow>
           <h3 className="t-display-sm mt-7 max-w-[16ch] text-ivory">
-            {showcase.title.split(" ").map((word, i) => (
-              <span key={i}>
-                {i > 0 && " "}
-                {isAccent(word) ? <em className="t-accent text-gold">{word}</em> : word}
-              </span>
-            ))}
+            {showcase.title}
           </h3>
           <p className="mt-5 max-w-md text-[0.9375rem] leading-relaxed text-mist">{showcase.text}</p>
           <div className="mt-auto flex items-end justify-between gap-6 pt-10">
@@ -42,7 +35,7 @@ export function MailFeature({ trade, href, className }: { trade: SiteContent["tr
               {thumbs.map((d, i) => (
                 <li
                   key={d.key}
-                  className="relative h-16 w-16 overflow-hidden rounded-[0.875rem] border border-white/12 transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover/feature:-translate-y-1 md:h-20 md:w-20"
+                  className="relative h-16 w-16 overflow-hidden rounded-md border border-white/12 transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover/feature:-translate-y-1 md:h-20 md:w-20"
                   style={{ transitionDelay: `${i * 60}ms` }}
                 >
                   <Image src={mailDetails[d.key].src} alt="" fill sizes="80px" className="object-cover" />

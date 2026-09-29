@@ -18,7 +18,6 @@ export default async function GlobalPresencePage({ params }: PageProps<"/[locale
     <>
       <PageHero
         hero={presence.hero}
-        image="/media/stills/still-air"
         breadcrumb={{ home: common.breadcrumbHome, homeHref: href(locale, "home"), current: nav.labels.presence }}
       />
 
@@ -32,7 +31,6 @@ export default async function GlobalPresencePage({ params }: PageProps<"/[locale
             index="02"
             eyebrow={presence.corridors.eyebrow}
             title={presence.corridors.title}
-            accent={presence.corridors.accent}
             intro={presence.corridors.intro}
             tone="dark"
           />
@@ -46,7 +44,6 @@ export default async function GlobalPresencePage({ params }: PageProps<"/[locale
       <CtaBand
         eyebrow={presence.cta.eyebrow}
         title={presence.cta.title}
-        accent={presence.cta.accent}
         intro={presence.cta.intro}
         primary={{ label: presence.cta.primary, href: contactHref(locale) }}
       />

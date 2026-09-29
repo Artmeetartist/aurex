@@ -50,7 +50,7 @@ export function DivisionRow({ id, index, total, mode, name, summary, scope, scop
         viewport={{ once: true, margin: "0px 0px -15% 0px" }}
         transition={{ duration: 1.4, ease: EASE }}
         className={cn(
-          cn("relative aspect-[4/3] overflow-hidden rounded-[1.5rem] md:aspect-[16/10] lg:col-span-7", dark ? "bg-ink-850" : "bg-ivory-300"),
+          cn("relative aspect-[4/3] overflow-hidden rounded-xl md:aspect-[16/10] lg:col-span-7", dark ? "bg-ink-850" : "bg-ivory-300"),
           reverse && "lg:col-start-6 lg:row-start-1",
         )}
       >
@@ -64,7 +64,7 @@ export function DivisionRow({ id, index, total, mode, name, summary, scope, scop
           />
         </motion.div>
         <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink/35 via-ink/0 to-ink/10" />
-        <div aria-hidden className={cn("absolute inset-0 rounded-[1.5rem] ring-1 ring-inset", dark ? "ring-white/10" : "ring-ink/10")} />
+        <div aria-hidden className={cn("absolute inset-0 rounded-xl ring-1 ring-inset", dark ? "ring-white/10" : "ring-ink/10")} />
       </motion.figure>
 
       <motion.div

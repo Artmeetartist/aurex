@@ -16,7 +16,7 @@ export const generateMetadata = metadataFor("contact");
 /** Direct channel: the published mailbox when confirmed, otherwise the pending note. */
 function DirectContact({ direct, className }: { direct: SiteContent["contact"]["direct"]; className?: string }) {
   return (
-    <div className={cn("rounded-[1.5rem] border border-ink/10 bg-ivory-200/50 p-7 md:p-8", className)}>
+    <div className={cn("rounded-xl border border-ink/10 bg-ivory-200/50 p-7 md:p-8", className)}>
       <h3 className="t-eyebrow flex items-center gap-3 text-stone">
         <span aria-hidden className="h-px w-8 bg-gold-ink/50" />
         {direct.title}
@@ -46,7 +46,6 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
     <>
       <PageHero
         hero={contact.hero}
-        image="/media/stills/still-connected"
         breadcrumb={{ home: common.breadcrumbHome, homeHref: href(locale, "home"), current: nav.labels.contact }}
       />
 
@@ -59,7 +58,6 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
                 index="01"
                 eyebrow={contact.routes.eyebrow}
                 title={contact.routes.title}
-                accent={contact.routes.accent}
                 intro={contact.routes.intro}
                 tone="dark"
                 size="md"
@@ -86,7 +84,7 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
 
           <div className="lg:col-span-7">
             <Reveal y={20}>
-              <div className="rounded-[1.75rem] border border-white/10 bg-ink-850 p-6 text-ivory shadow-[0_40px_80px_-48px_rgb(17_17_17/0.35)] sm:p-9 md:p-12">
+              <div className="rounded-xl border border-white/10 bg-ink-850 p-6 text-ivory shadow-[0_40px_80px_-48px_rgb(17_17_17/0.35)] sm:p-9 md:p-12">
                 <Suspense fallback={null}>
                   <InquiryForm locale={locale} inquiry={inquiry} surface="dark" />
                 </Suspense>

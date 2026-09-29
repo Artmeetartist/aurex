@@ -10,10 +10,10 @@ import { cn } from "@/lib/cn";
 import { contactHref } from "@/lib/routes";
 import { useRange } from "./use-range";
 
-function Word({ children, progress, range, accent }: { children: string; progress: MotionValue<number>; range: [number, number]; accent: boolean }) {
+function Word({ children, progress, range }: { children: string; progress: MotionValue<number>; range: [number, number] }) {
   const opacity = useRange(progress, range, [0.18, 1]);
   return (
-    <motion.span style={{ opacity }} className={cn("inline motion-reduce:!opacity-100", accent && "t-accent text-brass-soft")}>
+    <motion.span style={{ opacity }} className="inline motion-reduce:!opacity-100">
       {children}
     </motion.span>
   );
@@ -29,11 +29,10 @@ function LitHeading({ text, className }: { text: string; className?: string }) {
       <span className="sr-only">{text}</span>
       <span aria-hidden>
         {words.map((w, i) => {
-          const accent = i === words.length - 1 && words.length > 2;
           const start = (i / words.length) * 0.9;
           return (
             <span key={i}>
-              <Word progress={scrollYProgress} range={[start, start + 0.9 / words.length]} accent={accent}>
+              <Word progress={scrollYProgress} range={[start, start + 0.9 / words.length]}>
                 {w}
               </Word>
               {i < words.length - 1 ? " " : ""}

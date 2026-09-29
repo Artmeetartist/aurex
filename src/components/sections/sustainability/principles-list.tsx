@@ -17,8 +17,6 @@ export function PrinciplesList({ content }: { content: SiteContent }) {
             <MaskText
               as="h2"
               text={principles.title}
-              accent={principles.accent}
-              tone="dark"
               className="t-display-lg mt-7 max-w-[11ch] text-graphite-950"
             />
             {principles.intro && (

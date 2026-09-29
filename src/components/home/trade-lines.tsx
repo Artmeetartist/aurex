@@ -1,5 +1,5 @@
 import { MailFeature } from "@/components/trade/larp/mail-feature";
-import { TradeLineGrid } from "@/components/trade/trade-line-grid";
+import { TradeIndex } from "@/components/trade/trade-index";
 import { TextLink } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import type { SiteContent } from "@/content/types";
@@ -17,7 +17,6 @@ export function TradeLines({ locale, content }: { locale: Locale; content: SiteC
             index="03"
             eyebrow={copy.eyebrow}
             title={copy.title}
-            accent={copy.accent}
             intro={copy.intro}
             tone="dark"
             size="md"
@@ -29,8 +28,8 @@ export function TradeLines({ locale, content }: { locale: Locale; content: SiteC
             </TextLink>
           </div>
         </div>
-        <TradeLineGrid locale={locale} content={content} className="mt-16 md:mt-20" />
-        <MailFeature trade={content.trades.larp} href={`${tradeHref(locale, "larp")}#in-focus`} className="mt-4 lg:mt-5" />
+        <TradeIndex locale={locale} content={content} className="mt-14 md:mt-20" />
+        <MailFeature trade={content.trades.larp} href={`${tradeHref(locale, "larp")}#in-focus`} className="mt-16 md:mt-24" />
       </div>
     </section>
   );

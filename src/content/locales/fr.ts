@@ -88,8 +88,8 @@ const fr: SiteContent = {
 
   home: {
     hero: {
-      eyebrow: "Négoce international · Participations · Investissement",
-      title: "La valeur en mouvement.",
+      eyebrow: "Value in Motion.",
+      title: "Négoce international, participations et investissement, ancrés en Europe.",
       accent: ["mouvement."],
       intro:
         "AUREX est un groupe aux racines européennes conçu pour relier marchés, partenaires et capitaux par-delà les frontières, selon des standards institutionnels et dans une perspective de long terme.",

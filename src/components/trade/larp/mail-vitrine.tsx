@@ -16,7 +16,7 @@ export function MailVitrine({
   link: { label: string; href: string };
 }) {
   return (
-    <div className="glass relative overflow-hidden rounded-[1.5rem]">
+    <div className="glass relative overflow-hidden rounded-xl">
       <div className="relative bg-[radial-gradient(90%_70%_at_50%_10%,rgb(226_207_152/0.22),transparent_70%)] px-5 pt-5">
         <div className="flex items-start justify-between gap-4">
           <p className="text-[1.125rem] font-light tracking-[-0.02em] text-ivory">{name}</p>

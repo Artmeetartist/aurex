@@ -5,7 +5,7 @@ import { cn } from "@/lib/cn";
 import type { Tone } from "./styles";
 
 const controlBase =
-  "block w-full rounded-[0.875rem] border px-4 text-[1rem] leading-snug outline-none transition-[border-color,box-shadow,background-color] duration-300 focus:ring-[3px] focus-visible:outline-none";
+  "block w-full rounded-md border px-4 text-[1rem] leading-snug outline-none transition-[border-color,box-shadow,background-color] duration-300 focus:ring-[3px] focus-visible:outline-none";
 
 type FieldShell = {
   id: string;

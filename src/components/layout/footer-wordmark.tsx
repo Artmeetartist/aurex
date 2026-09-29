@@ -24,9 +24,7 @@ export function FooterWordmark() {
 
   return (
     <div aria-hidden className="relative mt-24 select-none md:mt-32" onPointerMove={onPointerMove}>
-      {/* Soft coloured bloom behind the letters */}
-      <div className="pointer-events-none absolute inset-x-[6%] top-[18%] bottom-[8%] -z-0 rounded-full opacity-45 blur-[70px] [background:linear-gradient(100deg,#00c6ec_0%,#f01509_40%,#ff8a00_70%,#fecf00_100%)]" />
-      <p className="aurex-foil relative text-center text-[23vw] font-semibold leading-[0.8] tracking-[-0.055em]">AUREX</p>
+      <p className="aurex-foil relative pl-[0.14em] text-center text-[18.5vw] font-medium leading-[0.82] tracking-[0.14em]">AUREX</p>
     </div>
   );
 }

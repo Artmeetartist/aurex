@@ -33,7 +33,6 @@ export function HomeContact({ locale, content }: { locale: Locale; content: Site
               index="10"
               eyebrow={copy.eyebrow}
               title={copy.title}
-              accent={copy.accent}
               intro={copy.intro}
               size="md"
             />
@@ -43,7 +42,7 @@ export function HomeContact({ locale, content }: { locale: Locale; content: Site
                   <span className="t-eyebrow text-mist">{copy.direct}</span>
                   <a
                     href={`mailto:${company.email}`}
-                    className="inline-flex min-h-11 items-center self-start text-[1.0625rem] text-ivory underline decoration-gold/50 underline-offset-[6px] transition-colors hover:text-gold-soft hover:decoration-gold"
+                    className="inline-flex min-h-11 items-center self-start text-[1.0625rem] text-ivory underline decoration-white/30 underline-offset-[6px] transition-colors hover:decoration-ivory"
                   >
                     {company.email}
                   </a>
@@ -55,9 +54,9 @@ export function HomeContact({ locale, content }: { locale: Locale; content: Site
         </div>
 
         <div className="lg:col-span-7 lg:col-start-6 xl:col-span-6 xl:col-start-7">
-          <div className="rounded-[1.75rem] empty:hidden sm:glass sm:p-8 md:p-10">
+          <div className="rounded-xl bg-ivory p-6 text-ink empty:hidden sm:p-8 md:p-10">
             <Suspense fallback={null}>
-              <InquiryForm locale={locale} inquiry={content.inquiry} surface="dark" />
+              <InquiryForm locale={locale} inquiry={content.inquiry} surface="light" />
             </Suspense>
           </div>
         </div>

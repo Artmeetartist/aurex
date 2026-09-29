@@ -3,7 +3,6 @@
 import { motion, useInView, type HTMLMotionProps } from "motion/react";
 import { useRef, type ReactNode, type Ref } from "react";
 import { cn } from "@/lib/cn";
-import { accentMatcher } from "@/lib/text";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -90,22 +89,15 @@ export function MaskText({
   as: Tag = "h2",
   className,
   delay = 0,
-  accent,
-  tone = "light",
 }: {
   text: string;
   as?: "h1" | "h2" | "h3" | "p";
   className?: string;
   delay?: number;
-  /** Words (exact match, case-insensitive) rendered in the serif accent style. */
-  accent?: string[];
-  /** "light" = on dark surfaces (gold accent), "dark" = on ivory (accessible deep gold). */
-  tone?: "light" | "dark";
 }) {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "0px 0px -10% 0px" });
   const words = text.split(" ");
-  const isAccent = accentMatcher(accent);
 
   return (
     <Tag ref={ref as Ref<HTMLHeadingElement & HTMLParagraphElement>} className={cn("[text-wrap:balance]", className)}>
@@ -115,7 +107,7 @@ export function MaskText({
           return (
             <span key={i} className="inline-block overflow-hidden pb-[0.12em] -mb-[0.12em] align-bottom">
               <motion.span
-                className={cn("inline-block", isAccent(word) && cn("t-accent", tone === "light" ? "text-gold" : "text-gold-ink"))}
+                className="inline-block"
                 initial={{ y: "105%" }}
                 animate={inView ? { y: "0%" } : undefined}
                 transition={{ duration: 1.1, ease: EASE, delay: delay + i * 0.045 }}

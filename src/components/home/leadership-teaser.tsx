@@ -18,7 +18,6 @@ export function LeadershipTeaser({ locale, content }: { locale: Locale; content:
             index="09"
             eyebrow={copy.eyebrow}
             title={copy.title}
-            accent={copy.accent}
             tone="dark"
             size="md"
             className="lg:col-span-7"

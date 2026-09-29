@@ -22,10 +22,6 @@ export function GreenIntro({ content }: { content: SiteContent }) {
 
   return (
     <section className="relative overflow-hidden bg-cream text-graphite-950">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-40 -top-40 h-[40rem] w-[40rem] rounded-full [background:radial-gradient(closest-side,rgb(0_153_153/0.08),transparent_70%)]"
-      />
       <div className="container-x section-y relative">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-7">
@@ -35,8 +31,6 @@ export function GreenIntro({ content }: { content: SiteContent }) {
             <MaskText
               as="h2"
               text={intro.title}
-              accent={intro.accent}
-              tone="dark"
               className="t-display-lg mt-7 max-w-[15ch] text-graphite-950"
             />
           </div>

@@ -87,13 +87,6 @@ function Panel({ id, index, content }: { id: GreenPillarId; index: number; conte
         >
           {pad(index + 1)}
         </motion.span>
-        <div
-          aria-hidden
-          className={cn(
-            "pointer-events-none absolute -bottom-40 h-[32rem] w-[32rem] rounded-full [background:radial-gradient(closest-side,rgb(200_162_74/0.12),transparent_70%)]",
-            flip ? "-left-40" : "-right-40",
-          )}
-        />
 
         <div
           className={cn(
@@ -160,7 +153,7 @@ export function PillarPanels({ content }: { content: SiteContent }) {
             <Reveal y={12}>
               <GreenEyebrow>{heading.eyebrow}</GreenEyebrow>
             </Reveal>
-            <MaskText as="h2" text={heading.title} accent={heading.accent} className="t-display-lg mt-7 max-w-[16ch] text-cream" />
+            <MaskText as="h2" text={heading.title} className="t-display-lg mt-7 max-w-[16ch] text-cream" />
           </div>
           {heading.intro && (
             <Reveal delay={0.1} className="lg:col-span-4">
