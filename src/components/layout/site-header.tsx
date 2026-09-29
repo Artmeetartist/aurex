@@ -97,12 +97,12 @@ export function SiteHeader({ locale, nav }: { locale: Locale; nav: HeaderLabels 
           )}
         />
         <div className="container-x relative flex h-[var(--header-h)] items-center justify-between gap-6">
-          <Link href={href(locale, "home")} aria-label="AUREX" className="relative z-10 text-ivory">
+          <Link href={href(locale, "home")} aria-label="AUREX" className="relative z-10 shrink-0 text-ivory">
             <Logo />
           </Link>
 
-          <nav aria-label={nav.primaryLabel} className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
-            <ul className="flex h-11 items-center gap-1 xl:gap-2">
+          <nav aria-label={nav.primaryLabel} className="hidden min-w-0 flex-1 justify-center xl:flex">
+            <ul className="flex h-11 items-center gap-0.5 2xl:gap-1.5">
               {navRoutes.map((route) =>
                 route === "trade" ? (
                   <TradeMenu key={route} data={nav.trade} active={isActive(route)} />
@@ -112,8 +112,8 @@ export function SiteHeader({ locale, nav }: { locale: Locale; nav: HeaderLabels 
                       href={href(locale, route)}
                       aria-current={isActive(route) ? "page" : undefined}
                       className={cn(
-                        "relative inline-flex h-11 items-center px-2.5 text-[0.875rem] transition-colors duration-300 xl:px-3",
-                        "before:absolute before:inset-x-2.5 before:bottom-2 before:h-px before:origin-left before:bg-current before:transition-transform before:duration-300 before:content-[''] xl:before:inset-x-3",
+                        "relative inline-flex h-11 items-center whitespace-nowrap px-2 text-[0.8125rem] transition-colors duration-300 2xl:px-3 2xl:text-[0.875rem]",
+                        "before:absolute before:inset-x-2 before:bottom-2 before:h-px before:origin-left before:bg-current before:transition-transform before:duration-300 before:content-[''] 2xl:before:inset-x-3",
                         isActive(route) ? "text-ivory before:scale-x-100" : "text-ivory/75 before:scale-x-0 hover:text-ivory hover:before:scale-x-100",
                       )}
                     >
@@ -125,9 +125,9 @@ export function SiteHeader({ locale, nav }: { locale: Locale; nav: HeaderLabels 
             </ul>
           </nav>
 
-          <div className="relative z-10 flex items-center gap-2.5">
+          <div className="relative z-10 flex shrink-0 items-center gap-2.5">
             <Suspense>
-              <LanguageSwitcher locale={locale} label={nav.language} className="hidden lg:block" />
+              <LanguageSwitcher locale={locale} label={nav.language} className="hidden xl:block" />
             </Suspense>
             <ButtonLink href={contactHref(locale)} className="hidden sm:inline-flex">
               {nav.cta}
@@ -138,7 +138,7 @@ export function SiteHeader({ locale, nav }: { locale: Locale; nav: HeaderLabels 
               aria-expanded={open}
               aria-controls="mobile-menu"
               aria-label={open ? nav.close : nav.menu}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-[4px] border border-white/25 bg-ink-950/40 text-ivory backdrop-blur-md lg:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-[4px] border border-white/25 bg-ink-950/40 text-ivory backdrop-blur-md xl:hidden"
             >
               {open ? <Close /> : <Menu />}
             </button>
@@ -157,7 +157,7 @@ export function SiteHeader({ locale, nav }: { locale: Locale; nav: HeaderLabels 
             animate={{ clipPath: "inset(0 0 0% 0)" }}
             exit={{ clipPath: "inset(0 0 100% 0)" }}
             transition={{ duration: 0.8, ease: EASE }}
-            className="fixed inset-0 z-40 flex flex-col bg-ink-950 pt-[calc(var(--header-h)+2rem)] lg:hidden"
+            className="fixed inset-0 z-40 flex flex-col bg-ink-950 pt-[calc(var(--header-h)+2rem)] xl:hidden"
           >
             <nav aria-label={nav.primaryLabel} className="container-x flex-1 overflow-y-auto">
               <ul className="border-t border-white/10">

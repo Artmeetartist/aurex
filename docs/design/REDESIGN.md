@@ -129,3 +129,38 @@ Redesign, don't stack:
 4. Inner pages: typographic vs image heroes, trade-line registers, About principles, partnerships.
 5. Mobile pass at 1024 / 768 / 430 / 390 / 375.
 6. Visual QA and polish, then iterate.
+
+---
+
+## Implementation log
+
+### Round 1 — system
+- **WebGL crash fixed.** `useWebGL()` capability check plus an error boundary around every scene (`src/components/three/lazy.tsx`). Fallbacks: a rendered globe poster (`public/media/globe/poster.webp`), per-stage Green stills that follow the scroll, and the vector brand mark for the Capital emblem.
+- **Type.** Source Serif 4 (display optical size) for display, Hanken Grotesk for text, Plex Mono for data (`t-meta`). `t-eyebrow` is now a quiet running head. The accent-word device and gradient text are removed. `accent` arrays remain in the content model as unused CMS fields.
+- **Surfaces.** Warm paper (`--color-ivory: #f5f4ef`), flat ink, no decorative glows, `glass` only over imagery.
+- **Components.**
+  - `Button`: squared, no magnetic pull or knob.
+  - `InteractiveCard`: no tilt or spotlight.
+  - `CardArrow`: a plain arrow.
+  - Radii follow a 4 / 8 / 12 px scale.
+  - Footer wordmark: letter-spaced GITEX foil without the glow.
+- **Home.** New hero (descriptive H1, "Value in Motion." signature); `TradeIndex` with a cursor preview; registers for Who we are and Why AUREX; partnership quadrants; Green pillars without cards; the inquiry form on a paper panel. The Green track is shorter.
+- **Trade lines.** Category catalogue, standards register (framework · reference · scope), counterparts register.
+- **Heroes.** Typographic heroes for Portfolio, Partnerships, Global Presence, Contact and Privacy; photo heroes only where the page has its own imagery.
+
+### Round 2 — pages, mobile, robustness
+- **About.** Principles as a register with plain names; numbered leadership columns; group structure diagram kept.
+- **Registers everywhere.**
+  - `ModelCards` is shared by home and Partnerships.
+  - `OfferGrid` is reused for the Portfolio approach.
+  - Sectors and corridors use registers and quadrants, with a single "strategic focus" note.
+- **Reveals.** Shorter reveal distances. A `<noscript>` fallback keeps all content and headlines visible without JavaScript. `text-wrap: pretty` is set for paragraphs.
+- **Copy.** Slogan antitheses removed from Why AUREX and the About principles (EN/PL/NL/FR).
+
+### Measured
+| | Before | After |
+|---|---|---|
+| Home height, desktop | 23,435 px | ≈ 21,900 px |
+| Home height, mobile | 27,358 px | ≈ 24,500 px |
+| Food page height, mobile | 14,103 px | 10,911 px |
+| Pages crashing without WebGL | 3 | 0 |
