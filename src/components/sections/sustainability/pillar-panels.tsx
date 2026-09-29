@@ -46,7 +46,6 @@ function Panel({ id, index, content }: { id: GreenPillarId; index: number; conte
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const shift = useRange(scrollYProgress, [0, 1], [-5, 5]);
   const imageY = useTransform(shift, (v: number) => `${v}%`);
-  const numeralY = useRange(scrollYProgress, [0, 1], [70, -70]);
 
   return (
     <li
@@ -77,16 +76,6 @@ function Panel({ id, index, content }: { id: GreenPillarId; index: number; conte
 
       {/* Colour half */}
       <div className={cn("relative overflow-hidden", TONES[index])}>
-        <motion.span
-          aria-hidden
-          style={{ y: numeralY }}
-          className={cn(
-            "pointer-events-none absolute top-[4%] select-none text-[clamp(11rem,24vw,24rem)] font-extralight leading-[0.8] tracking-[-0.07em] text-cream/[0.07] tabular-nums motion-reduce:!transform-none",
-            flip ? "left-[4%]" : "right-[2%]",
-          )}
-        >
-          {pad(index + 1)}
-        </motion.span>
 
         <div
           className={cn(

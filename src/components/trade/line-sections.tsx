@@ -1,6 +1,5 @@
 import type { ComponentType, CSSProperties } from "react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
-import { ButtonLink } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import type { SiteContent } from "@/content/types";
 
@@ -102,24 +101,17 @@ export function Counterparts({
   index,
   trade,
   labels,
-  ctaHref,
 }: {
   index: string;
   trade: Trade;
   labels: Labels;
   tint?: string;
-  ctaHref: string;
 }) {
   return (
     <section className="surface-ink section-y relative">
       <div className="container-x">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <SectionHeading index={index} eyebrow={labels.counterpartsEyebrow} title={labels.counterpartsTitle} size="md" className="lg:col-span-8" />
-          <Reveal delay={0.1} className="lg:col-span-4 lg:justify-self-end">
-            <ButtonLink href={ctaHref} variant="gold">
-              {labels.counterpartsCta}
-            </ButtonLink>
-          </Reveal>
         </div>
         <RevealGroup as="ul" stagger={0.06} className="mt-14 grid border-t border-white/15 sm:grid-cols-2 md:mt-20 lg:grid-cols-4">
           {trade.counterparts.map((c, i) => (

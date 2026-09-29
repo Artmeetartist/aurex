@@ -230,9 +230,9 @@ const pl: SiteContent = {
     },
     why: {
       eyebrow: "Dlaczego AUREX",
-      title: "Na dekady, nie na transakcje.",
-      accent: ["dekady,"],
-      intro: "Odporność ponad szybkość. Reputacja ponad wolumen. Długoterminowa wartość ponad krótkoterminowy zysk.",
+      title: "Na czym opiera się AUREX.",
+      accent: [],
+      intro: "Cztery zobowiązania, które kształtują sposób, w jaki grupa handluje, zarządza aktywami i inwestuje, oraz to, czego mogą od niej oczekiwać partnerzy.",
       pillars: [
         {
           title: "Europejskie standardy",
@@ -248,7 +248,7 @@ const pl: SiteContent = {
         },
         {
           title: "Długoterminowa wartość",
-          text: "Odporność ponad szybkość, reputacja ponad wolumen. Dążymy do pomnażania wartości w kolejnych cyklach i ponad granicami.",
+          text: "Decyzje oceniane w perspektywie cykli, a nie kwartałów, z myślą o pomnażaniu wartości dla grupy i jej partnerów.",
         },
       ],
     },
@@ -1046,15 +1046,15 @@ const pl: SiteContent = {
       title: "Co definiuje AUREX.",
       accent: ["definiuje"],
       items: [
-        { title: "Odporność ponad szybkość", text: "Przedkładamy struktury trwałe nad te, które jedynie szybko się poruszają." },
+        { title: "Odporność", text: "Przedkładamy struktury trwałe nad te, które jedynie szybko się poruszają." },
         {
-          title: "Reputacja ponad wolumen",
+          title: "Reputacja",
           text: "Każde zobowiązanie jest sygnowane nazwą grupy. Kontrahentów i zobowiązania dobieramy z odpowiednią starannością.",
         },
-        { title: "Partnerstwo ponad transakcję", text: "Relacje budujemy tak, by trwały dłużej niż pojedyncza transakcja." },
+        { title: "Partnerstwo", text: "Relacje budujemy tak, by trwały dłużej niż pojedyncza transakcja." },
         {
-          title: "Długoterminowa wartość ponad krótkoterminowy zysk",
-          text: "Cel: pomnażać wartość w kolejnych cyklach i ponad granicami.",
+          title: "Horyzont",
+          text: "Celem jest pomnażanie wartości w kolejnych cyklach i ponad granicami.",
         },
       ],
     },

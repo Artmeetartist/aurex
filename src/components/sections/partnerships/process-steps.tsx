@@ -81,7 +81,7 @@ export function ProcessSteps({ steps, className }: { steps: TitledText[]; classN
               </span>
             )}
 
-            <h3 className="text-[1.75rem] font-light leading-tight tracking-[-0.025em] md:text-[2rem]">
+            <h3 className="font-serif text-[1.625rem] leading-tight tracking-[-0.012em] [font-variation-settings:'opsz'_36] md:text-[1.875rem]">
               <button
                 ref={(el) => {
                   buttons.current[i] = el;
@@ -93,7 +93,7 @@ export function ProcessSteps({ steps, className }: { steps: TitledText[]; classN
                 aria-current={hydrated && current ? "step" : undefined}
                 onClick={() => setActive(i)}
                 onKeyDown={(e) => onKeyDown(e, i)}
-                className="group/step grid min-h-12 w-full cursor-pointer grid-cols-[3rem_1fr] items-start gap-x-6 rounded-2xl text-left sm:gap-x-8 lg:block"
+                className="group/step grid min-h-12 w-full cursor-pointer grid-cols-[3rem_1fr] items-start gap-x-6 rounded-md text-left sm:gap-x-8 lg:block"
               >
                 <span
                   aria-hidden

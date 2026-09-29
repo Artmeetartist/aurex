@@ -229,9 +229,9 @@ const nl: SiteContent = {
     },
     why: {
       eyebrow: "Waarom AUREX",
-      title: "Gebouwd voor decennia, niet voor transacties.",
-      accent: ["decennia,"],
-      intro: "Veerkracht boven snelheid. Reputatie boven volume. Waarde op lange termijn boven winst op korte termijn.",
+      title: "Waarop AUREX is gebouwd.",
+      accent: [],
+      intro: "Vier toezeggingen die bepalen hoe de groep handelt, deelnemingen aanhoudt en investeert, en wat partners van haar mogen verwachten.",
       pillars: [
         {
           title: "Europese standaarden",
@@ -247,7 +247,7 @@ const nl: SiteContent = {
         },
         {
           title: "Waarde op lange termijn",
-          text: "Veerkracht boven snelheid, reputatie boven volume. Wij streven ernaar waarde te laten aangroeien over cycli en grenzen heen.",
+          text: "Beslissingen beoordeeld over cycli in plaats van kwartalen, met als doel waarde te laten aangroeien voor de groep en haar partners.",
         },
       ],
     },
@@ -871,13 +871,13 @@ const nl: SiteContent = {
       title: "Wat AUREX kenmerkt.",
       accent: ["kenmerkt."],
       items: [
-        { title: "Veerkracht boven snelheid", text: "Wij geven de voorkeur aan structuren die standhouden boven structuren die alleen snel bewegen." },
+        { title: "Veerkracht", text: "Wij geven de voorkeur aan structuren die standhouden boven structuren die alleen snel bewegen." },
         {
-          title: "Reputatie boven volume",
+          title: "Reputatie",
           text: "Elke verbintenis draagt de naam van de groep. Tegenpartijen en verbintenissen worden dienovereenkomstig gekozen.",
         },
-        { title: "Partnerschap boven transactie", text: "Relaties worden opgebouwd om langer mee te gaan dan één enkele deal." },
-        { title: "Langetermijnwaarde boven kortetermijnwinst", text: "Het doel: waarde laten aangroeien over cycli en grenzen heen." },
+        { title: "Partnerschap", text: "Relaties worden opgebouwd om langer mee te gaan dan één enkele deal." },
+        { title: "Horizon", text: "Het doel is waarde te laten aangroeien over cycli en grenzen heen." },
       ],
     },
     structure: {

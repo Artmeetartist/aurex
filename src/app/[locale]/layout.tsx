@@ -47,6 +47,12 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
 
   return (
     <html lang={localeMeta[locale].htmlLang} className={`${sans.variable} ${serif.variable} ${mono.variable}`}>
+      <head>
+        {/* Without JavaScript, scroll reveals never run: show everything. */}
+        <noscript>
+          <style>{`[style*="opacity:0"],[style*="opacity: 0"]{opacity:1!important;transform:none!important}[style*="translateY(1"]{transform:none!important}`}</style>
+        </noscript>
+      </head>
       <body className="grain">
         <a
           href="#main"

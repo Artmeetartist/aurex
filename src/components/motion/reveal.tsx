@@ -10,7 +10,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 export function Reveal({
   children,
   delay = 0,
-  y = 28,
+  y = 16,
   className,
   once = true,
   ...props
@@ -20,7 +20,7 @@ export function Reveal({
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once, margin: "0px 0px -12% 0px" }}
-      transition={{ duration: 1.1, ease: EASE, delay }}
+      transition={{ duration: 0.9, ease: EASE, delay }}
       className={className}
       {...props}
     >
@@ -59,7 +59,7 @@ export function RevealItem({
   children,
   className,
   as = "div",
-  y = 24,
+  y = 14,
 }: {
   children: ReactNode;
   className?: string;
@@ -72,7 +72,7 @@ export function RevealItem({
       className={className}
       variants={{
         hidden: { opacity: 0, y },
-        show: { opacity: 1, y: 0, transition: { duration: 1, ease: EASE } },
+        show: { opacity: 1, y: 0, transition: { duration: 0.85, ease: EASE } },
       }}
     >
       {children}

@@ -179,7 +179,6 @@ export default async function TradeLinePage({ params }: PageProps<"/[locale]/tra
         trade={trade}
         labels={tradePage}
         tint={tint}
-        ctaHref={contactHref(locale, "partnership")}
       />
 
       {/* 07 — Other trade lines */}

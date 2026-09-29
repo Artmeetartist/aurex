@@ -1,7 +1,7 @@
+import Link from "next/link";
 import { RevealGroup, RevealItem } from "@/components/motion/reveal";
-import { CardArrow } from "@/components/ui/card-arrow";
+import { ArrowRight } from "@/components/ui/icons";
 import { StatusTag } from "@/components/ui/eyebrow";
-import { InteractiveCard } from "@/components/ui/interactive-card";
 import { sectors } from "@/content/facts";
 import type { SectorId, SiteContent } from "@/content/types";
 import type { Locale } from "@/i18n/config";
@@ -23,43 +23,42 @@ function sectorLink(locale: Locale, content: SiteContent, id: SectorId): { href:
 }
 
 /**
- * Sectors of interest as clickable cards on a dark surface. Every sector is a
- * strategic focus, not an operating business, and is tagged accordingly.
+ * Sectors of interest as a register on a dark surface: one row per sector,
+ * linking to its trade line, AUREX Green or an investment inquiry. Every
+ * sector is a strategic focus, stated once above the list.
  */
 export function SectorColumns({ locale, content }: { locale: Locale; content: SiteContent }) {
   const status = content.common.status.strategic;
 
   return (
-    <RevealGroup as="ul" stagger={0.07} className="grid gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-3">
-      {sectors.map((s, i) => {
-        const sector = content.sectors[s.id];
-        const link = sectorLink(locale, content, s.id);
-        return (
-          <RevealItem as="li" key={s.id} className="h-full">
-            <InteractiveCard href={link.href} tone="dark" className="flex h-full min-h-[19rem] flex-col p-7 md:p-9">
-              <span
-                aria-hidden
-                className="absolute inset-x-7 top-0 h-px origin-left scale-x-0 bg-gold/70 transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover/card:scale-x-100 group-focus-visible/card:scale-x-100 md:inset-x-9"
-              />
-              <span className="flex flex-wrap items-center justify-between gap-4">
-                <span aria-hidden className="t-eyebrow tabular-nums text-gold">
-                  {String(i + 1).padStart(2, "0")}
+    <div>
+      <div className="flex justify-end pb-4">
+        <StatusTag>{status}</StatusTag>
+      </div>
+      <RevealGroup as="ul" stagger={0.05} className="border-t border-white/15">
+        {sectors.map((s, i) => {
+          const sector = content.sectors[s.id];
+          const link = sectorLink(locale, content, s.id);
+          return (
+            <RevealItem as="li" key={s.id} y={10} className="border-b border-white/15">
+              <Link
+                href={link.href}
+                className="group/s grid gap-x-8 gap-y-3 py-7 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-gold md:grid-cols-[3rem_minmax(0,1fr)_minmax(0,1.3fr)_15rem] md:items-baseline md:py-9"
+              >
+                <span className="t-meta text-mist-dim">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="font-serif text-[clamp(1.5rem,2.2vw,2rem)] leading-[1.1] tracking-[-0.015em] text-ivory [font-variation-settings:'opsz'_48]">
+                  {sector.name}
+                </h3>
+                <p className="max-w-xl text-[1rem] leading-relaxed text-mist">{sector.summary}</p>
+                <span className="inline-flex items-center gap-2 text-[0.9375rem] font-medium text-ivory md:justify-self-end">
+                  {link.label}
+                  <ArrowRight size={14} className="transition-transform duration-300 group-hover/s:translate-x-1 motion-reduce:transform-none" />
                 </span>
-                <StatusTag>{status}</StatusTag>
-              </span>
-              <h3 className="mt-10 text-[clamp(1.625rem,2.2vw,2rem)] font-light leading-[1.1] tracking-[-0.026em] text-ivory [text-wrap:balance] md:mt-12">
-                {sector.name}
-              </h3>
-              <p className="mt-4 max-w-sm text-[0.9375rem] leading-relaxed text-mist">{sector.summary}</p>
-              <CardArrow
-                tone="dark"
-                label={link.label}
-                className="mt-auto flex w-full justify-between gap-4 pt-8 text-left group-hover/card:translate-x-0 group-focus-visible/card:translate-x-0"
-              />
-            </InteractiveCard>
-          </RevealItem>
-        );
-      })}
-    </RevealGroup>
+              </Link>
+            </RevealItem>
+          );
+        })}
+      </RevealGroup>
+    </div>
   );
 }

@@ -871,13 +871,13 @@ const en: SiteContent = {
       title: "What defines AUREX.",
       accent: ["defines"],
       items: [
-        { title: "Resilience over speed", text: "We favour structures that endure over those that merely move quickly." },
+        { title: "Resilience", text: "We favour structures that endure over those that merely move quickly." },
         {
-          title: "Reputation over volume",
+          title: "Reputation",
           text: "Every commitment carries the group's name. Counterparts and commitments are chosen accordingly.",
         },
-        { title: "Partnership over transaction", text: "Relationships are built to last beyond a single deal." },
-        { title: "Long-term value over short-term gain", text: "The aim: to compound value across cycles and across borders." },
+        { title: "Partnership", text: "Relationships are built to last beyond a single deal." },
+        { title: "Horizon", text: "The aim is to compound value across cycles and across borders." },
       ],
     },
     structure: {

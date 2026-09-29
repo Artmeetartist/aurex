@@ -12,7 +12,6 @@ import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/cn";
 import { href, tradeHref, tradeIds } from "@/lib/routes";
 import { mailSet } from "./larp/mail-assets";
-import { GreenLoop, tradeIcons } from "./trade-icons";
 
 type Key = TradeId | "green";
 
@@ -94,7 +93,6 @@ export function TradeIndex({
         className={cn("relative border-t", onDark ? "border-white/15" : "border-ink/15")}
       >
         {rows.map((row) => {
-          const Icon = row.key === "green" ? GreenLoop : tradeIcons[row.key as TradeId];
           const preview = previews[row.key];
           return (
             <li key={row.key} className={cn("border-b", onDark ? "border-white/15" : "border-ink/15")}>
@@ -140,7 +138,6 @@ export function TradeIndex({
                 </span>
 
                 <span className={cn("flex items-center justify-end gap-3", onDark ? "text-ivory" : "text-ink")}>
-                  <Icon size={22} className="hidden opacity-40 transition-opacity duration-300 group-hover/row:opacity-80 xl:block" />
                   <ArrowRight
                     size={16}
                     className="transition-transform duration-300 ease-out group-hover/row:translate-x-1 motion-reduce:transform-none"

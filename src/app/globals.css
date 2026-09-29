@@ -226,6 +226,12 @@
     border-radius: 2px;
   }
 
+  p,
+  li,
+  dd {
+    text-wrap: pretty;
+  }
+
   img,
   video,
   canvas {

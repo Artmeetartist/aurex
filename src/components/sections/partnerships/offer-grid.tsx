@@ -1,35 +1,23 @@
 import { RevealGroup, RevealItem } from "@/components/motion/reveal";
-import { InteractiveCard } from "@/components/ui/interactive-card";
 import type { TitledText } from "@/content/types";
 import { cn } from "@/lib/cn";
 
-/** What AUREX brings: a hairline-divided grid of four tiles, for an ink surface. */
+/** What AUREX brings: four columns divided by hairlines, for an ink surface. */
 export function OfferGrid({ items, className }: { items: TitledText[]; className?: string }) {
   return (
-    <RevealGroup
-      as="ul"
-      className={cn(
-        "grid gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 sm:grid-cols-2 xl:grid-cols-4",
-        className,
-      )}
-    >
+    <RevealGroup as="ul" stagger={0.06} className={cn("grid border-t border-white/15 sm:grid-cols-2 xl:grid-cols-4", className)}>
       {items.map((item, i) => (
-        <RevealItem as="li" key={item.title} className="bg-ink">
-          <InteractiveCard
-            tone="dark"
-           
-            className="flex h-full flex-col rounded-none border-0 bg-ink p-8 hover:bg-ink-850 md:p-10"
-          >
-            <span className="t-eyebrow tabular-nums text-gold">{String(i + 1).padStart(2, "0")}</span>
-            <h3 className="mt-14 text-[1.625rem] font-light leading-[1.15] tracking-[-0.025em] text-ivory [text-wrap:balance] md:mt-20 sm:flex sm:min-h-[2.3em] sm:items-end xl:mt-28">
-              {item.title}
-            </h3>
-            <p className="mt-4 max-w-sm text-[0.9375rem] leading-relaxed text-mist">{item.text}</p>
-            <span
-              aria-hidden
-              className="absolute inset-x-8 bottom-0 h-px origin-left scale-x-0 bg-gold/70 transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover/card:scale-x-100 md:inset-x-10"
-            />
-          </InteractiveCard>
+        <RevealItem
+          as="li"
+          key={item.title}
+          y={10}
+          className="border-b border-white/15 py-8 sm:pr-8 xl:border-b-0 xl:border-r xl:py-10 xl:pl-8 xl:first:pl-0 xl:last:border-r-0"
+        >
+          <span className="t-meta text-mist-dim">{String(i + 1).padStart(2, "0")}</span>
+          <h3 className="mt-6 font-serif text-[1.5rem] leading-[1.15] tracking-[-0.012em] text-ivory [font-variation-settings:'opsz'_36] [text-wrap:balance] xl:mt-12">
+            {item.title}
+          </h3>
+          <p className="mt-3 max-w-sm text-[1rem] leading-relaxed text-mist">{item.text}</p>
         </RevealItem>
       ))}
     </RevealGroup>

@@ -231,10 +231,10 @@ const fr: SiteContent = {
     },
     why: {
       eyebrow: "Pourquoi AUREX",
-      title: "Bâti pour les décennies, pas pour les transactions.",
-      accent: ["décennies,"],
+      title: "Ce sur quoi repose AUREX.",
+      accent: [],
       intro:
-        "La résilience plutôt que la vitesse. La réputation plutôt que le volume. La valeur à long terme plutôt que le gain à court terme.",
+        "Quatre engagements qui orientent la manière dont le groupe négocie, détient et investit, et ce que ses partenaires peuvent en attendre.",
       pillars: [
         {
           title: "Standards européens",
@@ -250,7 +250,7 @@ const fr: SiteContent = {
         },
         {
           title: "Valeur de long terme",
-          text: "La résilience plutôt que la vitesse, la réputation plutôt que le volume. Nous visons à faire fructifier la valeur d’un cycle à l’autre, d’une frontière à l’autre.",
+          text: "Des décisions mesurées sur des cycles plutôt que sur des trimestres, avec l’objectif de faire fructifier la valeur pour le groupe et ses partenaires.",
         },
       ],
     },
@@ -1106,20 +1106,20 @@ const fr: SiteContent = {
       accent: ["définit"],
       items: [
         {
-          title: "La résilience plutôt que la vitesse",
+          title: "Résilience",
           text: "Nous privilégions les structures qui durent à celles qui se contentent d’aller vite.",
         },
         {
-          title: "La réputation plutôt que le volume",
+          title: "Réputation",
           text: "Chaque engagement porte le nom du groupe. Contreparties et engagements sont choisis en conséquence.",
         },
         {
-          title: "Le partenariat plutôt que la transaction",
+          title: "Partenariat",
           text: "Les relations sont bâties pour durer au-delà d’une seule opération.",
         },
         {
-          title: "La valeur à long terme plutôt que le gain à court terme",
-          text: "L’objectif : faire fructifier la valeur d’un cycle à l’autre, d’une frontière à l’autre.",
+          title: "Horizon",
+          text: "L’objectif est de faire fructifier la valeur d’un cycle à l’autre, d’une frontière à l’autre.",
         },
       ],
     },

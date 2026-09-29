@@ -1,6 +1,6 @@
+import Link from "next/link";
 import { RevealGroup, RevealItem } from "@/components/motion/reveal";
-import { CardArrow } from "@/components/ui/card-arrow";
-import { InteractiveCard } from "@/components/ui/interactive-card";
+import { ArrowRight } from "@/components/ui/icons";
 import { partnerModels } from "@/content/facts";
 import type { PartnerModelId, SiteContent } from "@/content/types";
 import type { Locale } from "@/i18n/config";
@@ -24,57 +24,75 @@ export function inquiryLabel(content: SiteContent, type: InquiryType): string {
 }
 
 /**
- * The four partnership models as large cards for an ivory surface: name,
- * summary and typical forms of cooperation. The whole card opens the contact
- * form on the matching inquiry type.
+ * The four partnership models as quadrants divided by hairlines: name,
+ * summary, typical forms of cooperation and the matching inquiry link.
+ * `tone="dark"` for paper, `"light"` for ink.
  */
-export function ModelCards({ locale, content, className }: { locale: Locale; content: SiteContent; className?: string }) {
+export function ModelCards({
+  locale,
+  content,
+  tone = "dark",
+  className,
+}: {
+  locale: Locale;
+  content: SiteContent;
+  tone?: "dark" | "light";
+  className?: string;
+}) {
+  const onInk = tone === "light";
   return (
-    <RevealGroup as="ul" className={cn("grid gap-4 md:grid-cols-2 md:gap-5", className)}>
+    <RevealGroup
+      as="ul"
+      stagger={0.06}
+      className={cn("grid border-t md:grid-cols-2", onInk ? "border-white/15" : "border-ink/15", className)}
+    >
       {partnerModels.map((id, i) => {
         const model = content.partnerModels[id];
         const type = inquiryFor(id);
         return (
-          <RevealItem as="li" key={id} className="h-full">
-            <InteractiveCard
+          <RevealItem
+            as="li"
+            key={id}
+            y={12}
+            className={cn(
+              "border-b md:[&:nth-child(even)]:pl-10 md:[&:nth-child(odd)]:border-r md:[&:nth-child(odd)]:pr-10",
+              onInk ? "border-white/15" : "border-ink/15",
+            )}
+          >
+            <Link
               href={contactHref(locale, type)}
-              tone="light"
-             
-              className="flex h-full flex-col rounded-xl bg-ivory-200/55 p-7 hover:bg-ivory focus-visible:bg-ivory sm:p-10 xl:p-12"
+              className={cn(
+                "group/m grid h-full gap-6 py-10 focus-visible:outline-2 focus-visible:outline-offset-[-2px] sm:grid-cols-[3rem_1fr] md:py-12",
+                onInk ? "focus-visible:outline-gold" : "focus-visible:outline-gold-ink",
+              )}
             >
-              <span
-                aria-hidden
-                className="absolute inset-x-7 top-0 h-px origin-left scale-x-0 bg-gold-ink transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover/card:scale-x-100 group-focus-visible/card:scale-x-100 sm:inset-x-10 xl:inset-x-12"
-              />
-              <span aria-hidden className="t-eyebrow tabular-nums text-gold-ink">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-
-              <h3 className="mt-12 max-w-[16ch] text-[clamp(1.75rem,2.6vw,2.5rem)] font-light leading-[1.06] tracking-[-0.03em] text-ink [text-wrap:balance] md:mt-20">
-                {model.name}
-              </h3>
-              <p className="mt-5 max-w-md text-[0.9375rem] leading-relaxed text-stone md:text-base">{model.summary}</p>
-
-              <ul className="mt-10 border-t border-ink/10">
-                {model.examples.map((example) => (
-                  <li
-                    key={example}
-                    className="flex items-center gap-4 border-b border-ink/10 py-3.5 text-[0.9375rem] text-ink/85"
+              <span className={cn("t-meta pt-2", onInk ? "text-mist-dim" : "text-gold-ink")}>{String(i + 1).padStart(2, "0")}</span>
+              <span className="flex flex-col">
+                <span
+                  className={cn(
+                    "font-serif text-[clamp(1.625rem,2.4vw,2.125rem)] leading-[1.1] tracking-[-0.015em] [font-variation-settings:'opsz'_48]",
+                    onInk ? "text-ivory" : "text-ink",
+                  )}
+                >
+                  {model.name}
+                </span>
+                <span className={cn("mt-4 max-w-md text-[1rem] leading-relaxed", onInk ? "text-mist" : "text-stone")}>{model.summary}</span>
+                <span className={cn("mt-6 text-[0.875rem] leading-relaxed", onInk ? "text-ivory/60" : "text-ink/60")}>
+                  {model.examples.join(" · ")}
+                </span>
+                <span className={cn("mt-8 inline-flex items-center gap-2 text-[0.9375rem] font-medium", onInk ? "text-ivory" : "text-ink")}>
+                  <span
+                    className={cn(
+                      "underline underline-offset-[0.3em] transition-[text-decoration-color] duration-300",
+                      onInk ? "decoration-white/30 group-hover/m:decoration-ivory" : "decoration-ink/30 group-hover/m:decoration-ink",
+                    )}
                   >
-                    <span
-                      aria-hidden
-                      className="h-px w-4 shrink-0 bg-gold-ink/70 transition-[width] duration-500 ease-[var(--ease-out-expo)] group-hover/card:w-6"
-                    />
-                    {example}
-                  </li>
-                ))}
-              </ul>
-
-              <CardArrow
-                label={inquiryLabel(content, type)}
-                className="mt-auto flex w-full justify-between gap-4 pt-9 text-left text-[0.9375rem] group-hover/card:translate-x-0 group-focus-visible/card:translate-x-0"
-              />
-            </InteractiveCard>
+                    {inquiryLabel(content, type)}
+                  </span>
+                  <ArrowRight size={14} className="transition-transform duration-300 group-hover/m:translate-x-1 motion-reduce:transform-none" />
+                </span>
+              </span>
+            </Link>
           </RevealItem>
         );
       })}

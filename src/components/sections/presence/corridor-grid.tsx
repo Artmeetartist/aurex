@@ -16,19 +16,19 @@ function route(title: string): [string, string] | null {
  */
 export function CorridorGrid({ items, className }: { items: TitledText[]; className?: string }) {
   return (
-    <RevealGroup as="ul" className={cn("grid gap-4 md:grid-cols-2 md:gap-5", className)}>
+    <RevealGroup as="ul" stagger={0.06} className={cn("grid border-t border-ink/15 md:grid-cols-2", className)}>
       {items.map((item, i) => {
         const ends = route(item.title);
         return (
-          <RevealItem as="li" key={item.title} className="h-full">
+          <RevealItem as="li" key={item.title} y={12} className="h-full border-b border-ink/15 md:[&:nth-child(odd)]:border-r">
             <InteractiveCard
               tone="light"
              
-              className="flex h-full flex-col rounded-xl bg-ivory-200/55 p-7 hover:bg-ivory sm:p-10 xl:p-12"
+              className="flex h-full flex-col rounded-none border-0 bg-transparent py-10 hover:bg-transparent md:px-10 md:[li:nth-child(odd)_&]:pl-0"
             >
-              <span className="t-eyebrow tabular-nums text-gold-ink">{String(i + 1).padStart(2, "0")}</span>
+              <span className="t-meta text-gold-ink">{String(i + 1).padStart(2, "0")}</span>
 
-              <h3 className="mt-12 text-[clamp(1.5rem,2.3vw,2.125rem)] font-light leading-[1.1] tracking-[-0.028em] text-ink md:mt-20">
+              <h3 className="mt-10 font-serif text-[clamp(1.5rem,2.3vw,2.125rem)] leading-[1.1] tracking-[-0.015em] text-ink [font-variation-settings:'opsz'_48] md:mt-14">
                 {ends ? (
                   <>
                     <span className="sr-only">{item.title}</span>
@@ -48,7 +48,7 @@ export function CorridorGrid({ items, className }: { items: TitledText[]; classN
                 )}
               </h3>
 
-              <p className="mt-6 max-w-md text-[0.9375rem] leading-relaxed text-stone md:mt-8">{item.text}</p>
+              <p className="mt-6 max-w-md text-[1rem] leading-relaxed text-stone md:mt-8">{item.text}</p>
             </InteractiveCard>
           </RevealItem>
         );

@@ -31,14 +31,14 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
         <div className="container-x">
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-3">
-              <Eyebrow index="01" tone="dark">
+              <Eyebrow index="01" tone="dark" className="border-t border-ink/15 pt-4">
                 {about.hero.eyebrow}
               </Eyebrow>
             </div>
             <ScrollText text={about.statement} className="t-display-md text-ink lg:col-span-9" />
           </div>
 
-          <div className="mt-28 grid gap-14 border-t border-ink/10 pt-16 lg:grid-cols-12">
+          <div className="mt-24 grid gap-14 md:mt-32 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <div className="lg:sticky lg:top-32">
                 <SectionHeading eyebrow={about.story.eyebrow} title={about.story.title} tone="dark" size="md" />
@@ -59,21 +59,17 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
       <section className="surface-ink section-y">
         <div className="container-x">
           <SectionHeading index="02" eyebrow={about.principles.eyebrow} title={about.principles.title} />
-          <RevealGroup as="ul" className="mt-20 grid gap-4 md:grid-cols-2 md:gap-5">
+          <RevealGroup as="ol" stagger={0.06} className="mt-16 border-t border-white/15 md:mt-20">
             {about.principles.items.map((item, i) => (
-              <RevealItem as="li" key={item.title} className="h-full">
-                <InteractiveCard tone="dark" className="flex h-full flex-col p-8 md:p-12">
-                  <span aria-hidden className="t-eyebrow text-gold">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="mt-14 text-[1.75rem] font-light leading-tight tracking-[-0.025em] text-ivory md:text-[2rem]">
-                    {item.title}
-                  </h3>
-                  <p className="mt-4 max-w-md text-[0.9375rem] leading-relaxed text-mist">{item.text}</p>
-                  <span aria-hidden className="mt-auto block pt-8">
-                    <span className="block h-px w-10 bg-gold/60 transition-[width] duration-700 ease-[var(--ease-out-expo)] group-hover/card:w-full" />
-                  </span>
-                </InteractiveCard>
+              <RevealItem
+                as="li"
+                key={item.title}
+                y={10}
+                className="grid gap-x-8 gap-y-3 border-b border-white/15 py-8 md:grid-cols-[3rem_minmax(0,1fr)_minmax(0,1fr)] md:py-10"
+              >
+                <span className="t-meta pt-2 text-mist-dim">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="t-display-sm text-ivory">{item.title}</h3>
+                <p className="text-[1.0625rem] leading-relaxed text-mist md:pt-2">{item.text}</p>
               </RevealItem>
             ))}
           </RevealGroup>
@@ -93,7 +89,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
 
           <div className="mt-20">
             <Reveal className="mx-auto max-w-md rounded-xl bg-ink p-8 text-center text-ivory">
-              <p className="t-eyebrow text-gold">{about.structure.groupLabel}</p>
+              <p className="t-eyebrow text-mist">{about.structure.groupLabel}</p>
               <p className="mt-3 text-[1.0625rem] text-ivory/85">{about.structure.groupText}</p>
             </Reveal>
             <div aria-hidden className="mx-auto h-12 w-px bg-ink/20" />
@@ -108,12 +104,12 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
                     className="flex flex-1 flex-col bg-ivory-200/60 p-7 hover:bg-ivory focus-visible:bg-ivory"
                   >
                     <span className="flex items-start justify-between gap-4">
-                      <span aria-hidden className="t-eyebrow pt-2 text-gold-ink">
+                      <span aria-hidden className="t-meta pt-1 text-gold-ink">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <CardArrow />
                     </span>
-                    <h3 className="mt-6 text-[1.25rem] font-normal tracking-[-0.015em] text-ink">{content.divisions[d.id].short}</h3>
+                    <h3 className="mt-8 font-serif text-[1.375rem] leading-tight tracking-[-0.01em] text-ink [font-variation-settings:'opsz'_36]">{content.divisions[d.id].short}</h3>
                     <p className="mt-3 text-[0.875rem] leading-relaxed text-stone">{content.divisions[d.id].summary}</p>
                   </InteractiveCard>
                 </RevealItem>
@@ -140,7 +136,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
           <RevealGroup as="ol" className="border-t border-white/10 lg:col-span-6 lg:col-start-7">
             {about.governance.items.map((item, i) => (
               <RevealItem as="li" key={item.title} className="grid grid-cols-[3rem_1fr] gap-4 border-b border-white/10 py-9">
-                <span className="t-eyebrow pt-2 text-gold">{String(i + 1).padStart(2, "0")}</span>
+                <span className="t-meta pt-1.5 text-mist-dim">{String(i + 1).padStart(2, "0")}</span>
                 <div>
                   <h3 className="t-title text-ivory">{item.title}</h3>
                   <p className="mt-3 text-[0.9375rem] leading-relaxed text-mist">{item.text}</p>
