@@ -3,7 +3,7 @@
 Read this first when picking the project up in a new session (local or cloud).
 
 ## Where things stand
-- **Branch.** All work is on `claude/dazzling-fermi-0jxg4y`. There is no `main` branch yet.
+- **Branches.** `main` holds the current site. New work goes on a feature branch and reaches `main` through a pull request.
 - **Stack.** Next.js 16 App Router, React 19, TypeScript, Tailwind CSS v4, motion, Lenis, three.js with react-three-fiber. This Next.js version differs from older releases, so see `AGENTS.md`.
 - **Locales.** EN (primary), PL, NL, FR under `/[locale]/…`. All copy lives in `src/content/locales/*.ts`, typed by `src/content/types.ts`.
 - **Design system.** The "Manifest" direction is described in `docs/design/REDESIGN.md`, which holds the audit, the strategy and the implementation log.
@@ -42,7 +42,7 @@ npm run build && npm start   # production check
 - **Before committing.** Run `tsc` and `lint`, and check the page at 1440 px and 390 px.
 
 ## Open items
-- Create `main` from this branch and open a pull request.
+- Make `main` the default branch on GitHub, and set it as the production branch in Vercel.
 - Replace the hot-linked Unsplash photos with self-hosted or commissioned imagery.
 - Configure inquiry delivery (Resend or webhook) and `NEXT_PUBLIC_SITE_URL` before launch (`docs/DEPLOYMENT.md`).
 - Native-speaker review of the PL/NL/FR strings changed in the redesign (hero title, Why AUREX, About principles).
