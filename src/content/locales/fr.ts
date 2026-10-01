@@ -51,6 +51,18 @@ const fr: SiteContent = {
         title: "Politique de confidentialité",
         description: "Comment sont traitées les informations transmises via le site internet d’AUREX.",
       },
+      legal: {
+        title: "Mentions légales",
+        description: "L’éditeur du site AUREX et les conditions de publication de son contenu.",
+      },
+      terms: {
+        title: "Conditions d’utilisation",
+        description: "Les conditions applicables à l’utilisation du site AUREX.",
+      },
+      cookies: {
+        title: "Politique relative aux cookies",
+        description: "Les cookies déposés par le site AUREX et leur finalité : une préférence de langue, aucun suivi.",
+      },
     },
   },
 
@@ -65,6 +77,9 @@ const fr: SiteContent = {
       partnerships: "Partenariats",
       contact: "Contact",
       privacy: "Confidentialité",
+      legal: "Mentions légales",
+      terms: "Conditions d’utilisation",
+      cookies: "Cookies",
     },
     cta: "Engager le dialogue",
     menu: "Menu",
@@ -1505,6 +1520,198 @@ const fr: SiteContent = {
     ],
   },
 
+  legal: {
+    hero: {
+      eyebrow: "Informations légales",
+      title: "Mentions légales.",
+      intro: "Qui édite ce site, et les conditions dans lesquelles son contenu est publié.",
+    },
+    updated: "Dernière mise à jour : octobre 2026",
+    sections: [
+      {
+        title: "Éditeur du site",
+        paragraphs: [
+          "Ce site est édité par AUREX. Les informations d’immatriculation de l’entité éditrice figurent ci-dessous. Celles qui ne sont pas encore indiquées seront publiées sur cette page.",
+        ],
+        slot: "operator",
+      },
+      {
+        title: "Objet du site",
+        paragraphs: [
+          "Ce site présente le groupe AUREX, son approche et ses domaines d’intérêt stratégique. Il est fourni à titre d’information générale uniquement.",
+          "Les secteurs, marchés et corridors présentés sur ce site sont des domaines d’intérêt. Ils ne décrivent pas des activités, bureaux, filiales ou résultats existants.",
+        ],
+      },
+      {
+        title: "Absence d’offre ou de conseil",
+        paragraphs: [
+          "Aucun élément de ce site ne constitue une offre de vente, ou une sollicitation d’offre d’achat, de titres, d’instruments financiers ou de participations dans une entreprise. Il ne constitue pas davantage un conseil en investissement, juridique, fiscal ou autre. Toute discussion relative à un investissement ou à un partenariat est soumise à des accords écrits distincts et au droit applicable aux parties.",
+        ],
+      },
+      {
+        title: "Exactitude des informations",
+        paragraphs: [
+          "Le contenu est préparé avec soin et revu périodiquement, mais AUREX ne garantit pas qu’il soit complet, exact ou à jour. Les déclarations relatives aux intentions et aux domaines d’intérêt sont prospectives et peuvent évoluer sans préavis.",
+        ],
+      },
+      {
+        title: "Liens externes",
+        paragraphs: [
+          "Ce site peut contenir des liens vers des sites tiers. AUREX n’exerce aucun contrôle sur leur contenu et décline toute responsabilité à cet égard. Un lien ne vaut pas recommandation.",
+        ],
+      },
+      {
+        title: "Propriété intellectuelle",
+        paragraphs: [
+          "Le nom et les marques AUREX, ainsi que les textes, graphismes, mise en page et code de ce site, sont protégés par le droit de la propriété intellectuelle. Toute utilisation au-delà d’une consultation personnelle et non commerciale requiert une autorisation écrite préalable.",
+        ],
+      },
+      {
+        title: "Contact",
+        paragraphs: [
+          "Les questions relatives aux présentes mentions peuvent être adressées via le formulaire de demande de la page contact.",
+        ],
+      },
+    ],
+    operator: {
+      legalName: "Dénomination sociale",
+      registeredOffice: "Siège social",
+      registration: "Numéros d’immatriculation et de TVA",
+      email: "E-mail",
+      hosting: "Hébergeur",
+      pending: "À publier",
+    },
+  },
+
+  terms: {
+    hero: {
+      eyebrow: "Informations légales",
+      title: "Conditions d’utilisation.",
+      intro: "Les conditions applicables lorsque vous utilisez ce site.",
+    },
+    updated: "Dernière mise à jour : octobre 2026",
+    sections: [
+      {
+        title: "Acceptation",
+        paragraphs: [
+          "En accédant à ce site ou en l’utilisant, vous acceptez les présentes conditions. Si vous ne les acceptez pas, nous vous invitons à ne pas utiliser le site.",
+        ],
+      },
+      {
+        title: "Utilisation du site",
+        paragraphs: [
+          "Vous pouvez consulter le site et utiliser son formulaire de demande à des fins professionnelles légitimes. Vous vous engagez à ne pas perturber son fonctionnement ou sa sécurité, à ne pas tenter d’accéder sans autorisation au site ou à ses systèmes, à ne pas transmettre par ses formulaires de contenus illicites, trompeurs ou automatisés, et à ne pas copier ou extraire son contenu de manière massive.",
+        ],
+      },
+      {
+        title: "Information uniquement",
+        paragraphs: [
+          "Le site est fourni à titre d’information générale. Il ne constitue ni une offre, ni une sollicitation, ni un conseil de quelque nature que ce soit. Ni son utilisation ni l’envoi d’une demande ne créent de contrat, de partenariat ou de relation d’investissement.",
+        ],
+      },
+      {
+        title: "Demandes",
+        paragraphs: [
+          "L’envoi d’une demande n’oblige pas AUREX à y répondre, à engager des discussions ou à en préserver la confidentialité au-delà de ce que prévoit la politique de confidentialité. Merci de ne pas inclure d’informations confidentielles ou commercialement sensibles dans un premier message.",
+        ],
+      },
+      {
+        title: "Propriété intellectuelle",
+        paragraphs: [
+          "L’ensemble du contenu de ce site, y compris le nom et les marques AUREX, les textes, images, graphismes et le code, appartient à AUREX ou à ses concédants de licence. Aucune licence n’est accordée, si ce n’est celle de consulter le site conformément à sa destination.",
+        ],
+      },
+      {
+        title: "Disponibilité",
+        paragraphs: [
+          "Le site est fourni tel quel et selon sa disponibilité. AUREX peut à tout moment, sans préavis, modifier, suspendre ou retirer tout ou partie du site.",
+        ],
+      },
+      {
+        title: "Limitation de responsabilité",
+        paragraphs: [
+          "Dans toute la mesure permise par la loi, AUREX ne saurait être tenue responsable d’une perte ou d’un dommage résultant de l’utilisation de ce site ou de son contenu, ou de la confiance qui leur est accordée. Rien dans les présentes conditions ne limite une responsabilité qui ne peut l’être en vertu du droit applicable.",
+        ],
+      },
+      {
+        title: "Modification des conditions",
+        paragraphs: [
+          "Les présentes conditions peuvent être mises à jour périodiquement. La version publiée sur cette page s’applique à compter de sa date de publication.",
+        ],
+      },
+      {
+        title: "Droit applicable",
+        paragraphs: [
+          "Les présentes conditions sont régies par le droit du pays dans lequel l’éditeur de ce site est immatriculé, tel qu’indiqué dans les mentions légales. Cela ne vous prive pas des protections impératives dont vous bénéficiez en vertu du droit de votre pays de résidence.",
+        ],
+      },
+    ],
+  },
+
+  cookies: {
+    hero: {
+      eyebrow: "Informations légales",
+      title: "Politique relative aux cookies.",
+      intro: "Les cookies déposés par ce site, et pourquoi.",
+    },
+    updated: "Dernière mise à jour : octobre 2026",
+    sections: [
+      {
+        title: "Qu’est-ce qu’un cookie",
+        paragraphs: [
+          "Un cookie est un petit fichier texte qu’un site dépose dans votre navigateur. Il permet au site de conserver des informations d’une visite à l’autre.",
+        ],
+      },
+      {
+        title: "Cookies utilisés sur ce site",
+        paragraphs: [
+          "Ce site dépose un seul cookie propriétaire, et uniquement lorsque vous choisissez une langue à l’aide du sélecteur de langue. Il ne contient aucune donnée personnelle.",
+        ],
+        slot: "register",
+      },
+      {
+        title: "Ce que ce site n’utilise pas",
+        paragraphs: [
+          "Ce site n’utilise aucun cookie de mesure d’audience, publicitaire, de réseaux sociaux ou de suivi, ni aucun cookie tiers. Votre navigation ne fait l’objet d’aucun profilage.",
+        ],
+      },
+      {
+        title: "Consentement",
+        paragraphs: [
+          "Le cookie de langue est strictement nécessaire à la fourniture d’une fonctionnalité que vous avez expressément demandée ; il est donc déposé sans bandeau de consentement. Si des cookies de mesure d’audience ou d’autres cookies non essentiels venaient à être introduits, cette politique serait mise à jour et votre consentement serait recueilli au préalable.",
+        ],
+      },
+      {
+        title: "Gérer les cookies",
+        paragraphs: [
+          "Vous pouvez à tout moment consulter et supprimer les cookies dans les paramètres de votre navigateur. Si vous supprimez le cookie de langue, le site choisira simplement une langue selon les préférences de votre navigateur lors de votre prochaine visite.",
+        ],
+      },
+      {
+        title: "Modification de cette politique",
+        paragraphs: [
+          "Cette politique est mise à jour dès que les cookies utilisés par ce site changent.",
+        ],
+      },
+    ],
+    register: {
+      caption: "Cookies déposés par ce site",
+      columns: {
+        name: "Cookie",
+        purpose: "Finalité",
+        duration: "Durée",
+        category: "Type",
+      },
+      rows: {
+        locale: {
+          purpose: "Mémorise la langue que vous avez choisie.",
+          duration: "12 mois",
+          category: "Strictement nécessaire, propriétaire",
+        },
+      },
+    },
+  },
+
   inquiry: {
     title: "Demande",
     types: {
@@ -1557,7 +1764,7 @@ const fr: SiteContent = {
     groups: { group: "Groupe", businesses: "Activités", contact: "Demandes" },
     rights: "Tous droits réservés.",
     languages: "Langues",
-    legal: "Mentions légales",
+    legal: "Informations légales",
   },
 };
 

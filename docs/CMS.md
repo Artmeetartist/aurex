@@ -19,7 +19,7 @@ export function getContent(locale: Locale) {
 }
 ```
 
-- `SiteContent` (`src/content/types.ts`) is the contract. Its top-level keys already follow CMS lines: `meta`, `nav`, `common`, `inquiry`, `notFound` and `footer` are settings; `home` and the page keys (`about`, `tradeHub`, `tradePage`, `sustainability`, `portfolio`, `presence`, `leadership`, `partnerships`, `contact`, `privacy`) are page globals; `divisions`, `sectors`, `markets`, `partnerModels`, `trades` and `greenPillars` are collections keyed by id.
+- `SiteContent` (`src/content/types.ts`) is the contract. Its top-level keys already follow CMS lines: `meta`, `nav`, `common`, `inquiry`, `notFound` and `footer` are settings; `home` and the page keys (`about`, `tradeHub`, `tradePage`, `sustainability`, `portfolio`, `presence`, `leadership`, `partnerships`, `contact`, `privacy`, `legal`, `terms`, `cookies`) are page globals; `divisions`, `sectors`, `markets`, `partnerModels`, `trades` and `greenPillars` are collections keyed by id.
 - Pages call `loadPage(params)` (`src/lib/page.ts`) → `getContent(locale)`. No component imports a locale module directly.
 - **Facts are the second seam.** `src/content/facts.ts` holds the locale-independent structure: ids and order of divisions, sectors, markets and partner models; globe coordinates; corridors; `company`; `leaders`; `holdings`; `offices`. Several pages and sections import it directly; list them with `grep -rl "@/content/facts" src`.
   When facts move to the CMS, add `getFacts(): Promise<Facts>` to `ContentSource` (with `Facts` typed from the current exports), load it in `loadPage`, and pass it down in place of the direct imports.
@@ -50,9 +50,9 @@ Mark every copy field `localized: true`. Ids, slugs, coordinates, ordering, stat
 
 | Global | Holds (`SiteContent` path) | Notes |
 | --- | --- | --- |
-| **Settings** | `meta` (siteName, tagline, signature, description, per-route `pages` SEO), `nav`, `common`, `footer`, `notFound`, `inquiry` (form copy and validation messages) | Organise in tabs: *Brand & SEO*, *Navigation*, *Interface*, *Inquiry form*. Add a *Company* tab for the confirmed company facts (`legalName`, `registeredOffice`, `registration`, `publicEmail`), each wrapped in the `confirmation` group from §3. Keep the prototype's SEO defaults, including `titleSuffix` " — AUREX". |
+| **Settings** | `meta` (siteName, tagline, signature, description, per-route `pages` SEO), `nav`, `common`, `footer`, `notFound`, `inquiry` (form copy and validation messages) | Organise in tabs: *Brand & SEO*, *Navigation*, *Interface*, *Inquiry form*. Add a *Company* tab for the confirmed company facts (`legalName`, `registeredOffice`, `registration`, `hostingProvider`, `publicEmail`), each wrapped in the `confirmation` group from §3. Keep the prototype's SEO defaults, including `titleSuffix` " — AUREX". |
 | **Home** | `home` (hero, who, motion chapters, trade, green, reach, capital, why, partnerships, leadership, contact) | Groups mirror the section keys. `accent` arrays become localized `text` fields with `hasMany: true`. `motion.chapters[].division` is a relationship to **Divisions**. |
-| **About**, **TradeHub**, **TradePage**, **Sustainability**, **Portfolio**, **Presence**, **Leadership**, **Partnerships**, **Contact**, **Privacy** | One global per page-level key, same shape as `SiteContent[key]` (`tradePage` holds the shared labels of the trade line template) | Page globals keep the 1:1 mapping trivial. If AUREX later wants free-form pages, move these to a block-based `Pages` collection. |
+| **About**, **TradeHub**, **TradePage**, **Sustainability**, **Portfolio**, **Presence**, **Leadership**, **Partnerships**, **Contact**, **Privacy**, **Legal**, **Terms**, **Cookies** | One global per page-level key, same shape as `SiteContent[key]` (`tradePage` holds the shared labels of the trade line template) | Page globals keep the 1:1 mapping trivial. If AUREX later wants free-form pages, move these to a block-based `Pages` collection. |
 
 ### Collections
 
@@ -125,7 +125,7 @@ export const payloadSource: ContentSource = {
     const list = (collection: string) =>
       payload.find({ collection, locale, where: confirmed, sort: "order", limit: 100, depth: 1, draft: false });
 
-    const pages = ["home", "about", "trade-hub", "trade-page", "sustainability", "portfolio", "presence", "leadership", "partnerships", "contact", "privacy"];
+    const pages = ["home", "about", "trade-hub", "trade-page", "sustainability", "portfolio", "presence", "leadership", "partnerships", "contact", "privacy", "legal", "terms", "cookies"];
     const collections = ["divisions", "sectors", "markets", "partner-models", "trades", "green-pillars"];
 
     const [settings, pageDocs, collectionDocs] = await Promise.all([

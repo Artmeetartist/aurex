@@ -6,7 +6,7 @@ import { ButtonLink } from "@/components/ui/button";
 import type { SiteContent } from "@/content/types";
 import { localeMeta, locales, type Locale } from "@/i18n/config";
 import { cn } from "@/lib/cn";
-import { contactHref, href, tradeHref, tradeIds, type RouteKey } from "@/lib/routes";
+import { contactHref, href, legalRoutes, tradeHref, tradeIds, type RouteKey } from "@/lib/routes";
 
 export function SiteFooter({ locale, content }: { locale: Locale; content: SiteContent }) {
   const { footer, nav, meta, inquiry, trades, home } = content;
@@ -75,9 +75,17 @@ export function SiteFooter({ locale, content }: { locale: Locale; content: SiteC
             © {year} {meta.siteName}. {footer.rights}
           </p>
           <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
-            <Link href={href(locale, "privacy")} className="inline-flex min-h-11 items-center hover:text-ivory">
-              {nav.labels.privacy}
-            </Link>
+            <nav aria-label={footer.legal}>
+              <ul className="flex flex-wrap items-center gap-x-6">
+                {legalRoutes.map((r) => (
+                  <li key={r}>
+                    <Link href={href(locale, r)} className="inline-flex min-h-11 items-center hover:text-ivory">
+                      {nav.labels[r]}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
             <nav aria-label={footer.languages} className="flex items-center gap-1">
               {locales.map((l) => (
                 <Link

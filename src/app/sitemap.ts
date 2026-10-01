@@ -17,6 +17,9 @@ const hints: Record<RouteKey, { changeFrequency: Entry["changeFrequency"]; prior
   partnerships: { changeFrequency: "monthly", priority: 0.7 },
   contact: { changeFrequency: "yearly", priority: 0.6 },
   privacy: { changeFrequency: "yearly", priority: 0.2 },
+  legal: { changeFrequency: "yearly", priority: 0.2 },
+  terms: { changeFrequency: "yearly", priority: 0.2 },
+  cookies: { changeFrequency: "yearly", priority: 0.2 },
 };
 
 /**
