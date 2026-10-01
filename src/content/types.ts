@@ -36,6 +36,17 @@ export type PageHero = {
   intro: string;
 };
 
+/**
+ * A legal document page. A section may name a `slot`, which the page fills
+ * with structured content (a facts register, a cookie table) after the
+ * section's paragraphs, so the order of sections stays editable as content.
+ */
+export type LegalDocument<Slot extends string = never> = {
+  hero: PageHero;
+  updated: string;
+  sections: { title: string; paragraphs: string[]; slot?: Slot }[];
+};
+
 export type SiteContent = {
   meta: {
     siteName: string;
@@ -255,10 +266,30 @@ export type SiteContent = {
     direct: { title: string; emailLabel: string; emailPending: string; responseNote: string };
   };
 
-  privacy: {
-    hero: PageHero;
-    updated: string;
-    sections: { title: string; paragraphs: string[] }[];
+  privacy: LegalDocument;
+
+  /** Legal notice / imprint. The operator register reads from `company` in facts.ts. */
+  legal: LegalDocument<"operator"> & {
+    operator: {
+      legalName: string;
+      registeredOffice: string;
+      registration: string;
+      email: string;
+      hosting: string;
+      /** Shown in place of any detail AUREX has not yet confirmed. */
+      pending: string;
+    };
+  };
+
+  terms: LegalDocument;
+
+  cookies: LegalDocument<"register"> & {
+    register: {
+      caption: string;
+      columns: { name: string; purpose: string; duration: string; category: string };
+      /** Keyed by cookie; the cookie name itself comes from config so it cannot drift. */
+      rows: { locale: { purpose: string; duration: string; category: string } };
+    };
   };
 
   inquiry: {

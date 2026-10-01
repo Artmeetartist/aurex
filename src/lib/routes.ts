@@ -10,6 +10,9 @@ export const routes = {
   partnerships: "/partnerships",
   contact: "/contact",
   privacy: "/privacy",
+  legal: "/legal",
+  terms: "/terms",
+  cookies: "/cookies",
 } as const;
 
 export type RouteKey = keyof typeof routes;
@@ -18,6 +21,11 @@ export const routeKeys = Object.keys(routes) as RouteKey[];
 
 /** Primary navigation order. */
 export const navRoutes: RouteKey[] = ["about", "trade", "sustainability", "portfolio", "presence", "partnerships"];
+
+/** Legal documents, in the order they are listed in the footer and on each legal page. */
+export const legalRoutes = ["legal", "privacy", "terms", "cookies"] as const satisfies readonly RouteKey[];
+
+export type LegalRouteKey = (typeof legalRoutes)[number];
 
 /** Trade line pages: /trade/[slug]. */
 export const tradeSlugs = {

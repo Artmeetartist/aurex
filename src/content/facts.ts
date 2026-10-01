@@ -16,6 +16,8 @@ export const company = {
   registeredOffice: null as string | null,
   /** Company registration / VAT number — to be supplied. */
   registration: null as string | null,
+  /** Website hosting provider (name and address), for the legal notice — to be supplied. */
+  hostingProvider: null as string | null,
   /** Public inquiries mailbox. Set NEXT_PUBLIC_CONTACT_EMAIL once the domain mailbox exists. */
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || null,
 };

@@ -147,6 +147,9 @@ NODE_ENV=production PORT=3000 npm run start
 - [ ] At least one inquiry channel configured; a test inquiry received by email and/or webhook
 - [ ] `NEXT_PUBLIC_CONTACT_EMAIL` set once AUREX confirms the mailbox (or deliberately left empty)
 - [ ] Privacy notice completed with the data controller's details (see `docs/SOURCE_OF_TRUTH.md` §18)
+- [ ] Legal notice (`/legal`) completed: `legalName`, `registeredOffice`, `registration` and `hostingProvider` set in `src/content/facts.ts`. Rows still unset show "To be published"
+- [ ] Legal notice, terms of use and cookie policy reviewed by counsel for the operating entity's jurisdiction (e.g. a French *directeur de la publication*, Polish KRS/NIP, Dutch KvK fields)
+- [ ] Cookie policy still accurate: it lists only `AUREX_LOCALE`. Adding analytics or any other non-essential cookie requires updating `cookies.register` in every locale and a consent mechanism first
 - [ ] Social preview checked (for example LinkedIn Post Inspector) for `/en` and one other locale
 - [ ] Security headers present (`curl -I https://<domain>/en`): `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`; no `X-Powered-By`
 - [ ] `/en/does-not-exist` returns the branded 404 with status `404`

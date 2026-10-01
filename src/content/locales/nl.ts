@@ -51,6 +51,18 @@ const nl: SiteContent = {
         title: "Privacyverklaring",
         description: "Hoe AUREX omgaat met informatie die via de website wordt verstrekt.",
       },
+      legal: {
+        title: "Juridische informatie",
+        description: "De exploitant van de AUREX-website en de voorwaarden waaronder de inhoud wordt gepubliceerd.",
+      },
+      terms: {
+        title: "Gebruiksvoorwaarden",
+        description: "De voorwaarden die gelden voor het gebruik van de AUREX-website.",
+      },
+      cookies: {
+        title: "Cookiebeleid",
+        description: "Welke cookies de AUREX-website plaatst en waarom: één taalvoorkeur, geen tracking.",
+      },
     },
   },
 
@@ -65,6 +77,9 @@ const nl: SiteContent = {
       partnerships: "Partnerschappen",
       contact: "Contact",
       privacy: "Privacy",
+      legal: "Juridische informatie",
+      terms: "Gebruiksvoorwaarden",
+      cookies: "Cookiebeleid",
     },
     cta: "Start een gesprek",
     menu: "Menu",
@@ -1214,6 +1229,198 @@ const nl: SiteContent = {
         ],
       },
     ],
+  },
+
+  legal: {
+    hero: {
+      eyebrow: "Juridisch",
+      title: "Juridische informatie.",
+      intro: "Wie deze website exploiteert, en onder welke voorwaarden de inhoud wordt gepubliceerd.",
+    },
+    updated: "Laatst bijgewerkt: oktober 2026",
+    sections: [
+      {
+        title: "Exploitant van de website",
+        paragraphs: [
+          "Deze website wordt gepubliceerd door AUREX. De geregistreerde gegevens van de exploiterende entiteit staan hieronder. Gegevens die nog niet zijn vermeld, worden op deze pagina gepubliceerd.",
+        ],
+        slot: "operator",
+      },
+      {
+        title: "Doel van deze website",
+        paragraphs: [
+          "Deze website presenteert de AUREX-groep, haar aanpak en haar strategische aandachtsgebieden. Zij dient uitsluitend ter algemene informatie.",
+          "De sectoren, markten en corridors op deze website zijn aandachtsgebieden. Zij zijn geen weergave van huidige activiteiten, kantoren, dochterondernemingen of resultaten.",
+        ],
+      },
+      {
+        title: "Geen aanbod of advies",
+        paragraphs: [
+          "Niets op deze website is een aanbod tot verkoop van, of een uitnodiging tot het doen van een aanbod tot aankoop van, effecten, financiële instrumenten of belangen in enige onderneming. Evenmin is het beleggings-, juridisch, fiscaal of ander professioneel advies. Gesprekken over investeringen of partnerschappen zijn onderworpen aan afzonderlijke schriftelijke overeenkomsten en aan het recht dat op de partijen van toepassing is.",
+        ],
+      },
+      {
+        title: "Juistheid van informatie",
+        paragraphs: [
+          "De inhoud wordt zorgvuldig opgesteld en periodiek herzien, maar AUREX garandeert niet dat deze volledig, juist of actueel is. Uitspraken over voornemens en aandachtsgebieden zijn toekomstgericht en kunnen zonder voorafgaande kennisgeving wijzigen.",
+        ],
+      },
+      {
+        title: "Externe links",
+        paragraphs: [
+          "Deze website kan links bevatten naar websites van derden. AUREX heeft geen zeggenschap over de inhoud daarvan en aanvaardt daarvoor geen verantwoordelijkheid. Een link houdt geen aanbeveling in.",
+        ],
+      },
+      {
+        title: "Intellectueel eigendom",
+        paragraphs: [
+          "De naam en merken van AUREX, en de teksten, afbeeldingen, vormgeving en code van deze website, zijn beschermd door het intellectuele-eigendomsrecht. Elk gebruik dat verder gaat dan persoonlijk, niet-commercieel raadplegen vereist voorafgaande schriftelijke toestemming.",
+        ],
+      },
+      {
+        title: "Contact",
+        paragraphs: [
+          "Vragen over deze informatie kunt u stellen via het aanvraagformulier op de contactpagina.",
+        ],
+      },
+    ],
+    operator: {
+      legalName: "Statutaire naam",
+      registeredOffice: "Statutaire zetel",
+      registration: "Registratie- en btw-nummers",
+      email: "E-mail",
+      hosting: "Hostingprovider",
+      pending: "Wordt gepubliceerd",
+    },
+  },
+
+  terms: {
+    hero: {
+      eyebrow: "Juridisch",
+      title: "Gebruiks\u00advoorwaarden.",
+      intro: "De voorwaarden die gelden wanneer u deze website gebruikt.",
+    },
+    updated: "Laatst bijgewerkt: oktober 2026",
+    sections: [
+      {
+        title: "Aanvaarding",
+        paragraphs: [
+          "Door deze website te bezoeken of te gebruiken, gaat u akkoord met deze voorwaarden. Gaat u niet akkoord, gebruik de website dan niet.",
+        ],
+      },
+      {
+        title: "Gebruik van de website",
+        paragraphs: [
+          "U mag de website raadplegen en het aanvraagformulier gebruiken voor legitieme zakelijke doeleinden. U verstoort de werking of beveiliging van de website niet, probeert geen onbevoegde toegang te krijgen tot de website of de onderliggende systemen, dient via de formulieren geen onrechtmatige, misleidende of geautomatiseerde inhoud in, en kopieert of scrapet de inhoud niet op grote schaal.",
+        ],
+      },
+      {
+        title: "Uitsluitend informatief",
+        paragraphs: [
+          "De website dient ter algemene informatie. Zij is geen aanbod, uitnodiging of advies van welke aard ook. Door het gebruik ervan of het indienen van een aanvraag ontstaat geen overeenkomst, partnerschap of investeringsrelatie.",
+        ],
+      },
+      {
+        title: "Aanvragen",
+        paragraphs: [
+          "Het indienen van een aanvraag verplicht AUREX niet om te reageren, gesprekken aan te gaan of de aanvraag vertrouwelijk te behandelen buiten wat in de privacyverklaring is beschreven. Neem in een eerste bericht geen vertrouwelijke of commercieel gevoelige informatie op.",
+        ],
+      },
+      {
+        title: "Intellectueel eigendom",
+        paragraphs: [
+          "Alle inhoud van deze website, waaronder de naam en merken van AUREX, teksten, beelden, afbeeldingen en code, behoort toe aan AUREX of haar licentiegevers. Er wordt geen licentie verleend, behalve om de website voor het beoogde doel te raadplegen.",
+        ],
+      },
+      {
+        title: "Beschikbaarheid",
+        paragraphs: [
+          "De website wordt aangeboden zoals deze is en zoals beschikbaar. AUREX kan elk onderdeel ervan op elk moment zonder voorafgaande kennisgeving wijzigen, opschorten of intrekken.",
+        ],
+      },
+      {
+        title: "Beperking van aansprakelijkheid",
+        paragraphs: [
+          "Voor zover wettelijk toegestaan is AUREX niet aansprakelijk voor verlies of schade die voortvloeit uit het gebruik van, of het vertrouwen op, deze website of de inhoud ervan. Niets in deze voorwaarden beperkt aansprakelijkheid die op grond van het toepasselijke recht niet kan worden beperkt.",
+        ],
+      },
+      {
+        title: "Wijzigingen",
+        paragraphs: [
+          "Deze voorwaarden kunnen van tijd tot tijd worden bijgewerkt. De op deze pagina gepubliceerde versie geldt vanaf de datum van publicatie.",
+        ],
+      },
+      {
+        title: "Toepasselijk recht",
+        paragraphs: [
+          "Op deze voorwaarden is het recht van toepassing van het land waar de exploitant van deze website is geregistreerd, zoals vermeld in de juridische informatie. Dit laat de dwingende bescherming onverlet die u geniet op grond van het recht van uw woonland.",
+        ],
+      },
+    ],
+  },
+
+  cookies: {
+    hero: {
+      eyebrow: "Juridisch",
+      title: "Cookiebeleid.",
+      intro: "Welke cookies deze website plaatst, en waarom.",
+    },
+    updated: "Laatst bijgewerkt: oktober 2026",
+    sections: [
+      {
+        title: "Wat cookies zijn",
+        paragraphs: [
+          "Cookies zijn kleine tekstbestanden die een website in uw browser opslaat. Hiermee kan de site informatie onthouden tussen bezoeken.",
+        ],
+      },
+      {
+        title: "Cookies op deze website",
+        paragraphs: [
+          "Deze website plaatst één eigen cookie, en alleen wanneer u met de taalkeuzeschakelaar een taal kiest. Deze cookie bevat geen persoonsgegevens.",
+        ],
+        slot: "register",
+      },
+      {
+        title: "Wat deze website niet gebruikt",
+        paragraphs: [
+          "Deze website gebruikt geen analytische, advertentie-, social-media- of andere trackingcookies, en geen cookies van derden. Uw surfgedrag wordt niet geprofileerd.",
+        ],
+      },
+      {
+        title: "Toestemming",
+        paragraphs: [
+          "De taalcookie is strikt noodzakelijk om een functie te leveren waar u uitdrukkelijk om hebt gevraagd, en wordt daarom zonder toestemmingsbanner geplaatst. Worden er ooit analytische of andere niet-noodzakelijke cookies ingevoerd, dan wordt dit beleid bijgewerkt en wordt eerst om uw toestemming gevraagd.",
+        ],
+      },
+      {
+        title: "Cookies beheren",
+        paragraphs: [
+          "U kunt cookies op elk moment bekijken en verwijderen in de instellingen van uw browser. Verwijdert u de taalcookie, dan kiest de website bij uw volgende bezoek eenvoudig een taal op basis van uw browservoorkeuren.",
+        ],
+      },
+      {
+        title: "Wijzigingen in dit beleid",
+        paragraphs: [
+          "Dit beleid wordt bijgewerkt zodra de cookies die deze website gebruikt veranderen.",
+        ],
+      },
+    ],
+    register: {
+      caption: "Cookies die deze website plaatst",
+      columns: {
+        name: "Cookie",
+        purpose: "Doel",
+        duration: "Bewaartermijn",
+        category: "Soort",
+      },
+      rows: {
+        locale: {
+          purpose: "Onthoudt de taal die u hebt gekozen.",
+          duration: "12 maanden",
+          category: "Strikt noodzakelijk, eigen cookie",
+        },
+      },
+    },
   },
 
   inquiry: {
