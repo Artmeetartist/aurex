@@ -1,10 +1,9 @@
 "use client";
 
 import { useLenis } from "lenis/react";
-import { motion, useMotionValueEvent, useScroll, useTransform } from "motion/react";
+import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { TextLink } from "@/components/ui/button";
-import { Eyebrow } from "@/components/ui/eyebrow";
 import type { SiteContent } from "@/content/types";
 import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/cn";
@@ -44,10 +43,10 @@ function Chapter({ index, current, children }: { index: number; current: number;
     <div
       aria-hidden={state !== "active"}
       className={cn(
-        "absolute inset-x-0 bottom-0 transition-[opacity,transform] duration-700 ease-[var(--ease-out-expo)]",
+        "col-start-1 row-start-1 transition-[opacity,transform] duration-700 ease-[var(--ease-out-expo)]",
         state === "active" && "translate-y-0 opacity-100",
-        state === "past" && "-translate-y-8 opacity-0",
-        state === "future" && "translate-y-8 opacity-0",
+        state === "past" && "-translate-y-6 opacity-0",
+        state === "future" && "translate-y-6 opacity-0",
       )}
     >
       {children}
@@ -166,77 +165,55 @@ export function ValueInMotion({ locale, content }: { locale: Locale; content: Si
     else window.scrollTo({ top: target, behavior: "smooth" });
   };
 
-  const railScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1.08, 1]);
-
   return (
-    <section ref={section} aria-labelledby="motion-title" className="surface-ink relative h-[380vh] md:h-[440vh]">
+    <section ref={section} aria-labelledby="motion-title" className="surface-ink relative h-[200vh]">
+      {/* One screen of travel: the footage scrubs from sea to the connected port beside the chapter text. */}
       <div className="sticky top-0 h-[100svh] overflow-hidden">
-        <motion.canvas
-          ref={canvas}
-          style={{ scale: imageScale }}
-          className="absolute inset-0 h-full w-full bg-ink-850"
-          aria-hidden
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/35 to-ink/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/70" />
+        <div className="container-x grid h-full grid-rows-[auto_minmax(0,1fr)_auto] gap-6 pb-6 pt-[calc(var(--header-h)+1.5rem)] md:gap-8 md:pb-10 lg:grid-cols-12 lg:grid-rows-[auto_minmax(0,1fr)] lg:gap-x-10 lg:gap-y-0 lg:pb-14 lg:pt-[calc(var(--header-h)+3rem)]">
+          <h2 id="motion-title" className="t-display-md max-w-[20ch] text-ivory lg:col-span-5 lg:row-start-1 lg:max-w-none">
+            {copy.title}
+          </h2>
 
-        <div className="container-x relative flex h-full flex-col pb-14 pt-[calc(var(--header-h)+2.5rem)] md:pb-20">
-          <div className="max-w-3xl">
-            <Eyebrow index="02">{copy.eyebrow}</Eyebrow>
-            <h2 id="motion-title" className="t-display-md mt-6 max-w-[18ch] text-ivory">
-              {copy.title}
-            </h2>
+          <div className="relative overflow-hidden rounded-xl bg-ink-850 lg:col-span-7 lg:col-start-6 lg:row-span-2 lg:row-start-1">
+            <canvas ref={canvas} className="absolute inset-0 h-full w-full" aria-hidden />
+            <motion.div
+              aria-hidden
+              style={{ scaleX: scrollYProgress }}
+              className="absolute inset-x-0 bottom-0 h-0.5 origin-left bg-gold"
+            />
           </div>
 
-          <div className="relative mt-auto grid gap-10 md:grid-cols-12">
-            <div className="relative min-h-[15rem] md:col-span-7 lg:col-span-6">
+          <div className="lg:col-span-5 lg:row-start-2 lg:self-end">
+            <div className="grid">
               {copy.chapters.map((c, i) => (
                 <Chapter key={c.division} index={i} current={chapter}>
-                  <div className="flex items-baseline gap-4">
-                    <span className="t-eyebrow text-gold">
-                      {String(i + 1).padStart(2, "0")} / {String(copy.chapters.length).padStart(2, "0")}
-                    </span>
-                    <span className="t-eyebrow text-ivory/60">{c.mode}</span>
-                  </div>
-                  <h3 className="t-display-sm mt-5 text-ivory">{c.title}</h3>
-                  <p className="t-lead mt-4 max-w-xl text-ivory/75">{c.text}</p>
+                  <h3 className="t-display-sm text-ivory">{c.title}</h3>
+                  <p className="t-body mt-3 max-w-xl text-ivory/85 md:t-lead md:mt-4">{c.text}</p>
                 </Chapter>
               ))}
             </div>
 
-            <div className="flex items-end justify-between md:col-span-5 md:flex-col md:items-end lg:col-span-6">
-              <ol className="hidden gap-1 md:flex md:flex-col md:items-end">
-                {copy.chapters.map((c, i) => (
-                  <li key={c.division}>
-                    <button
-                      type="button"
-                      onClick={() => goTo(i)}
-                      aria-current={chapter === i ? "step" : undefined}
-                      className={cn(
-                        "group/rail flex min-h-11 items-center gap-3 text-[0.8125rem] transition-colors duration-500",
-                        chapter === i ? "text-ivory" : "text-ivory/40 hover:text-ivory/80",
-                      )}
-                    >
-                      {c.mode}
-                      <span
-                        className={cn(
-                          "h-px transition-all duration-700 ease-[var(--ease-out-expo)]",
-                          chapter === i ? "w-10 bg-gold" : "w-4 bg-white/30 group-hover/rail:w-7 group-hover/rail:bg-gold/60",
-                        )}
-                      />
-                    </button>
-                  </li>
-                ))}
-              </ol>
-              <TextLink href={href(locale, "trade")} className="md:mt-10">
-                {copy.link}
-              </TextLink>
-            </div>
-          </div>
+            <ol className="mt-8 hidden flex-wrap gap-2 md:flex">
+              {copy.chapters.map((c, i) => (
+                <li key={c.division}>
+                  <button
+                    type="button"
+                    onClick={() => goTo(i)}
+                    aria-current={chapter === i ? "step" : undefined}
+                    className={cn(
+                      "min-h-11 rounded-[4px] px-4 text-[0.875rem] font-medium transition-colors duration-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold",
+                      chapter === i ? "bg-ink-700 text-ivory" : "text-ivory/70 hover:bg-ink-800 hover:text-ivory",
+                    )}
+                  >
+                    {c.mode}
+                  </button>
+                </li>
+              ))}
+            </ol>
 
-          <div className="absolute inset-x-0 bottom-0 h-px bg-white/10">
-            <motion.div style={{ scaleX: railScale }} className="h-px origin-left bg-gold" />
+            <TextLink href={href(locale, "trade")} className="mt-4 md:mt-6">
+              {copy.link}
+            </TextLink>
           </div>
         </div>
       </div>

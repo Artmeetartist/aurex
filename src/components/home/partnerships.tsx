@@ -6,7 +6,7 @@ import type { SiteContent } from "@/content/types";
 import type { Locale } from "@/i18n/config";
 import { href } from "@/lib/routes";
 
-/** 07 — Strategic partnerships: the four partner models. */
+/** Strategic partnerships: the four partner models. */
 export function Partnerships({ locale, content }: { locale: Locale; content: SiteContent }) {
   const copy = content.home.partnerships;
 

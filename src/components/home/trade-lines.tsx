@@ -6,7 +6,7 @@ import type { SiteContent } from "@/content/types";
 import type { Locale } from "@/i18n/config";
 import { href, tradeHref } from "@/lib/routes";
 
-/** 03 — Trade lines of strategic focus, each linking to its own page. */
+/** Trade lines of strategic focus, each linking to its own page. */
 export function TradeLines({ locale, content }: { locale: Locale; content: SiteContent }) {
   const copy = content.home.trade;
   return (
