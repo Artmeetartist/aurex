@@ -25,7 +25,7 @@ export function WhoWeAre({ locale, content }: { locale: Locale; content: SiteCon
         <RevealGroup
           as="ul"
           stagger={0.06}
-          className="mt-14 grid overflow-hidden rounded-xl bg-ivory-200 md:mt-20 md:grid-cols-3"
+          className="mt-14 grid overflow-hidden rounded-xl bg-ivory-200 md:mt-20 lg:grid-cols-3"
         >
           {who.pillars.map((p, i) => (
             <RevealItem as="li" key={p.title} y={12}>
