@@ -29,8 +29,6 @@ export function Capital({ locale, content }: { locale: Locale; content: SiteCont
       <div className="container-x relative grid gap-12 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-14">
         <div className="lg:col-span-6 lg:col-start-7 lg:row-start-1 lg:self-end xl:col-span-5 xl:col-start-8">
           <SectionHeading
-            index="06"
-            eyebrow={copy.eyebrow}
             title={copy.title}
             intro={copy.intro}
             size="md"

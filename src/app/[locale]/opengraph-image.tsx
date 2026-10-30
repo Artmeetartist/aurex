@@ -87,7 +87,7 @@ export default async function OpenGraphImage({ params }: { params: Promise<{ loc
           }}
         >
           <div style={{ width: 8, height: 8, borderRadius: 8, backgroundColor: ACCENT, marginRight: 16 }} />
-          {home.hero.eyebrow}
+          {home.hero.signature}
         </div>
       </div>
     ),

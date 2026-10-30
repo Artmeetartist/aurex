@@ -41,7 +41,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
           <div className="mt-24 grid gap-14 md:mt-32 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <div className="lg:sticky lg:top-32">
-                <SectionHeading eyebrow={about.story.eyebrow} title={about.story.title} tone="dark" size="md" />
+                <SectionHeading title={about.story.title} tone="dark" size="md" />
               </div>
             </div>
             <RevealGroup className="space-y-8 lg:col-span-6 lg:col-start-7">
@@ -58,7 +58,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
       {/* Principles */}
       <section className="surface-ink section-y">
         <div className="container-x">
-          <SectionHeading index="02" eyebrow={about.principles.eyebrow} title={about.principles.title} />
+          <SectionHeading title={about.principles.title} />
           <RevealGroup as="ol" stagger={0.06} className="mt-16 border-t border-white/15 md:mt-20">
             {about.principles.items.map((item, i) => (
               <RevealItem
@@ -80,8 +80,6 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
       <section className="surface-ivory section-y">
         <div className="container-x">
           <SectionHeading
-            index="03"
-            eyebrow={about.structure.eyebrow}
             title={about.structure.title}
             intro={about.structure.intro}
             tone="dark"
@@ -125,8 +123,6 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-32">
               <SectionHeading
-                index="04"
-                eyebrow={about.governance.eyebrow}
                 title={about.governance.title}
                 intro={about.governance.intro}
                 size="md"
@@ -151,8 +147,6 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
       <section id="leadership" className="surface-ivory section-y scroll-mt-20">
         <div className="container-x">
           <SectionHeading
-            index="05"
-            eyebrow={leadership.approach.eyebrow}
             title={leadership.approach.title}
             intro={leadership.approach.intro}
             tone="dark"

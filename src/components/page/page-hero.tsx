@@ -60,7 +60,7 @@ export function PageHero({
       {hasImage && (
         <motion.div
           style={{ rotateX: frameRotate, scale: frameScale, borderRadius: frameRadius }}
-          className="elevate absolute inset-2 origin-top overflow-hidden bg-ink-850 will-change-transform md:inset-3"
+          className="absolute inset-2 origin-top overflow-hidden bg-ink-850 will-change-transform md:inset-3"
         >
           <motion.div style={{ y: imageY, scale: imageScale }} className="absolute inset-0">
             {backdrop ? (
@@ -74,9 +74,9 @@ export function PageHero({
           {tint && (
             <div aria-hidden className="absolute inset-0 mix-blend-soft-light" style={{ backgroundColor: tint, opacity: 0.55 }} />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/20" />
-          <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/35 to-transparent" />
-          <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-ink/70 to-transparent" />
+          <div aria-hidden className="scrim-up absolute inset-0" />
+          <div aria-hidden className="scrim-right absolute inset-0" />
+          <div aria-hidden className="scrim-down absolute inset-x-0 top-0 h-48 opacity-80" />
           <motion.div style={{ opacity: darken }} className="absolute inset-0 bg-ink" />
         </motion.div>
       )}
@@ -90,11 +90,12 @@ export function PageHero({
       >
         <motion.nav
           aria-label="Breadcrumb"
+          data-reveal
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: EASE, delay: 0.1 }}
         >
-          <ol className="t-eyebrow flex flex-wrap items-center gap-x-2.5 text-ivory/60">
+          <ol className="flex flex-wrap items-center gap-x-2.5 text-[0.875rem] text-ivory/70">
             <li>
               <Link href={breadcrumb.homeHref} className="inline-flex min-h-11 items-center hover:text-ivory">
                 {breadcrumb.home}
@@ -121,16 +122,17 @@ export function PageHero({
           as="h1"
           text={hero.title}
           delay={0.15}
-          className={cn("t-display-xl mt-8 text-ivory", hasImage ? "max-w-[16ch]" : "max-w-[20ch]")}
+          className="t-display-xl mt-6 max-w-[18ch] text-ivory"
         />
 
-        <div className={cn("mt-10 grid gap-10 md:grid-cols-12", !hasImage && "mt-14 border-t border-white/15 pt-8")}>
+        <div className={cn("mt-8 grid gap-10 md:grid-cols-12", !hasImage && "mt-10")}>
           <motion.p
+            data-reveal
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: EASE, delay: 0.55 }}
             className={cn(
-              "t-lead text-ivory/80",
+              "t-lead text-ivory/90",
               hasImage ? "md:col-span-7 lg:col-span-6" : "md:col-span-6 md:col-start-7 lg:col-span-5 lg:col-start-8",
             )}
           >
@@ -138,6 +140,7 @@ export function PageHero({
           </motion.p>
           {children && (
             <motion.div
+              data-reveal
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: EASE, delay: 0.7 }}

@@ -45,8 +45,6 @@ export default async function TradePage({ params }: PageProps<"/[locale]/trade">
         <div className="container-x">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
             <SectionHeading
-              index="01"
-              eyebrow={tradeHub.lines.eyebrow}
               title={tradeHub.lines.title}
               intro={tradeHub.lines.intro}
               tone="dark"
@@ -66,7 +64,7 @@ export default async function TradePage({ params }: PageProps<"/[locale]/trade">
       {/* 02 — How AUREX trades: the four disciplines */}
       <section className="surface-ink section-y">
         <div className="container-x">
-          <SectionHeading index="02" eyebrow={tradeHub.core.eyebrow} title={tradeHub.core.title} />
+          <SectionHeading title={tradeHub.core.title} />
           <div className="mt-20 space-y-24 md:mt-28 md:space-y-36 lg:space-y-40">
             {divisions.map((d, i) => {
               const division = content.divisions[d.id];
@@ -95,8 +93,6 @@ export default async function TradePage({ params }: PageProps<"/[locale]/trade">
       <section className="surface-ink-deep section-y relative overflow-hidden">
         <div className="container-x relative">
           <SectionHeading
-            index="03"
-            eyebrow={tradeHub.connection.eyebrow}
             title={tradeHub.connection.title}
             intro={tradeHub.connection.intro}
           />

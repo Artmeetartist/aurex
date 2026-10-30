@@ -28,8 +28,6 @@ export default async function GlobalPresencePage({ params }: PageProps<"/[locale
       <section className="surface-ivory section-y">
         <div className="container-x">
           <SectionHeading
-            index="02"
-            eyebrow={presence.corridors.eyebrow}
             title={presence.corridors.title}
             intro={presence.corridors.intro}
             tone="dark"

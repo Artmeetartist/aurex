@@ -10,7 +10,7 @@ export function WhyAurex({ content }: { content: SiteContent }) {
     <section className="surface-ivory section-y relative">
       <div className="container-x">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
-          <SectionHeading index="07" eyebrow={copy.eyebrow} title={copy.title} tone="dark" size="md" className="lg:col-span-7" />
+          <SectionHeading title={copy.title} tone="dark" size="md" className="lg:col-span-7" />
           {copy.intro && (
             <Reveal delay={0.1} className="lg:col-span-4 lg:col-start-9">
               <p className="text-[1.0625rem] leading-relaxed text-stone">{copy.intro}</p>

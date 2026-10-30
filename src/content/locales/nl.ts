@@ -102,7 +102,7 @@ const nl: SiteContent = {
 
   home: {
     hero: {
-      eyebrow: "Value in Motion.",
+      signature: "Value in Motion.",
       title: "Internationale handel, holding en investeringen, geworteld in Europa.",
       accent: ["beweging."],
       intro:

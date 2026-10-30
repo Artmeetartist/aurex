@@ -40,7 +40,7 @@ export function GlobalReach({ locale, content, heading, footnote, index, link, a
       <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-ink-950 to-transparent" />
       <div className="container-x relative grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-5">
-          <SectionHeading index={index} as={as} size="md" {...heading} />
+          <SectionHeading as={as} size="md" {...heading} />
 
           <ul className="mt-12 border-t border-white/10" onMouseLeave={() => setFocus(null)}>
             {markets.map((m, i) => {

@@ -14,8 +14,6 @@ export function TradeLines({ locale, content }: { locale: Locale; content: SiteC
       <div className="container-x">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <SectionHeading
-            index="03"
-            eyebrow={copy.eyebrow}
             title={copy.title}
             intro={copy.intro}
             tone="dark"

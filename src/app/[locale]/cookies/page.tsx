@@ -20,7 +20,7 @@ export default async function CookiesPage({ params }: PageProps<"/[locale]/cooki
             pending=""
             rows={cols.map((c) => ({
               label: register.columns[c],
-              value: c === "name" ? <span className="font-mono text-[0.8125rem]">{row.name}</span> : row[c],
+              value: c === "name" ? <code className="font-mono text-[0.875rem]">{row.name}</code> : row[c],
             }))}
           />
         ))}
@@ -39,8 +39,8 @@ export default async function CookiesPage({ params }: PageProps<"/[locale]/cooki
         <tbody>
           {rows.map((row) => (
             <tr key={row.name} className="border-b border-ink/10 align-top">
-              <th scope="row" className="py-4 pr-6 font-mono text-[0.8125rem] font-normal text-ink">
-                {row.name}
+              <th scope="row" className="py-4 pr-6 font-normal text-ink">
+                <code className="font-mono text-[0.875rem]">{row.name}</code>
               </th>
               <td className="py-4 pr-6 text-ink/80">{row.purpose}</td>
               <td className="py-4 pr-6 whitespace-nowrap text-ink/80">{row.duration}</td>

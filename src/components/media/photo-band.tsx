@@ -32,14 +32,14 @@ export function PhotoBand({
     <section ref={ref} id={id} className="surface-ink-deep relative py-2 [perspective:1600px] md:py-3">
       <motion.div
         style={reduce ? undefined : { rotateX, scale }}
-        className="elevate relative mx-2 min-h-[88svh] origin-bottom overflow-hidden rounded-lg md:mx-3 md:rounded-xl"
+        className="relative mx-2 min-h-[88svh] origin-bottom overflow-hidden rounded-lg md:mx-3 md:rounded-xl"
       >
         <motion.div style={reduce ? undefined : { y }} className="absolute inset-x-0 -inset-y-[12%]">
           <Photo photo={photo} />
         </motion.div>
         {tint && <div aria-hidden className="absolute inset-0 mix-blend-soft-light" style={{ backgroundColor: tint, opacity: 0.5 }} />}
-        <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/70 to-ink-950/30" />
-        <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-ink-950/80 via-ink-950/30 to-transparent" />
+        <div aria-hidden className="scrim-up absolute inset-0" />
+        <div aria-hidden className="scrim-right absolute inset-0" />
         <div className="container-x relative flex min-h-[88svh] flex-col justify-end py-16 md:py-24">{children}</div>
       </motion.div>
     </section>

@@ -15,8 +15,6 @@ export function LeadershipTeaser({ locale, content }: { locale: Locale; content:
       <div className="container-x">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <SectionHeading
-            index="09"
-            eyebrow={copy.eyebrow}
             title={copy.title}
             tone="dark"
             size="md"

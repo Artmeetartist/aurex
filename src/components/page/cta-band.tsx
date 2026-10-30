@@ -1,6 +1,5 @@
 import { MaskText, Reveal } from "@/components/motion/reveal";
 import { ButtonLink } from "@/components/ui/button";
-import { Eyebrow } from "@/components/ui/eyebrow";
 import { cn } from "@/lib/cn";
 
 /**
@@ -8,14 +7,14 @@ import { cn } from "@/lib/cn";
  * step. Typographic, no decoration; the only colour is the action itself.
  */
 export function CtaBand({
-  eyebrow,
   title,
   intro,
   primary,
   secondary,
   tone = "light",
 }: {
-  eyebrow: string;
+  /** Retired kicker; kept optional so callers can drop it gradually. */
+  eyebrow?: string;
   title: string;
   intro?: string;
   primary: { label: string; href: string };
@@ -27,15 +26,12 @@ export function CtaBand({
   return (
     <section className={cn("relative py-[clamp(5rem,10vw,9rem)]", light ? "bg-ink-950 text-ivory" : "surface-ivory")}>
       <div className="container-x">
-        <Reveal y={0} className={cn("border-t pt-4", light ? "border-white/15" : "border-ink/15")}>
-          <Eyebrow tone={tone}>{eyebrow}</Eyebrow>
-        </Reveal>
-        <div className="mt-10 grid gap-10 md:mt-14 lg:grid-cols-12 lg:items-end">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
             <MaskText as="h2" text={title} className={cn("t-display-lg max-w-[18ch]", light ? "text-ivory" : "text-ink")} />
             {intro && (
               <Reveal delay={0.1} y={12}>
-                <p className={cn("t-lead mt-6 max-w-[38rem]", light ? "text-mist" : "text-stone")}>{intro}</p>
+                <p className={cn("t-lead mt-6 max-w-[38rem]", light ? "text-ivory/80" : "text-ink/80")}>{intro}</p>
               </Reveal>
             )}
           </div>

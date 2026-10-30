@@ -121,7 +121,7 @@ export default async function TradeLinePage({ params }: PageProps<"/[locale]/tra
       {/* 03 — From origin to market */}
       <section className="surface-ink-deep section-y relative overflow-hidden">
         <div className="container-x relative">
-          <SectionHeading index="03" eyebrow={tradePage.flowEyebrow} title={tradePage.flowTitle} size="md" />
+          <SectionHeading title={tradePage.flowTitle} size="md" />
           <div className="mt-16 md:mt-24">
             <FlowTrack steps={trade.flow} tint={tint} />
           </div>
@@ -151,7 +151,7 @@ export default async function TradeLinePage({ params }: PageProps<"/[locale]/tra
         <div className="container-x grid gap-16 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-32">
-              <SectionHeading index="04" eyebrow={tradePage.approachEyebrow} title={tradePage.approachTitle} size="md" />
+              <SectionHeading title={tradePage.approachTitle} size="md" />
             </div>
           </div>
           <RevealGroup as="ol" className="border-t border-white/10 lg:col-span-6 lg:col-start-7">

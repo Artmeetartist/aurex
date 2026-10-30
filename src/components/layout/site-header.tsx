@@ -39,8 +39,8 @@ function MobileLanguages({ locale, onPick }: { locale: Locale; onPick: () => voi
             onPick();
           }}
           className={cn(
-            "t-eyebrow inline-flex h-11 items-center rounded-full border px-4",
-            l === locale ? "border-gold text-gold" : "border-white/15 text-mist",
+            "inline-flex h-11 items-center rounded-[4px] px-4 text-[0.875rem] font-medium",
+            l === locale ? "bg-gold text-ink" : "bg-ink-700 text-ivory/85",
           )}
         >
           {localeMeta[l].native}
@@ -90,10 +90,8 @@ export function SiteHeader({ locale, nav }: { locale: Locale; nav: HeaderLabels 
       >
         <div
           className={cn(
-            "absolute inset-0 border-b transition-[background-color,border-color,backdrop-filter] duration-500",
-            scrolled && !open
-              ? "border-white/[0.07] bg-ink/70 backdrop-blur-xl backdrop-saturate-150"
-              : "border-transparent bg-transparent",
+            "absolute inset-0 transition-[background-color] duration-500",
+            scrolled && !open ? "bg-ink-950" : "bg-transparent",
           )}
         />
         <div className="container-x relative flex h-[var(--header-h)] items-center justify-between gap-6">
@@ -138,7 +136,7 @@ export function SiteHeader({ locale, nav }: { locale: Locale; nav: HeaderLabels 
               aria-expanded={open}
               aria-controls="mobile-menu"
               aria-label={open ? nav.close : nav.menu}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-[4px] border border-white/25 bg-ink-950/40 text-ivory backdrop-blur-md xl:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-[4px] bg-ink-700 text-ivory xl:hidden"
             >
               {open ? <Close /> : <Menu />}
             </button>
@@ -160,22 +158,20 @@ export function SiteHeader({ locale, nav }: { locale: Locale; nav: HeaderLabels 
             className="fixed inset-0 z-40 flex flex-col bg-ink-950 pt-[calc(var(--header-h)+2rem)] xl:hidden"
           >
             <nav aria-label={nav.primaryLabel} className="container-x flex-1 overflow-y-auto">
-              <ul className="border-t border-white/10">
+              <ul>
                 {(["home", ...navRoutes, "contact"] as RouteKey[]).map((route, i) => (
                   <motion.li
                     key={route}
                     initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: EASE, delay: 0.15 + i * 0.04 }}
-                    className="border-b border-white/10"
                   >
                     <Link
                       href={route === "contact" ? contactHref(locale) : href(locale, route)}
                       onClick={() => setOpen(false)}
-                      className="flex items-baseline justify-between py-4 font-serif text-[2rem] leading-tight tracking-[-0.015em] text-ivory [font-variation-settings:'opsz'_48]"
+                      className="flex items-baseline justify-between py-3 font-serif text-[2rem] leading-tight tracking-[-0.015em] text-ivory [font-variation-settings:'opsz'_48]"
                     >
                       {nav.labels[route]}
-                      <span className="t-meta text-mist-dim">{String(i + 1).padStart(2, "0")}</span>
                     </Link>
                     {route === "trade" && (
                       <ul className="-mt-1 mb-4 grid grid-cols-1 gap-1 pl-1 sm:grid-cols-2">
@@ -184,9 +180,8 @@ export function SiteHeader({ locale, nav }: { locale: Locale; nav: HeaderLabels 
                             <Link
                               href={item.href}
                               onClick={() => setOpen(false)}
-                              className="flex min-h-11 items-center gap-3 text-[1rem] text-ivory/70 hover:text-ivory"
+                              className="flex min-h-11 items-center text-[1rem] text-ivory/75 hover:text-ivory"
                             >
-                              <span aria-hidden className="h-px w-4 bg-ivory/40" />
                               {item.name}
                             </Link>
                           </li>
@@ -197,7 +192,7 @@ export function SiteHeader({ locale, nav }: { locale: Locale; nav: HeaderLabels 
                 ))}
               </ul>
               <div className="mt-8 pb-10">
-                <p className="t-eyebrow mb-4 text-mist">{nav.language}</p>
+                <p className="mb-4 text-[1rem] text-mist">{nav.language}</p>
                 <Suspense>
                   <MobileLanguages locale={locale} onPick={() => setOpen(false)} />
                 </Suspense>

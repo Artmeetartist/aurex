@@ -28,7 +28,7 @@ export function CategoryGrid({
     <section id="categories" className="surface-ivory section-y scroll-mt-20" style={{ "--trade": tint } as CSSProperties}>
       <div className="container-x">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
-          <SectionHeading index={index} eyebrow={labels.categoriesEyebrow} title={labels.categoriesTitle} tone="dark" size="md" className="lg:col-span-8" />
+          <SectionHeading title={labels.categoriesTitle} tone="dark" size="md" className="lg:col-span-8" />
           <Reveal className="hidden justify-self-end text-ink/25 lg:col-span-4 lg:block">
             <Icon size={72} />
           </Reveal>
@@ -70,7 +70,7 @@ export function StandardsGrid({ index, trade, labels }: { index: string; trade: 
     <section className="surface-ivory section-y relative border-t border-ink/10">
       <div className="container-x">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
-          <SectionHeading index={index} eyebrow={labels.standardsEyebrow} title={labels.standardsTitle} tone="dark" size="md" className="lg:col-span-7" />
+          <SectionHeading title={labels.standardsTitle} tone="dark" size="md" className="lg:col-span-7" />
           <Reveal delay={0.1} className="lg:col-span-4 lg:col-start-9">
             <p className="border-l-2 border-gold-ink/60 pl-5 text-[0.9375rem] leading-relaxed text-ink/75">{labels.standardsNote}</p>
           </Reveal>
@@ -111,7 +111,7 @@ export function Counterparts({
     <section className="surface-ink section-y relative">
       <div className="container-x">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
-          <SectionHeading index={index} eyebrow={labels.counterpartsEyebrow} title={labels.counterpartsTitle} size="md" className="lg:col-span-8" />
+          <SectionHeading title={labels.counterpartsTitle} size="md" className="lg:col-span-8" />
         </div>
         <RevealGroup as="ul" stagger={0.06} className="mt-14 grid border-t border-white/15 sm:grid-cols-2 md:mt-20 lg:grid-cols-4">
           {trade.counterparts.map((c, i) => (

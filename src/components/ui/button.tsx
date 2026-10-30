@@ -4,13 +4,13 @@ import { cn } from "@/lib/cn";
 import { ArrowRight, ArrowUpRight } from "./icons";
 
 /**
- * Buttons: squared, quiet, one accent. Lime is reserved for the primary
- * action; everything else is outline or text.
+ * Buttons: squared, filled, one accent. Lime is reserved for the primary
+ * action; secondaries are a solid tone step, never an outline or glass.
  *
  * - gold          primary action (lime fill)
- * - glass         secondary over imagery (translucent ink)
- * - outline-light secondary on dark surfaces
- * - outline-dark  secondary on paper
+ * - glass         secondary over imagery (solid ink)
+ * - outline-light secondary on dark surfaces (ink tone step)
+ * - outline-dark  secondary on paper (paper tone step)
  * - ink           primary on paper when lime would be too loud
  */
 type Variant = "gold" | "glass" | "outline-light" | "outline-dark" | "ink";
@@ -21,9 +21,9 @@ const base =
 
 const variants: Record<Variant, string> = {
   gold: "bg-gold text-ink hover:bg-[#a3d45a] active:bg-[#7fb536]",
-  glass: "border border-white/30 bg-ink-950/35 text-ivory backdrop-blur-md hover:border-ivory hover:bg-ivory hover:text-ink",
-  "outline-light": "border border-white/25 text-ivory hover:border-ivory hover:bg-white/[0.06]",
-  "outline-dark": "border border-ink/25 text-ink hover:border-ink hover:bg-ink hover:text-ivory",
+  glass: "bg-ink-950 text-ivory hover:bg-ivory hover:text-ink",
+  "outline-light": "bg-ink-700 text-ivory hover:bg-ink-600",
+  "outline-dark": "bg-ivory-300 text-ink hover:bg-ink hover:text-ivory",
   ink: "bg-ink text-ivory hover:bg-ink-700",
 };
 

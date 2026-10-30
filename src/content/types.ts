@@ -81,7 +81,9 @@ export type SiteContent = {
 
   home: {
     hero: {
-      eyebrow: string;
+      /** Brand master line, kept in English in every locale (SOURCE_OF_TRUTH §4). */
+      signature: string;
+      /** Plain positioning sentence under the signature. */
       title: string;
       accent: string[];
       intro: string;
