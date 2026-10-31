@@ -55,8 +55,6 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-32">
               <SectionHeading
-                index="01"
-                eyebrow={contact.routes.eyebrow}
                 title={contact.routes.title}
                 intro={contact.routes.intro}
                 tone="dark"

@@ -25,8 +25,6 @@ export default async function PartnershipsPage({ params }: PageProps<"/[locale]/
       <section className="surface-ivory section-y">
         <div className="container-x">
           <SectionHeading
-            index="01"
-            eyebrow={partnerships.models.eyebrow}
             title={partnerships.models.title}
             intro={partnerships.models.intro}
             tone="dark"
@@ -39,8 +37,6 @@ export default async function PartnershipsPage({ params }: PageProps<"/[locale]/
       <section className="surface-ink section-y relative overflow-hidden">
         <div className="container-x relative">
           <SectionHeading
-            index="02"
-            eyebrow={partnerships.offer.eyebrow}
             title={partnerships.offer.title}
             intro={partnerships.offer.intro}
           />
@@ -50,8 +46,6 @@ export default async function PartnershipsPage({ params }: PageProps<"/[locale]/
             <div className="lg:col-span-5">
               <div className="lg:sticky lg:top-32">
                 <SectionHeading
-                  index="03"
-                  eyebrow={partnerships.seek.eyebrow}
                   title={partnerships.seek.title}
                   intro={partnerships.seek.intro}
                   size="md"
@@ -67,8 +61,6 @@ export default async function PartnershipsPage({ params }: PageProps<"/[locale]/
       <section className="surface-ivory section-y">
         <div className="container-x">
           <SectionHeading
-            index="04"
-            eyebrow={partnerships.process.eyebrow}
             title={partnerships.process.title}
             intro={partnerships.process.intro}
             tone="dark"

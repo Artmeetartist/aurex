@@ -20,8 +20,6 @@ export function HoldingsRegister({ content, index }: { content: SiteContent; ind
   return (
     <div className={cn("container-x", empty && "grid gap-12 lg:grid-cols-12 lg:items-end")}>
       <SectionHeading
-        index={index}
-        eyebrow={copy.eyebrow}
         title={copy.title}
         intro={copy.intro}
         tone="dark"

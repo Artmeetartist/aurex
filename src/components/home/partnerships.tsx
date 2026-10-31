@@ -6,7 +6,7 @@ import type { SiteContent } from "@/content/types";
 import type { Locale } from "@/i18n/config";
 import { href } from "@/lib/routes";
 
-/** 07 — Strategic partnerships: the four partner models. */
+/** Strategic partnerships: the four partner models. */
 export function Partnerships({ locale, content }: { locale: Locale; content: SiteContent }) {
   const copy = content.home.partnerships;
 
@@ -15,8 +15,6 @@ export function Partnerships({ locale, content }: { locale: Locale; content: Sit
       <div className="container-x relative">
         <div className="flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-end">
           <SectionHeading
-            index="08"
-            eyebrow={copy.eyebrow}
             title={copy.title}
             intro={copy.intro}
             size="md"

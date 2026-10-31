@@ -10,7 +10,7 @@ import { getContent } from "@/content/repository";
 import { isLocale, localeMeta, locales } from "@/i18n/config";
 import { href, tradeHref, tradeIds } from "@/lib/routes";
 import { siteUrl } from "@/lib/seo";
-import { mono, sans, serif } from "../fonts";
+import { sans, serif } from "../fonts";
 import "../globals.css";
 
 export const dynamicParams = false;
@@ -46,7 +46,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   const content = await getContent(locale);
 
   return (
-    <html lang={localeMeta[locale].htmlLang} className={`${sans.variable} ${serif.variable} ${mono.variable}`}>
+    <html lang={localeMeta[locale].htmlLang} className={`${sans.variable} ${serif.variable}`}>
       <head>
         {/* Without JavaScript, scroll reveals never run: show everything. */}
         <noscript>

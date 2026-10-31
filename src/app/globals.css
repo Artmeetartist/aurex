@@ -39,14 +39,14 @@
   --color-graphite-900: #16191b;
   --color-graphite-800: #20252a;
   --color-graphite-700: #2d3339;
-  --color-cream: #f4f1e8;
+  --color-cream: #eef1ec;
   --color-brass: #c8a24a;
   --color-brass-soft: #e2cf98;
 
-  /* Light surfaces */
-  --color-ivory: #f5f4ef;
-  --color-ivory-200: #ebe9e2;
-  --color-ivory-300: #dcd9cf;
+  /* Light surfaces: a low-chroma stone taken from the teal, not a yellow cream */
+  --color-ivory: #eef2f1;
+  --color-ivory-200: #e2e8e6;
+  --color-ivory-300: #d2dbd8;
 
   /* Muted text: stone on light (6.0:1), mist on dark (7.8:1) */
   --color-stone: #595e5a;
@@ -55,7 +55,6 @@
 
   --font-sans: var(--font-text), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-serif: var(--font-display), ui-serif, Georgia, "Times New Roman", serif;
-  --font-mono: var(--font-data), ui-monospace, "SFMono-Regular", Menlo, monospace;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
@@ -64,20 +63,23 @@
 }
 
 /* ── Fluid typography ─────────────────────────────────────────
-   Display = Source Serif at its display optical size, set roman.
-   Text = Hanken Grotesk. Data = Plex Mono (references, counters only). */
+   Two faces: Source Serif (display, roman) and Hanken Grotesk (text and
+   figures). The scale is kept to a handful of steps:
+   display-xl (hero) · display-lg (section) · display-sm (item titles,
+   statements) · lead · body · small. display-md is a narrower section step
+   for long headings. */
 @utility t-display-xl {
   font-family: var(--font-serif);
   font-variation-settings: "opsz" 60;
-  font-size: clamp(2.875rem, 7vw, 7.25rem);
-  line-height: 0.98;
-  letter-spacing: -0.028em;
+  font-size: clamp(2.75rem, 8.4vw, 8.5rem);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
   font-weight: 400;
 }
 @utility t-display-lg {
   font-family: var(--font-serif);
   font-variation-settings: "opsz" 60;
-  font-size: clamp(2.375rem, 5vw, 4.875rem);
+  font-size: clamp(2.25rem, 4.6vw, 4.5rem);
   line-height: 1.02;
   letter-spacing: -0.024em;
   font-weight: 400;
@@ -85,7 +87,7 @@
 @utility t-display-md {
   font-family: var(--font-serif);
   font-variation-settings: "opsz" 48;
-  font-size: clamp(1.875rem, 3.4vw, 3.25rem);
+  font-size: clamp(2rem, 3.4vw, 3.25rem);
   line-height: 1.08;
   letter-spacing: -0.018em;
   font-weight: 400;
@@ -93,21 +95,21 @@
 @utility t-display-sm {
   font-family: var(--font-serif);
   font-variation-settings: "opsz" 36;
-  font-size: clamp(1.4375rem, 2.2vw, 2.125rem);
-  line-height: 1.22;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  line-height: 1.2;
   letter-spacing: -0.012em;
   font-weight: 400;
 }
 @utility t-title {
-  font-size: clamp(1.1875rem, 1.4vw, 1.375rem);
-  line-height: 1.3;
+  font-size: 1.25rem;
+  line-height: 1.35;
   letter-spacing: -0.01em;
   font-weight: 500;
 }
 @utility t-lead {
-  font-size: clamp(1.0625rem, 1.2vw, 1.1875rem);
-  line-height: 1.6;
-  letter-spacing: -0.003em;
+  font-size: 1.25rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
 }
 @utility t-body {
   font-size: 1.0625rem;
@@ -117,21 +119,19 @@
   font-size: 0.875rem;
   line-height: 1.6;
 }
-/* Quiet section label (running head). Normal case, text face. */
+/* Interface label (skip link, controls). Never a kicker above a heading. */
 @utility t-eyebrow {
   font-family: var(--font-sans);
-  font-size: 0.8125rem;
-  line-height: 1.2;
-  letter-spacing: 0.005em;
+  font-size: 0.875rem;
+  line-height: 1.3;
   font-weight: 500;
 }
-/* Data: counters, references, coordinates. */
+/* Figures and references in the text face, with tabular numerals. */
 @utility t-meta {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  line-height: 1.3;
-  letter-spacing: 0.01em;
-  font-weight: 400;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  font-weight: 500;
   font-variant-numeric: tabular-nums;
 }
 /* Legacy accent hook: headlines are set in one voice, so accents inherit. */
@@ -146,15 +146,17 @@
   margin-inline: auto;
   padding-inline: clamp(1.25rem, 4vw, 3.5rem);
 }
+/* Section rhythm: 72px on a phone, 120px on desktop, so two neighbouring
+   sections on one ground sit 144–240px apart. */
 @utility section-y {
-  padding-block: clamp(5.5rem, 12vw, 11rem);
+  padding-block: clamp(4.5rem, 8.5vw, 7.5rem);
 }
 @utility hairline {
   border-color: color-mix(in oklab, currentColor 14%, transparent);
 }
 
 /* ── Surfaces ─────────────────────────────────────────────────── */
-/* Surfaces are flat: depth comes from imagery, type and rules, not glows. */
+/* Surfaces are flat: depth comes from imagery, type and tone steps. */
 @utility surface-ink {
   background-color: var(--color-ink);
   color: var(--color-ivory);
@@ -167,25 +169,31 @@
   background-color: var(--color-ivory);
   color: var(--color-ink);
 }
-/* Elevation for cards and panels on dark surfaces: top-edge highlight + deep drop shadow. */
+/* Retired: panels sit flat on a tone step, no shadow at rest. */
 @utility elevate {
-  box-shadow: 0 1px 0 0 rgb(255 255 255 / 0.04) inset, 0 20px 40px -32px rgb(0 0 0 / 0.7);
+  box-shadow: none;
 }
 @utility elevate-light {
   box-shadow: none;
 }
-/* Used only over imagery (header, media controls). */
+/* Retired: controls over imagery use a solid ink fill, no blur. */
 @utility glass {
-  background: color-mix(in oklab, var(--color-ink-950) 72%, transparent);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgb(255 255 255 / 0.1);
+  background: var(--color-ink-950);
 }
 @utility glass-light {
-  background: rgb(255 255 255 / 0.08);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-  backdrop-filter: blur(14px) saturate(140%);
-  border: 1px solid rgb(255 255 255 / 0.16);
+  background: var(--color-ink-850);
+}
+
+/* Legibility scrims over footage and photographs: one neutral ink, alpha
+   only. These are the only gradients on the page. */
+@utility scrim-up {
+  background-image: linear-gradient(to top, rgb(2 12 12 / 0.92), rgb(2 12 12 / 0.45) 45%, rgb(2 12 12 / 0.08));
+}
+@utility scrim-down {
+  background-image: linear-gradient(to bottom, rgb(2 12 12 / 0.8), rgb(2 12 12 / 0));
+}
+@utility scrim-right {
+  background-image: linear-gradient(to right, rgb(2 12 12 / 0.78), rgb(2 12 12 / 0.25) 55%, rgb(2 12 12 / 0));
 }
 /* Retired: headlines no longer use gradient text. */
 @utility text-gold-gradient {
@@ -275,6 +283,16 @@ html.lenis body {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+  /* Under reduced motion the page is the finished page: nothing waits on a reveal. */
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@keyframes aurex-menu-in {
+  from { opacity: 0; transform: translateY(-0.5rem); }
+  to { opacity: 1; transform: none; }
 }
 
 @keyframes aurex-scroll-cue {

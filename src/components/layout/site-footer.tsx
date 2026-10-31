@@ -6,7 +6,7 @@ import { ButtonLink } from "@/components/ui/button";
 import type { SiteContent } from "@/content/types";
 import { localeMeta, locales, type Locale } from "@/i18n/config";
 import { cn } from "@/lib/cn";
-import { contactHref, href, tradeHref, tradeIds, type RouteKey } from "@/lib/routes";
+import { contactHref, href, legalRoutes, tradeHref, tradeIds, type RouteKey } from "@/lib/routes";
 
 export function SiteFooter({ locale, content }: { locale: Locale; content: SiteContent }) {
   const { footer, nav, meta, inquiry, trades, home } = content;
@@ -37,12 +37,12 @@ export function SiteFooter({ locale, content }: { locale: Locale; content: SiteC
   ];
 
   return (
-    <footer className="surface-ink-deep relative overflow-hidden border-t border-white/[0.06]">
+    <footer className="surface-ink-deep relative overflow-hidden">
       <div className="container-x pt-24 pb-10 md:pt-32">
         <div className="grid gap-16 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Logo className="text-ivory" />
-            <p className="t-lead mt-8 max-w-md text-mist">{footer.statement}</p>
+            <p className="t-lead mt-8 max-w-md text-ivory/80">{footer.statement}</p>
             <ButtonLink href={contactHref(locale)} className="mt-10">
               {nav.cta}
             </ButtonLink>
@@ -50,13 +50,13 @@ export function SiteFooter({ locale, content }: { locale: Locale; content: SiteC
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:col-span-7">
             {columns.map((col) => (
               <div key={col.title}>
-                <p className="t-eyebrow text-ivory/50">{col.title}</p>
+                <p className="text-[0.875rem] font-medium text-mist">{col.title}</p>
                 <ul className="mt-4">
                   {col.links.map((l) => (
                     <li key={l.href}>
                       <Link
                         href={l.href}
-                        className="inline-flex min-h-11 items-center text-[0.9375rem] text-ivory/75 transition-colors hover:text-ivory"
+                        className="inline-flex min-h-11 items-center text-[1rem] text-ivory/80 transition-colors hover:text-ivory"
                       >
                         {l.label}
                       </Link>
@@ -70,14 +70,22 @@ export function SiteFooter({ locale, content }: { locale: Locale; content: SiteC
 
         <FooterWordmark />
 
-        <div className="mt-12 flex flex-col gap-6 border-t border-white/[0.08] pt-8 text-[0.8125rem] text-mist md:flex-row md:items-center md:justify-between">
+        <div className="mt-12 flex flex-col gap-6 text-[0.875rem] text-mist md:flex-row md:items-center md:justify-between">
           <p>
             © {year} {meta.siteName}. {footer.rights}
           </p>
           <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
-            <Link href={href(locale, "privacy")} className="inline-flex min-h-11 items-center hover:text-ivory">
-              {nav.labels.privacy}
-            </Link>
+            <nav aria-label={footer.legal}>
+              <ul className="flex flex-wrap items-center gap-x-6">
+                {legalRoutes.map((r) => (
+                  <li key={r}>
+                    <Link href={href(locale, r)} className="inline-flex min-h-11 items-center hover:text-ivory">
+                      {nav.labels[r]}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
             <nav aria-label={footer.languages} className="flex items-center gap-1">
               {locales.map((l) => (
                 <Link
@@ -94,7 +102,7 @@ export function SiteFooter({ locale, content }: { locale: Locale; content: SiteC
                 </Link>
               ))}
             </nav>
-            <p className="t-eyebrow text-mist-dim">{meta.signature}</p>
+            <p className="font-medium text-mist">{meta.signature}</p>
             <BackToTop label={content.common.backToTop} />
           </div>
         </div>

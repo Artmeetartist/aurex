@@ -51,6 +51,18 @@ const pl: SiteContent = {
         title: "Polityka prywatności",
         description: "Jak postępujemy z informacjami przekazanymi za pośrednictwem strony internetowej AUREX.",
       },
+      legal: {
+        title: "Nota prawna",
+        description: "Operator strony internetowej AUREX oraz zasady publikacji jej treści.",
+      },
+      terms: {
+        title: "Warunki korzystania",
+        description: "Warunki korzystania ze strony internetowej AUREX.",
+      },
+      cookies: {
+        title: "Polityka plików cookie",
+        description: "Pliki cookie ustawiane przez stronę AUREX i ich cel: jedno ustawienie języka, bez śledzenia.",
+      },
     },
   },
 
@@ -65,6 +77,9 @@ const pl: SiteContent = {
       partnerships: "Partnerstwa",
       contact: "Kontakt",
       privacy: "Prywatność",
+      legal: "Nota prawna",
+      terms: "Warunki korzystania",
+      cookies: "Polityka cookie",
     },
     cta: "Rozpocznijmy rozmowę",
     menu: "Menu",
@@ -87,7 +102,7 @@ const pl: SiteContent = {
 
   home: {
     hero: {
-      eyebrow: "Value in Motion.",
+      signature: "Value in Motion.",
       title: "Handel międzynarodowy, holding i inwestycje z europejskimi korzeniami.",
       accent: ["ruchu."],
       intro:
@@ -124,7 +139,7 @@ const pl: SiteContent = {
     },
     motion: {
       eyebrow: "Czym się zajmujemy",
-      title: "Przenosimy wartość morzem, powietrzem i lądem.",
+      title: "Przenosimy wartość: morze, powietrze, ląd.",
       accent: ["wartość"],
       chapters: [
         {
@@ -166,7 +181,7 @@ const pl: SiteContent = {
     green: {
       eyebrow: "AUREX Green",
       title: "Zielona transformacja",
-      subtitle: "Handel produktami i technologiami, które kształtują świat oszczędniej gospodarujący zasobami.",
+      subtitle: "AUREX Green: handel produktami i technologiami, które kształtują świat oszczędniej gospodarujący zasobami.",
       body: [
         "AUREX rozszerza swoją działalność handlową i inwestycyjną o zrównoważone materiały, czyste technologie, produkty oszczędzające zasoby oraz łańcuchy dostaw o mniejszym wpływie na środowisko.",
         "Od materiałów z recyklingu i zrównoważonych opakowań po infrastrukturę czystej energii i zieloną logistykę – łączymy pojawiające się możliwości z rynkami międzynarodowymi.",
@@ -189,7 +204,7 @@ const pl: SiteContent = {
       explore: "Więcej",
       flowLabel: "Model AUREX",
       flow: ["Pozyskanie", "Handel", "Dystrybucja", "Inwestycje"],
-      statement: "Budujemy handel na miarę zmieniającego się świata.",
+      statement: "Handel na miarę zmieniającego się świata.",
       statementText:
         "AUREX Green to wyraz naszej koncentracji na zrównoważonych produktach, technologiach i możliwościach, które mogą przepływać przez rynki globalne.",
       statementCta: "Porozmawiajmy o partnerstwie",
@@ -197,7 +212,7 @@ const pl: SiteContent = {
     },
     reach: {
       eyebrow: "Globalny zasięg",
-      title: "Europa w centrum. Korytarze do Zatoki Perskiej, Indii i Afryki.",
+      title: "Europa w centrum. Korytarze poza nią.",
       accent: ["centrum."],
       intro:
         "Grupa AUREX opiera się na europejskich standardach i jest zorientowana na korytarze łączące Europę z Bliskim Wschodem, Indiami i Afryką.",
@@ -411,8 +426,8 @@ const pl: SiteContent = {
   trades: {
     food: {
       name: "Żywność",
-      title: "Handel żywnością z zachowaniem identyfikowalności.",
-      accent: ["identyfikowalności."],
+      title: "Handel żywnością, identyfikowalny.",
+      accent: ["identyfikowalny."],
       intro:
         "Grupa AUREX została stworzona, by łączyć regiony produkcji z rynkami konsumpcji – z dokumentacją, kontrolą jakości i ciągłością dostaw, jakich wymagają nabywcy instytucjonalni.",
       overview:
@@ -520,7 +535,7 @@ const pl: SiteContent = {
     },
     medical: {
       name: "Medycyna",
-      title: "Dostawy medyczne, w których zgodność ma pierwszeństwo.",
+      title: "Medycyna: zgodność przede wszystkim.",
       accent: ["zgodność"],
       intro:
         "Produkty i sprzęt medyczny wymagają udokumentowanej jakości, zgodności z wymogami regulacyjnymi i pełnej identyfikowalności. AUREX podchodzi do tego sektora z wymaganą przez niego starannością.",
@@ -631,7 +646,7 @@ const pl: SiteContent = {
           text: "Podmioty zamawiające i grupy zakupowe obsługujące sektor ochrony zdrowia.",
         },
       ],
-      cta: { title: "Porozmawiajmy o dostawach medycznych.", accent: ["medycznych."], primary: "Zapytanie o partnerstwo" },
+      cta: { title: "Omówmy dostawy medyczne.", accent: ["medyczne."], primary: "Zapytanie o partnerstwo" },
     },
     electronics: {
       name: "Komponenty elektroniczne",
@@ -741,19 +756,19 @@ const pl: SiteContent = {
         },
       ],
       cta: {
-        title: "Porozmawiajmy o zaopatrzeniu w komponenty.",
-        accent: ["zaopatrzeniu"],
+        title: "Omówmy dostawy komponentów.",
+        accent: ["dostawy"],
         primary: "Zapytanie o partnerstwo",
       },
     },
     larp: {
       name: "LARP i artykuły historyczne",
-      title: "Wyroby rzemieślnicze dla żywej historii.",
+      title: "Rzemiosło dla żywej historii.",
       accent: ["żywej"],
       intro:
         "Kostiumy, zbroje, rekwizyty i repliki historyczne dla gier fabularnych na żywo (LARP), rekonstrukcji historycznych i teatru: obszar łączący wykwalifikowanych wytwórców ze specjalistycznymi sprzedawcami, organizatorami wydarzeń i produkcjami scenicznymi.",
       overview:
-        "LARP, rekonstrukcje historyczne i teatr wymagają wyrobów, które wyglądają autentycznie, są trwałe w użytkowaniu i bezpieczne w noszeniu. AUREX podchodzi do tego specjalistycznego rynku tak jak do każdego obszaru handlowego: ze sprawdzonymi wytwórcami, jasnymi specyfikacjami i niezawodną logistyką.",
+        "LARP, rekonstrukcje i teatr wymagają wyrobów, które wyglądają autentycznie, są trwałe i bezpieczne w noszeniu. AUREX podchodzi do tego specjalistycznego rynku tak jak do każdego obszaru handlowego: ze sprawdzonymi wytwórcami, jasnymi specyfikacjami i niezawodną logistyką.",
       categories: [
         {
           title: "Zbroje kolcze",
@@ -895,8 +910,8 @@ const pl: SiteContent = {
         ],
       },
       cta: {
-        title: "Porozmawiajmy o LARP i artykułach historycznych.",
-        accent: ["historycznych."],
+        title: "Omówmy LARP i artykuły historyczne.",
+        accent: ["historyczne."],
         primary: "Zapytanie o partnerstwo",
       },
     },
@@ -963,12 +978,12 @@ const pl: SiteContent = {
       eyebrow: "AUREX Green",
       title: "Zielona transformacja",
       accent: ["Zielona"],
-      intro: "Handel produktami i technologiami, które kształtują świat oszczędniej gospodarujący zasobami.",
+      intro: "AUREX Green: handel produktami i technologiami, które kształtują świat oszczędniej gospodarujący zasobami.",
     },
     intro: {
       eyebrow: "AUREX Green",
-      title: "Zrównoważony rozwój jako część realnego handlu.",
-      accent: ["realnego"],
+      title: "Zrównoważony rozwój w realnym handlu.",
+      accent: ["realnym"],
     },
     ecosystem: {
       eyebrow: "Ekosystem",
@@ -1000,8 +1015,8 @@ const pl: SiteContent = {
     },
     principles: {
       eyebrow: "Nasze podejście",
-      title: "Najpierw wiarygodność, potem deklaracje.",
-      accent: ["wiarygodność,"],
+      title: "Wiarygodność przed deklaracjami.",
+      accent: ["Wiarygodność"],
       items: [
         {
           title: "Weryfikowalne deklaracje produktowe",
@@ -1099,8 +1114,8 @@ const pl: SiteContent = {
   tradeHub: {
     hero: {
       eyebrow: "Handel",
-      title: "Handel międzynarodowy zorganizowany według europejskich standardów.",
-      accent: ["zorganizowany"],
+      title: "Handel zagraniczny, uporządkowany.",
+      accent: ["uporządkowany."],
       intro:
         "Grupa AUREX została zbudowana, by pozyskiwać, transportować i dystrybuować towary ponad granicami oraz łączyć sprawdzonych producentów z popytem na rynkach priorytetowych – według europejskich standardów dokumentacji, zgodności z przepisami i weryfikacji kontrahentów.",
     },
@@ -1146,8 +1161,8 @@ const pl: SiteContent = {
     },
     cta: {
       eyebrow: "Zapytania handlowe",
-      title: "Propozycja partnerstwa handlowego.",
-      accent: ["partnerstwa"],
+      title: "Zaproponuj partnerstwo.",
+      accent: ["partnerstwo."],
       primary: "Zapytanie o partnerstwo",
     },
   },
@@ -1434,6 +1449,198 @@ const pl: SiteContent = {
         paragraphs: ["Tożsamość i adres siedziby administratora danych zostaną opublikowane na tej stronie."],
       },
     ],
+  },
+
+  legal: {
+    hero: {
+      eyebrow: "Informacje prawne",
+      title: "Nota prawna.",
+      intro: "Kto prowadzi tę stronę i na jakich zasadach publikowane są jej treści.",
+    },
+    updated: "Ostatnia aktualizacja: październik 2026",
+    sections: [
+      {
+        title: "Operator strony",
+        paragraphs: [
+          "Niniejszą stronę publikuje AUREX. Dane rejestrowe podmiotu prowadzącego stronę podano poniżej. Dane, których jeszcze nie podano, zostaną opublikowane na tej stronie.",
+        ],
+        slot: "operator",
+      },
+      {
+        title: "Cel strony",
+        paragraphs: [
+          "Strona prezentuje grupę AUREX, jej podejście oraz obszary strategicznego zainteresowania. Ma wyłącznie charakter informacyjny.",
+          "Opisane na stronie sektory, rynki i korytarze handlowe są obszarami zainteresowania. Nie stanowią informacji o bieżącej działalności, biurach, spółkach zależnych ani wynikach.",
+        ],
+      },
+      {
+        title: "Brak oferty i doradztwa",
+        paragraphs: [
+          "Żadna treść na tej stronie nie stanowi oferty sprzedaży ani zaproszenia do składania ofert nabycia papierów wartościowych, instrumentów finansowych lub udziałów w jakimkolwiek przedsiębiorstwie. Nie stanowi też doradztwa inwestycyjnego, prawnego, podatkowego ani innego doradztwa profesjonalnego. Wszelkie rozmowy dotyczące inwestycji lub partnerstwa podlegają odrębnym umowom zawieranym na piśmie oraz prawu właściwemu dla stron.",
+        ],
+      },
+      {
+        title: "Rzetelność informacji",
+        paragraphs: [
+          "Treści są przygotowywane starannie i okresowo weryfikowane, jednak AUREX nie gwarantuje, że są kompletne, dokładne lub aktualne. Informacje o zamierzeniach i obszarach zainteresowania mają charakter prognostyczny i mogą ulec zmianie bez uprzedzenia.",
+        ],
+      },
+      {
+        title: "Linki zewnętrzne",
+        paragraphs: [
+          "Strona może zawierać linki do stron osób trzecich. AUREX nie ma wpływu na ich treść i nie ponosi za nią odpowiedzialności. Umieszczenie linku nie oznacza rekomendacji.",
+        ],
+      },
+      {
+        title: "Własność intelektualna",
+        paragraphs: [
+          "Nazwa i oznaczenia AUREX, a także teksty, grafiki, układ i kod tej strony są chronione prawem własności intelektualnej. Wykorzystanie wykraczające poza osobiste, niekomercyjne przeglądanie wymaga uprzedniej pisemnej zgody.",
+        ],
+      },
+      {
+        title: "Kontakt",
+        paragraphs: [
+          "Pytania dotyczące niniejszej noty można przesyłać za pośrednictwem formularza zapytań na stronie kontaktowej.",
+        ],
+      },
+    ],
+    operator: {
+      legalName: "Nazwa prawna",
+      registeredOffice: "Siedziba",
+      registration: "Numery rejestrowe i NIP",
+      email: "E-mail",
+      hosting: "Dostawca hostingu",
+      pending: "Zostanie opublikowane",
+    },
+  },
+
+  terms: {
+    hero: {
+      eyebrow: "Informacje prawne",
+      title: "Warunki korzystania.",
+      intro: "Warunki obowiązujące podczas korzystania z tej strony.",
+    },
+    updated: "Ostatnia aktualizacja: październik 2026",
+    sections: [
+      {
+        title: "Akceptacja warunków",
+        paragraphs: [
+          "Korzystając ze strony, akceptują Państwo niniejsze warunki. W przypadku braku akceptacji prosimy o niekorzystanie ze strony.",
+        ],
+      },
+      {
+        title: "Korzystanie ze strony",
+        paragraphs: [
+          "Mogą Państwo przeglądać stronę i korzystać z formularza zapytań w uzasadnionych celach biznesowych. Zabronione jest zakłócanie działania lub bezpieczeństwa strony, próby uzyskania nieuprawnionego dostępu do niej lub jej systemów, przesyłanie za pośrednictwem formularzy treści bezprawnych, wprowadzających w błąd lub generowanych automatycznie, a także masowe kopiowanie lub pobieranie jej treści.",
+        ],
+      },
+      {
+        title: "Charakter informacyjny",
+        paragraphs: [
+          "Strona ma wyłącznie charakter informacyjny. Nie stanowi oferty, zaproszenia do składania ofert ani jakiegokolwiek doradztwa. Korzystanie ze strony ani przesłanie zapytania nie prowadzi do zawarcia umowy ani nawiązania relacji partnerskiej czy inwestycyjnej.",
+        ],
+      },
+      {
+        title: "Zapytania",
+        paragraphs: [
+          "Przesłanie zapytania nie zobowiązuje AUREX do udzielenia odpowiedzi, podjęcia rozmów ani zachowania poufności zapytania w zakresie wykraczającym poza opisany w polityce prywatności. Prosimy nie zamieszczać w pierwszej wiadomości informacji poufnych ani wrażliwych handlowo.",
+        ],
+      },
+      {
+        title: "Własność intelektualna",
+        paragraphs: [
+          "Wszystkie treści na tej stronie, w tym nazwa i oznaczenia AUREX, teksty, obrazy, grafiki i kod, należą do AUREX lub jej licencjodawców. Nie udziela się żadnej licencji poza prawem do przeglądania strony zgodnie z jej przeznaczeniem.",
+        ],
+      },
+      {
+        title: "Dostępność",
+        paragraphs: [
+          "Strona jest udostępniana w stanie, w jakim się znajduje, i w miarę dostępności. AUREX może w każdej chwili, bez uprzedzenia, zmienić, zawiesić lub wycofać dowolną jej część.",
+        ],
+      },
+      {
+        title: "Ograniczenie odpowiedzialności",
+        paragraphs: [
+          "W najszerszym zakresie dopuszczalnym przez prawo AUREX nie ponosi odpowiedzialności za szkody wynikające z korzystania ze strony lub jej treści albo z polegania na nich. Żadne z postanowień niniejszych warunków nie ogranicza odpowiedzialności, której zgodnie z obowiązującym prawem ograniczyć nie można.",
+        ],
+      },
+      {
+        title: "Zmiany warunków",
+        paragraphs: [
+          "Niniejsze warunki mogą być okresowo aktualizowane. Obowiązuje wersja opublikowana na tej stronie, od dnia jej publikacji.",
+        ],
+      },
+      {
+        title: "Prawo właściwe",
+        paragraphs: [
+          "Niniejsze warunki podlegają prawu państwa, w którym zarejestrowany jest operator strony, wskazanego w nocie prawnej. Nie narusza to bezwzględnie obowiązującej ochrony, która przysługuje Państwu na mocy prawa państwa zamieszkania.",
+        ],
+      },
+    ],
+  },
+
+  cookies: {
+    hero: {
+      eyebrow: "Informacje prawne",
+      title: "Polityka plików cookie.",
+      intro: "Jakie pliki cookie ustawia ta strona i w jakim celu.",
+    },
+    updated: "Ostatnia aktualizacja: październik 2026",
+    sections: [
+      {
+        title: "Czym są pliki cookie",
+        paragraphs: [
+          "Pliki cookie to niewielkie pliki tekstowe, które strona internetowa zapisuje w przeglądarce. Pozwalają one zapamiętywać informacje pomiędzy wizytami.",
+        ],
+      },
+      {
+        title: "Pliki cookie na tej stronie",
+        paragraphs: [
+          "Strona ustawia jeden własny plik cookie i tylko wtedy, gdy wybiorą Państwo język za pomocą przełącznika języków. Nie zawiera on danych osobowych.",
+        ],
+        slot: "register",
+      },
+      {
+        title: "Czego strona nie wykorzystuje",
+        paragraphs: [
+          "Strona nie wykorzystuje analitycznych, reklamowych, społecznościowych ani innych śledzących plików cookie, ani plików cookie podmiotów trzecich. Państwa aktywność nie jest profilowana.",
+        ],
+      },
+      {
+        title: "Zgoda",
+        paragraphs: [
+          "Plik cookie języka jest niezbędny do świadczenia funkcji, o którą Państwo wyraźnie poprosili, dlatego jest ustawiany bez banera zgody. Jeśli kiedykolwiek zostaną wprowadzone analityczne lub inne nieniezbędne pliki cookie, niniejsza polityka zostanie zaktualizowana, a przed ich użyciem poprosimy o Państwa zgodę.",
+        ],
+      },
+      {
+        title: "Zarządzanie plikami cookie",
+        paragraphs: [
+          "Pliki cookie można w każdej chwili przeglądać i usuwać w ustawieniach przeglądarki. Po usunięciu pliku cookie języka strona przy następnej wizycie po prostu wybierze język na podstawie preferencji przeglądarki.",
+        ],
+      },
+      {
+        title: "Zmiany polityki",
+        paragraphs: [
+          "Polityka jest aktualizowana za każdym razem, gdy zmieniają się pliki cookie wykorzystywane przez stronę.",
+        ],
+      },
+    ],
+    register: {
+      caption: "Pliki cookie ustawiane przez tę stronę",
+      columns: {
+        name: "Plik cookie",
+        purpose: "Cel",
+        duration: "Okres przechowywania",
+        category: "Rodzaj",
+      },
+      rows: {
+        locale: {
+          purpose: "Zapamiętuje wybrany język.",
+          duration: "12 miesięcy",
+          category: "Niezbędny, własny",
+        },
+      },
+    },
   },
 
   inquiry: {

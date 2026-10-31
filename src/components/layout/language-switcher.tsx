@@ -50,7 +50,7 @@ export function LanguageSwitcher({ locale, label, className }: { locale: Locale;
         aria-controls={listId}
         aria-label={label}
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex h-11 items-center gap-2 rounded-[4px] border border-white/20 bg-ink-950/30 px-3.5 text-[0.8125rem] font-medium text-ivory/85 backdrop-blur-md transition-colors hover:border-white/40 hover:text-ivory"
+        className="inline-flex h-11 items-center gap-2 rounded-[4px] bg-ink-700 px-3.5 text-[0.875rem] font-medium text-ivory/90 transition-colors hover:bg-ink-600 hover:text-ivory"
       >
         <Globe size={15} className="text-ivory/60" />
         <span className="uppercase tracking-[0.08em]">{locale}</span>
@@ -59,10 +59,8 @@ export function LanguageSwitcher({ locale, label, className }: { locale: Locale;
       <ul
         id={listId}
         aria-label={label}
-        className={cn(
-          "absolute right-0 top-[calc(100%+0.5rem)] min-w-44 overflow-hidden rounded-lg border border-white/12 bg-ink-950 p-1.5 transition-all duration-300 ease-[var(--ease-out-expo)]",
-          open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-1 opacity-0",
-        )}
+        hidden={!open}
+        className="absolute right-0 top-[calc(100%+0.5rem)] min-w-44 overflow-hidden rounded-lg bg-ink-850 p-1.5 shadow-[0_24px_48px_-24px_rgb(0_0_0/0.7)] motion-safe:animate-[aurex-menu-in_0.3s_var(--ease-out-expo)]"
       >
         {locales.map((l) => (
           <li key={l}>
@@ -81,7 +79,7 @@ export function LanguageSwitcher({ locale, label, className }: { locale: Locale;
               )}
             >
               <span>{localeMeta[l].native}</span>
-              <span className="t-meta uppercase text-mist-dim">{l}</span>
+              <span className="text-[0.875rem] uppercase text-mist-dim">{l}</span>
             </Link>
           </li>
         ))}

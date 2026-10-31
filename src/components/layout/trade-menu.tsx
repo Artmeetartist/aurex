@@ -75,7 +75,7 @@ export function TradeMenu({ data, active }: { data: TradeMenuData; active: boole
         aria-controls={panelId}
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "relative inline-flex h-11 items-center gap-1.5 whitespace-nowrap px-2 text-[0.8125rem] transition-colors duration-300 2xl:px-3 2xl:text-[0.875rem]",
+          "relative inline-flex h-11 items-center gap-1.5 whitespace-nowrap px-2 text-[0.875rem] transition-colors duration-300 2xl:px-3",
           "before:absolute before:bottom-2 before:left-2 before:right-6 before:h-px before:origin-left before:bg-current before:transition-transform before:duration-300 before:content-[''] 2xl:before:left-3 2xl:before:right-7",
           active || open ? "text-ivory before:scale-x-100" : "text-ivory/75 before:scale-x-0 hover:text-ivory hover:before:scale-x-100",
         )}
@@ -84,14 +84,13 @@ export function TradeMenu({ data, active }: { data: TradeMenuData; active: boole
         <Chevron open={open} />
       </button>
 
+      {/* Closed = display:none, so the panel is out of the tab order and the reduced-motion page. */}
       <div
         id={panelId}
-        className={cn(
-          "absolute left-1/2 top-[calc(100%+0.75rem)] w-[min(52rem,calc(100vw-3rem))] -translate-x-1/2 transition-[opacity,transform,visibility] duration-500 ease-[var(--ease-out-expo)]",
-          open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0",
-        )}
+        hidden={!open}
+        className="absolute left-1/2 top-[calc(100%+0.75rem)] w-[min(52rem,calc(100vw-3rem))] -translate-x-1/2"
       >
-        <div className="grid grid-cols-12 gap-2 rounded-lg border border-white/12 bg-ink-950 p-2.5 shadow-[0_30px_60px_-30px_rgb(0_0_0/0.7)]">
+        <div className="grid grid-cols-12 gap-2 rounded-lg bg-ink-850 p-2.5 shadow-[0_30px_60px_-30px_rgb(0_0_0/0.7)] motion-safe:animate-[aurex-menu-in_0.4s_var(--ease-out-expo)]">
           <ul className="col-span-8 grid grid-cols-2 gap-1.5">
             {data.items.map((item) => {
               const Icon = tradeIcons[item.id];
@@ -106,14 +105,14 @@ export function TradeMenu({ data, active }: { data: TradeMenuData; active: boole
                       <Icon size={30} />
                     </span>
                     <span className="min-w-0">
-                      <span className="flex items-center gap-2 text-[0.9375rem] font-medium text-ivory">
+                      <span className="flex items-center gap-2 text-[1rem] font-medium text-ivory">
                         {item.name}
                         <ArrowUpRight
                           size={12}
-                          className="opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100"
+                          className="opacity-0 transition-[opacity,transform] duration-300 group-hover:translate-x-0.5 group-hover:opacity-100"
                         />
                       </span>
-                      <span className="mt-1 block text-[0.8125rem] leading-snug text-mist">{item.title}</span>
+                      <span className="mt-1 block text-[0.875rem] leading-snug text-mist">{item.title}</span>
                     </span>
                   </Link>
                 </li>
@@ -129,13 +128,13 @@ export function TradeMenu({ data, active }: { data: TradeMenuData; active: boole
               <span className="relative text-brass">
                 <GreenLoop size={30} />
               </span>
-              <span className="t-eyebrow relative mt-auto pt-6 text-brass-soft">{data.green.eyebrow}</span>
-              <span className="relative mt-2 text-[1.0625rem] leading-snug">{data.green.title}</span>
+              <span className="relative mt-auto pt-6 text-[1rem] font-medium leading-snug">{data.green.eyebrow}</span>
+              <span className="relative mt-1 text-[0.875rem] leading-snug text-cream/75">{data.green.title}</span>
             </Link>
             <Link
               href={data.hubHref}
               onClick={() => setOpen(false)}
-              className="group inline-flex min-h-11 items-center justify-between rounded-lg border border-white/10 px-5 text-[0.875rem] text-ivory transition-colors hover:border-white/30"
+              className="group inline-flex min-h-11 items-center justify-between rounded-lg bg-ink-700 px-5 text-[0.875rem] text-ivory transition-colors hover:bg-ink-600"
             >
               {data.allLabel}
               <ArrowUpRight size={13} className="transition-transform duration-500 group-hover:rotate-45" />

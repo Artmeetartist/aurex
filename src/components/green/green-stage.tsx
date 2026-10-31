@@ -12,14 +12,12 @@ import { contactHref, href } from "@/lib/routes";
 import { STAGE_COUNT, STAGE_PILLAR, TRAVEL, progressForStage, stageAt } from "./stages";
 import { useRange } from "./use-range";
 
-/** Scroll position (0–1 of the pinned track) where the closing copy takes over. */
+/** Scroll position (0–1 of the pinned track) where the stage captions take over from the title. */
+const INTRO_END = 0.09;
+/** Scroll position where the closing copy takes over. */
 const OUTRO = 0.865;
-/** The headline docks into the corner once the camera starts to travel. */
-const DOCK = [0.035, 0.11] as const;
 
 type Phase = "intro" | "travel" | "outro";
-
-const pad = (n: number) => String(n).padStart(2, "0");
 
 function Arrow({ className }: { className?: string }) {
   return (
@@ -48,7 +46,9 @@ function Caption({ state, children }: { state: "active" | "past" | "future"; chi
 
 /**
  * The pinned cinematic stage: a real-time maquette of the sustainable commerce
- * ecosystem that the camera travels across as the reader scrolls.
+ * ecosystem that the camera travels across as the reader scrolls. The title
+ * opens the track and scrolls away over the pinned maquette; each stage then
+ * gets its own caption, and the closing copy ends the track at the port.
  */
 export function GreenStage({ locale, content }: { locale: Locale; content: SiteContent }) {
   const copy = content.home.green;
@@ -66,13 +66,8 @@ export function GreenStage({ locale, content }: { locale: Locale; content: SiteC
 
   useMotionValueEvent(scrollYProgress, "change", (p) => {
     setStage(stageAt((p - TRAVEL.start) / (TRAVEL.end - TRAVEL.start)));
-    setPhase(p < DOCK[1] - 0.02 ? "intro" : p < OUTRO ? "travel" : "outro");
+    setPhase(p < INTRO_END ? "intro" : p < OUTRO ? "travel" : "outro");
   });
-
-  // Headline docks (scales down into the corner) rather than disappearing.
-  const titleScale = useRange(scrollYProgress, DOCK, [1, 0.46]);
-  const subtitleOpacity = useRange(scrollYProgress, [0.015, DOCK[1] - 0.03], [1, 0]);
-  const rail = useRange(scrollYProgress, [TRAVEL.start, TRAVEL.end], [0, 1]);
 
   const lenis = useLenis();
   const goTo = (target: number) => {
@@ -115,82 +110,39 @@ export function GreenStage({ locale, content }: { locale: Locale; content: SiteC
         <div
           aria-hidden
           className={cn(
-            "pointer-events-none absolute inset-x-0 top-0 h-[46%] bg-gradient-to-b from-forest-950/90 via-forest-950/45 to-transparent transition-opacity duration-1000",
+            "scrim-down pointer-events-none absolute inset-x-0 top-0 h-[46%] transition-opacity duration-1000",
             phase === "intro" ? "opacity-100" : "opacity-45",
           )}
         />
-        <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%] bg-gradient-to-t from-forest-950/95 via-forest-950/55 to-transparent" />
+        <div aria-hidden className="scrim-up pointer-events-none absolute inset-x-0 bottom-0 h-[42%]" />
         <div
           aria-hidden
           className={cn(
-            "pointer-events-none absolute inset-y-0 left-0 hidden w-[55%] bg-gradient-to-r from-forest-950/60 to-transparent transition-opacity duration-1000 md:block",
+            "scrim-right pointer-events-none absolute inset-y-0 left-0 hidden w-[55%] transition-opacity duration-1000 md:block",
             phase === "intro" ? "opacity-100" : "opacity-40",
           )}
         />
         <div
           aria-hidden
           className={cn(
-            "pointer-events-none absolute inset-0 bg-gradient-to-r from-forest-950/85 via-forest-950/40 to-transparent transition-opacity duration-1000",
+            "scrim-right pointer-events-none absolute inset-0 transition-opacity duration-1000",
             phase === "outro" ? "opacity-100" : "opacity-0",
           )}
         />
 
-        <div className="container-x relative flex h-full flex-col pb-6 pt-[calc(var(--header-h)+1.75rem)] md:pb-10 md:pt-[calc(var(--header-h)+2.75rem)]">
-          {/* Headline */}
-          <div className="relative">
-            <p className="t-eyebrow flex items-center gap-3 text-brass-soft">
-              <span className="text-brass">04</span>
-              <span aria-hidden className="h-px w-8 bg-brass/70" />
-              <span>{copy.eyebrow}</span>
-              <span
-                aria-hidden
-                className={cn(
-                  "ml-2 tabular-nums text-cream/70 transition-opacity duration-700",
-                  phase === "travel" ? "opacity-100" : "opacity-0",
-                )}
-              >
-                {pad(stage + 1)} / {pad(STAGE_COUNT)}
-              </span>
-            </p>
-            <motion.h2
-              id="green-title"
-              style={{ scale: titleScale }}
-              className="t-display-xl mt-5 max-w-[11ch] origin-top-left text-cream [text-wrap:balance] md:mt-6"
-            >
-              {copy.title}
-            </motion.h2>
-            <motion.p
-              style={{ opacity: subtitleOpacity }}
-              className="t-lead mt-6 max-w-[34rem] text-cream/85 md:mt-8 [@media(max-height:560px)]:hidden"
-            >
-              {copy.subtitle}
-            </motion.p>
-          </div>
-
+        <div className="container-x relative flex h-full flex-col justify-end pb-6 pt-[calc(var(--header-h)+1.75rem)] md:pb-10">
           {/* Stage caption / closing copy */}
-          <div className="relative mt-auto">
+          <div className="relative">
             <div
               className={cn(
-                "relative h-[8.5rem] transition-opacity duration-700 md:h-[10.5rem] [@media(max-height:560px)]:h-[4.5rem]",
+                "relative h-[5.5rem] transition-opacity duration-700 md:h-[6rem]",
                 phase === "travel" ? "opacity-100" : "opacity-0",
               )}
             >
               {stages.map((name, i) => (
                 <Caption key={name} state={i === stage ? "active" : i < stage ? "past" : "future"}>
-                  <div className="flex items-end gap-5 md:gap-8">
-                    <span
-                      aria-hidden
-                      className="text-[clamp(4.5rem,9vw,8.5rem)] font-extralight [@media(max-height:560px)]:hidden leading-[0.8] tracking-[-0.06em] text-transparent tabular-nums [-webkit-text-stroke:1px_rgb(226_207_152/0.55)]"
-                    >
-                      {pad(i + 1)}
-                    </span>
-                    <div className="pb-1">
-                      <p className="t-eyebrow text-brass-soft">{pillarName(i)}</p>
-                      <p className="mt-3 text-[clamp(1.75rem,3.4vw,3.25rem)] font-light leading-[1.02] tracking-[-0.03em] text-cream">
-                        {name}
-                      </p>
-                    </div>
-                  </div>
+                  <p className="t-display-sm text-cream">{name}</p>
+                  <p className="t-small mt-2 text-cream/80">{pillarName(i)}</p>
                 </Caption>
               ))}
             </div>
@@ -204,7 +156,13 @@ export function GreenStage({ locale, content }: { locale: Locale; content: SiteC
               )}
             >
               {copy.body.map((p, i) => (
-                <p key={i} className={cn("text-cream/85", i === 0 ? "t-lead" : "t-body mt-4 max-w-[34rem] text-cream/75 [@media(max-height:560px)]:hidden")}>
+                <p
+                  key={i}
+                  className={cn(
+                    "text-cream/90",
+                    i === 0 ? "t-lead" : "t-body mt-4 max-w-[34rem] [@media(max-height:560px)]:hidden",
+                  )}
+                >
                   {p}
                 </p>
               ))}
@@ -236,18 +194,17 @@ export function GreenStage({ locale, content }: { locale: Locale; content: SiteC
                       onClick={() => goToStage(i)}
                       aria-current={current ? "step" : undefined}
                       className={cn(
-                        "group/stage flex min-h-11 items-center gap-2.5 whitespace-nowrap rounded-full px-1 text-[0.8125rem] tracking-[-0.005em] transition-colors duration-500",
-                        current ? "text-cream" : "text-cream/60 hover:text-cream",
+                        "group/stage flex min-h-11 items-center gap-2.5 whitespace-nowrap rounded-full px-1 text-[0.875rem] transition-colors duration-500",
+                        current ? "text-cream" : "text-cream/70 hover:text-cream",
                       )}
                     >
                       <span
                         aria-hidden
                         className={cn(
-                          "h-1.5 w-1.5 shrink-0 rounded-full transition-all duration-500",
-                          current ? "scale-125 bg-gold shadow-[0_0_12px_rgb(141_198_63/0.8)]" : i < stage ? "bg-brass/80" : "bg-cream/30 group-hover/stage:bg-cream/70",
+                          "h-1.5 w-1.5 shrink-0 rounded-full transition-[transform,background-color] duration-500",
+                          current ? "scale-125 bg-gold" : i < stage ? "bg-brass/80" : "bg-cream/30 group-hover/stage:bg-cream/70",
                         )}
                       />
-                      <span className="t-eyebrow !tracking-[0.12em] text-[0.625rem] tabular-nums opacity-70">{pad(i + 1)}</span>
                       {name}
                     </button>
                     {i < stages.length - 1 && <Arrow className="shrink-0 text-cream/30" />}
@@ -258,27 +215,30 @@ export function GreenStage({ locale, content }: { locale: Locale; content: SiteC
           </div>
 
           {/* Compact stage indicator (mobile / tablet): the caption above names the stage. */}
-          <div className="relative mt-6 flex items-center justify-between gap-4 lg:hidden" aria-hidden>
-            <span className="t-eyebrow whitespace-nowrap tabular-nums text-brass-soft">
-              {pad(stage + 1)} / {pad(STAGE_COUNT)}
-            </span>
-            <span className="flex shrink-0 items-center gap-1.5">
-              {stages.map((name, i) => (
-                <span
-                  key={name}
-                  className={cn(
-                    "h-[3px] rounded-full transition-all duration-500",
-                    i === stage ? "w-5 bg-gold" : i < stage ? "w-2.5 bg-brass/70" : "w-2.5 bg-cream/25",
-                  )}
-                />
-              ))}
-            </span>
+          <div className="relative mt-6 flex items-center gap-1.5 lg:hidden" aria-hidden>
+            {stages.map((name, i) => (
+              <span
+                key={name}
+                className={cn(
+                  "h-[3px] rounded-full transition-[width,background-color] duration-500",
+                  i === stage ? "w-5 bg-gold" : i < stage ? "w-2.5 bg-brass/70" : "w-2.5 bg-cream/25",
+                )}
+              />
+            ))}
           </div>
 
-          <div aria-hidden className="relative mt-4 h-px bg-cream/12 md:mt-5">
-            <motion.div style={{ scaleX: rail }} className="h-px origin-left bg-gradient-to-r from-brass via-gold to-teal" />
+          <div aria-hidden className="relative mt-4 h-0.5 bg-cream/15 md:mt-5">
+            <motion.div style={{ scaleX: travel }} className="h-full origin-left bg-gold" />
           </div>
         </div>
+      </div>
+
+      {/* Title: opens the track and scrolls away over the pinned maquette. */}
+      <div className="container-x absolute inset-x-0 top-0 pt-[calc(var(--header-h)+2.75rem)] md:pt-[calc(var(--header-h)+4rem)]">
+        <h2 id="green-title" className="t-display-lg max-w-[14ch] text-cream">
+          {copy.title}
+        </h2>
+        <p className="t-lead mt-6 max-w-[34rem] text-cream/90 md:mt-8">{copy.subtitle}</p>
       </div>
     </div>
   );

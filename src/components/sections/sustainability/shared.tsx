@@ -1,13 +1,10 @@
-import type { ReactNode, SVGProps } from "react";
+import type { SVGProps } from "react";
 import type { GreenPillarId } from "@/content/types";
-import { cn } from "@/lib/cn";
 
 /**
  * Shared pieces of the AUREX Green (Sustainability) page. Server-safe: no
  * client hooks, so both server and client sections can import from here.
  */
-
-export const pad = (n: number) => String(n).padStart(2, "0");
 
 /** Still of each ecosystem stage (0–6), rendered from the GreenScene maquette. */
 export const stageStill = (stage: number) => `/media/green/stage-${stage}.webp`;
@@ -27,25 +24,7 @@ export const GUTTER = "clamp(1.25rem, 4vw, 3.5rem)";
 /** Left edge of `container-x` content, measured from the viewport edge. */
 export const CONTAINER_EDGE = `max(${GUTTER}, calc((100vw - 90rem) / 2 + ${GUTTER}))`;
 
-/** Mono label with a brass rule. `tone="dark"` is for cream surfaces. */
-export function GreenEyebrow({
-  children,
-  tone = "light",
-  className,
-}: {
-  children: ReactNode;
-  tone?: "light" | "dark";
-  className?: string;
-}) {
-  return (
-    <p className={cn("t-eyebrow flex items-center gap-3", tone === "light" ? "text-brass-soft" : "text-stone", className)}>
-      <span aria-hidden className={cn("h-px w-8", tone === "light" ? "bg-brass/70" : "bg-brass")} />
-      <span>{children}</span>
-    </p>
-  );
-}
-
-/** Direction chevron for connecting lines. */
+/** Direction chevron between the steps of a sequence. */
 export function Chevron({ className }: { className?: string }) {
   return (
     <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden className={className}>

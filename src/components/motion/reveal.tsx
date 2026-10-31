@@ -1,10 +1,15 @@
 "use client";
 
 import { motion, useInView, type HTMLMotionProps } from "motion/react";
-import { useRef, type ReactNode, type Ref } from "react";
+import { Fragment, useRef, type ReactNode, type Ref } from "react";
 import { cn } from "@/lib/cn";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
+
+/*
+ * Every hidden starting state carries `data-reveal`; under
+ * prefers-reduced-motion a global rule shows it at rest (globals.css).
+ */
 
 /** Fades and lifts content into view once. */
 export function Reveal({
@@ -17,6 +22,7 @@ export function Reveal({
 }: { children: ReactNode; delay?: number; y?: number; once?: boolean } & HTMLMotionProps<"div">) {
   return (
     <motion.div
+      data-reveal
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once, margin: "0px 0px -12% 0px" }}
@@ -69,6 +75,7 @@ export function RevealItem({
   const Comp = motion[as];
   return (
     <Comp
+      data-reveal
       className={className}
       variants={{
         hidden: { opacity: 0, y },
@@ -81,8 +88,8 @@ export function RevealItem({
 }
 
 /**
- * Splits a heading into lines/words that rise from a mask.
- * Words are kept as real text for accessibility and SEO.
+ * Splits a heading into words that rise from a mask. The words are the
+ * heading's real text (no duplicate copy), so it reads and counts once.
  */
 export function MaskText({
   text,
@@ -101,24 +108,22 @@ export function MaskText({
 
   return (
     <Tag ref={ref as Ref<HTMLHeadingElement & HTMLParagraphElement>} className={cn("[text-wrap:balance]", className)}>
-      <span className="sr-only">{text}</span>
-      <span aria-hidden>
-        {words.map((word, i) => {
-          return (
-            <span key={i} className="inline-block overflow-hidden pb-[0.12em] -mb-[0.12em] align-bottom">
-              <motion.span
-                className="inline-block"
-                initial={{ y: "105%" }}
-                animate={inView ? { y: "0%" } : undefined}
-                transition={{ duration: 1.1, ease: EASE, delay: delay + i * 0.045 }}
-              >
-                {word}
-              </motion.span>
-              {i < words.length - 1 && " "}
-            </span>
-          );
-        })}
-      </span>
+      {words.map((word, i) => (
+        <Fragment key={i}>
+          <span className="inline-block overflow-hidden pb-[0.12em] -mb-[0.12em] align-bottom">
+            <motion.span
+              data-reveal
+              className="inline-block"
+              initial={{ y: "105%" }}
+              animate={inView ? { y: "0%" } : undefined}
+              transition={{ duration: 1.1, ease: EASE, delay: delay + i * 0.045 }}
+            >
+              {word}
+            </motion.span>
+          </span>
+          {i < words.length - 1 && " "}
+        </Fragment>
+      ))}
     </Tag>
   );
 }

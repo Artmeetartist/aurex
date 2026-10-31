@@ -6,7 +6,7 @@ import type { SiteContent } from "@/content/types";
 import type { Locale } from "@/i18n/config";
 import { href, tradeHref } from "@/lib/routes";
 
-/** 03 — Trade lines of strategic focus, each linking to its own page. */
+/** Trade lines of strategic focus, each linking to its own page. */
 export function TradeLines({ locale, content }: { locale: Locale; content: SiteContent }) {
   const copy = content.home.trade;
   return (
@@ -14,8 +14,6 @@ export function TradeLines({ locale, content }: { locale: Locale; content: SiteC
       <div className="container-x">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <SectionHeading
-            index="03"
-            eyebrow={copy.eyebrow}
             title={copy.title}
             intro={copy.intro}
             tone="dark"

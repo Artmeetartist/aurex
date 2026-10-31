@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { ButtonLink } from "@/components/ui/button";
 import type { SiteContent } from "@/content/types";
 import type { Locale } from "@/i18n/config";
@@ -97,7 +97,7 @@ export function Hero({ locale, content }: { locale: Locale; content: SiteContent
     else v.pause();
   };
 
-  const titleWords = hero.title.split(" ");
+  const titleWords = hero.signature.split(" ");
 
   return (
     <section
@@ -128,9 +128,9 @@ export function Hero({ locale, content }: { locale: Locale; content: SiteContent
           <source src="/media/hero/hero-1280.mp4" type="video/mp4" />
         </video>
 
-        {/* Legibility: a low horizon of shadow, nothing decorative */}
-        <div className="absolute inset-0 bg-gradient-to-t from-ink-950/95 via-ink-950/35 to-ink-950/10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink-950/70 via-ink-950/15 to-transparent" />
+        {/* Legibility only: neutral scrims, then a scroll-linked dim */}
+        <div className="scrim-up absolute inset-0" />
+        <div className="scrim-right absolute inset-0 opacity-80" />
         <motion.div style={{ opacity: darken }} className="absolute inset-0 bg-ink-950" />
       </motion.div>
 
@@ -138,60 +138,39 @@ export function Hero({ locale, content }: { locale: Locale; content: SiteContent
         style={reduce ? undefined : { y: contentY, opacity: contentOpacity }}
         className="container-x relative z-10 flex h-full flex-col justify-end pb-32 md:pb-36"
       >
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, ease: EASE, delay: 0.2 }}
-          className="flex items-center gap-4 text-ivory/80"
-        >
-          <span aria-hidden className="h-px w-10 bg-ivory/50" />
-          <span className="t-eyebrow">{hero.eyebrow}</span>
-        </motion.p>
-
+        {/* The master line is the headline; the sentence under it says plainly what AUREX is. */}
         <h1
           id="hero-title"
-          className="mt-7 max-w-[17ch] font-serif text-[clamp(2.75rem,6.2vw,6.25rem)] font-normal leading-[1] tracking-[-0.026em] text-ivory [font-variation-settings:'opsz'_60] [text-wrap:balance]"
+          className="font-serif text-[clamp(3.5rem,8.4vw,8.5rem)] font-normal leading-[0.96] tracking-[-0.03em] text-ivory [font-variation-settings:'opsz'_60]"
         >
-          <span className="sr-only">{hero.title}</span>
-          <span aria-hidden>
-            {titleWords.map((word, i) => (
-              <span key={i} className="inline-block overflow-hidden pb-[0.12em] -mb-[0.12em] align-bottom">
+          {titleWords.map((word, i) => (
+            <Fragment key={i}>
+              <span className="inline-block overflow-hidden pb-[0.12em] -mb-[0.12em] align-bottom">
                 <motion.span
+                  data-reveal
                   initial={reduce ? false : { y: "110%" }}
                   animate={{ y: "0%" }}
-                  transition={{ duration: 1.2, ease: EASE, delay: 0.3 + i * 0.06 }}
+                  transition={{ duration: 1.2, ease: EASE, delay: 0.2 + i * 0.08 }}
                   className="inline-block"
                 >
                   {word}
                 </motion.span>
-                {i < titleWords.length - 1 && "\u00a0"}
               </span>
-            ))}
-          </span>
+              {i < titleWords.length - 1 && " "}
+            </Fragment>
+          ))}
         </h1>
 
         <div className="mt-8 grid gap-8 md:mt-10 md:grid-cols-12 md:items-end">
-          <motion.p
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: EASE, delay: 0.75 }}
-            className="t-lead max-w-[34rem] text-ivory/85 md:col-span-6"
-          >
-            {hero.intro}
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: EASE, delay: 0.9 }}
-            className="flex flex-wrap items-center gap-3 md:col-span-6 md:justify-end"
-          >
+          <p className="t-display-sm max-w-[30ch] text-ivory/90 md:col-span-7">{hero.title}</p>
+          <div className="flex flex-wrap items-center gap-3 md:col-span-5 md:justify-end">
             <ButtonLink href={href(locale, "about")} size="lg">
               {hero.primaryCta}
             </ButtonLink>
-            <ButtonLink href={contactHref(locale, "partnership")} size="lg" variant="glass">
+            <ButtonLink href={contactHref(locale, "partnership")} size="lg" variant="outline-light">
               {hero.secondaryCta}
             </ButtonLink>
-          </motion.div>
+          </div>
         </div>
       </motion.div>
 
@@ -200,37 +179,32 @@ export function Hero({ locale, content }: { locale: Locale; content: SiteContent
         style={reduce ? undefined : { opacity: contentOpacity }}
         className="container-x absolute inset-x-0 bottom-6 z-10 md:bottom-8"
       >
-        <div className="flex items-center gap-4 border-t border-white/20 pt-3">
-          <ol className="flex flex-1 items-center gap-3 sm:gap-8" aria-label={hero.scroll}>
+        <div className="flex items-center gap-4">
+          <ol className="flex flex-1 items-center gap-2 sm:gap-8" aria-label={hero.scroll}>
             {MODES.map((m, i) => {
               const active = m === mode;
               return (
-                <li key={m} className={cn("min-w-0 sm:max-w-44", active ? "flex-[2.2] sm:flex-1" : "flex-1")}>
+                <li key={m} className="min-w-0 flex-1 sm:max-w-44">
                   <button
                     type="button"
                     onClick={() => seek(m)}
                     aria-current={active ? "step" : undefined}
                     className="group/mode block min-h-11 w-full py-2 text-left"
                   >
-                    <span className="flex items-baseline gap-2">
-                      <span className={cn("t-meta transition-colors", active ? "text-ivory" : "text-ivory/45")}>
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span
-                        className={cn(
-                          "truncate text-[0.8125rem] transition-colors duration-500",
-                          active ? "text-ivory" : "hidden text-ivory/50 group-hover/mode:text-ivory sm:inline",
-                        )}
-                      >
-                        {hero.modes[m]}
-                      </span>
+                    <span
+                      className={cn(
+                        "block truncate text-[0.875rem] font-medium transition-colors duration-500",
+                        active ? "text-ivory" : "text-ivory/55 group-hover/mode:text-ivory",
+                      )}
+                    >
+                      {hero.modes[m]}
                     </span>
-                    <span className="mt-2 block h-px w-full bg-white/15">
+                    <span className="mt-2 block h-0.5 w-full rounded-full bg-white/20">
                       <span
                         ref={(el) => {
                           bars.current[i] = el;
                         }}
-                        className="block h-px origin-left scale-x-0 bg-ivory"
+                        className="block h-0.5 origin-left scale-x-0 rounded-full bg-gold"
                       />
                     </span>
                   </button>
@@ -242,7 +216,7 @@ export function Hero({ locale, content }: { locale: Locale; content: SiteContent
             type="button"
             onClick={toggle}
             aria-label={playing ? hero.pause : hero.play}
-            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[4px] border border-white/20 text-ivory/80 transition-colors hover:border-white/50 hover:text-ivory"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[4px] bg-ink-700 text-ivory transition-colors hover:bg-ink-600"
           >
             {playing ? (
               <svg width="10" height="12" viewBox="0 0 10 12" aria-hidden>

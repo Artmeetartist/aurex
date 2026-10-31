@@ -26,8 +26,6 @@ export default async function PortfolioPage({ params }: PageProps<"/[locale]/por
       <section className="surface-ink section-y">
         <div className="container-x">
           <SectionHeading
-            index="01"
-            eyebrow={portfolio.approach.eyebrow}
             title={portfolio.approach.title}
             intro={portfolio.approach.intro}
           />
@@ -41,8 +39,6 @@ export default async function PortfolioPage({ params }: PageProps<"/[locale]/por
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-32">
               <SectionHeading
-                index="02"
-                eyebrow={portfolio.criteria.eyebrow}
                 title={portfolio.criteria.title}
                 intro={portfolio.criteria.intro}
                 tone="dark"
@@ -76,8 +72,6 @@ export default async function PortfolioPage({ params }: PageProps<"/[locale]/por
       <section className="surface-ink-deep section-y">
         <div className="container-x">
           <SectionHeading
-            index="03"
-            eyebrow={portfolio.sectors.eyebrow}
             title={portfolio.sectors.title}
             intro={portfolio.sectors.intro}
           />

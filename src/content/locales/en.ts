@@ -51,6 +51,18 @@ const en: SiteContent = {
         title: "Privacy notice",
         description: "How information submitted through the AUREX website is handled.",
       },
+      legal: {
+        title: "Legal notice",
+        description: "The operator of the AUREX website and the terms on which its content is published.",
+      },
+      terms: {
+        title: "Terms of use",
+        description: "The conditions that apply to the use of the AUREX website.",
+      },
+      cookies: {
+        title: "Cookie policy",
+        description: "The cookies the AUREX website sets and why: one language preference, no tracking.",
+      },
     },
   },
 
@@ -65,6 +77,9 @@ const en: SiteContent = {
       partnerships: "Partnerships",
       contact: "Contact",
       privacy: "Privacy",
+      legal: "Legal notice",
+      terms: "Terms of use",
+      cookies: "Cookie policy",
     },
     cta: "Start a conversation",
     menu: "Menu",
@@ -87,7 +102,7 @@ const en: SiteContent = {
 
   home: {
     hero: {
-      eyebrow: "Value in Motion.",
+      signature: "Value in Motion.",
       title: "International trade, holdings and investment, rooted in Europe.",
       accent: ["motion"],
       intro:
@@ -165,7 +180,7 @@ const en: SiteContent = {
     green: {
       eyebrow: "AUREX Green",
       title: "The Green Transition",
-      subtitle: "Trading the products and technologies shaping a more resource-efficient world.",
+      subtitle: "AUREX Green: trading the products and technologies shaping a more resource-efficient world.",
       body: [
         "AUREX is expanding its trading and investment activities across sustainable materials, clean technologies, resource-efficient products and lower-impact supply chains.",
         "From recycled materials and sustainable packaging to clean-energy infrastructure and green logistics, we connect emerging opportunities with international markets.",
@@ -188,7 +203,7 @@ const en: SiteContent = {
       explore: "Explore",
       flowLabel: "The AUREX model",
       flow: ["Source", "Trade", "Distribute", "Invest"],
-      statement: "Building commerce for a changing world.",
+      statement: "Commerce for a changing world.",
       statementText:
         "AUREX Green represents our focus on sustainable products, technologies and opportunities that can move through global markets.",
       statementCta: "Discuss a partnership",
@@ -196,7 +211,7 @@ const en: SiteContent = {
     },
     reach: {
       eyebrow: "Global reach",
-      title: "Europe at the core. Corridors to the Gulf, India and Africa.",
+      title: "Europe at the core. Corridors beyond.",
       accent: ["core."],
       intro:
         "AUREX is shaped by European standards and oriented towards the corridors that connect Europe with the Middle East, India and Africa.",
@@ -485,7 +500,7 @@ const en: SiteContent = {
     },
     medical: {
       name: "Medical",
-      title: "Medical supply, where compliance comes first.",
+      title: "Medical supply, compliance first.",
       accent: ["compliance"],
       intro:
         "Medical products and equipment demand documented quality, regulatory conformity and full traceability. AUREX approaches the sector with the diligence it requires.",
@@ -654,7 +669,7 @@ const en: SiteContent = {
       intro:
         "Costumes, armour, props and historical reproductions for live-action role-play, re-enactment and theatre, connecting skilled makers with specialist retailers, organisers and productions.",
       overview:
-        "Live-action role-play, historical re-enactment and theatre depend on goods that look authentic, last in use and are safe to wear. AUREX approaches this specialist market as it does any trade line: with qualified makers, clear specifications and dependable logistics.",
+        "LARP, historical re-enactment and theatre depend on goods that look authentic, last in use and are safe to wear. AUREX approaches this specialist market as it does any trade line: with qualified makers, clear specifications and dependable logistics.",
       categories: [
         {
           title: "Mail armour",
@@ -803,11 +818,11 @@ const en: SiteContent = {
       eyebrow: "AUREX Green",
       title: "The Green Transition",
       accent: ["Green"],
-      intro: "Trading the products and technologies shaping a more resource-efficient world.",
+      intro: "AUREX Green: trading the products and technologies shaping a more resource-efficient world.",
     },
     intro: {
       eyebrow: "AUREX Green",
-      title: "Sustainability as part of real-world commerce.",
+      title: "Sustainability in real-world trade.",
       accent: ["real-world"],
     },
     ecosystem: {
@@ -915,8 +930,8 @@ const en: SiteContent = {
   tradeHub: {
     hero: {
       eyebrow: "Trade",
-      title: "International trade, structured to European standards.",
-      accent: ["structured"],
+      title: "International trade, structured.",
+      accent: ["structured."],
       intro:
         "AUREX is built to source, move and distribute goods across borders, connecting qualified producers with demand in markets of focus under European standards of documentation, compliance and counterparty diligence.",
     },
@@ -1208,6 +1223,198 @@ const en: SiteContent = {
         paragraphs: ["The identity and registered address of the data controller will be published on this page."],
       },
     ],
+  },
+
+  legal: {
+    hero: {
+      eyebrow: "Legal",
+      title: "Legal notice.",
+      intro: "Who operates this website, and the terms on which its content is published.",
+    },
+    updated: "Last updated: October 2026",
+    sections: [
+      {
+        title: "Website operator",
+        paragraphs: [
+          "This website is published by AUREX. The registered details of the operating entity are listed below. Any detail not yet shown will be published on this page.",
+        ],
+        slot: "operator",
+      },
+      {
+        title: "Purpose of this website",
+        paragraphs: [
+          "This website presents the AUREX group, its approach and its areas of strategic focus. It is provided for general information only.",
+          "The sectors, markets and corridors described on this website are areas of focus. They are not a statement of current operations, offices, subsidiaries or results.",
+        ],
+      },
+      {
+        title: "No offer or advice",
+        paragraphs: [
+          "Nothing on this website is an offer to sell, or a solicitation of an offer to buy, any security, financial instrument or interest in any business. Nor is it investment, legal, tax or other professional advice. Any investment or partnership discussion is subject to separate written agreements and to the law that applies to the parties.",
+        ],
+      },
+      {
+        title: "Accuracy of information",
+        paragraphs: [
+          "Content is prepared with care and reviewed periodically, but AUREX gives no warranty that it is complete, accurate or current. Statements about intentions and areas of focus are forward-looking and may change without notice.",
+        ],
+      },
+      {
+        title: "External links",
+        paragraphs: [
+          "This website may link to third-party websites. AUREX has no control over their content and accepts no responsibility for it. A link does not imply endorsement.",
+        ],
+      },
+      {
+        title: "Intellectual property",
+        paragraphs: [
+          "The AUREX name and marks, and the text, graphics, layout and code of this website, are protected by intellectual property law. Any use beyond personal, non-commercial viewing requires prior written consent.",
+        ],
+      },
+      {
+        title: "Contact",
+        paragraphs: [
+          "Questions about this notice can be sent through the inquiry form on the contact page.",
+        ],
+      },
+    ],
+    operator: {
+      legalName: "Legal name",
+      registeredOffice: "Registered office",
+      registration: "Registration and VAT numbers",
+      email: "Email",
+      hosting: "Hosting provider",
+      pending: "To be published",
+    },
+  },
+
+  terms: {
+    hero: {
+      eyebrow: "Legal",
+      title: "Terms of use.",
+      intro: "The conditions that apply when you use this website.",
+    },
+    updated: "Last updated: October 2026",
+    sections: [
+      {
+        title: "Acceptance",
+        paragraphs: [
+          "By accessing or using this website you agree to these terms. If you do not agree, please do not use the website.",
+        ],
+      },
+      {
+        title: "Use of the website",
+        paragraphs: [
+          "You may browse the website and use its inquiry form for legitimate business purposes. You agree not to interfere with its operation or security, attempt to gain unauthorised access to it or to its systems, submit unlawful, misleading or automated content through its forms, or copy or scrape its content at scale.",
+        ],
+      },
+      {
+        title: "Information only",
+        paragraphs: [
+          "The website is provided for general information. It is not an offer, a solicitation or advice of any kind. No contract, partnership or investment relationship is formed by using it or by submitting an inquiry.",
+        ],
+      },
+      {
+        title: "Inquiries",
+        paragraphs: [
+          "Submitting an inquiry does not oblige AUREX to respond, to enter into discussions or to treat the inquiry as confidential beyond what the privacy notice describes. Please do not include confidential or commercially sensitive information in a first message.",
+        ],
+      },
+      {
+        title: "Intellectual property",
+        paragraphs: [
+          "All content on this website, including the AUREX name and marks, text, imagery, graphics and code, belongs to AUREX or its licensors. No licence is granted other than to view the website for its intended purpose.",
+        ],
+      },
+      {
+        title: "Availability",
+        paragraphs: [
+          "The website is provided as is and as available. AUREX may change, suspend or withdraw any part of it at any time without notice.",
+        ],
+      },
+      {
+        title: "Limitation of liability",
+        paragraphs: [
+          "To the fullest extent permitted by law, AUREX is not liable for any loss or damage arising from the use of, or reliance on, this website or its content. Nothing in these terms limits any liability that cannot be limited under applicable law.",
+        ],
+      },
+      {
+        title: "Changes to these terms",
+        paragraphs: [
+          "These terms may be updated from time to time. The version published on this page applies from its date of publication.",
+        ],
+      },
+      {
+        title: "Governing law",
+        paragraphs: [
+          "These terms are governed by the law of the country in which the operator of this website is registered, as stated in the legal notice. This does not affect any mandatory protection you have under the law of your country of residence.",
+        ],
+      },
+    ],
+  },
+
+  cookies: {
+    hero: {
+      eyebrow: "Legal",
+      title: "Cookie policy.",
+      intro: "Which cookies this website sets, and why.",
+    },
+    updated: "Last updated: October 2026",
+    sections: [
+      {
+        title: "What cookies are",
+        paragraphs: [
+          "Cookies are small text files that a website stores in your browser. They let the site remember information between visits.",
+        ],
+      },
+      {
+        title: "Cookies on this website",
+        paragraphs: [
+          "This website sets a single first-party cookie, and only when you choose a language with the language switcher. It contains no personal data.",
+        ],
+        slot: "register",
+      },
+      {
+        title: "What this website does not use",
+        paragraphs: [
+          "This website uses no analytics, advertising, social media or other tracking cookies, and no third-party cookies. Your browsing is not profiled.",
+        ],
+      },
+      {
+        title: "Consent",
+        paragraphs: [
+          "The language cookie is strictly necessary to provide a feature you have explicitly requested, so it is set without a consent banner. If analytics or other non-essential cookies are ever introduced, this policy will be updated and your consent will be asked for first.",
+        ],
+      },
+      {
+        title: "Managing cookies",
+        paragraphs: [
+          "You can view and delete cookies in your browser settings at any time. If you delete the language cookie, the website will simply choose a language from your browser preferences on your next visit.",
+        ],
+      },
+      {
+        title: "Changes to this policy",
+        paragraphs: [
+          "This policy is updated whenever the cookies this website uses change.",
+        ],
+      },
+    ],
+    register: {
+      caption: "Cookies set by this website",
+      columns: {
+        name: "Cookie",
+        purpose: "Purpose",
+        duration: "Duration",
+        category: "Type",
+      },
+      rows: {
+        locale: {
+          purpose: "Remembers the language you selected.",
+          duration: "12 months",
+          category: "Strictly necessary, first-party",
+        },
+      },
+    },
   },
 
   inquiry: {

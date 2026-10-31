@@ -2,11 +2,9 @@
 
 import { motion, useScroll, type MotionValue } from "motion/react";
 import { useRef } from "react";
-import { Reveal } from "@/components/motion/reveal";
+import { MaskText } from "@/components/motion/reveal";
 import type { SiteContent } from "@/content/types";
 import { useRange } from "./use-range";
-
-const pad = (n: number) => String(n).padStart(2, "0");
 
 function Step({
   label,
@@ -28,15 +26,13 @@ function Step({
   return (
     <li className="relative grid grid-cols-[2.25rem_1fr] gap-x-4 pb-12 last:pb-0 lg:block lg:pb-0">
       <div aria-hidden className="relative flex h-9 items-center lg:h-auto lg:justify-start">
-        <span className="relative z-10 grid h-[1.125rem] w-[1.125rem] place-items-center rounded-full border border-cream/25 bg-forest-950">
-          <motion.span style={{ scale: lit, opacity: lit }} className="absolute -inset-[5px] rounded-full border border-gold/50 motion-reduce:!transform-none motion-reduce:!opacity-100" />
-          <motion.span style={{ scale: lit }} className="h-2 w-2 rounded-full bg-gold motion-reduce:!transform-none" />
+        <span className="relative z-10 grid h-[1.125rem] w-[1.125rem] place-items-center rounded-full bg-forest-800">
+          <motion.span style={{ scale: lit }} className="h-2.5 w-2.5 rounded-full bg-gold motion-reduce:!transform-none" />
         </span>
       </div>
       <motion.div style={{ opacity: labelOpacity }} className="lg:mt-9 lg:pr-8 motion-reduce:!opacity-100">
-        <p className="t-eyebrow tabular-nums text-brass-soft">{pad(index + 1)}</p>
-        <p className="mt-3 text-[clamp(2rem,3.6vw,3.25rem)] font-light leading-none tracking-[-0.035em] text-cream">{label}</p>
-        {text && <p className="mt-4 max-w-[17rem] text-[0.9375rem] leading-relaxed text-cream/70">{text}</p>}
+        <h4 className="t-display-sm text-cream">{label}</h4>
+        {text && <p className="t-body mt-4 max-w-[18rem] text-cream/85">{text}</p>}
       </motion.div>
     </li>
   );
@@ -51,56 +47,51 @@ export function GreenFlow({ content }: { content: SiteContent }) {
   const fill = useRange(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <div className="container-x relative pb-[clamp(5rem,10vw,9rem)]">
-      <div className="border-t border-cream/10 pt-14 md:pt-20">
-        <Reveal y={12}>
-          <p className="t-eyebrow flex items-center gap-3 text-brass-soft">
-            <span aria-hidden className="h-px w-8 bg-brass/70" />
-            {copy.flowLabel}
-          </p>
-        </Reveal>
+    <div className="container-x relative pb-[clamp(4.5rem,8.5vw,7.5rem)]">
+      <MaskText as="h3" text={copy.flowLabel} className="t-display-md text-cream" />
 
-        <div className="relative mt-12 md:mt-16">
-          {/* Rail: horizontal on desktop, vertical below. */}
-          <div aria-hidden className="absolute left-[0.5625rem] top-2 bottom-2 w-px bg-cream/12 lg:right-[calc(25%-0.5625rem)] lg:top-[0.5625rem] lg:bottom-auto lg:h-px lg:w-auto">
-            <motion.div
-              style={{ scaleX: fill }}
-              className="absolute inset-0 hidden origin-left bg-gradient-to-r from-brass via-gold to-teal motion-reduce:!transform-none lg:block"
-            />
-            <motion.div
-              style={{ scaleY: fill }}
-              className="absolute inset-0 origin-top bg-gradient-to-b from-brass via-gold to-teal motion-reduce:!transform-none lg:hidden"
-            />
-            {/* Direction chevrons between nodes. */}
-            <div className="absolute inset-0 hidden lg:block">
-              {[1, 2, 3].map((k) => (
-                <svg
-                  key={k}
-                  width="9"
-                  height="9"
-                  viewBox="0 0 9 9"
-                  className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 text-cream/40"
-                  style={{ left: `${((k - 0.5) / 3) * 100}%` }}
-                >
+      <div className="relative mt-12 md:mt-16">
+        {/* Track: horizontal on desktop, vertical below. */}
+        <div
+          aria-hidden
+          className="absolute bottom-2 left-[calc(0.5625rem-1px)] top-2 w-0.5 bg-cream/15 lg:bottom-auto lg:left-[0.5625rem] lg:right-[calc(25%-0.5625rem)] lg:top-[calc(0.5625rem-1px)] lg:h-0.5 lg:w-auto"
+        >
+          <motion.div
+            style={{ scaleX: fill }}
+            className="absolute inset-0 hidden origin-left bg-brass motion-reduce:!transform-none lg:block"
+          />
+          <motion.div
+            style={{ scaleY: fill }}
+            className="absolute inset-0 origin-top bg-brass motion-reduce:!transform-none lg:hidden"
+          />
+          {/* Direction chevrons between nodes. */}
+          <div className="absolute inset-0 hidden lg:block">
+            {[1, 2, 3].map((k) => (
+              <span
+                key={k}
+                className="absolute top-1/2 grid h-4 w-4 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-forest-950 text-cream/60"
+                style={{ left: `${((k - 0.5) / 3) * 100}%` }}
+              >
+                <svg width="9" height="9" viewBox="0 0 9 9" aria-hidden>
                   <path d="M2.5 1 6 4.5 2.5 8" fill="none" stroke="currentColor" strokeWidth="1" />
                 </svg>
-              ))}
-            </div>
-          </div>
-
-          <ol ref={track} className="relative grid lg:grid-cols-4">
-            {copy.flow.map((label, i) => (
-              <Step
-                key={label}
-                label={label}
-                text={steps[i]?.text}
-                index={i}
-                count={copy.flow.length}
-                progress={scrollYProgress}
-              />
+              </span>
             ))}
-          </ol>
+          </div>
         </div>
+
+        <ol ref={track} className="relative grid lg:grid-cols-4">
+          {copy.flow.map((label, i) => (
+            <Step
+              key={label}
+              label={label}
+              text={steps[i]?.text}
+              index={i}
+              count={copy.flow.length}
+              progress={fill}
+            />
+          ))}
+        </ol>
       </div>
     </div>
   );
