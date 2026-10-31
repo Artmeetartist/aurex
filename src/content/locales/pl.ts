@@ -139,7 +139,7 @@ const pl: SiteContent = {
     },
     motion: {
       eyebrow: "Czym się zajmujemy",
-      title: "Przenosimy wartość morzem, powietrzem i lądem.",
+      title: "Przenosimy wartość: morze, powietrze, ląd.",
       accent: ["wartość"],
       chapters: [
         {
@@ -181,7 +181,7 @@ const pl: SiteContent = {
     green: {
       eyebrow: "AUREX Green",
       title: "Zielona transformacja",
-      subtitle: "Handel produktami i technologiami, które kształtują świat oszczędniej gospodarujący zasobami.",
+      subtitle: "AUREX Green: handel produktami i technologiami, które kształtują świat oszczędniej gospodarujący zasobami.",
       body: [
         "AUREX rozszerza swoją działalność handlową i inwestycyjną o zrównoważone materiały, czyste technologie, produkty oszczędzające zasoby oraz łańcuchy dostaw o mniejszym wpływie na środowisko.",
         "Od materiałów z recyklingu i zrównoważonych opakowań po infrastrukturę czystej energii i zieloną logistykę – łączymy pojawiające się możliwości z rynkami międzynarodowymi.",
@@ -204,7 +204,7 @@ const pl: SiteContent = {
       explore: "Więcej",
       flowLabel: "Model AUREX",
       flow: ["Pozyskanie", "Handel", "Dystrybucja", "Inwestycje"],
-      statement: "Budujemy handel na miarę zmieniającego się świata.",
+      statement: "Handel na miarę zmieniającego się świata.",
       statementText:
         "AUREX Green to wyraz naszej koncentracji na zrównoważonych produktach, technologiach i możliwościach, które mogą przepływać przez rynki globalne.",
       statementCta: "Porozmawiajmy o partnerstwie",
@@ -212,7 +212,7 @@ const pl: SiteContent = {
     },
     reach: {
       eyebrow: "Globalny zasięg",
-      title: "Europa w centrum. Korytarze do Zatoki Perskiej, Indii i Afryki.",
+      title: "Europa w centrum. Korytarze poza nią.",
       accent: ["centrum."],
       intro:
         "Grupa AUREX opiera się na europejskich standardach i jest zorientowana na korytarze łączące Europę z Bliskim Wschodem, Indiami i Afryką.",
@@ -426,8 +426,8 @@ const pl: SiteContent = {
   trades: {
     food: {
       name: "Żywność",
-      title: "Handel żywnością z zachowaniem identyfikowalności.",
-      accent: ["identyfikowalności."],
+      title: "Handel żywnością, identyfikowalny.",
+      accent: ["identyfikowalny."],
       intro:
         "Grupa AUREX została stworzona, by łączyć regiony produkcji z rynkami konsumpcji – z dokumentacją, kontrolą jakości i ciągłością dostaw, jakich wymagają nabywcy instytucjonalni.",
       overview:
@@ -535,7 +535,7 @@ const pl: SiteContent = {
     },
     medical: {
       name: "Medycyna",
-      title: "Dostawy medyczne, w których zgodność ma pierwszeństwo.",
+      title: "Medycyna: zgodność przede wszystkim.",
       accent: ["zgodność"],
       intro:
         "Produkty i sprzęt medyczny wymagają udokumentowanej jakości, zgodności z wymogami regulacyjnymi i pełnej identyfikowalności. AUREX podchodzi do tego sektora z wymaganą przez niego starannością.",
@@ -646,7 +646,7 @@ const pl: SiteContent = {
           text: "Podmioty zamawiające i grupy zakupowe obsługujące sektor ochrony zdrowia.",
         },
       ],
-      cta: { title: "Porozmawiajmy o dostawach medycznych.", accent: ["medycznych."], primary: "Zapytanie o partnerstwo" },
+      cta: { title: "Omówmy dostawy medyczne.", accent: ["medyczne."], primary: "Zapytanie o partnerstwo" },
     },
     electronics: {
       name: "Komponenty elektroniczne",
@@ -756,19 +756,19 @@ const pl: SiteContent = {
         },
       ],
       cta: {
-        title: "Porozmawiajmy o zaopatrzeniu w komponenty.",
-        accent: ["zaopatrzeniu"],
+        title: "Omówmy dostawy komponentów.",
+        accent: ["dostawy"],
         primary: "Zapytanie o partnerstwo",
       },
     },
     larp: {
       name: "LARP i artykuły historyczne",
-      title: "Wyroby rzemieślnicze dla żywej historii.",
+      title: "Rzemiosło dla żywej historii.",
       accent: ["żywej"],
       intro:
         "Kostiumy, zbroje, rekwizyty i repliki historyczne dla gier fabularnych na żywo (LARP), rekonstrukcji historycznych i teatru: obszar łączący wykwalifikowanych wytwórców ze specjalistycznymi sprzedawcami, organizatorami wydarzeń i produkcjami scenicznymi.",
       overview:
-        "LARP, rekonstrukcje historyczne i teatr wymagają wyrobów, które wyglądają autentycznie, są trwałe w użytkowaniu i bezpieczne w noszeniu. AUREX podchodzi do tego specjalistycznego rynku tak jak do każdego obszaru handlowego: ze sprawdzonymi wytwórcami, jasnymi specyfikacjami i niezawodną logistyką.",
+        "LARP, rekonstrukcje i teatr wymagają wyrobów, które wyglądają autentycznie, są trwałe i bezpieczne w noszeniu. AUREX podchodzi do tego specjalistycznego rynku tak jak do każdego obszaru handlowego: ze sprawdzonymi wytwórcami, jasnymi specyfikacjami i niezawodną logistyką.",
       categories: [
         {
           title: "Zbroje kolcze",
@@ -910,8 +910,8 @@ const pl: SiteContent = {
         ],
       },
       cta: {
-        title: "Porozmawiajmy o LARP i artykułach historycznych.",
-        accent: ["historycznych."],
+        title: "Omówmy LARP i artykuły historyczne.",
+        accent: ["historyczne."],
         primary: "Zapytanie o partnerstwo",
       },
     },
@@ -978,12 +978,12 @@ const pl: SiteContent = {
       eyebrow: "AUREX Green",
       title: "Zielona transformacja",
       accent: ["Zielona"],
-      intro: "Handel produktami i technologiami, które kształtują świat oszczędniej gospodarujący zasobami.",
+      intro: "AUREX Green: handel produktami i technologiami, które kształtują świat oszczędniej gospodarujący zasobami.",
     },
     intro: {
       eyebrow: "AUREX Green",
-      title: "Zrównoważony rozwój jako część realnego handlu.",
-      accent: ["realnego"],
+      title: "Zrównoważony rozwój w realnym handlu.",
+      accent: ["realnym"],
     },
     ecosystem: {
       eyebrow: "Ekosystem",
@@ -1015,8 +1015,8 @@ const pl: SiteContent = {
     },
     principles: {
       eyebrow: "Nasze podejście",
-      title: "Najpierw wiarygodność, potem deklaracje.",
-      accent: ["wiarygodność,"],
+      title: "Wiarygodność przed deklaracjami.",
+      accent: ["Wiarygodność"],
       items: [
         {
           title: "Weryfikowalne deklaracje produktowe",
@@ -1114,8 +1114,8 @@ const pl: SiteContent = {
   tradeHub: {
     hero: {
       eyebrow: "Handel",
-      title: "Handel międzynarodowy zorganizowany według europejskich standardów.",
-      accent: ["zorganizowany"],
+      title: "Handel zagraniczny, uporządkowany.",
+      accent: ["uporządkowany."],
       intro:
         "Grupa AUREX została zbudowana, by pozyskiwać, transportować i dystrybuować towary ponad granicami oraz łączyć sprawdzonych producentów z popytem na rynkach priorytetowych – według europejskich standardów dokumentacji, zgodności z przepisami i weryfikacji kontrahentów.",
     },
@@ -1161,8 +1161,8 @@ const pl: SiteContent = {
     },
     cta: {
       eyebrow: "Zapytania handlowe",
-      title: "Propozycja partnerstwa handlowego.",
-      accent: ["partnerstwa"],
+      title: "Zaproponuj partnerstwo.",
+      accent: ["partnerstwo."],
       primary: "Zapytanie o partnerstwo",
     },
   },

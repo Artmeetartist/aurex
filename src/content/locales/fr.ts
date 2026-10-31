@@ -181,7 +181,7 @@ const fr: SiteContent = {
     green: {
       eyebrow: "AUREX Green",
       title: "La transition verte",
-      subtitle: "Le négoce des produits et technologies qui façonnent un monde plus économe en ressources.",
+      subtitle: "AUREX Green : le négoce des produits et technologies qui façonnent un monde plus économe en ressources.",
       body: [
         "AUREX étend ses activités de négoce et d’investissement aux matériaux durables, aux technologies propres, aux produits économes en ressources et aux chaînes d’approvisionnement à moindre impact.",
         "Des matériaux recyclés et des emballages durables aux infrastructures d’énergie propre et à la logistique verte, nous relions les opportunités émergentes aux marchés internationaux.",
@@ -204,7 +204,7 @@ const fr: SiteContent = {
       explore: "Découvrir",
       flowLabel: "Le modèle AUREX",
       flow: ["Approvisionnement", "Négoce", "Distribution", "Investissement"],
-      statement: "Bâtir le commerce d’un monde en mutation.",
+      statement: "Le commerce d’un monde en mutation.",
       statementText:
         "AUREX Green traduit notre orientation vers les produits, technologies et opportunités durables susceptibles de circuler sur les marchés mondiaux.",
       statementCta: "Échanger sur un partenariat",
@@ -212,7 +212,7 @@ const fr: SiteContent = {
     },
     reach: {
       eyebrow: "Portée mondiale",
-      title: "L’Europe au cœur. Des corridors vers le Golfe, l’Inde et l’Afrique.",
+      title: "L’Europe au cœur. Des corridors au-delà.",
       accent: ["cœur."],
       intro:
         "AUREX est façonné par les standards européens et tourné vers les corridors qui relient l’Europe au Moyen-Orient, à l’Inde et à l’Afrique.",
@@ -444,7 +444,7 @@ const fr: SiteContent = {
   trades: {
     food: {
       name: "Alimentaire",
-      title: "L’alimentaire, négocié en toute traçabilité.",
+      title: "L’alimentaire, en toute traçabilité.",
       accent: ["traçabilité."],
       intro:
         "AUREX est conçu pour relier les régions productrices aux marchés de consommation, avec la documentation, le contrôle qualité et la continuité qu’exigent les acheteurs institutionnels.",
@@ -566,7 +566,7 @@ const fr: SiteContent = {
     },
     medical: {
       name: "Médical",
-      title: "L’approvisionnement médical, la conformité avant tout.",
+      title: "Le médical, la conformité d’abord.",
       accent: ["conformité"],
       intro:
         "Les produits et équipements médicaux exigent une qualité documentée, une conformité réglementaire et une traçabilité complète. AUREX aborde ce secteur avec toute la rigueur qu’il requiert.",
@@ -681,15 +681,15 @@ const fr: SiteContent = {
         },
       ],
       cta: {
-        title: "Échanger sur l’approvisionnement médical.",
+        title: "Échanger sur le médical.",
         accent: ["médical."],
         primary: "Soumettre une demande de partenariat",
       },
     },
     electronics: {
       name: "Composants électroniques",
-      title: "Des composants au service de la demande industrielle.",
-      accent: ["industrielle."],
+      title: "Des composants pour l’industrie.",
+      accent: ["l’industrie."],
       intro:
         "AUREX est conçu pour relier des fournisseurs qualifiés de composants et de pièces électroniques aux fabricants et aux acheteurs industriels, avec les garanties d’authenticité et la documentation qu’exige le secteur.",
       overview:
@@ -803,19 +803,19 @@ const fr: SiteContent = {
         },
       ],
       cta: {
-        title: "Échanger sur l’approvisionnement en composants.",
-        accent: ["l’approvisionnement"],
+        title: "Échanger sur les composants.",
+        accent: ["composants."],
         primary: "Soumettre une demande de partenariat",
       },
     },
     larp: {
       name: "LARP & objets historiques",
-      title: "Des pièces artisanales pour l’histoire vivante.",
+      title: "Artisanat pour l’histoire vivante.",
       accent: ["vivante."],
       intro:
         "Costumes, armures, accessoires et reproductions historiques pour le jeu de rôle grandeur nature (GN), la reconstitution historique et le théâtre, en reliant des artisans expérimentés aux détaillants spécialisés, aux organisateurs et aux productions.",
       overview:
-        "Le jeu de rôle grandeur nature, la reconstitution historique et le théâtre reposent sur des pièces d’apparence authentique, durables à l’usage et sûres à porter. AUREX aborde ce marché spécialisé comme toute autre filière de négoce : avec des artisans qualifiés, des spécifications claires et une logistique fiable.",
+        "Le LARP, la reconstitution et le théâtre exigent des pièces authentiques, durables et sûres à porter. AUREX aborde ce marché spécialisé comme toute autre filière de négoce : avec des artisans qualifiés, des spécifications claires et une logistique fiable.",
       categories: [
         {
           title: "Armures de mailles",
@@ -959,7 +959,7 @@ const fr: SiteContent = {
         ],
       },
       cta: {
-        title: "Échanger sur le LARP & les objets historiques.",
+        title: "Parlons LARP & objets historiques.",
         accent: ["historiques."],
         primary: "Soumettre une demande de partenariat",
       },
@@ -1027,12 +1027,12 @@ const fr: SiteContent = {
       eyebrow: "AUREX Green",
       title: "La transition verte",
       accent: ["verte"],
-      intro: "Le négoce des produits et technologies qui façonnent un monde plus économe en ressources.",
+      intro: "AUREX Green : le négoce des produits et technologies qui façonnent un monde plus économe en ressources.",
     },
     intro: {
       eyebrow: "AUREX Green",
-      title: "La durabilité, partie intégrante du commerce concret.",
-      accent: ["concret."],
+      title: "La durabilité dans le commerce réel.",
+      accent: ["réel."],
     },
     ecosystem: {
       eyebrow: "L’écosystème",
@@ -1046,8 +1046,8 @@ const fr: SiteContent = {
     },
     flow: {
       eyebrow: "Le modèle AUREX",
-      title: "Approvisionnement. Négoce. Distribution. Investissement.",
-      accent: ["Investissement."],
+      title: "Sourcer. Négocier. Distribuer. Investir.",
+      accent: ["Investir."],
       intro:
         "AUREX Green suit le même modèle que le reste du groupe : une maison de négoce et de participations, non un cabinet de conseil.",
       steps: [
@@ -1177,8 +1177,8 @@ const fr: SiteContent = {
   tradeHub: {
     hero: {
       eyebrow: "Négoce",
-      title: "Un négoce international, structuré selon les standards européens.",
-      accent: ["structuré"],
+      title: "Négoce mondial, structuré.",
+      accent: ["structuré."],
       intro:
         "AUREX est conçu pour approvisionner, acheminer et distribuer des marchandises par-delà les frontières, en reliant des producteurs qualifiés à la demande des marchés prioritaires, selon les standards européens de documentation, de conformité et de vérification des contreparties.",
     },
@@ -1198,8 +1198,8 @@ const fr: SiteContent = {
     },
     connection: {
       eyebrow: "Le modèle AUREX",
-      title: "Approvisionnement. Négoce. Distribution. Investissement.",
-      accent: ["Investissement."],
+      title: "Approvisionner. Négocier. Distribuer. Investir.",
+      accent: ["Investir."],
       steps: [
         {
           title: "Approvisionnement",
@@ -1228,8 +1228,8 @@ const fr: SiteContent = {
     },
     cta: {
       eyebrow: "Demandes liées au négoce",
-      title: "Proposer un partenariat de négoce.",
-      accent: ["partenariat"],
+      title: "Proposer un partenariat.",
+      accent: ["partenariat."],
       primary: "Soumettre une demande de partenariat",
     },
   },

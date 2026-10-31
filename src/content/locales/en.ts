@@ -180,7 +180,7 @@ const en: SiteContent = {
     green: {
       eyebrow: "AUREX Green",
       title: "The Green Transition",
-      subtitle: "Trading the products and technologies shaping a more resource-efficient world.",
+      subtitle: "AUREX Green: trading the products and technologies shaping a more resource-efficient world.",
       body: [
         "AUREX is expanding its trading and investment activities across sustainable materials, clean technologies, resource-efficient products and lower-impact supply chains.",
         "From recycled materials and sustainable packaging to clean-energy infrastructure and green logistics, we connect emerging opportunities with international markets.",
@@ -203,7 +203,7 @@ const en: SiteContent = {
       explore: "Explore",
       flowLabel: "The AUREX model",
       flow: ["Source", "Trade", "Distribute", "Invest"],
-      statement: "Building commerce for a changing world.",
+      statement: "Commerce for a changing world.",
       statementText:
         "AUREX Green represents our focus on sustainable products, technologies and opportunities that can move through global markets.",
       statementCta: "Discuss a partnership",
@@ -211,7 +211,7 @@ const en: SiteContent = {
     },
     reach: {
       eyebrow: "Global reach",
-      title: "Europe at the core. Corridors to the Gulf, India and Africa.",
+      title: "Europe at the core. Corridors beyond.",
       accent: ["core."],
       intro:
         "AUREX is shaped by European standards and oriented towards the corridors that connect Europe with the Middle East, India and Africa.",
@@ -500,7 +500,7 @@ const en: SiteContent = {
     },
     medical: {
       name: "Medical",
-      title: "Medical supply, where compliance comes first.",
+      title: "Medical supply, compliance first.",
       accent: ["compliance"],
       intro:
         "Medical products and equipment demand documented quality, regulatory conformity and full traceability. AUREX approaches the sector with the diligence it requires.",
@@ -669,7 +669,7 @@ const en: SiteContent = {
       intro:
         "Costumes, armour, props and historical reproductions for live-action role-play, re-enactment and theatre, connecting skilled makers with specialist retailers, organisers and productions.",
       overview:
-        "Live-action role-play, historical re-enactment and theatre depend on goods that look authentic, last in use and are safe to wear. AUREX approaches this specialist market as it does any trade line: with qualified makers, clear specifications and dependable logistics.",
+        "LARP, historical re-enactment and theatre depend on goods that look authentic, last in use and are safe to wear. AUREX approaches this specialist market as it does any trade line: with qualified makers, clear specifications and dependable logistics.",
       categories: [
         {
           title: "Mail armour",
@@ -818,11 +818,11 @@ const en: SiteContent = {
       eyebrow: "AUREX Green",
       title: "The Green Transition",
       accent: ["Green"],
-      intro: "Trading the products and technologies shaping a more resource-efficient world.",
+      intro: "AUREX Green: trading the products and technologies shaping a more resource-efficient world.",
     },
     intro: {
       eyebrow: "AUREX Green",
-      title: "Sustainability as part of real-world commerce.",
+      title: "Sustainability in real-world trade.",
       accent: ["real-world"],
     },
     ecosystem: {
@@ -930,8 +930,8 @@ const en: SiteContent = {
   tradeHub: {
     hero: {
       eyebrow: "Trade",
-      title: "International trade, structured to European standards.",
-      accent: ["structured"],
+      title: "International trade, structured.",
+      accent: ["structured."],
       intro:
         "AUREX is built to source, move and distribute goods across borders, connecting qualified producers with demand in markets of focus under European standards of documentation, compliance and counterparty diligence.",
     },

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform, type MotionValue } from "motion/react";
+import Image from "next/image";
 import { useRef } from "react";
 import { useRange } from "@/components/green/use-range";
 import { Reveal } from "@/components/motion/reveal";
@@ -37,42 +38,33 @@ export function ClosingStatement({ locale, content }: { locale: Locale; content:
   const words = green.statement.split(" ");
 
   return (
-    <section className="relative bg-forest-950 pb-[clamp(4rem,8vw,7rem)] text-cream">
-      <div aria-hidden className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent to-ink-950" />
-
-      <div className="relative px-2 md:px-3">
-        <div ref={frame} className="elevate relative isolate overflow-hidden rounded-[28px] bg-forest-900 md:rounded-[36px]">
+    <section className="relative bg-forest-950 pb-[clamp(4.5rem,8.5vw,7.5rem)] text-cream">
+      <div className="px-2 md:px-3">
+        <div ref={frame} className="relative isolate overflow-hidden rounded-[28px] bg-forest-900 md:rounded-[36px]">
           <motion.div aria-hidden style={{ x: drift }} className="absolute inset-y-0 -inset-x-[8%] motion-reduce:!transform-none">
-            <div
-              className="absolute inset-0 bg-cover bg-[position:62%_45%]"
-              style={{ backgroundImage: `url(${WIDE_STILL})` }}
-            />
+            <Image src={WIDE_STILL} alt="" fill sizes="116vw" className="object-cover object-[62%_45%]" />
           </motion.div>
-          <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/45 to-transparent" />
-          <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-forest-950/80 via-forest-950/25 to-transparent" />
-          <div aria-hidden className="pointer-events-none absolute inset-0 z-10 rounded-[inherit] ring-1 ring-inset ring-cream/10" />
+          <div aria-hidden className="scrim-up absolute inset-0" />
+          <div aria-hidden className="scrim-right absolute inset-0" />
 
           <div className="container-x relative flex min-h-[min(88svh,56rem)] flex-col justify-end pb-12 pt-32 md:pb-16">
-            <h2 ref={heading} className="t-display-xl max-w-[14ch] text-cream [text-wrap:balance]">
-              <span className="sr-only">{green.statement}</span>
-              <span aria-hidden>
-                {words.map((w, i) => {
-                  const start = (i / words.length) * 0.85;
-                  return (
-                    <span key={i}>
-                      <Word progress={read} range={[start, start + 0.85 / words.length]}>
-                        {w}
-                      </Word>
-                      {i < words.length - 1 ? " " : ""}
-                    </span>
-                  );
-                })}
-              </span>
+            <h2 ref={heading} className="t-display-lg max-w-[24ch] text-cream [text-wrap:balance]">
+              {words.map((w, i) => {
+                const start = (i / words.length) * 0.85;
+                return (
+                  <span key={i}>
+                    <Word progress={read} range={[start, start + 0.85 / words.length]}>
+                      {w}
+                    </Word>
+                    {i < words.length - 1 ? " " : ""}
+                  </span>
+                );
+              })}
             </h2>
 
             <div className="mt-10 grid gap-8 md:mt-14 lg:grid-cols-12 lg:items-end">
               <Reveal className="lg:col-span-6">
-                <p className="t-lead max-w-[36rem] text-cream/85">{green.statementText}</p>
+                <p className="t-lead max-w-[36rem] text-cream/90">{green.statementText}</p>
               </Reveal>
               <Reveal delay={0.12} className="lg:col-span-6 lg:justify-self-end">
                 <ButtonLink href={contactHref(locale, "partnership")} size="lg">
@@ -84,11 +76,8 @@ export function ClosingStatement({ locale, content }: { locale: Locale; content:
         </div>
       </div>
 
-      <div className="container-x relative">
-        <p className="mt-10 flex max-w-[46rem] items-start gap-3 text-[0.8125rem] leading-relaxed text-mist md:mt-12">
-          <span aria-hidden className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-brass/80" />
-          {note}
-        </p>
+      <div className="container-x">
+        <p className="t-small mt-10 max-w-[46rem] text-mist md:mt-12">{note}</p>
       </div>
     </section>
   );

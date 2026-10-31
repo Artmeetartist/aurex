@@ -180,7 +180,7 @@ const nl: SiteContent = {
     green: {
       eyebrow: "AUREX Green",
       title: "De groene transitie",
-      subtitle: "Handel in de producten en technologieën die vorm geven aan een wereld die efficiënter omgaat met grondstoffen.",
+      subtitle: "AUREX Green: handel in de producten en technologieën die vorm geven aan een wereld die efficiënter omgaat met grondstoffen.",
       body: [
         "AUREX breidt haar handels- en investeringsactiviteiten uit naar duurzame materialen, schone technologieën, grondstofefficiënte producten en toeleveringsketens met een lagere milieu-impact.",
         "Van gerecyclede materialen en duurzame verpakkingen tot infrastructuur voor schone energie en groene logistiek: wij verbinden opkomende kansen met internationale markten.",
@@ -203,7 +203,7 @@ const nl: SiteContent = {
       explore: "Ontdek",
       flowLabel: "Het AUREX-model",
       flow: ["Inkopen", "Handelen", "Distribueren", "Investeren"],
-      statement: "Bouwen aan handel voor een veranderende wereld.",
+      statement: "Handel voor een veranderende wereld.",
       statementText:
         "AUREX Green staat voor onze focus op duurzame producten, technologieën en kansen die hun weg kunnen vinden op wereldwijde markten.",
       statementCta: "Bespreek een partnerschap",
@@ -211,7 +211,7 @@ const nl: SiteContent = {
     },
     reach: {
       eyebrow: "Wereldwijd bereik",
-      title: "Europa als kern. Corridors naar de Golfregio, India en Afrika.",
+      title: "Europa als kern. Corridors daarbuiten.",
       accent: ["kern."],
       intro:
         "AUREX wordt gevormd door Europese standaarden en is gericht op de corridors die Europa verbinden met het Midden-Oosten, India en Afrika.",
@@ -423,7 +423,7 @@ const nl: SiteContent = {
       intro:
         "AUREX is erop ingericht producerende regio's te verbinden met consumerende markten, met de documentatie, kwaliteitscontrole en continuïteit die institutionele afnemers vereisen.",
       overview:
-        "In de voedingshandel wordt betrouwbaarheid boven alles beloond: constante kwaliteit, verifieerbare herkomst en solide logistiek. AUREX benadert voeding als een handelsdomein voor de lange termijn en werkt toe naar partnerschappen met gekwalificeerde producenten en gevestigde distributeurs in de focusmarkten.",
+        "In de voedingshandel telt betrouwbaarheid boven alles: constante kwaliteit, verifieerbare herkomst en solide logistiek. AUREX benadert voeding als een handelsdomein voor de lange termijn en werkt toe naar partnerschappen met gekwalificeerde producenten en gevestigde distributeurs in de focusmarkten.",
       categories: [
         {
           title: "Basisvoedingsmiddelen",
@@ -500,7 +500,7 @@ const nl: SiteContent = {
     },
     medical: {
       name: "Medisch",
-      title: "Medische bevoorrading, met compliance voorop.",
+      title: "Medisch: compliance voorop.",
       accent: ["compliance"],
       intro:
         "Medische producten en apparatuur vereisen gedocumenteerde kwaliteit, conformiteit met de regelgeving en volledige traceerbaarheid. AUREX benadert de sector met de zorgvuldigheid die daarbij hoort.",
@@ -664,12 +664,12 @@ const nl: SiteContent = {
     },
     larp: {
       name: "LARP & historische goederen",
-      title: "Ambachtelijke goederen voor levende geschiedenis.",
+      title: "Ambacht voor levende historie.",
       accent: ["levende"],
       intro:
         "Kostuums, harnassen, rekwisieten en historische reproducties voor live-action roleplay, re-enactment en theater, waarbij vakkundige makers worden verbonden met speciaalzaken, organisatoren en producties.",
       overview:
-        "Live-action roleplay, historische re-enactment en theater vragen om goederen die authentiek ogen, intensief gebruik doorstaan en veilig te dragen zijn. AUREX benadert deze nichemarkt zoals elk ander handelsdomein: met gekwalificeerde makers, heldere specificaties en betrouwbare logistiek.",
+        "LARP, historische re-enactment en theater vragen om goederen die authentiek ogen, lang meegaan en veilig te dragen zijn. AUREX benadert deze nichemarkt zoals elk ander handelsdomein: met gekwalificeerde makers, heldere specificaties en betrouwbare logistiek.",
       categories: [
         {
           title: "Maliënpantser",
@@ -818,17 +818,17 @@ const nl: SiteContent = {
       eyebrow: "AUREX Green",
       title: "De groene transitie",
       accent: ["groene"],
-      intro: "Handel in de producten en technologieën die vorm geven aan een wereld die efficiënter omgaat met grondstoffen.",
+      intro: "AUREX Green: handel in de producten en technologieën die vorm geven aan een wereld die efficiënter omgaat met grondstoffen.",
     },
     intro: {
       eyebrow: "AUREX Green",
-      title: "Duurzaamheid als onderdeel van de handelspraktijk.",
+      title: "Duurzaamheid in de handelspraktijk.",
       accent: ["handelspraktijk."],
     },
     ecosystem: {
       eyebrow: "Het ecosysteem",
-      title: "Van de bron tot wereldwijde distributie.",
-      accent: ["wereldwijde"],
+      title: "Van de bron tot de wereldmarkt.",
+      accent: ["wereldmarkt."],
     },
     pillars: {
       eyebrow: "Bedrijfspijlers",
@@ -930,8 +930,8 @@ const nl: SiteContent = {
   tradeHub: {
     hero: {
       eyebrow: "Handel",
-      title: "Internationale handel, gestructureerd volgens Europese standaarden.",
-      accent: ["gestructureerd"],
+      title: "Internationale handel, geordend.",
+      accent: ["geordend."],
       intro:
         "AUREX is erop ingericht goederen over grenzen heen in te kopen, te vervoeren en te distribueren, en gekwalificeerde producenten te verbinden met de vraag in de focusmarkten, volgens Europese standaarden voor documentatie, compliance en due diligence op tegenpartijen.",
     },
@@ -968,8 +968,8 @@ const nl: SiteContent = {
     },
     cta: {
       eyebrow: "Handelsaanvragen",
-      title: "Stel een handelspartnerschap voor.",
-      accent: ["handelspartnerschap"],
+      title: "Stel een partnerschap voor.",
+      accent: ["partnerschap"],
       primary: "Dien een partnerschapsaanvraag in",
     },
   },

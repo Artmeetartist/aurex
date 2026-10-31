@@ -1,8 +1,10 @@
 "use client";
 
 import { motion, useScroll, useTransform, type MotionValue } from "motion/react";
+import Image from "next/image";
 import { useRef } from "react";
 import { Reveal } from "@/components/motion/reveal";
+import { WIDE_STILL } from "@/components/sections/sustainability/shared";
 import { ButtonLink } from "@/components/ui/button";
 import type { SiteContent } from "@/content/types";
 import type { Locale } from "@/i18n/config";
@@ -19,69 +21,64 @@ function Word({ children, progress, range }: { children: string; progress: Motio
   );
 }
 
-/** Heading whose words light up as it scrolls through the viewport; the last word takes the serif accent. */
+/** Heading whose words light up as it scrolls through the viewport. */
 function LitHeading({ text, className }: { text: string; className?: string }) {
   const ref = useRef<HTMLHeadingElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.9", "end 0.5"] });
   const words = text.split(" ");
   return (
     <h3 ref={ref} className={cn("[text-wrap:balance]", className)}>
-      <span className="sr-only">{text}</span>
-      <span aria-hidden>
-        {words.map((w, i) => {
-          const start = (i / words.length) * 0.9;
-          return (
-            <span key={i}>
-              <Word progress={scrollYProgress} range={[start, start + 0.9 / words.length]}>
-                {w}
-              </Word>
-              {i < words.length - 1 ? " " : ""}
-            </span>
-          );
-        })}
-      </span>
+      {words.map((w, i) => {
+        const start = (i / words.length) * 0.9;
+        return (
+          <span key={i}>
+            <Word progress={scrollYProgress} range={[start, start + 0.9 / words.length]}>
+              {w}
+            </Word>
+            {i < words.length - 1 ? " " : ""}
+          </span>
+        );
+      })}
     </h3>
   );
 }
 
-/** Closing statement of the AUREX Green section. */
+/** Closing statement of the AUREX Green section: the statement beside the port, where the tour ends. */
 export function GreenStatement({ locale, content }: { locale: Locale; content: SiteContent }) {
   const copy = content.home.green;
-  const box = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: box, offset: ["start end", "end start"] });
+  const frame = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: frame, offset: ["start end", "end start"] });
   const drift = useTransform(scrollYProgress, (v: number) => `${-6 + 12 * v}%`);
 
   return (
-    <div ref={box} className="relative overflow-hidden">
-      {/* Port still with a slow parallax drift, heavily veiled. */}
-      <motion.div
-        aria-hidden
-        style={{ y: drift }}
-        className="absolute -inset-y-[8%] inset-x-0 opacity-45 motion-reduce:!transform-none"
-      >
-        <div className="absolute inset-0 bg-[url(/media/green/stage-6-wide.webp)] bg-cover bg-[position:62%_45%]" />
-      </motion.div>
-      <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-forest-950 via-forest-950/70 to-ink-950" />
-      <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-forest-950/80 via-forest-950/30 to-transparent" />
-      {/* Hand-off to the deep-teal section that follows. */}
-      <div aria-hidden className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-ink-950" />
+    <div className="container-x relative grid gap-12 pb-[clamp(4.5rem,8.5vw,7.5rem)] lg:grid-cols-12 lg:items-center lg:gap-10">
+      <div className="lg:col-span-7">
+        <LitHeading text={copy.statement} className="t-display-lg max-w-[24ch] text-cream" />
+        <Reveal>
+          <p className="t-lead mt-8 max-w-[34rem] text-cream/90 md:mt-10">{copy.statementText}</p>
+        </Reveal>
+        <Reveal delay={0.12} className="mt-10">
+          <ButtonLink href={contactHref(locale, "partnership")} size="lg">
+            {copy.statementCta}
+          </ButtonLink>
+        </Reveal>
+        <p className="t-small mt-12 max-w-[34rem] text-mist md:mt-16">{copy.note}</p>
+      </div>
 
-      <div className="container-x section-y relative">
-        <LitHeading text={copy.statement} className="t-display-xl max-w-[14ch] text-cream" />
-        <div className="mt-12 grid gap-10 md:mt-16 lg:grid-cols-12 lg:items-end">
-          <Reveal className="lg:col-span-6">
-            <p className="t-lead max-w-[36rem] text-cream/80">{copy.statementText}</p>
-          </Reveal>
-          <Reveal delay={0.12} className="lg:col-span-6 lg:justify-self-end">
-            <ButtonLink href={contactHref(locale, "partnership")} size="lg">
-              {copy.statementCta}
-            </ButtonLink>
-          </Reveal>
-        </div>
-        <p className="mt-16 flex max-w-[40rem] items-start gap-3 border-t border-cream/10 pt-6 text-[0.8125rem] leading-relaxed text-mist md:mt-24">
-          <span aria-hidden className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-brass/80" />
-          {copy.note}
-        </p>
+      {/* The port still, drifting slowly as it passes. */}
+      <div
+        ref={frame}
+        className="relative aspect-[4/3] overflow-hidden rounded-lg bg-forest-900 lg:col-span-5 lg:aspect-square"
+      >
+        <motion.div aria-hidden style={{ y: drift }} className="absolute -inset-y-[8%] inset-x-0 motion-reduce:!transform-none">
+          <Image
+            src={WIDE_STILL}
+            alt=""
+            fill
+            sizes="(min-width: 1024px) 38vw, 92vw"
+            className="object-cover object-[62%_45%]"
+          />
+        </motion.div>
       </div>
     </div>
   );

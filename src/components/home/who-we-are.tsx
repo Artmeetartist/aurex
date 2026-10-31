@@ -31,7 +31,7 @@ export function WhoWeAre({ locale, content }: { locale: Locale; content: SiteCon
             <RevealItem as="li" key={p.title} y={12}>
               <Link
                 href={pillarHref[i] ?? href(locale, "about")}
-                className="group/p flex h-full flex-col p-6 transition-colors duration-300 hover:bg-ivory-300 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-gold-ink sm:p-8 lg:p-10"
+                className="group/p grid h-full gap-4 p-6 transition-colors duration-300 hover:bg-ivory-300 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-gold-ink sm:p-8 md:grid-cols-2 md:items-baseline md:gap-10 lg:flex lg:flex-col lg:items-stretch lg:gap-0 lg:p-10"
               >
                 <div className="flex items-baseline justify-between gap-6">
                   <h3 className="t-display-sm text-ink">{p.title}</h3>
@@ -40,7 +40,7 @@ export function WhoWeAre({ locale, content }: { locale: Locale; content: SiteCon
                     className="shrink-0 text-ink/60 transition-[transform,color] duration-300 group-hover/p:translate-x-1 group-hover/p:text-ink motion-reduce:transform-none"
                   />
                 </div>
-                <p className="t-body mt-4 max-w-sm text-ink/85 lg:mt-10">{p.text}</p>
+                <p className="t-body max-w-sm text-ink/85 md:max-w-none lg:mt-10 lg:max-w-sm">{p.text}</p>
               </Link>
             </RevealItem>
           ))}

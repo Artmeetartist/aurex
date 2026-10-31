@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { AnchorOnLoad } from "@/components/inquiry/anchor-on-load";
 import { Reveal } from "@/components/motion/reveal";
@@ -6,7 +7,7 @@ import { PageHero } from "@/components/page/page-hero";
 import { ConnectionSequence } from "@/components/sections/trade/connection-sequence";
 import { DivisionIndex } from "@/components/sections/trade/division-index";
 import { DivisionRow } from "@/components/sections/trade/division-row";
-import { GreenLoop } from "@/components/trade/trade-icons";
+import { FlowFilm } from "@/components/trade/flow-film";
 import { TradeIndex } from "@/components/trade/trade-index";
 import { ArrowUpRight } from "@/components/ui/icons";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -20,9 +21,6 @@ export const generateMetadata = metadataFor("trade");
 export default async function TradePage({ params }: PageProps<"/[locale]/trade">) {
   const { locale, content } = await loadPage(params);
   const { tradeHub, nav, common } = content;
-  const chapters = content.home.motion.chapters;
-  const modeOf = (d: (typeof divisions)[number]) =>
-    chapters.find((c) => c.division === d.id)?.mode ?? content.home.hero.modes[d.mode];
 
   return (
     <>
@@ -40,10 +38,10 @@ export default async function TradePage({ params }: PageProps<"/[locale]/trade">
         <AnchorOnLoad key={d.id} id={d.id} />
       ))}
 
-      {/* 01 — Trade lines, each with its own page */}
+      {/* Trade lines, each with its own page */}
       <section id="lines" className="surface-ivory section-y scroll-mt-24">
         <div className="container-x">
-          <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+          <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
             <SectionHeading
               title={tradeHub.lines.title}
               intro={tradeHub.lines.intro}
@@ -52,29 +50,24 @@ export default async function TradePage({ params }: PageProps<"/[locale]/trade">
               className="lg:col-span-7"
             />
             <Reveal delay={0.2} className="lg:col-span-4 lg:col-start-9">
-              <p className="border-l border-gold-ink/60 pl-6 text-[0.9375rem] leading-relaxed text-ink/80">
-                {tradeHub.lines.note}
-              </p>
+              <p className="text-[1rem] leading-relaxed text-ink/80">{tradeHub.lines.note}</p>
             </Reveal>
           </div>
           <TradeIndex locale={locale} content={content} green={false} className="mt-14 md:mt-20" />
         </div>
       </section>
 
-      {/* 02 — How AUREX trades: the four disciplines */}
+      {/* How AUREX trades: the four disciplines */}
       <section className="surface-ink section-y">
         <div className="container-x">
           <SectionHeading title={tradeHub.core.title} />
-          <div className="mt-20 space-y-24 md:mt-28 md:space-y-36 lg:space-y-40">
+          <div className="mt-16 space-y-20 md:mt-24 md:space-y-28 lg:space-y-32">
             {divisions.map((d, i) => {
               const division = content.divisions[d.id];
               return (
                 <DivisionRow
                   key={d.id}
                   id={d.id}
-                  index={i}
-                  total={divisions.length}
-                  mode={modeOf(d)}
                   name={division.name}
                   summary={division.summary}
                   scope={division.scope}
@@ -89,46 +82,51 @@ export default async function TradePage({ params }: PageProps<"/[locale]/trade">
         </div>
       </section>
 
-      {/* 03 — The AUREX model */}
-      <section className="surface-ink-deep section-y relative overflow-hidden">
-        <div className="container-x relative">
-          <SectionHeading
-            title={tradeHub.connection.title}
-            intro={tradeHub.connection.intro}
+      {/* The AUREX model, with footage of goods on the move */}
+      <section className="surface-ink-deep section-y">
+        <div className="container-x">
+          <SectionHeading title={tradeHub.connection.title} intro={tradeHub.connection.intro} size="md" />
+          <FlowFilm
+            labels={{ play: content.home.hero.play, pause: content.home.hero.pause }}
+            className="mt-12 aspect-[4/3] sm:aspect-[16/9] md:mt-16 lg:aspect-[21/9]"
           />
-          <div className="mt-16 md:mt-24">
+          <div className="mt-14 md:mt-20">
             <ConnectionSequence steps={tradeHub.connection.steps} />
           </div>
         </div>
       </section>
 
-      {/* 04 — AUREX Green */}
+      {/* AUREX Green, previewed by a still of its own scene */}
       <section className="section-y bg-forest-950 text-cream">
         <div className="container-x">
           <Link
             href={href(locale, "sustainability")}
-            className="group relative grid items-end gap-10 overflow-hidden rounded-xl border border-cream/10 bg-forest-900 p-8 transition-colors duration-700 hover:border-brass/40 md:p-14 lg:grid-cols-12"
+            className="group grid overflow-hidden rounded-xl bg-forest-900 transition-colors duration-700 hover:bg-forest-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brass lg:grid-cols-12"
           >
-            <div className="relative lg:col-span-8">
-              <span className="text-brass">
-                <GreenLoop size={52} />
+            <div className="flex flex-col p-6 md:p-14 lg:col-span-6">
+              <h2 className="t-display-md max-w-[22ch] text-cream">{tradeHub.green.title}</h2>
+              <p className="t-lead mt-6 max-w-xl text-cream/85">{tradeHub.green.text}</p>
+              <span className="mt-10 inline-flex items-center gap-3 self-start text-[1rem] font-medium lg:mt-auto lg:pt-12">
+                {tradeHub.green.link}
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-forest-700 transition-[background-color,color,transform] duration-500 ease-[var(--ease-out-expo)] group-hover:rotate-45 group-hover:bg-brass group-hover:text-forest-950">
+                  <ArrowUpRight size={16} />
+                </span>
               </span>
-              <p className="t-eyebrow mt-10 text-brass-soft">{tradeHub.green.eyebrow}</p>
-              <h2 className="t-display-md mt-5 max-w-[20ch] text-cream">{tradeHub.green.title}</h2>
-              <p className="t-lead mt-6 max-w-2xl text-cream/75">{tradeHub.green.text}</p>
             </div>
-            <span className="relative inline-flex items-center gap-3 justify-self-start text-[0.9375rem] font-medium lg:col-span-4 lg:justify-self-end">
-              {tradeHub.green.link}
-              <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-cream/25 transition-all duration-500 ease-[var(--ease-out-expo)] group-hover:rotate-45 group-hover:border-brass group-hover:bg-brass group-hover:text-forest-950">
-                <ArrowUpRight size={16} />
-              </span>
-            </span>
+            <div className="relative min-h-[18rem] overflow-hidden md:min-h-[24rem] lg:col-span-6 lg:min-h-[30rem]">
+              <Image
+                src="/media/green/stage-6.webp"
+                alt=""
+                fill
+                sizes="(min-width: 1024px) 45vw, 100vw"
+                className="object-cover transition-transform duration-1000 ease-[var(--ease-out-expo)] group-hover:scale-[1.03] motion-reduce:transform-none"
+              />
+            </div>
           </Link>
         </div>
       </section>
 
       <CtaBand
-        eyebrow={tradeHub.cta.eyebrow}
         title={tradeHub.cta.title}
         intro={tradeHub.cta.intro}
         primary={{ label: tradeHub.cta.primary, href: contactHref(locale, "partnership") }}

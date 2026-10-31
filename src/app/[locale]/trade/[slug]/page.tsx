@@ -6,6 +6,7 @@ import { RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { ScrollText } from "@/components/motion/scroll-text";
 import { CtaBand } from "@/components/page/cta-band";
 import { PageHero } from "@/components/page/page-hero";
+import { FlowFilm } from "@/components/trade/flow-film";
 import { FlowTrack } from "@/components/trade/flow-track";
 import { MailShowcase } from "@/components/trade/larp/mail-showcase";
 import { MailVitrine } from "@/components/trade/larp/mail-vitrine";
@@ -13,7 +14,8 @@ import { MailWeave } from "@/components/trade/larp/mail-weave";
 import { CategoryGrid, Counterparts, StandardsGrid } from "@/components/trade/line-sections";
 import { tradeIcons } from "@/components/trade/trade-icons";
 import { TradeIndex } from "@/components/trade/trade-index";
-import { Eyebrow, StatusTag } from "@/components/ui/eyebrow";
+import { TextLink } from "@/components/ui/button";
+import { StatusTag } from "@/components/ui/eyebrow";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { markets } from "@/content/facts";
 import { photos, type Photo } from "@/content/media";
@@ -29,12 +31,16 @@ export function generateStaticParams() {
   return tradeIds.map((id) => ({ slug: tradeSlugs[id] }));
 }
 
-/** Dedicated photography and atmosphere per trade line. */
-const art: Record<TradeSlugId, { hero: Photo; band: Photo; tint: string }> = {
-  food: { hero: photos.foodProduce, band: photos.foodFields, tint: "#d79a2b" },
-  medical: { hero: photos.medical, band: photos.containerShip, tint: "#5fb8c9" },
-  electronics: { hero: photos.electronics, band: photos.warehouse, tint: "#2f6fb5" },
-  larp: { hero: photos.larp, band: photos.containerShip, tint: "#b0673f" },
+/**
+ * Photography and atmosphere per trade line: the hero, the overview band and
+ * the picture beside the categories. The LARP hero is drawn (mail weave), and
+ * its tint is steel, the material of the line.
+ */
+const art: Record<TradeSlugId, { hero: Photo; band: Photo; detail: Photo; tint: string }> = {
+  food: { hero: photos.foodFields, band: photos.containerShip, detail: photos.foodProduce, tint: "#d79a2b" },
+  medical: { hero: photos.medical, band: photos.containerShip, detail: photos.warehouse, tint: "#5fb8c9" },
+  electronics: { hero: photos.electronics, band: photos.warehouse, detail: photos.energy, tint: "#2f6fb5" },
+  larp: { hero: photos.larp, band: photos.containerShip, detail: photos.larp, tint: "#8a9ea1" },
 };
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/trade/[slug]">): Promise<Metadata> {
@@ -49,16 +55,20 @@ export default async function TradeLinePage({ params }: PageProps<"/[locale]/tra
   const id = tradeIdFromSlug(slug);
   if (!id) notFound();
   const { locale, content } = await loadPage(params);
-  const { trades, tradePage, tradeHub, nav, common } = content;
+  const { trades, tradePage, nav, common } = content;
   const trade = trades[id];
   const Icon = tradeIcons[id];
   const { tint } = art[id];
   const showcase = trade.showcase;
+  // The overview's first sentence is set as the statement, the rest as a lead beside it.
+  const cut = trade.overview.indexOf(". ");
+  const statement = cut > 0 ? trade.overview.slice(0, cut + 1) : trade.overview;
+  const overviewRest = cut > 0 ? trade.overview.slice(cut + 2) : "";
 
   return (
     <>
       <PageHero
-        hero={{ eyebrow: tradePage.eyebrow, title: trade.title, accent: trade.accent, intro: trade.intro }}
+        hero={{ title: trade.title, accent: trade.accent, intro: trade.intro, eyebrow: tradePage.eyebrow }}
         photo={showcase ? undefined : art[id].hero}
         backdrop={showcase ? <MailWeave /> : undefined}
         tint={tint}
@@ -74,25 +84,25 @@ export default async function TradeLinePage({ params }: PageProps<"/[locale]/tra
             name={trade.name}
             status={common.status.strategic}
             caption={showcase.setCaption}
-            link={{ label: `${showcase.eyebrow} · ${showcase.title}`, href: "#in-focus" }}
+            link={{ label: showcase.title, href: "#in-focus" }}
           />
         ) : (
-          <div className="glass rounded-xl p-6">
+          <div className="rounded-xl bg-ink-950 p-6">
             <div className="flex items-start justify-between gap-4">
               <span className="text-gold">
-                <Icon size={48} />
+                <Icon size={44} />
               </span>
-              <StatusTag>{common.status.strategic}</StatusTag>
+              <StatusTag className="text-[0.875rem]">{common.status.strategic}</StatusTag>
             </div>
-            <p className="mt-6 text-[1.375rem] font-light tracking-[-0.02em] text-ivory">{trade.name}</p>
-            <ul className="mt-4 grid grid-cols-1 gap-x-6 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
+            <p className="t-lead mt-5 font-medium text-ivory">{trade.name}</p>
+            <ul className="mt-3 grid grid-cols-1 gap-x-6 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
               {trade.categories.map((c) => (
                 <li key={c.title}>
                   <a
                     href="#categories"
-                    className="flex min-h-9 items-center gap-3 text-[0.8125rem] text-ivory/75 transition-colors duration-300 hover:text-ivory"
+                    className="flex min-h-11 items-center gap-3 text-[0.875rem] leading-snug text-ivory/85 transition-colors duration-300 hover:text-ivory"
                   >
-                    <span aria-hidden className="h-px w-3 shrink-0 bg-gold" />
+                    <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
                     {c.title}
                   </a>
                 </li>
@@ -102,38 +112,41 @@ export default async function TradeLinePage({ params }: PageProps<"/[locale]/tra
         )}
       </PageHero>
 
-      {/* 01 — Overview, over a full-bleed photograph */}
+      {/* Overview, over a full-bleed photograph */}
       <PhotoBand photo={art[id].band} tint={tint}>
-        <div className="grid gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-3">
-            <Eyebrow index="01">{tradePage.overview}</Eyebrow>
-          </div>
-          <ScrollText text={trade.overview} className="t-display-sm text-ivory lg:col-span-9" />
+        <h2 className="sr-only">{tradePage.overview}</h2>
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-10">
+          <ScrollText text={statement} className="t-display-sm max-w-[46ch] text-ivory lg:col-span-7" />
+          {overviewRest && <p className="t-lead max-w-xl text-ivory/90 lg:col-span-5 lg:col-start-8">{overviewRest}</p>}
         </div>
       </PhotoBand>
 
-      {/* In focus — product showcase where the line has one */}
+      {/* In focus: product showcase where the line has one */}
       {showcase && <MailShowcase showcase={showcase} id="in-focus" />}
 
-      {/* 02 — Focus categories with examples */}
-      <CategoryGrid index="02" trade={trade} labels={tradePage} icon={Icon} tint={tint} />
+      {/* Focus categories with examples */}
+      <CategoryGrid trade={trade} labels={tradePage} photo={art[id].detail} tint={tint} />
 
-      {/* 03 — From origin to market */}
-      <section className="surface-ink-deep section-y relative overflow-hidden">
-        <div className="container-x relative">
+      {/* From origin to market */}
+      <section className="surface-ink-deep section-y">
+        <div className="container-x">
           <SectionHeading title={tradePage.flowTitle} size="md" />
-          <div className="mt-16 md:mt-24">
+          <FlowFilm
+            labels={{ play: content.home.hero.play, pause: content.home.hero.pause }}
+            className="mt-12 aspect-[4/3] sm:aspect-[16/9] md:mt-16 lg:aspect-[21/9]"
+          />
+          <div className="mt-14 md:mt-20">
             <FlowTrack steps={trade.flow} tint={tint} />
           </div>
 
-          <div className="mt-20 border-t border-white/10 pt-10">
-            <p className="t-eyebrow text-mist">{tradePage.corridorsEyebrow}</p>
-            <ul className="mt-6 flex flex-wrap gap-3">
+          <div className="mt-20 md:mt-24">
+            <h3 className="t-lead font-medium text-ivory">{tradePage.corridorsEyebrow}</h3>
+            <ul className="mt-5 flex flex-wrap gap-2">
               {markets.map((m) => (
                 <li key={m.id}>
                   <Link
                     href={href(locale, "presence")}
-                    className="inline-flex min-h-11 items-center gap-2.5 rounded-full border border-white/15 px-5 text-[0.875rem] text-ivory/85 transition-colors duration-300 hover:border-gold hover:text-ivory"
+                    className="inline-flex min-h-11 items-center gap-2.5 rounded-full bg-ink-850 px-5 text-[1rem] text-ivory transition-colors duration-300 hover:bg-ink-700"
                   >
                     <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-gold" />
                     {content.markets[m.id].name}
@@ -141,66 +154,46 @@ export default async function TradeLinePage({ params }: PageProps<"/[locale]/tra
                 </li>
               ))}
             </ul>
-            <p className="mt-6 max-w-xl text-[0.8125rem] leading-relaxed text-mist-dim">{common.marketsFootnote}</p>
+            <p className="mt-5 max-w-xl text-[0.875rem] leading-relaxed text-ivory/70">{common.marketsFootnote}</p>
           </div>
         </div>
       </section>
 
-      {/* 04 — Approach */}
+      {/* Approach */}
       <section className="surface-ink section-y">
-        <div className="container-x grid gap-16 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <div className="lg:sticky lg:top-32">
-              <SectionHeading title={tradePage.approachTitle} size="md" />
-            </div>
-          </div>
-          <RevealGroup as="ol" className="border-t border-white/10 lg:col-span-6 lg:col-start-7">
-            {trade.approach.map((a, i) => (
-              <RevealItem as="li" key={a.title} className="group grid grid-cols-[4rem_1fr] gap-4 border-b border-white/10 py-10">
-                <span className="text-[2.5rem] font-light leading-none tracking-[-0.04em] text-ivory/20 transition-colors duration-500 group-hover:text-gold">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <h3 className="t-title text-ivory">{a.title}</h3>
-                  <p className="mt-3 text-[0.9375rem] leading-relaxed text-mist">{a.text}</p>
-                </div>
+        <div className="container-x">
+          <SectionHeading title={tradePage.approachTitle} size="md" />
+          <RevealGroup as="ul" className="mt-14 grid gap-x-16 gap-y-12 md:mt-20 md:grid-cols-2 md:gap-y-14 lg:gap-x-24">
+            {trade.approach.map((a) => (
+              <RevealItem as="li" key={a.title} className="max-w-xl">
+                <h3 className="t-display-sm text-ivory">{a.title}</h3>
+                <p className="mt-3 text-[1rem] leading-relaxed text-ivory/85">{a.text}</p>
               </RevealItem>
             ))}
           </RevealGroup>
         </div>
       </section>
 
-      {/* 05 — Standards & frameworks */}
-      <StandardsGrid index="05" trade={trade} labels={tradePage} />
+      {/* Standards & frameworks */}
+      <StandardsGrid trade={trade} labels={tradePage} />
 
-      {/* 06 — Counterparts */}
-      <Counterparts
-        index="06"
-        trade={trade}
-        labels={tradePage}
-        tint={tint}
-      />
+      {/* Counterparts */}
+      <Counterparts trade={trade} labels={tradePage} />
 
-      {/* 07 — Other trade lines */}
+      {/* Other trade lines */}
       <section className="surface-ivory section-y">
         <div className="container-x">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <Eyebrow index="07" tone="dark">
-              {tradePage.otherEyebrow}
-            </Eyebrow>
-            <Link href={href(locale, "trade")} className="inline-flex min-h-11 items-center text-[0.9375rem] font-medium text-ink hover:text-gold-ink">
+          <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
+            <h2 className="t-display-md text-ink">{tradePage.otherEyebrow}</h2>
+            <TextLink href={href(locale, "trade")} tone="dark">
               {tradePage.allTrade}
-            </Link>
+            </TextLink>
           </div>
-          <TradeIndex locale={locale} content={content} exclude={id} className="mt-10" />
+          <TradeIndex locale={locale} content={content} exclude={id} className="mt-10 md:mt-14" />
         </div>
       </section>
 
-      <CtaBand
-        eyebrow={tradeHub.cta.eyebrow}
-        title={trade.cta.title}
-        primary={{ label: trade.cta.primary, href: contactHref(locale, "partnership") }}
-      />
+      <CtaBand title={trade.cta.title} primary={{ label: trade.cta.primary, href: contactHref(locale, "partnership") }} />
     </>
   );
 }

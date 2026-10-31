@@ -6,9 +6,9 @@ import type { TitledText } from "@/content/types";
 import { cn } from "@/lib/cn";
 
 /**
- * A trade line's journey from origin to market. A hairline fills as the
- * section scrolls through the viewport; each stage lifts out of perspective
- * and lights up in the trade's tint as the line reaches it.
+ * A trade line's journey from origin to market. A flat rail in the trade's
+ * tint fills as the section scrolls through the viewport, and each stage's
+ * marker takes the tint as the rail reaches it.
  * Horizontal from `lg`, vertical below it.
  */
 export function FlowTrack({ steps, tint }: { steps: TitledText[]; tint: string }) {
@@ -26,49 +26,27 @@ export function FlowTrack({ steps, tint }: { steps: TitledText[]; tint: string }
   const lit = (i: number) => reduce || i <= reached;
 
   return (
-    <ol
-      ref={ref}
-      style={{ "--trade": tint } as CSSProperties}
-      className="relative grid gap-12 [perspective:1400px] lg:grid-cols-4 lg:gap-8"
-    >
-      {/* The track: vertical below lg, horizontal from lg */}
-      <span aria-hidden className="absolute bottom-6 left-[1.375rem] top-6 w-px bg-white/10 lg:hidden">
-        <motion.span
-          style={reduce ? undefined : { scaleY: fill }}
-          className="absolute inset-0 origin-top bg-gradient-to-b from-gold to-[var(--trade)]"
-        />
+    <ol ref={ref} style={{ "--trade": tint } as CSSProperties} className="relative grid gap-12 lg:grid-cols-4 lg:gap-8">
+      {/* The rail: vertical below lg, horizontal from lg */}
+      <span aria-hidden className="absolute bottom-2 left-[5px] top-2 w-[3px] overflow-hidden rounded-full bg-ivory/12 lg:hidden">
+        <motion.span style={reduce ? undefined : { scaleY: fill }} className="absolute inset-0 origin-top bg-[var(--trade)]" />
       </span>
-      <span aria-hidden className="absolute inset-x-0 top-[1.375rem] hidden h-px bg-white/10 lg:block">
-        <motion.span
-          style={reduce ? undefined : { scaleX: fill }}
-          className="absolute inset-0 origin-left bg-gradient-to-r from-gold to-[var(--trade)]"
-        />
+      <span aria-hidden className="absolute inset-x-0 top-[5px] hidden h-[3px] overflow-hidden rounded-full bg-ivory/12 lg:block">
+        <motion.span style={reduce ? undefined : { scaleX: fill }} className="absolute inset-0 origin-left bg-[var(--trade)]" />
       </span>
 
       {steps.map((step, i) => (
-        <li key={step.title} className="relative grid grid-cols-[2.75rem_1fr] gap-x-6 lg:block">
+        <li key={step.title} className="relative grid grid-cols-[0.8125rem_1fr] gap-x-6 lg:block lg:pr-4">
           <span
             aria-hidden
             className={cn(
-              "t-eyebrow relative z-10 flex h-11 w-11 items-center justify-center rounded-full border bg-ink-950 tabular-nums transition-[border-color,color,box-shadow] duration-700",
-              lit(i) ? "border-[var(--trade)] text-ivory shadow-[0_0_0_6px_rgb(2_12_12),0_0_28px_2px_var(--trade)]" : "border-white/15 text-mist-dim",
+              "relative block h-[0.8125rem] w-[0.8125rem] rounded-full transition-colors duration-700",
+              lit(i) ? "bg-[var(--trade)]" : "bg-ink-700",
             )}
-          >
-            {String(i + 1).padStart(2, "0")}
-          </span>
-          <div
-            className={cn(
-              "origin-top rounded-lg border p-6 transition-[transform,opacity,border-color,background-color] duration-[900ms] ease-[var(--ease-out-expo)] lg:mt-10 lg:p-7",
-              lit(i)
-                ? "border-white/12 bg-ink-850/70 opacity-100 [transform:rotateX(0deg)_translateY(0)]"
-                : "border-white/5 bg-transparent opacity-40 [transform:rotateX(18deg)_translateY(14px)]",
-            )}
-          >
-            <span aria-hidden className="block h-px w-8 bg-[var(--trade)]" />
-            <h3 className="mt-5 text-[1.5rem] font-light leading-tight tracking-[-0.025em] text-ivory md:text-[1.75rem]">
-              {step.title}
-            </h3>
-            <p className="mt-3 text-[0.9375rem] leading-relaxed text-mist">{step.text}</p>
+          />
+          <div className="-mt-1.5 lg:mt-8">
+            <h3 className="t-display-sm text-ivory">{step.title}</h3>
+            <p className="mt-3 max-w-md text-[1rem] leading-relaxed text-ivory/85">{step.text}</p>
           </div>
         </li>
       ))}

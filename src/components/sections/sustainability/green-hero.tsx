@@ -14,7 +14,7 @@ import type { SiteContent } from "@/content/types";
 import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/cn";
 import { contactHref, href } from "@/lib/routes";
-import { GreenEyebrow, pad, stageStill } from "./shared";
+import { stageStill } from "./shared";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -148,7 +148,7 @@ export function GreenHero({ locale, content }: { locale: Locale; content: SiteCo
       {/* Inset cinematic frame */}
       <motion.div
         style={{ scale: frameScale, borderRadius: frameRadius, rotateX: frameTilt }}
-        className="elevate absolute inset-2 origin-top overflow-hidden bg-forest-900 will-change-transform motion-reduce:!transform-none md:inset-3"
+        className="absolute inset-2 origin-top overflow-hidden bg-forest-900 will-change-transform motion-reduce:!transform-none md:inset-3"
       >
         <Image
           src={stageStill(0)}
@@ -170,9 +170,9 @@ export function GreenHero({ locale, content }: { locale: Locale; content: SiteCo
         <motion.div aria-hidden style={{ opacity: veil }} className="absolute inset-0 bg-forest-950" />
 
         {/* Legibility scrims */}
-        <div aria-hidden className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-forest-950/75 to-transparent" />
-        <div aria-hidden className="absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-forest-950 via-forest-950/70 to-transparent" />
-        <div aria-hidden className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-forest-950/55 via-forest-950/20 to-transparent md:from-forest-950/80 lg:w-[70%]" />
+        <div aria-hidden className="scrim-down absolute inset-x-0 top-0 h-48 opacity-80" />
+        <div aria-hidden className="scrim-up absolute inset-x-0 bottom-0 h-[70%]" />
+        <div aria-hidden className="scrim-right absolute inset-y-0 left-0 w-full opacity-70 md:opacity-100 lg:w-[70%]" />
         <motion.div aria-hidden style={{ opacity: darken }} className="absolute inset-0 bg-forest-950" />
       </motion.div>
 
@@ -182,18 +182,21 @@ export function GreenHero({ locale, content }: { locale: Locale; content: SiteCo
       >
         <motion.nav
           aria-label="Breadcrumb"
+          data-reveal
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: EASE, delay: 0.1 }}
         >
-          <ol className="t-eyebrow flex flex-wrap items-center gap-x-3 text-cream/70">
+          <ol className="flex flex-wrap items-center gap-x-2.5 text-[0.875rem] text-cream/70">
             <li>
               <Link href={href(locale, "home")} className="inline-flex min-h-11 items-center hover:text-cream">
                 {common.breadcrumbHome}
               </Link>
             </li>
-            <li aria-hidden className="h-px w-6 bg-brass/70" />
-            <li aria-current="page" className="text-brass-soft">
+            <li aria-hidden className="text-cream/35">
+              /
+            </li>
+            <li aria-current="page" className="text-cream">
               {nav.labels.sustainability}
             </li>
           </ol>
@@ -201,15 +204,9 @@ export function GreenHero({ locale, content }: { locale: Locale; content: SiteCo
 
         <div className="mt-auto grid gap-12 pt-16 lg:grid-cols-12 lg:items-end lg:gap-8">
           <div className="lg:col-span-8 xl:col-span-7">
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: EASE, delay: 0.1 }}
-            >
-              <GreenEyebrow>{hero.eyebrow}</GreenEyebrow>
-            </motion.div>
-            <MaskText as="h1" text={hero.title} delay={0.15} className="t-display-xl mt-6 max-w-[11ch] text-cream" />
+            <MaskText as="h1" text={hero.title} delay={0.15} className="t-display-xl max-w-[11ch] text-cream" />
             <motion.p
+              data-reveal
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: EASE, delay: 0.55 }}
@@ -218,6 +215,7 @@ export function GreenHero({ locale, content }: { locale: Locale; content: SiteCo
               {hero.intro}
             </motion.p>
             <motion.div
+              data-reveal
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: EASE, delay: 0.7 }}
@@ -235,18 +233,19 @@ export function GreenHero({ locale, content }: { locale: Locale; content: SiteCo
           {/* Tour panel: current stage, progress through the seven stages, pause. */}
           {/* Hidden with CSS under reduced motion (no tour), so server and client markup match. */}
           <motion.div
+            data-reveal
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: EASE, delay: 0.9 }}
             className="motion-reduce:hidden md:max-w-[26rem] lg:col-span-4 lg:col-start-9 lg:max-w-none"
           >
-            <div className="rounded-lg border border-cream/12 bg-forest-950/50 p-4 backdrop-blur-md md:p-5">
+            <div className="rounded-lg bg-forest-950/90 p-4 md:p-5">
               <div className="flex items-center gap-4">
                 <button
                   type="button"
                   onClick={() => setPlaying((p) => !p)}
                   aria-label={playing ? green.tourPause : green.tourPlay}
-                  className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-cream/20 text-cream/85 transition-colors duration-300 hover:border-brass/70 hover:text-cream"
+                  className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-cream/10 text-cream transition-colors duration-300 hover:bg-cream/20"
                 >
                   <PlayIcon playing={playing} />
                 </button>
@@ -255,14 +254,11 @@ export function GreenHero({ locale, content }: { locale: Locale; content: SiteCo
                     <div
                       key={name}
                       className={cn(
-                        "absolute inset-0 flex flex-col justify-center transition-[opacity,transform] duration-700 ease-[var(--ease-out-expo)]",
+                        "absolute inset-0 flex items-center transition-[opacity,transform] duration-700 ease-[var(--ease-out-expo)]",
                         i === stage ? "translate-y-0 opacity-100" : i < stage ? "-translate-y-2 opacity-0" : "translate-y-2 opacity-0",
                       )}
                     >
-                      <span className="t-eyebrow tabular-nums text-brass-soft">
-                        {pad(i + 1)} / {pad(STAGE_COUNT)}
-                      </span>
-                      <span className="mt-1.5 truncate text-[1.0625rem] leading-tight tracking-[-0.01em] text-cream">{name}</span>
+                      <span className="truncate text-[1.0625rem] leading-tight tracking-[-0.01em] text-cream">{name}</span>
                     </div>
                   ))}
                 </div>
@@ -270,11 +266,8 @@ export function GreenHero({ locale, content }: { locale: Locale; content: SiteCo
 
               {/* Progress rail with a stop per stage; the stops seek the tour on wider screens. */}
               <div className="relative mt-3">
-                <div aria-hidden className="absolute inset-x-[1.375rem] top-1/2 h-px -translate-y-1/2 bg-cream/15">
-                  <motion.div
-                    style={{ scaleX: progress }}
-                    className="h-px origin-left bg-gradient-to-r from-brass via-gold to-teal"
-                  />
+                <div aria-hidden className="absolute inset-x-[1.375rem] top-1/2 h-0.5 -translate-y-1/2 bg-cream/15">
+                  <motion.div style={{ scaleX: progress }} className="h-full origin-left bg-gold" />
                 </div>
                 <ol aria-label={green.stagesLabel} className="relative hidden justify-between md:flex">
                   {stages.map((name, i) => (
@@ -288,9 +281,9 @@ export function GreenHero({ locale, content }: { locale: Locale; content: SiteCo
                       >
                         <span
                           className={cn(
-                            "h-1.5 w-1.5 rounded-full transition-all duration-500",
+                            "h-1.5 w-1.5 rounded-full transition-[transform,background-color] duration-500",
                             i === stage
-                              ? "scale-150 bg-gold shadow-[0_0_10px_rgb(141_198_63/0.8)]"
+                              ? "scale-150 bg-gold"
                               : i < stage
                                 ? "bg-brass group-hover/stop:bg-brass-soft"
                                 : "bg-cream/35 group-hover/stop:bg-cream",

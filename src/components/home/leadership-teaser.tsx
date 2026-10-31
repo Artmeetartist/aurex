@@ -23,7 +23,7 @@ export function LeadershipTeaser({ locale, content }: { locale: Locale; content:
           </Reveal>
         </div>
 
-        <RevealGroup as="ul" className="mt-14 grid gap-x-10 gap-y-8 md:mt-20 md:grid-cols-2 md:gap-y-12">
+        <RevealGroup as="ul" className="mt-14 grid gap-x-10 gap-y-8 md:mt-20 lg:grid-cols-2 lg:gap-y-12">
           {copy.principles.map((principle) => (
             <RevealItem as="li" key={principle} className="flex gap-4 md:gap-5">
               <Check size={20} className="mt-[0.4em] shrink-0 text-gold-ink" />
