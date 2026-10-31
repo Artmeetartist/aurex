@@ -75,7 +75,7 @@ export function TradeMenu({ data, active }: { data: TradeMenuData; active: boole
         aria-controls={panelId}
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "relative inline-flex h-11 items-center gap-1.5 whitespace-nowrap px-2 text-[0.8125rem] transition-colors duration-300 2xl:px-3 2xl:text-[0.875rem]",
+          "relative inline-flex h-11 items-center gap-1.5 whitespace-nowrap px-2 text-[0.875rem] transition-colors duration-300 2xl:px-3",
           "before:absolute before:bottom-2 before:left-2 before:right-6 before:h-px before:origin-left before:bg-current before:transition-transform before:duration-300 before:content-[''] 2xl:before:left-3 2xl:before:right-7",
           active || open ? "text-ivory before:scale-x-100" : "text-ivory/75 before:scale-x-0 hover:text-ivory hover:before:scale-x-100",
         )}
@@ -105,14 +105,14 @@ export function TradeMenu({ data, active }: { data: TradeMenuData; active: boole
                       <Icon size={30} />
                     </span>
                     <span className="min-w-0">
-                      <span className="flex items-center gap-2 text-[0.9375rem] font-medium text-ivory">
+                      <span className="flex items-center gap-2 text-[1rem] font-medium text-ivory">
                         {item.name}
                         <ArrowUpRight
                           size={12}
                           className="opacity-0 transition-[opacity,transform] duration-300 group-hover:translate-x-0.5 group-hover:opacity-100"
                         />
                       </span>
-                      <span className="mt-1 block text-[0.8125rem] leading-snug text-mist">{item.title}</span>
+                      <span className="mt-1 block text-[0.875rem] leading-snug text-mist">{item.title}</span>
                     </span>
                   </Link>
                 </li>

@@ -8,7 +8,7 @@ export function BackToTop({ label }: { label: string }) {
     <button
       type="button"
       onClick={() => (lenis ? lenis.scrollTo(0, { duration: 1.6 }) : window.scrollTo({ top: 0, behavior: "smooth" }))}
-      className="group inline-flex min-h-11 items-center gap-3 text-[0.8125rem] text-mist transition-colors hover:text-ivory"
+      className="group inline-flex min-h-11 items-center gap-3 text-[0.875rem] text-mist transition-colors hover:text-ivory"
     >
       {label}
       <span className="inline-flex h-9 w-9 items-center justify-center rounded-[4px] border border-white/15 transition-colors duration-300 group-hover:border-white/40">

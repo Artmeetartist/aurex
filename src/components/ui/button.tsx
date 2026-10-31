@@ -28,8 +28,8 @@ const variants: Record<Variant, string> = {
 };
 
 const sizes: Record<Size, string> = {
-  md: "h-11 px-5 text-[0.9375rem]",
-  lg: "h-[3.25rem] px-6 text-[0.9375rem]",
+  md: "h-11 px-5 text-[1rem]",
+  lg: "h-[3.25rem] px-6 text-[1rem]",
 };
 
 type Common = { variant?: Variant; size?: Size; children: ReactNode; className?: string; icon?: boolean };
@@ -85,7 +85,7 @@ export function TextLink({
   return (
     <Link
       className={cn(
-        "group/tl inline-flex min-h-11 items-center gap-2 text-[0.9375rem] font-medium",
+        "group/tl inline-flex min-h-11 items-center gap-2 text-[1rem] font-medium",
         tone === "light" ? "text-ivory" : "text-ink",
         className,
       )}

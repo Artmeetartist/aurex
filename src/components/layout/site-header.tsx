@@ -110,7 +110,7 @@ export function SiteHeader({ locale, nav }: { locale: Locale; nav: HeaderLabels 
                       href={href(locale, route)}
                       aria-current={isActive(route) ? "page" : undefined}
                       className={cn(
-                        "relative inline-flex h-11 items-center whitespace-nowrap px-2 text-[0.8125rem] transition-colors duration-300 2xl:px-3 2xl:text-[0.875rem]",
+                        "relative inline-flex h-11 items-center whitespace-nowrap px-2 text-[0.875rem] transition-colors duration-300 2xl:px-3",
                         "before:absolute before:inset-x-2 before:bottom-2 before:h-px before:origin-left before:bg-current before:transition-transform before:duration-300 before:content-[''] 2xl:before:inset-x-3",
                         isActive(route) ? "text-ivory before:scale-x-100" : "text-ivory/75 before:scale-x-0 hover:text-ivory hover:before:scale-x-100",
                       )}
